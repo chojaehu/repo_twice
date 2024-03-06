@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ezticket.infra.codegroup.CodeGroupDao">
+
+	<resultMap id="resultMapObj" type="com.ezticket.infra.codegroup.CodeGroupDto"></resultMap>
+
+    <select id="selectList" resultMap="resultMapObj">
+        SELECT
+            a.number
+            ,a.groupname
+            ,a.regDate
+            ,(select count(aa.number) from code aa where 1=1 and aa.deleteNY = 0 and aa.codegroup_number = a.number) as xCount
+            ,a.mdfcnDate
+            ,a.deleteNY
+         FROM codegroup a
+        WHERE 1=1
+        ORDER BY a.number DESC
+    </select>
+    
+    <select id="selectOne" resultMap="resultMapObj">
+        SELECT
+            a.number
+            ,a.groupname
+            ,a.regDate
+            ,a.mdfcnDate
+            ,a.deleteNY
+         FROM codegroup a
+        WHERE 1=1 
+        	AND a.number = #{number}
+    </select>
+    
+    <update id="update">
+    
+    UPDATE codegroup
+    SET
+    groupname = #{groupname}
+    
+    WHERE number = #{number}
+    
+    </update>
+    
+
+    <insert id="insert">
+    
+    INSERT INTO codegroup
+    (
+    groupname
+    ,deleteNY
+    )
+    VALUES
+    (
+    #{groupname}
+    ,#{deleteNY}
+    )
+    
+    </insert>
+    <update id="updatedelete">
+    
+    UPDATE codegroup
+    SET
+    deleteNY = 1
+    WHERE number = #{number}
+    
+    </update>
+    
+    
+    <delete id="delete">
+    DELETE 
+    FROM codegroup
+    WHERE number = #{number}
+    </delete>
+    
+    
+    
+
+
+   <!--  ,(select count(aa.ifcdSeq) from infrCode aa where 1=1 and aa.ifcdDelNy = 0 and aa.ifcgSeq = a.ifcgSeq) as xifcdSeqCount -->
+	  
+</mapper>

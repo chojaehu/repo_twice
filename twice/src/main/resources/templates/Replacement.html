@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replacement</title>
+</head>
+<body>
+<!-- 	<input type="text" th:value = "${item.number}">
+	<input type="text"  th:value = "${item.groupname}"> -->
+	
+	<form method="post" action="codeGroupupdate">
+		<!-- <input type="text"><br>  -->
+		<input type="text" name ="number" th:value = "${item.number}">
+		<input type="text" name ="groupname" th:value = "${item.groupname}"><br>
+		<!-- <input type="text" name ="deleteNY" th:value = "${item.deleteNY}"> -->
+		<button type="submit">저장</button>
+	</form>
+</body>
+</html>

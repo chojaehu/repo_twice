@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>codeGroupXdmList</title>
+</head>
+<body>
+<a th:href="@{/Registration}">등록</a>
+<button th:href="@{/Registration}" th:text="등록"></button>
+
+    <table>
+    	<tr>
+    		<th>ch</th>
+    		<th>#</th>
+    		<th>number</th>
+    		<th>name</th>
+    		<th>date</th>
+    		<th>n/y</th>
+    		<th>coumt</th>
+    	</tr>
+    	<tr th:if= "${#lists.isEmpty(list)}">
+    		<td colspan="7">no date!</td>
+    	</tr>
+    	<tr th:if ="${!#lists.isEmpty(list)}"  th:each="list : ${list}">
+    		<th></th>
+    		<th></th>
+    		<th th:text = "${list.number}"></th> 
+    		<!-- <th th:text = "${list.groupname}"></th> -->
+    		<th><a th:href="@{/codeGroupView(number=${list.number})}" th:text="${list.groupname}"></a></th>
+    		<th th:text = "${#dates.format(list.regDate, 'yyyy/MM/dd HH:mm:ss')}"></th>
+    		<th th:if = "${list.deleteNY eq 0}">n</th>
+    		<th th:unless = "${list.deleteNY eq 0}">y</th>
+    		<th th:text = "${list.xCount}"></th>
+    	</tr>
+    </table>
+    
+</body>
+</html>

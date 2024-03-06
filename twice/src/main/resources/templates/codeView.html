@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>codeView</title>
+</head>
+<body>
+
+		
+		<input type="text" name ="number" th:value = "${item.number}">
+			<input type="text" name ="name" th:value = "${item.name}">
+		<a th:href="@{/codeReplacement(number=${item.number})}">수정</a>
+			<br><br><br><br>
+		
+		<form method="post" action="codeupdate" >
+		<input type="text" name ="number" th:value = "${item.number}">
+			<input type="text" name ="name" th:value = "${item.name}">
+		<button type="submit">변경</button>
+		</form>
+		
+		<form method="post" action="codedelect">
+			<input type="text" name ="number" th:value = "${item.number}">
+			<input type="text" name ="name" th:value = "${item.name}">
+			<button type="submit">삭제</button>
+		</form>
+		<form method="post" action="updatedelete">
+			<input type="text" name ="number" th:value = "${item.number}">
+			<input type="text" name ="name" th:value = "${item.name}">
+			<button type="submit">deleteNY</button>
+		</form>
+	
+	<!-- <form method="post" action="codeGroupupdatedelete">
+		<input type="text" name ="number" th:value = "${item.number}">
+		<input type="text" name ="groupname" th:value = "${item.groupname}">
+		<button type="submit">수정</button>
+	</form> -->
+	
+	<!-- <form method="post" action="codeGroupdelete">
+		<input type="text" name ="number" th:value = "${item.number}">
+		<input type="text" name ="groupname" th:value = "${item.groupname}">
+		<button type="submit">삭제</button>
+	</form> -->
+</body>
+</html>
