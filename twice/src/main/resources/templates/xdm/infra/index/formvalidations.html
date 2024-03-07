@@ -268,8 +268,7 @@
 							<div class="col-xxl-12">
 								<div class="card">
 									<div class="card-body">
-										<div class="row">
-											<form class="row g-3 needs-validation" method="post" action="indexupdate" novalidate>
+											<form class="row g-3 needs-validation" method="post"  novalidate>
 												<div class="col-md-6">
 													<input type="text" class="form-control form-control-sm"  name ="number" th:value = "${item.number}" required />
 													<div class="valid-feedback">Looks good!</div>
@@ -287,44 +286,42 @@
 												</div>
 						
 												<div class="col-6 d-flex justify-content-end">
-													<button class="btn btn-primary  d-flex justify-content-end" type="submit">
+													<button class="btn btn-primary  d-flex justify-content-end" type="submit" onclick="javascript: form.action='indexupdate';">
 														수정
 													</button>
+													<button class="btn btn-primary  d-flex justify-content-end" type="submit" onclick="javascript: form.action='indexdelete';">
+														삭제
+													</button>
+													<button class="btn btn-primary  d-flex justify-content-end" type="submit" onclick="javascript: form.action='indexupdatedelete';">
+														deleteNY
+													</button>
+													
 												</div>
 											</form>
 											
-											<form class="needs-validation " method="post" action="indexdelete" novalidate>
+											<!-- <form class="needs-validation " method="post" action="indexdelete" novalidate>
 												<div class="">
-													<input type="text" class="form-control form-control-sm"  name ="number" th:value = "${item.number}" style="display: none; " required />
-													<div class="valid-feedback">Looks good!</div>
+													<input type="text" class="form-control form-control-sm"  name ="number" th:value = "${item.number}" style="display: none; "/>
 												</div>
-												<div class="">
-													<input type="text" class="form-control form-control-sm"  name ="groupname" th:value = "${item.groupname}" style="display: none; " required />
-													<div class="valid-feedback">Looks good!</div>
-												</div>
-													<div class="col-12 d-flex justify-content-end">												
+													<div class="col-12	 d-flex justify-content-end">												
 														<button class="btn btn-primary" type="submit">
 															삭제
 														</button>
+														
 													</div>
 											</form>
+
 											
 											<form class=" eeds-validation " method="post" action="indexupdatedelete" novalidate>
 												<div class="col-md-6">
-													<input type="text" class="form-control form-control-sm"  name ="number" th:value = "${item.number}" style="display: none; " required />
-													<div class="valid-feedback">Looks good!</div>
-												</div>
-												<div class="col-md-6">
-													<input type="text" class="form-control form-control-sm"  name ="groupname" th:value = "${item.groupname}" style="display: none; " required />
-													<div class="valid-feedback">Looks good!</div>
+													<input type="text" class="form-control form-control-sm"  name ="number" th:value = "${item.number}" style="display: none; "/>
 												</div>
 												<div class="col-12	 d-flex justify-content-end">
 													<button class="btn btn-primary d-flex justify-content-end" type="submit">
 														deleteNY수정
 													</button>
 												</div>
-											</form>
-										</div>
+											</form> -->
 										
 									</div>
 								</div>
