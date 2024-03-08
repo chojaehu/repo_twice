@@ -5,18 +5,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ezticket.infra.codegroup.CodeGroupDto;
+
 @Controller
 public class CodeController {
 	
 	@Autowired
 	CodeService service;
 	
-	@RequestMapping(value = "/codeXdmList")
-	public String codeXdmList(Model model) throws Exception
-	{
-		model.addAttribute("list", service.selectList());
-		return "/xdm/infra/code/codeXdmList";
-	}
+//	@RequestMapping(value = "/codeXdmList")
+//	public String codeXdmList(Model model) throws Exception
+//	{
+//		model.addAttribute("list", service.selectList());
+//		return "/xdm/infra/code/codeXdmList";
+//	}
 	@RequestMapping(value = "/codeView")
 	public String codeView(Model model, CodeDto dto) throws Exception
 	{
@@ -35,6 +37,9 @@ public class CodeController {
 		model.addAttribute("item", service.selectOne(dto));
 		return "/xdm/infra/code/codeReplacement";
 	}
+	
+	
+	
 	
 	@RequestMapping(value = "/codeInsert")
 	public String codeInsert(Model model, CodeDto dto) throws Exception
@@ -62,6 +67,32 @@ public class CodeController {
 		return "redirect:/codeXdmList";
 	}
 	
+	
+	
+	
+//	인덱스
+	@RequestMapping(value = "/codeXdmList")
+	public String codeXdmList(Model model,CodeGroupDto dto) throws Exception {
+		
+		model.addAttribute("list", service.selectList());
+		
+		return "/xdm/infra/index/codeXdmList";
+	}
+	@RequestMapping(value = "/codeXdmForm")
+	public String codeXdmForm(CodeDto dto, Model model) throws Exception {
+		
+		model.addAttribute("item", service.selectOne(dto));
+		
+		return "/xdm/infra/index/codeXdmForm";
+	}
+	@RequestMapping(value = "/codeXdmInst")
+	public String codeXdmInst(CodeDto dto, Model model) throws Exception {
+		
+		
+		return "/xdm/infra/index/codeXdmInst";
+	}
+	
+
 
 
 }

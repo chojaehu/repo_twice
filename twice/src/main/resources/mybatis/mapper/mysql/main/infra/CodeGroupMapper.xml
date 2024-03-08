@@ -13,9 +13,15 @@
             ,(select count(aa.number) from code aa where 1=1 and aa.deleteNY = 0 and aa.codegroup_number = a.number) as xCount
             ,a.mdfcnDate
             ,a.deleteNY
+            ,(select count(*) from codegroup) as groupcount
          FROM codegroup a
         WHERE 1=1
         ORDER BY a.number DESC
+    </select>
+    
+    <select id="selectCount" resultMap="resultMapObj">
+        SELECT count(*) as groupcount
+         FROM codegroup 
     </select>
     
     <select id="selectOne" resultMap="resultMapObj">

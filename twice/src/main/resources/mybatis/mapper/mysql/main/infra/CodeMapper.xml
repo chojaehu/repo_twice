@@ -24,6 +24,7 @@
             ,b.deleteNY
             ,b.number
             ,b.name
+            ,b.regDate
             ,b.mdfcnDate
             ,b.codegroup_number
          FROM codegroup a
@@ -46,11 +47,13 @@
     insert into code
     (
     name
+    ,deleteNY
     ,codegroup_number
     )
     values
     (
     #{name}
+    ,#{deleteNY}
     ,#{codegroup_number}
     )
     </insert>

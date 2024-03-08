@@ -16,6 +16,9 @@
 		<meta property="og:type" content="Website">
 		<meta property="og:site_name" content="Bootstrap Gallery">
 		<link rel="shortcut icon" href="xdm/images/favicon.svg" />
+		
+		
+		<script src="xdm/js/jquery.min.js"></script>
 
 		<!-- Title -->
 		<title>Admin Dashboard Templates - Admin Dashboards</title>
@@ -184,7 +187,7 @@
 									</div>
 								</li>
 								<li>
-									<a th:href="@{/tables}">
+									<a th:href="@{/codeGroupXdmList}">
 										<i class="bi bi-grid-3x3"></i>
 										<span class="menu-text">Tables</span>
 									</a>
@@ -232,7 +235,7 @@
 								<i class="bi bi-columns-gap"></i>
 							</div>
 							<div class="page-title d-none d-md-block">
-								<h5>코드그룹 데이터 등록</h5>
+								<h5>코드그룹 관리</h5>
 							</div>
 						</div>
 						<!-- Live updates start -->
@@ -268,37 +271,93 @@
 							<div class="col-xxl-12">
 								<div class="card">
 									<div class="card-body">
-										<form class="row g-3 needs-validation" method="post" action="indexinsert" novalidate>
-											<div class="col-md-6">
-												<input type="text" class="form-control form-control-sm"  name ="groupname" placeholder  ="그룹이름"  required />
-												<div class="valid-feedback">Looks good!</div>
-											</div>
-											<div class="col-md-6">
-												<!-- <input type="text" class="form-control form-control-sm"  name ="deleteNY" placeholder  ="삭제여부"  required /> -->
-												<select class="form-control form-control-sm" aria-label=".form-select-lg example" name ="deleteNY" placeholder  ="삭제여부"  required>
-												  <option value = 0 selected>n</option>
-												  <option value = 1>y</option>
-												</select>
-												<div class="valid-feedback">Looks good!</div>
-											</div>
-											<div class="col-6 d-flex ">
-												<a th:href ="@{/tables}">
-												<button class="btn btn-primary " type="button">
-													돌아가기
-												</button>
-												</a>
-											</div>
-											<div class="col-6 d-flex justify-content-end">
-												<button class="btn btn-primary " type="submit">
-													등록
-												</button>
-											</div>
-										</form>
-										
-										
-										
-										
-										
+											<form class="row g-3 needs-validation" method="post"  novalidate>
+												<div class="col-md-6">
+													<input type="text" class="form-control form-control-sm"  name ="number" th:value = "${item.number}" required />
+													<div class="valid-feedback">Looks good!</div>
+												</div>
+												<div class="col-md-6">
+													<input type="text" class="form-control form-control-sm"  name ="groupname" th:value = "${item.groupname}" required />
+													<div class="valid-feedback">Looks good!</div>
+												</div>
+												<div class="col-6">
+													<a th:href ="@{/codeGroupXdmList}">
+													<button class="btn btn-primary " type="button">
+														돌아가기
+													</button>
+													</a>
+												</div>
+						
+												<div class="col-6 d-flex gap-2  d-flex justify-content-end">
+													<button type="button" class="btn btn-danger " 
+													data-bs-toggle="modal" 
+													data-bs-target="#exampleModal">
+														
+														<i class="bi bi-trash-fill"></i>
+													</button>
+														<div class="modal fade" 
+														id="exampleModal" 
+														tabindex="-1" 
+														aria-labelledby="exampleModalLabel"
+														aria-hidden="true">	
+															<div class="modal-dialog">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<h5 class="modal-title" id="exampleModalLabel">
+																			삭제하시겠습니까?
+																		</h5>
+																		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+																	</div>
+																	<div class="modal-body">
+																	</div>
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >
+																				아니요.
+																		</button>
+																		<button type="submit" class="btn btn-primary" onclick="javascript: form.action='indexdelete';">
+																				예
+																		</button>
+																	</div>
+																</div>
+															</div>
+														</div> 
+													
+													<!-- <button class="btn btn-danger  d-flex justify-content-end" type="submit" onclick="javascript: form.action='indexdelete';">
+														삭제
+													</button> -->
+													<button class="btn btn-danger  " type="submit" onclick="javascript: form.action='indexupdatedelete';">
+														삭제X
+													</button>
+													<button class="btn btn-primary  " type="submit" onclick="javascript: form.action='indexupdate';">
+														저장
+													</button>
+													
+												</div>
+											</form>
+											
+											<!-- <form class="needs-validation " method="post" action="indexdelete" novalidate>
+												<div class="">
+													<input type="text" class="form-control form-control-sm"  name ="number" th:value = "${item.number}" style="display: none; "/>
+												</div>
+													<div class="col-12	 d-flex justify-content-end">												
+														<button class="btn btn-primary" type="submit">
+															삭제
+														</button>
+														
+													</div>
+											</form>
+
+											
+											<form class=" eeds-validation " method="post" action="indexupdatedelete" novalidate>
+												<div class="col-md-6">
+													<input type="text" class="form-control form-control-sm"  name ="number" th:value = "${item.number}" style="display: none; "/>
+												</div>
+												<div class="col-12	 d-flex justify-content-end">
+													<button class="btn btn-primary d-flex justify-content-end" type="submit">
+														deleteNY수정
+													</button>
+												</div>
+											</form> -->
 										
 									</div>
 								</div>
@@ -326,7 +385,7 @@
 			************ Required JavaScript Files *************
 		************* -->
 		<!-- Required jQuery first, then Bootstrap Bundle JS -->
-		<script src="xdm/js/jquery.min.js"></script>
+		<!-- <script src="xdm/js/jquery.min.js"></script> -->
 		<script src="xdm/js/bootstrap.bundle.min.js"></script>
 		<script src="xdm/js/modernizr.js"></script>
 		<script src="xdm/js/moment.js"></script>

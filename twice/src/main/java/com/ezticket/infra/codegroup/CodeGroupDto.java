@@ -9,7 +9,8 @@ public class CodeGroupDto {
 	private Date regDate;
 	private Date mdfcnDate;
 	private Integer deleteNY;
-	
+
+
 	private Integer xCount;
 
 	public String getNumber() {

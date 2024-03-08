@@ -11,18 +11,18 @@ public class CodeGroupController {
 	@Autowired
 	CodeGroupService service;
 
-	@RequestMapping(value = "/codeGroupXdmList")
-	public String codeGroupXdmList(Model model) throws Exception {
-
-		model.addAttribute("list", service.selectList());
-//		List<CodeGroupDto> CodeGroupDtos = service.selectList();
-//		
-//		for(CodeGroupDto a : CodeGroupDtos)
-//		{
-//			System.out.println(a.getGroupname());
-//		}
-		return "/xdm/infra/codegroup/codeGroupXdmList";
-	}
+//	@RequestMapping(value = "/codeGroupXdmList")
+//	public String codeGroupXdmList(Model model) throws Exception {
+//
+//		model.addAttribute("list", service.selectList());
+////		List<CodeGroupDto> CodeGroupDtos = service.selectList();
+////		
+////		for(CodeGroupDto a : CodeGroupDtos)
+////		{
+////			System.out.println(a.getGroupname());
+////		}
+//		return "/xdm/infra/codegroup/codeGroupXdmList";
+//	}
 
 	@RequestMapping(value = "/codeGroupView")
 	public String codeGroupView(CodeGroupDto dto, Model model) throws Exception {
@@ -98,19 +98,19 @@ public class CodeGroupController {
 		return "/xdm/infra/index/forgotpassword";
 	}
 	
-	@RequestMapping(value = "/formvalidations")
-	public String formvalidations(CodeGroupDto dto, Model model) throws Exception {
+	@RequestMapping(value = "/codeGroupXdmForm")
+	public String codeGroupXdmForm(CodeGroupDto dto, Model model) throws Exception {
 		
 		model.addAttribute("item", service.selectOne(dto));
 		
-		return "/xdm/infra/index/formvalidations";
+		return "/xdm/infra/index/codeGroupXdmForm";
 	}
 	
-	@RequestMapping(value = "/indexadd")
-	public String indexadd(CodeGroupDto dto, Model model) throws Exception {
+	@RequestMapping(value = "/codeGroupXdmInst")
+	public String codeGroupXdmInst(CodeGroupDto dto, Model model) throws Exception {
 		
 		
-		return "/xdm/infra/index/indexadd";
+		return "/xdm/infra/index/codeGroupXdmInst";
 	}
 	
 	@RequestMapping(value = "/login")
@@ -127,11 +127,12 @@ public class CodeGroupController {
 		return "/xdm/infra/index/signup";
 	}
 	
-	@RequestMapping(value = "/tables")
-	public String tables(Model model) throws Exception {
+	@RequestMapping(value = "/codeGroupXdmList")
+	public String codeGroupXdmList(Model model,CodeGroupDto dto) throws Exception {
 		
 		model.addAttribute("list", service.selectList());
-		return "/xdm/infra/index/tables";
+		
+		return "/xdm/infra/index/codeGroupXdmList";
 	}
 	
 	@RequestMapping(value = "/waring")
@@ -146,7 +147,7 @@ public class CodeGroupController {
 		
 		service.insert(dto);
 
-		return "redirect:/tables";
+		return "redirect:/codeGroupXdmList";
 	}
 	
 	@RequestMapping(value = "/indexdelete")
@@ -154,7 +155,7 @@ public class CodeGroupController {
 		
 		service.delete(dto);
 
-		return "redirect:/tables";
+		return "redirect:/codeGroupXdmList";
 	}
 	
 	@RequestMapping(value = "/indexupdatedelete")
@@ -162,7 +163,7 @@ public class CodeGroupController {
 		
 		service.updatedelete(dto);
 
-		return "redirect:/tables";
+		return "redirect:/codeGroupXdmList";
 	}
 	
 	@RequestMapping(value = "/indexupdate")
@@ -170,7 +171,7 @@ public class CodeGroupController {
 		
 		service.update(dto);
 
-		return "redirect:/tables";
+		return "redirect:/codeGroupXdmList";
 	}
 
 	
