@@ -278,20 +278,20 @@
 							<div class="col-sm-12 col-12">
 								<div class="card">
 									<div class="card-body">
-										<form>
+										<form name="formList" id="formList" method="post" autocomplete="off">
 											<div class ="row gy-2">
 												<div class="col-md-3">
-													<select class="form-select form-select-sm">
-														<option value="0">탈퇴여부</option>
-														<option value="1">Y</option>
-														<option value="2">N</option>
+													<select id="shDelNy" name="shDelNy" class="form-select form-select-sm">
+														<option value="" th:selected="${vo.shDelNy == null}">삭제여부</option>
+														<option value="1" th:selected="${vo.shDelNy == 1}">Y</option>
+														<option value="0" th:selected="${vo.shDelNy == 0}">N</option>
 													</select>
 												</div>
 												<div class="col-md-3">
-													<select class="form-select form-select-sm">
-														<option value="0">날짜</option>
-														<option value="1">등록일</option>
-														<option value="2">수정일</option>
+													<select id="shOptionDate" name="shOptionDate" class="form-select form-select-sm">
+														<option value="" th:selected="${vo.shOptionDate == null}">날짜</option>
+														<option value="1" th:selected="${vo.shOptionDate == 1}">등록일</option>
+														<option value="2" th:selected="${vo.shOptionDate == 2}">수정일</option>
 													</select>
 												</div>
 												<div class="col-md-3">
@@ -301,23 +301,20 @@
 													<input type="text" id="shDateEnd" name="shDateEnd" placeholder="종료일" class="form-control form-control-sm" autocomplete="off" readonly>
 												</div>
 												<div class="col-3">
-													<select class="form-select form-select-sm">
-														<option value="0">검색구분</option>
-														<option value="1">코드</option>
-														<option value="2">이름</option>
-														<option value="3">아이디</option>
-														<option value="4">이메일</option>
-														<option value="5">모바일</option>
+													<select id="shOption" name="shOption" class="form-select form-select-sm">
+														<option value="" th:selected="${vo.shOption == null}">검색구분</option>
+														<option value="1" th:selected="${vo.shOption == null}">코드</option>
+														<option value="2" th:selected="${vo.shOption == null}">코드이름</option>
 													</select>
 												</div>
 												<div class ="col-md-3">
 													<div class="m-0">
-														<input type="text" class="form-control form-control-sm" placeholder="검색어" />
+														<input type="text" class="form-control form-control-sm" placeholder="검색어"  id="shValue" name="shValue"  th:value="${shValue}" />
 													</div>
 												</div>
 												<div class ="col-md-3">
 													<div class="m-0 ">
-														<button type="button" class="btn btn-outline-primary btn-sm">
+														<button type="button" id="btnSearch" name ="btnSearch" class="btn btn-outline-primary btn-sm">
 															<i class="bi bi-search"></i>
 														</button>
 														<button type="button" class="btn btn-outline-primary btn-sm	">
@@ -526,6 +523,37 @@
 
 		<!-- Main Js Required -->
 		<script src="xdm/js/main.js"></script>
+		<script type="text/javascript">
+			window.addEventListener('load', function() {
+				$("#shDateStart, #shDateEnd").datetimepicker({
+					timepicker:false,
+					format: 'Y-m-d'
+				});
+				let form = document.querySelector("form[name=formList]");
+				let goUrlXdmForm = "/xdm/infra/index/codeGroupXdmFrom";
+				let goUrlXdmList = "/codeXdmList";	
+				
+				document.getElementById("btnSearch").onclick = function () {
+				    form.action = goUrlXdmList;
+				    form.submit();
+				}; 
+				
+// 				document.getElementById("btnReset").onclick = function () {
+// 				    location.href = goUrlXdmList;
+// 				}
+				
+// 				document.getElementById("btnForm").onclick = function () {
+// 				    goForm(0);
+// 				}
+				
+				goForm = function (keyValue) {
+				    seq.value = keyValue;
+				    form.action = goUrlXdmForm;
+				    form.submit();
+				}
+			});
+
+		</script>
 	</body>
 
 </html>

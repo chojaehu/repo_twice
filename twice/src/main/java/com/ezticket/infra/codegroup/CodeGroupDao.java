@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface CodeGroupDao {
 
-	public List<CodeGroupDto> selectList();
+	public List<CodeGroupDto> selectList(CodeGroupVo vo);
 	public CodeGroupDto selectOne(CodeGroupDto dto);
 	
 	

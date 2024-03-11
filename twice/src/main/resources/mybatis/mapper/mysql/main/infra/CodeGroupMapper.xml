@@ -5,7 +5,7 @@
 
 	<resultMap id="resultMapObj" type="com.ezticket.infra.codegroup.CodeGroupDto"></resultMap>
 
-    <select id="selectList" resultMap="resultMapObj">
+   <!-- <select id="selectList" resultMap="resultMapObj">
         SELECT
             a.number
             ,a.groupname
@@ -17,8 +17,31 @@
          FROM codegroup a
         WHERE 1=1
         ORDER BY a.number DESC
+    </select>   -->
+   <select id="selectList" resultMap="resultMapObj">
+        SELECT
+            a.number
+            ,a.groupname
+            ,a.regDate
+            ,(select count(aa.number) from code aa where 1=1 and aa.deleteNY = 0 and aa.codegroup_number = a.number) as xCount
+            ,a.mdfcnDate
+            ,a.deleteNY
+            ,(select count(*) from codegroup) as groupcount
+         FROM codegroup a
+        WHERE 1=1
+       <if test="shDelNy != null and !shDelNy.equals('')">AND a.deleteNY = #{shDelNy}</if>   
+       <!--         
+				<choose>
+					<when test="shOptionDate == 1">AND a.regDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND a.modDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				</choose> -->        
+        <choose>
+            <when test="shOption == 1">AND a.number = #{shValue}</when>
+            <when test="shOption == 2">AND a.groupname LIKE CONCAT('%',#{shValue},'%')</when>
+        </choose> 
+        ORDER BY a.number DESC
     </select>
-    
+     
     <select id="selectCount" resultMap="resultMapObj">
         SELECT count(*) as groupcount
          FROM codegroup 

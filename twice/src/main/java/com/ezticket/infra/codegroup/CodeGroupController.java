@@ -127,10 +127,17 @@ public class CodeGroupController {
 		return "/xdm/infra/index/signup";
 	}
 	
+	
+	
+	
 	@RequestMapping(value = "/codeGroupXdmList")
-	public String codeGroupXdmList(Model model,CodeGroupDto dto) throws Exception {
+	public String codeGroupXdmList(Model model,CodeGroupVo vo) throws Exception {
 		
-		model.addAttribute("list", service.selectList());
+		model.addAttribute("list", service.selectList(vo));
+		
+		model.addAttribute("vo", vo);
+		
+		System.out.println(vo.getShDelNy());
 		
 		return "/xdm/infra/index/codeGroupXdmList";
 	}

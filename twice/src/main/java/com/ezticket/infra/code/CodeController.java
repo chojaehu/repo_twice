@@ -72,9 +72,11 @@ public class CodeController {
 	
 //	인덱스
 	@RequestMapping(value = "/codeXdmList")
-	public String codeXdmList(Model model,CodeGroupDto dto) throws Exception {
+	public String codeXdmList(Model model, CodeVo vo) throws Exception {
 		
-		model.addAttribute("list", service.selectList());
+		model.addAttribute("list", service.selectList(vo));
+		
+		model.addAttribute("vo", vo);
 		
 		return "/xdm/infra/index/codeXdmList";
 	}

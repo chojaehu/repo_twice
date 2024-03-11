@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CodeDao {
 
-	public List<CodeDto> selectList();
+	public List<CodeDto> selectList(CodeVo vo);
 	public CodeDto selectOne(CodeDto dto);
 	public int insert(CodeDto dto);
 	public int update(CodeDto dto);
