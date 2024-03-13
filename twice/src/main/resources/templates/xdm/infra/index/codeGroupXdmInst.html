@@ -268,10 +268,10 @@
 							<div class="col-xxl-12">
 								<div class="card">
 									<div class="card-body">
-										<form class="row g-3 needs-validation" method="post" action="indexinsert" novalidate>
+										<form class="row g-3 needs-validation" name ="formname" method="post" action="indexinsert" novalidate>
 											<div class="col-md-6">
-												<input type="text" class="form-control form-control-sm"  name ="groupname" placeholder  ="그룹이름"  required />
-												<div class="valid-feedback">Looks good!</div>
+												<input type="text" class="form-control form-control-sm" id="groupname"  name ="groupname" placeholder  ="그룹이름"  required />
+												<div class="valid-feedback" id="valred">Looks good!</div>
 											</div>
 											<div class="col-md-6">
 												<!-- <input type="text" class="form-control form-control-sm"  name ="deleteNY" placeholder  ="삭제여부"  required /> -->
@@ -289,7 +289,7 @@
 												</a>
 											</div>
 											<div class="col-6 d-flex justify-content-end">
-												<button class="btn btn-primary " type="submit" >
+												<button class="btn btn-primary " id ="btnsubmit" type="button" >
 													저장
 												</button>
 											</div>
@@ -346,6 +346,41 @@
 		<!-- Main Js Required -->
 		<script src="xdm/js/main.js"></script>
 		<script src="xdm/js/validations.js"></script>
+		<script type="text/javascript">
+		let form = document.querySelector("form[name=formname]");
+		let goUrlXdmList = "/codeGroupInsert";	
+		
+		document.getElementById("btnsubmit").onclick = function(){
+			valInst();
+			
+		}
+		
+		function valInst(){
+			valupdt();
+		}
+		
+		function valupdt(){
+			if(!empty(document.getElementById("groupname").value))
+				{
+				document.getElementById("groupname").style.borderColor = 'red';
+				}
+			else{
+				form.action = goUrlXdmList;
+			    form.submit();
+			}
+
+		}
+		empty =  function(value)
+		{
+			if(value == null || value == 'null'|| value == 0){
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+		
+		</script>
 	</body>
 
 </html>

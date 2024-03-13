@@ -271,13 +271,13 @@
 							<div class="col-xxl-12">
 								<div class="card">
 									<div class="card-body">
-											<form class="row g-3 needs-validation" method="post"  novalidate>
+											<form class="row g-3 needs-validation" name="formname" method="post"  novalidate>
 												<div class="col-md-6">
-													<input type="text" class="form-control form-control-sm"  name ="number" th:value = "${item.number}" required />
+													<input type="text" class="form-control form-control-sm" id ="number"  name ="number" th:value = "${item.number}" required />
 													<div class="valid-feedback">Looks good!</div>
 												</div>
 												<div class="col-md-6">
-													<input type="text" class="form-control form-control-sm"  name ="groupname" th:value = "${item.groupname}" required />
+													<input type="text" class="form-control form-control-sm" id ="groupname"  name ="groupname" th:value = "${item.groupname}" required />
 													<div class="valid-feedback">Looks good!</div>
 												</div>
 												<div class="col-6">
@@ -328,7 +328,7 @@
 													<button class="btn btn-danger  " type="submit" onclick="javascript: form.action='indexupdatedelete';">
 														삭제X
 													</button>
-													<button class="btn btn-primary  " type="submit" onclick="javascript: form.action='indexupdate';">
+													<button class="btn btn-primary" id ="btnsubmit" type="button" >
 														저장
 													</button>
 													
@@ -405,6 +405,46 @@
 		<!-- Main Js Required -->
 		<script src="xdm/js/main.js"></script>
 		<script src="xdm/js/validations.js"></script>
+		
+		<script type="text/javascript">
+		let form = document.querySelector("form[name=formname]");
+		let goUrlXdmList = "/codeGroupupdate";	
+		let btninst = document.getElementById("btnsubmit");
+		
+		btninst.onclick = function(){
+			valupdt();
+			form.action = goUrlXdmList;
+		    form.submit();  
+		}
+		
+		function valInst(){
+			valuptp();
+			alert("valInst");
+		}
+		
+		function valupdt(){
+			alert("valupdt");
+			alert( document.getElementById("number").value);
+			alert( document.getElementById("groupname").value);
+			if(!empty(document.getElementById("groupname").value))
+				{
+				alert("입력하세요")
+				return false;
+				}
+
+		}
+		empty = funstion(value)
+		{
+			if(value == null || value == 'null'|| value == 0){
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+		
+		</script>
+		
 	</body>
 
 </html>
