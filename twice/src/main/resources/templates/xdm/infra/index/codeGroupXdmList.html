@@ -285,7 +285,7 @@
 												<div class="col-md-3">
 													<select id="shOptionDate" name="shOptionDate" class="form-select form-select-sm">
 														<option value="" th:selected="${vo.shOptionDate == null}">날짜</option>
-														<option value="1" th:selected="${vo.shOptionDate == 1}">등록일</option>
+														<option value="1" th:selected="${vo.shOptionDate == 1}" >등록일</option>
 														<option value="2" th:selected="${vo.shOptionDate == 2}">수정일</option>
 													</select>
 												</div>
@@ -354,19 +354,19 @@
 													<tbody class="align-middle">
 														<tr th:if ="${!#lists.isEmpty(list)}"  th:each="list : ${list}">
 															<td><input class="form-check-input" type="checkbox" 
-															th:id ="chek+${list.number}"
-															th:value ="${list.number}" 
+															th:id ="chek+${list.ifcgSeq}"
+															th:value ="${list.ifcgSeq}" 
 															th:checked="false"/></td>
-															<td th:text = "${list.number}"></td>
+															<td th:text = "${list.ifcgSeq}"></td>
 															
 															<!-- <td>
 																<img src="xdm/images/flags/1x1/hk.svg" class="flag-img" alt="Hong Kong" />
 															</td> -->
-															<td ><a th:href= "@{/codeGroupXdmForm(number=${list.number})}" th:text = "${list.groupname}"></a></td>
-															<td th:text = "${#dates.format(list.regDate,'yyyy/MM/dd HH:mm:ss')}"></td>
-															<td th:text = "${#dates.format(list.mdfcnDate,'yyyy/MM/dd HH:mm:ss')}"></td>
-															<td th:if = "${list.deleteNY eq 0 }"><span class="badge shade-green">n</span></td>
-															<td th:unless ="${list.deleteNY eq 0}"><span class="badge shade-red">y</span></td>
+															<td ><a th:href= "@{/codeGroupXdmForm(ifcgSeq=${list.ifcgSeq})}" th:text = "${list.ifcgName}"></a></td>
+															<td th:text = "${#dates.format(list.ifcgRgstrDate,'yyyy/MM/dd HH:mm:ss')}"></td>
+															<td th:text = "${#dates.format(list.ifcgModifiedDate,'yyyy/MM/dd HH:mm:ss')}"></td>
+															<td th:if = "${list.ifcgdeleteNY eq 0 }"><span class="badge shade-green">n</span></td>
+															<td th:unless ="${list.ifcgdeleteNY eq 0}"><span class="badge shade-red">y</span></td>
 														</tr>
 													</tbody>										
 												</table>

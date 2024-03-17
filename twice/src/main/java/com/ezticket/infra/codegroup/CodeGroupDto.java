@@ -4,62 +4,76 @@ import java.util.Date;
 
 public class CodeGroupDto {
 	
-	private String number;
-	private String groupname;
-	private Date regDate;
-	private Date mdfcnDate;
-	private Integer deleteNY;
+	private String ifcgSeq;
+	private String ifcgName;
+	private Date ifcgRgstrDate;
+	private Date ifcgModifiedDate;
+	private Integer ifcgdeleteNY;
 
 
 	private Integer xCount;
 
-	public String getNumber() {
-		return number;
+
+	public String getIfcgSeq() {
+		return ifcgSeq;
 	}
 
-	public void setNumber(String number) {
-		this.number = number;
+
+	public void setIfcgSeq(String ifcgSeq) {
+		this.ifcgSeq = ifcgSeq;
 	}
 
-	public String getGroupname() {
-		return groupname;
+
+	public String getIfcgName() {
+		return ifcgName;
 	}
 
-	public void setGroupname(String groupname) {
-		this.groupname = groupname;
+
+	public void setIfcgName(String ifcgName) {
+		this.ifcgName = ifcgName;
 	}
 
-	public Date getRegDate() {
-		return regDate;
+
+	public Date getIfcgRgstrDate() {
+		return ifcgRgstrDate;
 	}
 
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+
+	public void setIfcgRgstrDate(Date ifcgRgstrDate) {
+		this.ifcgRgstrDate = ifcgRgstrDate;
 	}
 
-	public Date getMdfcnDate() {
-		return mdfcnDate;
+
+	public Date getIfcgModifiedDate() {
+		return ifcgModifiedDate;
 	}
 
-	public void setMdfcnDate(Date mdfcnDate) {
-		this.mdfcnDate = mdfcnDate;
+
+	public void setIfcgModifiedDate(Date ifcgModifiedDate) {
+		this.ifcgModifiedDate = ifcgModifiedDate;
 	}
 
-	public Integer getDeleteNY() {
-		return deleteNY;
+
+	public Integer getIfcgdeleteNY() {
+		return ifcgdeleteNY;
 	}
 
-	public void setDeleteNY(Integer deleteNY) {
-		this.deleteNY = deleteNY;
+
+	public void setIfcgdeleteNY(Integer ifcgdeleteNY) {
+		this.ifcgdeleteNY = ifcgdeleteNY;
 	}
+
 
 	public Integer getxCount() {
 		return xCount;
 	}
 
+
 	public void setxCount(Integer xCount) {
 		this.xCount = xCount;
 	}
+
+	
 	
 
 }

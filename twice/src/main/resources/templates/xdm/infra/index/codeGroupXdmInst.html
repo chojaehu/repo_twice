@@ -270,12 +270,12 @@
 									<div class="card-body">
 										<form class="row g-3 needs-validation" name ="formname" method="post" action="indexinsert" novalidate>
 											<div class="col-md-6">
-												<input type="text" class="form-control form-control-sm" id="groupname"  name ="groupname" placeholder  ="그룹이름"  required />
+												<input type="text" class="form-control form-control-sm" id="ifcgName"  name ="ifcgName" placeholder  ="그룹이름"  required />
 												<div class="valid-feedback" id="valred">Looks good!</div>
 											</div>
 											<div class="col-md-6">
 												<!-- <input type="text" class="form-control form-control-sm"  name ="deleteNY" placeholder  ="삭제여부"  required /> -->
-												<select class="form-control form-control-sm" aria-label=".form-select-lg example" name ="deleteNY" placeholder  ="삭제여부"  required>
+												<select class="form-control form-control-sm" aria-label=".form-select-lg example" name ="ifcgdeleteNY" placeholder  ="삭제여부"  required>
 												  <option value = 0 selected>n</option>
 												  <option value = 1>y</option>
 												</select>
@@ -360,10 +360,10 @@
 		}
 		
 		function valupdt(){
-			if(!empty(document.getElementById("groupname").value))
+			if(!empty(document.getElementById("ifcgName").value))
 				{
 				/* document.getElementById("groupname").style.borderColor = 'red'; */
-				document.getElementById('groupname').classList.add("")
+				document.getElementById('ifcgName').classList.add("")
 				}
 			else{
 				form.action = goUrlXdmList;

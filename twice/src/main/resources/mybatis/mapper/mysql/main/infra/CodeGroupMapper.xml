@@ -18,28 +18,29 @@
         WHERE 1=1
         ORDER BY a.number DESC
     </select>   -->
+  <!--    ,(select count(aa.number) from code aa where 1=1 and aa.deleteNY = 0 and aa.codegroup_number = a.number) as xCount -->
    <select id="selectList" resultMap="resultMapObj">
         SELECT
-            a.number
-            ,a.groupname
-            ,a.regDate
-            ,(select count(aa.number) from code aa where 1=1 and aa.deleteNY = 0 and aa.codegroup_number = a.number) as xCount
-            ,a.mdfcnDate
-            ,a.deleteNY
+            a.ifcgSeq
+            ,a.ifcgName
+            ,a.ifcgRgstrDate
+           
+            ,a.ifcgModifiedDate
+            ,a.ifcgdeleteNY
             ,(select count(*) from codegroup) as groupcount
          FROM codegroup a
         WHERE 1=1
-       <if test="shDelNy != null and !shDelNy.equals('')">AND a.deleteNY = #{shDelNy}</if>   
+       <if test="shDelNy != null and !shDelNy.equals('')">AND a.ifcgdeleteNY = #{shDelNy}</if>   
                 
 				  <choose>
-					<when test="shOptionDate == 1">AND a.regDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-					<when test="shOptionDate == 2">AND a.mdfcnDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 1">AND a.ifcgRgstrDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND a.ifcgModifiedDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>  
 				</choose>      
-        <choose>
-            <when test="shOption == 1">AND a.number = #{shValue}</when>
-            <when test="shOption == 2">AND a.groupname LIKE CONCAT('%',#{shValue},'%')</when>
+        <choose>	
+            <when test="shOption == 1">AND a.ifcgSeq = #{shValue}</when>
+            <when test="shOption == 2">AND a.ifcgName LIKE CONCAT('%',#{shValue},'%')</when>
         </choose> 
-        ORDER BY a.number DESC
+        ORDER BY a.ifcgSeq DESC
     </select>
      
     <select id="selectCount" resultMap="resultMapObj">
@@ -49,23 +50,22 @@
     
     <select id="selectOne" resultMap="resultMapObj">
         SELECT
-            a.number
-            ,a.groupname
-            ,a.regDate
-            ,a.mdfcnDate
-            ,a.deleteNY
+            a.ifcgSeq
+            ,a.ifcgName
+            ,a.ifcgRgstrDate
+            ,a.ifcgModifiedDate
+            ,a.ifcgdeleteNY
          FROM codegroup a
         WHERE 1=1 
-        	AND a.number = #{number}
+        	AND a.ifcgSeq = #{ifcgSeq}
     </select>
     
     <update id="update">
     
     UPDATE codegroup
     SET
-    groupname = #{groupname}
-    
-    WHERE number = #{number}
+    ifcgName = #{ifcgName}
+    WHERE ifcgSeq = #{ifcgSeq}
     
     </update>
     
@@ -74,13 +74,13 @@
     
     INSERT INTO codegroup
     (
-    groupname
-    ,deleteNY
+    ifcgName
+    ,ifcgdeleteNY
     )
     VALUES
     (
-    #{groupname}
-    ,#{deleteNY}
+    #{ifcgName}
+    ,#{ifcgdeleteNY}
     )
     
     </insert>
@@ -88,8 +88,8 @@
     
     UPDATE codegroup
     SET
-    deleteNY = 1
-    WHERE number = #{number}
+    ifcgdeleteNY = 1
+    WHERE ifcgSeq = #{ifcgSeq}
     
     </update>
     
@@ -97,7 +97,7 @@
     <delete id="delete">
     DELETE 
     FROM codegroup
-    WHERE number = #{number}
+    WHERE ifcgSeq = #{ifcgSeq}
     </delete>
     
     
