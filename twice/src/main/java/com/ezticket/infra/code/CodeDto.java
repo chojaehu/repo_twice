@@ -6,69 +6,63 @@ public class CodeDto {
 	
 	
 	
-	private String groupnumber;
-	private String groupname;
+	private String ifcgSeq;
+	private String ifcgName;
 	
-	private String number;
-	private String name;
-	private Date regDate;
-	private Date mdfcnDate;
-	private Integer deleteNY;
-	private String codegroup_number;
-	
+	private String ifcdSeq;
+	private String ifcdName;
+	private Date ifcdRgstrDate;
+	private Date ifcdModifiedDate;
+	private Integer ifcddeleteNY;
+	private String codegroupIfcgseq;
+	public String getIfcgSeq() {
+		return ifcgSeq;
+	}
+	public void setIfcgSeq(String ifcgSeq) {
+		this.ifcgSeq = ifcgSeq;
+	}
+	public String getIfcgName() {
+		return ifcgName;
+	}
+	public void setIfcgName(String ifcgName) {
+		this.ifcgName = ifcgName;
+	}
+	public String getIfcdSeq() {
+		return ifcdSeq;
+	}
+	public void setIfcdSeq(String ifcdSeq) {
+		this.ifcdSeq = ifcdSeq;
+	}
+	public String getIfcdName() {
+		return ifcdName;
+	}
+	public void setIfcdName(String ifcdName) {
+		this.ifcdName = ifcdName;
+	}
+	public Date getIfcdRgstrDate() {
+		return ifcdRgstrDate;
+	}
+	public void setIfcdRgstrDate(Date ifcdRgstrDate) {
+		this.ifcdRgstrDate = ifcdRgstrDate;
+	}
+	public Date getIfcdModifiedDate() {
+		return ifcdModifiedDate;
+	}
+	public void setIfcdModifiedDate(Date ifcdModifiedDate) {
+		this.ifcdModifiedDate = ifcdModifiedDate;
+	}
+	public Integer getIfcddeleteNY() {
+		return ifcddeleteNY;
+	}
+	public void setIfcddeleteNY(Integer ifcddeleteNY) {
+		this.ifcddeleteNY = ifcddeleteNY;
+	}
+	public String getCodegroupIfcgseq() {
+		return codegroupIfcgseq;
+	}
+	public void setCodegroupIfcgseq(String codegroupIfcgseq) {
+		this.codegroupIfcgseq = codegroupIfcgseq;
+	}
 
-	
-	public String getGroupnumber() {
-		return groupnumber;
-	}
-	public void setGroupnumber(String groupnumber) {
-		this.groupnumber = groupnumber;
-	}
-	public String getGroupname() {
-		return groupname;
-	}
-	public void setGroupname(String groupname) {
-		this.groupname = groupname;
-	}
-	
-	public String getNumber() {
-		return number;
-	}
-	public void setNumber(String number) {
-		this.number = number;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public Date getRegDate() {
-		return regDate;
-	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
-	}
-	public Date getMdfcnDate() {
-		return mdfcnDate;
-	}
-	public void setMdfcnDate(Date mdfcnDate) {
-		this.mdfcnDate = mdfcnDate;
-	}
-	public Integer getDeleteNY() {
-		return deleteNY;
-	}
-	public void setDeleteNY(Integer delectNY) {
-		this.deleteNY = delectNY;
-	}
-	public String getCodegroup_number() {
-		return codegroup_number;
-	}
-	public void setCodegroup_number(String codegroup_number) {
-		this.codegroup_number = codegroup_number;
-	}
-	
-	
-	
 
 }

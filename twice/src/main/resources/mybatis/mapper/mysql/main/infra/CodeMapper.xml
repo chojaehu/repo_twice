@@ -19,76 +19,76 @@
         ORDER BY b.number DESC -->
         
         SELECT
-        	a.number as groupnumber
-            ,a.groupname
-            ,a.deleteNY as groupdeleteNY
-            ,b.deleteNY
-            ,b.number
-            ,b.name
-            ,b.regDate
-            ,b.mdfcnDate
-            ,b.codegroup_number
+        	a.ifcgSeq 
+            ,a.ifcgName
+            ,a.ifcgdeleteNY
+            ,b.ifcddeleteNY
+            ,b.ifcdSeq
+            ,b.ifcdName
+            ,b.ifcdRgstrDate
+            ,b.ifcdModifiedDate
+            ,b.codegroupIfcgseq
          FROM codegroup a
-         left join code b
-         on a.number = b.codegroup_number 
-         <if test="shDelNy != null and !shDelNy.equals('')">AND b.deleteNY = #{shDelNy}</if>   
+         join code b
+         on a.ifcgSeq  = b.codegroupIfcgseq AND codegroupIfcgseq
+         <if test="shDelNy != null and !shDelNy.equals('')">AND b.ifcddeleteNY = #{shDelNy}</if>   
        <!--         
 				<choose>
 					<when test="shOptionDate == 1">AND a.regDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 					<when test="shOptionDate == 2">AND a.modDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 					</choose> -->        
 	        <choose>
-	            <when test="shOption == 1">AND b.number = #{shValue}</when>
-	            <when test="shOption == 2">AND b.name LIKE CONCAT('%',#{shValue},'%')</when>
+	            <when test="shOption == 1">AND b.ifcdSeq = #{shValue}</when>
+	            <when test="shOption == 2">AND b.ifcdName LIKE CONCAT('%',#{shValue},'%')</when>
 	        </choose> 
-         ORDER BY b.number DESC
+         ORDER BY b.ifcdSeq DESC
     </select>
     
     <select id="selectOne">
     SELECT 
-    number
-    ,name
-    ,regDate
-    ,deleteNY
+    ifcdSeq
+    ,ifcdName
+    ,ifcdRgstrDate
+    ,ifcddeleteNY
     FROM code 
-    WHERE 1=1 AND number = #{number}
+    WHERE 1=1 AND ifcdSeq = #{ifcdSeq}
     </select>
     
     <insert id="insert">
     insert into code
     (
-    name
-    ,deleteNY
-    ,codegroup_number
+    ifcdName
+    ,ifcddeleteNY
+    ,codegroupIfcgseq
     )
     values
     (
-    #{name}
-    ,#{deleteNY}
-    ,#{codegroup_number}
+    #{ifcdName}
+    ,#{ifcddeleteNY}
+    ,#{codegroupIfcgseq}
     )
     </insert>
     
     <update id="update">
     update code
     set 
-    name = #{name}
+    ifcdName = #{ifcdName}
     where 
-    number = #{number}
+    ifcdSeq = #{ifcdSeq}
     </update>
     
      <delete id="delete">
     DELETE 
     FROM code
-    WHERE number = #{number}
+    WHERE ifcdSeq = #{ifcdSeq}
     </delete>
     
     <update id="updatedelete">
     update code
     set 
-    deleteNY = 1
+    ifcddeleteNY = 1
     where 
-    number = #{number}
+    ifcdSeq = #{ifcdSeq}
     </update>
 
    <!--  ,(select count(aa.ifcdSeq) from infrCode aa where 1=1 and aa.ifcdDelNy = 0 and aa.ifcgSeq = a.ifcgSeq) as xifcdSeqCount -->
