@@ -3,9 +3,10 @@
 
 <mapper namespace="com.ezticket.infra.member.MemeberDao">
 
-	<resultMap id="resultMapObj" type="com.ezticket.infra.member.MemeberDto"></resultMap>
+	<resultMap id="resultMapObj" type="com.ezticket.infra.member.MemberDto"></resultMap>
 	
-	    <select id="selectList" resultMap="resultMapObj">
+	
+	<select id="selectList" resultMap="resultMapObj">
         SELECT
         	mbSeq,
         	mbName,
@@ -17,11 +18,11 @@
         	mbRgstrDate,
         	mbModifiedDate,
         	delectNY
-        	
         	FROM members
-        	
-        	where 1=1
          ORDER BY mbSeq DESC
     </select>
-    
+
+
+   <!--  ,(select count(aa.ifcdSeq) from infrCode aa where 1=1 and aa.ifcdDelNy = 0 and aa.ifcgSeq = a.ifcgSeq) as xifcdSeqCount -->
+	  
 </mapper>

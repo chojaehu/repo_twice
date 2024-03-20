@@ -10,7 +10,7 @@ public class MemberDto {
 	private String mbPassword;
 	private String mbgender;
 	private String mbPhone;
-	private String mbDateBirth;
+	private Date mbDateBirth;
 	private Date mbRgstrDate;
 	private Date mbModifiedDate;
 	private String delectNY;
@@ -50,10 +50,10 @@ public class MemberDto {
 	public void setMbPhone(String mbPhone) {
 		this.mbPhone = mbPhone;
 	}
-	public String getMbDateBirth() {
+	public Date getMbDateBirth() {
 		return mbDateBirth;
 	}
-	public void setMbDateBirth(String mbDateBirth) {
+	public void setMbDateBirth(Date mbDateBirth) {
 		this.mbDateBirth = mbDateBirth;
 	}
 	public Date getMbRgstrDate() {
