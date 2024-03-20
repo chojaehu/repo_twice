@@ -13,7 +13,7 @@ public class MemberDto {
 	private Date mbDateBirth;
 	private Date mbRgstrDate;
 	private Date mbModifiedDate;
-	private String delectNY;
+	private Integer mbdelectNY;
 	public String getMbSeq() {
 		return mbSeq;
 	}
@@ -68,12 +68,15 @@ public class MemberDto {
 	public void setMbModifiedDate(Date mbModifiedDate) {
 		this.mbModifiedDate = mbModifiedDate;
 	}
-	public String getDelectNY() {
-		return delectNY;
+	public Integer getMbdelectNY() {
+		return mbdelectNY;
 	}
-	public void setDelectNY(String delectNY) {
-		this.delectNY = delectNY;
+	public void setMbdelectNY(Integer mbdelectNY) {
+		this.mbdelectNY = mbdelectNY;
 	}
+	
+	
+
 	
 	
 

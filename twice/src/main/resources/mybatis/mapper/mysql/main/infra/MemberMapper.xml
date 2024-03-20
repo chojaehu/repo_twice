@@ -17,7 +17,7 @@
         	mbDateBirth,
         	mbRgstrDate,
         	mbModifiedDate,
-        	delectNY
+        	mbdelectNY
         	FROM members
          ORDER BY mbSeq DESC
     </select>

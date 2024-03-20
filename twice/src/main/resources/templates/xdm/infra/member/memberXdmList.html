@@ -375,8 +375,8 @@
 															<td th:text = "${#dates.format(list.mbDateBirth,'yyyy/MM/dd')}"></td>
 															<td th:text = "${#dates.format(list.mbRgstrDate,'yyyy/MM/dd HH:mm:ss')}"></td>
 															<td th:text = "${#dates.format(list.mbModifiedDate,'yyyy/MM/dd HH:mm:ss')}"></td>
-															<td th:if = "${list.delectNY eq 0}"><span class="badge shade-green">n</span></td>
-															<td th:unless ="${list.delectNY eq 0}"><span class="badge shade-red">y</span></td>
+															<td th:if = "${list.mbdelectNY eq 0}"><span class="badge shade-green">n</span></td>
+															<td th:unless ="${list.mbdelectNY eq 0}"><span class="badge shade-red">y</span></td>
 														</tr>
 													</tbody>										
 												</table>
