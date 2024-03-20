@@ -345,7 +345,12 @@
 														<tr>
 															<th><input class="form-check-input" type="checkbox" /></th>
 															<th>#</th>
-															<th>그룹이름</th>
+															<th>이름</th>
+															<th>이메일</th>
+															<th>비밀번호</th>
+															<th>성별</th>
+															<th>핸드폰번호</th>
+															<th>생년월일</th>
 															<th>등록일</th>
 															<th>수정일</th>
 															<th>삭제여부</th>
@@ -357,14 +362,19 @@
 															th:id ="chek+${list.ifcgSeq}"
 															th:value ="${list.ifcgSeq}" 
 															th:checked="false"/></td>
-															<td th:text = "${list.ifcgSeq}"></td>
+															<td th:text = "${list.mbSeq}"></td>
 															
 															<!-- <td>
 																<img src="xdm/images/flags/1x1/hk.svg" class="flag-img" alt="Hong Kong" />
 															</td> -->
-															<td ><a th:href= "@{/codeGroupXdmForm(ifcgSeq=${list.ifcgSeq})}" th:text = "${list.ifcgName}"></a></td>
-															<td th:text = "${#dates.format(list.ifcgRgstrDate,'yyyy/MM/dd HH:mm:ss')}"></td>
-															<td th:text = "${#dates.format(list.ifcgModifiedDate,'yyyy/MM/dd HH:mm:ss')}"></td>
+															<td ><a th:href= "@{/codeGroupXdmForm(mbSeq=${list.mbSeq})}" th:text = "${list.mbName}"></a></td>
+															<td th:text = "${list.mbEmail}"></td>
+															<td th:text = "${list.mbPassword}"></td>
+															<td th:text = "${list.mbgender}"></td>
+															<td th:text = "${list.mbPhone}"></td>
+															<td th:text = "${#dates.format(list.mbDateBirth,'yyyy/MM/dd')}"></td>
+															<td th:text = "${#dates.format(list.mbRgstrDate,'yyyy/MM/dd HH:mm:ss')}"></td>
+															<td th:text = "${#dates.format(list.mbModifiedDate,'yyyy/MM/dd HH:mm:ss')}"></td>
 															<td th:if = "${list.ifcgdeleteNY eq 0 }"><span class="badge shade-green">n</span></td>
 															<td th:unless ="${list.ifcgdeleteNY eq 0}"><span class="badge shade-red">y</span></td>
 														</tr>

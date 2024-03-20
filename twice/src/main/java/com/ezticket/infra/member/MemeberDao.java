@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface MemeberDao {
 	
-	public List<MemberDto> selectList();
+	public List<MemberDto> selectList(MemeberVo vo);
 
 }

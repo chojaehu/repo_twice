@@ -12,8 +12,11 @@ public class MemeberController {
 	MemeberService service;
 	
 	@RequestMapping(value = "/memberXdmList")
-	public String memberXdmList(Model model)throws Exception {
-		model.addAttribute(null, model);
+	public String memberXdmList(Model model, MemeberVo vo)throws Exception {
+		model.addAttribute("list", service.selectList(vo));
+		
+		model.addAttribute("vo", vo);
+
 		return "/xdm/infra/member/memberXdmList";
 	}
 

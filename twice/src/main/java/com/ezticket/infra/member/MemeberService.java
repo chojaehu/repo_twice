@@ -12,6 +12,6 @@ public class MemeberService {
 	@Autowired
 	MemeberDao dao;
 	
-	public List<MemberDto> selectList(){ return dao.selectList();};
+	public List<MemberDto> selectList(MemeberVo vo){ return dao.selectList(vo);};
 
 }
