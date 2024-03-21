@@ -90,6 +90,17 @@
     where 
     ifcdSeq = #{ifcdSeq}
     </update>
+    
+    <select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
+		SELECT 
+			ifcdSeq
+			, ifcdName
+			, codegroupIfcgseq
+		FROM
+			code
+		WHERE 1=1
+			AND ifcddeleteNY = 0
+   </select>
 
    <!--  ,(select count(aa.ifcdSeq) from infrCode aa where 1=1 and aa.ifcdDelNy = 0 and aa.ifcgSeq = a.ifcgSeq) as xifcdSeqCount -->
 	  

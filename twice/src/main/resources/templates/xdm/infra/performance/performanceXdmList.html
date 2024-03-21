@@ -345,12 +345,13 @@
 														<tr>
 															<th><input class="form-check-input" type="checkbox" /></th>
 															<th>#</th>
-															<th>이름</th>
-															<th>이메일</th>
-															<th>비밀번호</th>
-															<th>성별</th>
-															<th>전화번호</th>
-															<th>생년월일</th>
+															<th>제목</th>
+															<th>기획/주최사</th>
+															<th>연령제한</th>
+															<th>관객수</th>
+															<th>상세설명</th>
+															<th>개봉일</th>
+															<th>종료일</th>
 															<th>등록일</th>
 															<th>수정일</th>
 															<th>삭제여부</th>
@@ -359,29 +360,29 @@
 													<tbody class="align-middle">
 														<tr th:if ="${!#lists.isEmpty(list)}"  th:each="list : ${list}">
 															<td><input class="form-check-input" type="checkbox" 
-															th:id ="chek+${list.mbSeq}"
-															th:value ="${list.mbSeq}" 
+															th:id ="chek+${list.prSeq}"
+															th:value ="${list.prSeq}" 
 															th:checked="false"/></td>
-															<td th:text = "${list.mbSeq}"></td>
+															<td th:text = "${list.prSeq}"></td>
 															
 															<!-- <td>
 																<img src="xdm/images/flags/1x1/hk.svg" class="flag-img" alt="Hong Kong" />
 															</td> -->
-															<td ><a  th:text = "${list.mbName}"></a></td>
-															<td th:text = "${list.mbEmail}"></td>
-															<td th:text = "${list.mbPassword}"></td>
+															<td ><a th:href= "@{/performanceXdmForm(prSeq=${list.prSeq})}"  th:text = "${list.prTitle}"></a></td>
+															<td th:text = "${list.prHostedPlanned}"></td>
 															
-															<!-- <td th:text = "${list.mbgender}"></td> -->
-															<td th:if="${list.mbgender != null}" th:text="${@codeService.selectOneCachedCode(list.mbgender)}" ></td>
-															<td th:unless="${list.mbgender != null}" ></td>
+															<!-- <td th:text = "${list.prAgeLimit}"></td> -->
+															<td th:if="${list.prAgeLimit != null}" th:text="${@codeService.selectOneCachedCode(list.prAgeLimit)}" ></td>
+															<td th:unless="${list.prAgeLimit != null}" ></td>
 															
-															
-															<td th:text = "${list.mbPhone}"></td>
-															<td th:text = "${#dates.format(list.mbDateBirth,'yyyy/MM/dd')}"></td>
-															<td th:text = "${#dates.format(list.mbRgstrDate,'yyyy/MM/dd HH:mm:ss')}"></td>
-															<td th:text = "${#dates.format(list.mbModifiedDate,'yyyy/MM/dd HH:mm:ss')}"></td>
-															<td th:if = "${list.mbdelectNY eq 0}"><span class="badge shade-green">n</span></td>
-															<td th:unless ="${list.mbdelectNY eq 0}"><span class="badge shade-red">y</span></td>
+															<td th:text = "${list.prAttenDance}"></td>
+															<td th:text = "${list.prDetails}"></td>
+															<td th:text = "${#dates.format(list.prStartDate,'yyyy/MM/dd')}"></td>
+															<td th:text = "${#dates.format(list.prEndDate,'yyyy/MM/dd')}"></td>
+															<td th:text = "${#dates.format(list.prRgstrDate,'yyyy/MM/dd HH:mm:ss')}"></td>
+															<td th:text = "${#dates.format(list.prModifiedDate,'yyyy/MM/dd HH:mm:ss')}"></td>
+															<td th:if = "${list.prdeleteNY eq 0}"><span class="badge shade-green">n</span></td>
+															<td th:unless ="${list.prdeleteNY eq 0}"><span class="badge shade-red">y</span></td>
 														</tr>
 													</tbody>										
 												</table>
@@ -535,8 +536,8 @@
 		
 		let form = document.querySelector("form[name=formList]");
 		let goUrlXdmForm = "/xdm/infra/index/codeGroupXdmFrom";
-		let goUrlXdmList = "/memberXdmList";	
-		let seq = document.querySelector("input[name=mbSeq]");	
+		let goUrlXdmList = "/performanceXdmList";	
+		let seq = document.querySelector("input[name=prSeq]");	
 			
 		
 		window.addEventListener('load', function() {

@@ -19,6 +19,17 @@
         	mbModifiedDate,
         	mbdelectNY
         	FROM members
+        	WHERE 1=1
+        	<if test="shDelNy != null and !shDelNy.equals('')">AND mbdelectNY = #{shDelNy}</if>   
+                
+				  <choose>
+					<when test="shOptionDate == 1">AND mbRgstrDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND mbModifiedDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>  
+				</choose>      
+	        <choose>	
+	            <when test="shOption == 1">AND mbSeq = #{shValue}</when>
+	            <when test="shOption == 2">AND mbName LIKE CONCAT('%',#{shValue},'%')</when>
+	        </choose> 
          ORDER BY mbSeq DESC
     </select>
 

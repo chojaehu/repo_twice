@@ -1,4 +1,4 @@
-package com.ezticket.infra.member;
+package com.ezticket.infra.performance;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,25 +7,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ezticket.common.constants.Constants;
 import com.ezticket.common.util.UtilDateTime;
-import com.ezticket.infra.codegroup.CodeGroupVo;
+import com.ezticket.infra.code.CodeDto;
+import com.ezticket.infra.member.MemeberVo;
 
 @Controller
-public class MemeberController {
+public class PerformanceController {
 	
 	@Autowired
-	MemeberService service;
+	PerformanceService service;
 	
-	@RequestMapping(value = "/memberXdmList")
-	public String memberXdmList(Model model, MemeberVo vo)throws Exception {
-		
+	
+	@RequestMapping(value = "/performanceXdmList")
+	public String performanceXdmList(Model model, PerformanceVo vo) throws Exception{
 		setSearch(vo);
 		model.addAttribute("list", service.selectList(vo));
 		model.addAttribute("vo", vo);
-		return "/xdm/infra/member/memberXdmList";
+		
+		return "/xdm/infra/performance/performanceXdmList";
+	}
+	@RequestMapping(value = "/performanceXdmForm")
+	public String codeXdmForm(PerformanceDto dto, Model model) throws Exception {
+		
+		model.addAttribute("item", service.selectOne(dto));
+		
+		return "/xdm/infra/performance/performanceXdmForm";
 	}
 	
-	
-	public void setSearch(MemeberVo vo) throws Exception {
+	public void setSearch(PerformanceVo vo) throws Exception {
 		/* 최초 화면 로딩시에 세팅은 문제가 없지만 */
 		/*이후 전체적으로 데이터를 조회를 하려면 null 값이 넘어 오는 관계로 문제가 전체 데이터 조회가 되지 못한다.*/
 		/*해서 BaseVo.java 에서 기본값을 주어서 처리*/

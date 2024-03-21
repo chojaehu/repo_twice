@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ezticket.infra.performance.PerformanceDao">
+
+	<resultMap id="resultMapObj" type="com.ezticket.infra.performance.PerformanceDto"></resultMap>
+	
+	
+	<select id="selectList" resultMap="resultMapObj">
+        SELECT
+        	prSeq,
+        	prTitle,
+        	prStartDate,
+        	prEndDate,
+        	prHostedPlanned,
+        	prAgeLimit,
+        	prAttenDance,
+        	prDetails,
+        	prRgstrDate,
+        	prModifiedDate,
+        	prdeleteNY
+        	FROM performanceList
+        	WHERE 1=1
+        	<if test="shDelNy != null and !shDelNy.equals('')">AND prdeleteNY = #{shDelNy}</if>   
+                
+				  <choose>
+					<when test="shOptionDate == 1">AND prRgstrDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND prModifiedDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>  
+				</choose>      
+	        <choose>	
+	            <when test="shOption == 1">AND prSeq = #{shValue}</when>
+	            <when test="shOption == 2">AND prTitle LIKE CONCAT('%',#{shValue},'%')</when>
+	        </choose> 
+         ORDER BY prSeq DESC
+    </select>
+    
+    <select id="selectOne">
+    SELECT 
+    		prSeq,
+        	prTitle,
+        	prStartDate,
+        	prEndDate,
+        	prHostedPlanned,
+        	prAgeLimit,
+        	prAttenDance,
+        	prDetails,
+        	prRgstrDate,
+        	prModifiedDate,
+        	prdeleteNY
+    FROM performanceList 
+    WHERE 1=1 AND prSeq = #{prSeq}
+    </select>
+
+
+   <!--  ,(select count(aa.ifcdSeq) from infrCode aa where 1=1 and aa.ifcdDelNy = 0 and aa.ifcgSeq = a.ifcgSeq) as xifcdSeqCount -->
+	  
+</mapper>

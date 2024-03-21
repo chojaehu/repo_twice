@@ -1,6 +1,6 @@
-package com.ezticket.infra.member;
+package com.ezticket.infra.performance;
 
-public class MemeberVo {
+public class PerformanceVo {
 	
 	private Integer shDelNy = 0; 								/* null 값을 받아야 되는 경우가 있어서 int 대신 Integer 사용 */
 	private Integer shOptionDate = 1;							/* null 값을 받아야 되는 경우가 있어서 int 대신 Integer 사용 */
@@ -8,7 +8,6 @@ public class MemeberVo {
 	private String shDateEnd;
 	private Integer shOption;									/* null 값을 받아야 되는 경우가 있어서 int 대신 Integer 사용 */
 	private String shValue;
-	
 	
 	public Integer getShDelNy() {
 		return shDelNy;
