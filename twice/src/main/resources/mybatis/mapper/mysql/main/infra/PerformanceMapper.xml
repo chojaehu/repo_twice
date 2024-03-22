@@ -21,7 +21,8 @@
         	prdeleteNY
         	FROM performanceList
         	WHERE 1=1
-        	<if test="shDelNy != null and !shDelNy.equals('')">AND prdeleteNY = #{shDelNy}</if>   
+        	<if test="shDelNy != null and !shDelNy.equals('')">AND prdeleteNY = #{shDelNy}</if>  
+        	<if test="shAge != null and !shAge.equals('')">AND prAgeLimit = #{shAge}</if>   
                 
 				  <choose>
 					<when test="shOptionDate == 1">AND prRgstrDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
@@ -50,6 +51,19 @@
     FROM performanceList 
     WHERE 1=1 AND prSeq = #{prSeq}
     </select>
+    
+    <update id="update">
+    
+    UPDATE performanceList 
+    SET
+    prTitle = #{prTitle},
+    prHostedPlanned = #{prHostedPlanned},
+    prAgeLimit = #{prAgeLimit},
+    prStartDate = #{prStartDate},
+    prEndDate = #{prEndDate}
+    WHERE prSeq = #{prSeq}
+    
+    </update>
 
 
    <!--  ,(select count(aa.ifcdSeq) from infrCode aa where 1=1 and aa.ifcdDelNy = 0 and aa.ifcgSeq = a.ifcgSeq) as xifcdSeqCount -->

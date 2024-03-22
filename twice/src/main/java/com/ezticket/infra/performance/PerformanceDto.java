@@ -6,8 +6,10 @@ public class PerformanceDto {
 	
 	private Integer prSeq;
 	private String prTitle;
+	
 	private Date prStartDate;
 	private Date prEndDate;
+	
 	private String prHostedPlanned;
 	private Integer prAgeLimit;
 	private Integer prAttenDance;
@@ -81,7 +83,4 @@ public class PerformanceDto {
 	public void setPrdeleteNY(Integer prdeleteNY) {
 		this.prdeleteNY = prdeleteNY;
 	}
-	
-	
-
 }

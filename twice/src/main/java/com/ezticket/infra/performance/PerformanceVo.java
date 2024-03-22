@@ -7,8 +7,8 @@ public class PerformanceVo {
 	private String shDateStart;
 	private String shDateEnd;
 	private Integer shOption;									/* null 값을 받아야 되는 경우가 있어서 int 대신 Integer 사용 */
+	private Integer shAge;
 	private String shValue;
-	
 	public Integer getShDelNy() {
 		return shDelNy;
 	}
@@ -39,11 +39,20 @@ public class PerformanceVo {
 	public void setShOption(Integer shOption) {
 		this.shOption = shOption;
 	}
+	public Integer getShAge() {
+		return shAge;
+	}
+	public void setShAge(Integer shAge) {
+		this.shAge = shAge;
+	}
 	public String getShValue() {
 		return shValue;
 	}
 	public void setShValue(String shValue) {
 		this.shValue = shValue;
 	}
+	
+	
+
 
 }

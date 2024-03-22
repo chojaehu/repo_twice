@@ -19,7 +19,8 @@
 		
 		
 		<script src="xdm/js/jquery.min.js"></script>
-
+		<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
 		<!-- Title -->
 		<title>Admin Dashboard Templates - Admin Dashboards</title>
 
@@ -280,21 +281,27 @@
 													<input type="text" class="form-control form-control-sm"  name ="prTitle" th:value = "${item.prTitle}" required />
 													<div class="valid-feedback">Looks good!</div>
 												</div>
+												
+												
+												
+												
 												<div class="col-md-6">
 													<input type="text" class="form-control form-control-sm"  name ="prHostedPlanned" th:value = "${item.prHostedPlanned}" required />
 													<div class="valid-feedback">Looks good!</div>
 												</div>
 												<div class="col-md-6">
-													<!-- <select id="prAgeLimit" name="prAgeLimit" class="form-select form-select-sm" th:value = "${item.prAgeLimit}">
-														<option value="8">전체이용가</option>
-														<option value="9" >12세관람가</option>
-														<option value="10">15세관람가</option>
-														<option value="11" >청소년관람불가</option>
-													</select> -->
 													<select id="prAgeLimit" name="prAgeLimit" class="form-select form-select-sm">
 														<option value="">선택하세요</option>
 														<option th:each="list : ${@codeService.selectListCachedCode(4)}" th:value="${list.ifcdSeq}" th:text="${list.ifcdName}" th:selected="${list.ifcdSeq} == ${item?.prAgeLimit}"></option>
 													</select>
+												</div> 
+												<div class="col-md-6">
+													<input type="text" id="prStartDate" name="prStartDate" placeholder="시작일"  class="form-control form-control-sm" autocomplete="off"
+													 th:value = "${#dates.format(item.prStartDate,'yyyy/MM/dd')}" readonly>
+												</div>
+												<div class="col-md-6">
+													<input type="text" id="prEndDate" name="prEndDate" placeholder="종료일"  class="form-control form-control-sm" autocomplete="off" 
+													 th:value = "${#dates.format(item.prEndDate,'yyyy/MM/dd')}" readonly>
 												</div> 
 												<div class="col-6">
 													<a th:href ="@{/performanceXdmList}">
@@ -344,7 +351,7 @@
 													<button class="btn btn-danger  d-flex justify-content-end" type="submit" onclick="javascript: form.action='updatedelete';">
 														삭제X
 													</button>
-													<button class="btn btn-primary  d-flex justify-content-end" type="submit" onclick="javascript: form.action='codeupdate';">
+													<button class="btn btn-primary  d-flex justify-content-end" type="submit" onclick="javascript: form.action='performanceupdate';">
 														저장
 													</button>
 													
@@ -421,6 +428,16 @@
 		<!-- Main Js Required -->
 		<script src="xdm/js/main.js"></script>
 		<script src="xdm/js/validations.js"></script>
+
+		<script type="text/javascript">
+		window.addEventListener('load', function() {
+			$("#prStartDate, #prEndDate").datetimepicker({
+				timepicker:false,
+	 			format: 'Y/m/d'
+			});
+		});
+			
+		</script>
 	</body>
 
 </html>

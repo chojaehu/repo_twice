@@ -22,5 +22,9 @@ public class PerformanceService {
 	{
 		return dao.selectOne(dto);
 	}
+	public int update(PerformanceDto dto)
+	{
+		return dao.update(dto);
+	}
 
 }

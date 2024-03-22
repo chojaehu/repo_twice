@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.ezticket.common.constants.Constants;
 import com.ezticket.common.util.UtilDateTime;
 import com.ezticket.infra.code.CodeDto;
+import com.ezticket.infra.codegroup.CodeGroupDto;
 import com.ezticket.infra.member.MemeberVo;
 
 @Controller
@@ -26,11 +27,22 @@ public class PerformanceController {
 		return "/xdm/infra/performance/performanceXdmList";
 	}
 	@RequestMapping(value = "/performanceXdmForm")
-	public String codeXdmForm(PerformanceDto dto, Model model) throws Exception {
+	public String performanceXdmForm(PerformanceDto dto, Model model) throws Exception {
 		
 		model.addAttribute("item", service.selectOne(dto));
 		
 		return "/xdm/infra/performance/performanceXdmForm";
+	}
+	
+	@RequestMapping(value = "/performanceupdate")
+	public String performanceupdate(PerformanceDto dto) throws Exception {
+		
+		
+		System.out.println("dto.getPrStartDate : "+dto.getPrStartDate());
+		System.out.println("dto.getPrEndDate : "+dto.getPrEndDate());
+		service.update(dto);
+
+		return "redirect:/performanceXdmList";
 	}
 	
 	public void setSearch(PerformanceVo vo) throws Exception {
