@@ -385,10 +385,18 @@
 		}
 		
 		let form = document.querySelector("form[name=formname]");
-		let goUrlXdmList = "/performanceXdmInst";	
+		let goUrlXdmList = "/performanceinsert";	
 		
 		document.getElementById("btnsubmit").onclick = function(){	
 			vallupdt();
+			if(vallupdt() == false)
+				{
+				return false
+				}
+			else
+				{
+				valInst()
+				}
 		}
 		
 		function valInst(){
