@@ -31,6 +31,17 @@ function checkNullWithoutFocus (value, message) {
 }
 */
 
+function checkDate (objName, pattern, nullAllowedNy, message) {
+// checkDate = function (objName, pattern, nullAllowedNy, message) { {
+    var regExp = /^\d{4}\/(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])$/;
+    return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
+}
+function checkAgeLimit (objName, pattern, nullAllowedNy, message) {
+// checkDate = function (objName, pattern, nullAllowedNy, message) { {
+    var regExp = /^[0-9]*$/;
+    return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
+}
+
 function checkOnlyKoreanEnglishNumber (objName, pattern, nullAllowedNy, message) {
     var regExp = /^[ㄱ-ㅎ가-힣A-Za-z0-9]+$/;
     return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
@@ -165,6 +176,7 @@ function checkEmail (objName, pattern, nullAllowedNy, message) {
     var regExp = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
 }
+
 
 
 function checkMobile (objName, pattern, nullAllowedNy, message) {
