@@ -18,7 +18,6 @@ public class CodeService {
 	public List<CodeDto> selectList(CodeVo vo){
 		return dao.selectList(vo);
 	}
-	
 	public CodeDto selectOne(CodeDto dto)
 	{
 		return dao.selectOne(dto);

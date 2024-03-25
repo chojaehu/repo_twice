@@ -2,11 +2,13 @@ package com.ezticket.infra.code;
 
 import java.util.List;
 
+
 //import com.example.demo.infra.code.CodeDto;
 
 public interface CodeDao {
 
 	public List<CodeDto> selectList(CodeVo vo);
+	
 	public CodeDto selectOne(CodeDto dto);
 	public int insert(CodeDto dto);
 	public int update(CodeDto dto);

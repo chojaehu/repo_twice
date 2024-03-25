@@ -9,14 +9,18 @@ import com.ezticket.common.constants.Constants;
 import com.ezticket.common.util.UtilDateTime;
 import com.ezticket.infra.code.CodeDto;
 import com.ezticket.infra.codegroup.CodeGroupDto;
+import com.ezticket.infra.codegroup.CodeGroupService;
 import com.ezticket.infra.member.MemeberVo;
 
 @Controller
 public class PerformanceController {
 	
+	
+	
 	@Autowired
 	PerformanceService service;
 	
+	private String str = "/xdm/infra/performance";
 	
 	@RequestMapping(value = "/performanceXdmList")
 	public String performanceXdmList(Model model, PerformanceVo vo) throws Exception{
@@ -29,10 +33,23 @@ public class PerformanceController {
 	@RequestMapping(value = "/performanceXdmForm")
 	public String performanceXdmForm(PerformanceDto dto, Model model) throws Exception {
 		
+		
 		model.addAttribute("item", service.selectOne(dto));
 		
 		return "/xdm/infra/performance/performanceXdmForm";
 	}
+	@RequestMapping(value = "/performanceXdmInst")
+	public String performanceXdmInst(PerformanceDto dto) throws Exception
+	{
+		return str + "/performanceXdmInst";
+	}
+	@RequestMapping(value = "/performanceinsert")
+	public String performanceinsert(PerformanceDto dto) throws Exception
+	{
+		service.insert(dto);
+		return "redirect:/performanceXdmList";
+	}
+	
 	
 	@RequestMapping(value = "/performanceupdate")
 	public String performanceupdate(PerformanceDto dto) throws Exception {

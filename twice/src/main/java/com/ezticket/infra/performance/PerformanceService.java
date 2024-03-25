@@ -26,5 +26,9 @@ public class PerformanceService {
 	{
 		return dao.update(dto);
 	}
+	public int insert(PerformanceDto dto)
+	{
+		return dao.insert(dto);
+	}
 
 }

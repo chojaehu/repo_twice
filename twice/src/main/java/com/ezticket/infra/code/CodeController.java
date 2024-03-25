@@ -1,17 +1,21 @@
 package com.ezticket.infra.code;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ezticket.infra.codegroup.CodeGroupDto;
+import com.ezticket.infra.codegroup.CodeGroupService;
 
 @Controller
 public class CodeController {
 	
 	@Autowired
 	CodeService service;
+	
+	@Autowired
+	CodeGroupService codeGroupService;
 	
 //	@RequestMapping(value = "/codeXdmList")
 //	public String codeXdmList(Model model) throws Exception
@@ -72,17 +76,20 @@ public class CodeController {
 	
 //	인덱스
 	@RequestMapping(value = "/codeXdmList")
-	public String codeXdmList(Model model, CodeVo vo) throws Exception {
+	public String codeXdmList(Model model, CodeVo vo, CodeDto dto) throws Exception {
 		
+		System.out.println(dto.getIfcgName());
 		model.addAttribute("list", service.selectList(vo));
 		
 		model.addAttribute("vo", vo);
 		
 		return "/xdm/infra/index/codeXdmList";
 	}
+	
 	@RequestMapping(value = "/codeXdmForm")
 	public String codeXdmForm(CodeDto dto, Model model) throws Exception {
 		
+		model.addAttribute("listPaging", codeGroupService.selectListWithoutPaging());
 		model.addAttribute("item", service.selectOne(dto));
 		
 		return "/xdm/infra/index/codeXdmForm";

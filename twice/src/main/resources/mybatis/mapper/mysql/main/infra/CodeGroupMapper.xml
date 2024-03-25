@@ -42,11 +42,22 @@
         </choose> 
         ORDER BY a.ifcgSeq DESC
     </select>
+    
+     <select id="selectListWithoutPaging" resultMap="resultMapObj">
+        SELETE
+         a.ifcgSeq
+         ,a.ifcgName
+        FROM codegroup a
+        WHERE a.ifcgdeleteNY = 0
+        ORDER BY a.ifcgSeq DESC
+    </select>
      
     <select id="selectCount" resultMap="resultMapObj">
         SELECT count(*) as groupcount
          FROM codegroup 
     </select>
+    
+ 
     
     <select id="selectOne" resultMap="resultMapObj">
         SELECT

@@ -10,5 +10,6 @@ public interface PerformanceDao {
 	
 	
 	public int update(PerformanceDto dto);
+	public int insert(PerformanceDto dto);
 
 }

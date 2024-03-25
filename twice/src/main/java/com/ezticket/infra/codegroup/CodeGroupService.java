@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ezticket.infra.code.CodeDto;
+
 @Service
 public class CodeGroupService {
 	
@@ -23,6 +25,12 @@ public class CodeGroupService {
 //	}
 	
 	public List<CodeGroupDto> selectList(CodeGroupVo vo){ return dao.selectList(vo);}
+	
+	public List<CodeGroupDto> selectListWithoutPaging()
+	{
+		return dao.selectListWithoutPaging();
+	}
+	
 	
 	public CodeGroupDto selectOne(CodeGroupDto dto)
 	{

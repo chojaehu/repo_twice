@@ -64,6 +64,29 @@
     WHERE prSeq = #{prSeq}
     
     </update>
+    
+     <insert id="insert">
+    
+    INSERT INTO performanceList
+    (
+    prTitle,
+    prdeleteNY,
+    prHostedPlanned,
+    prAgeLimit,
+    prStartDate,
+    prEndDate
+    )
+    VALUES
+    (
+    #{prTitle}
+    ,#{prdeleteNY}
+    ,#{prHostedPlanned}
+    ,#{prAgeLimit}
+    ,#{prStartDate}
+    ,#{prEndDate}
+    )
+    
+    </insert>
 
 
    <!--  ,(select count(aa.ifcdSeq) from infrCode aa where 1=1 and aa.ifcdDelNy = 0 and aa.ifcgSeq = a.ifcgSeq) as xifcdSeqCount -->
