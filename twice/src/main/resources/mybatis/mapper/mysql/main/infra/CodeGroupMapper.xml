@@ -44,7 +44,7 @@
     </select>
     
      <select id="selectListWithoutPaging" resultMap="resultMapObj">
-        SELETE
+        SELECT
          a.ifcgSeq
          ,a.ifcgName
         FROM codegroup a

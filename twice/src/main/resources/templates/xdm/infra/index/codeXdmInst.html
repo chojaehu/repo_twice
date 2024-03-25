@@ -272,7 +272,7 @@
 											<div class="col-md-3">
 												<select id="codegroupIfcgseq" name="codegroupIfcgseq" class="form-select form-select-sm">
 														<option value="">관람가 선택하세요</option>
-														<option th:value="${listPaging.ifcgSeq}" th:text="${listPaging.ifcgName}" th:selected="${listPaging.ifcgSeq} == ${item?.ifcgName}" ></option>
+														<option th:each="listPaging : ${@codeGroupService.selectListWithoutPaging()}" th:value="${listPaging.ifcgSeq}" th:text="${listPaging.ifcgName}" ></option>
 												</select>
 											</div>  
 											<div class="col-md-9">

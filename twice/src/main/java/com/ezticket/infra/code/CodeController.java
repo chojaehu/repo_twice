@@ -89,7 +89,7 @@ public class CodeController {
 	@RequestMapping(value = "/codeXdmForm")
 	public String codeXdmForm(CodeDto dto, Model model) throws Exception {
 		
-		model.addAttribute("listPaging", codeGroupService.selectListWithoutPaging());
+		
 		model.addAttribute("item", service.selectOne(dto));
 		
 		return "/xdm/infra/index/codeXdmForm";
@@ -97,7 +97,7 @@ public class CodeController {
 	@RequestMapping(value = "/codeXdmInst")
 	public String codeXdmInst(CodeDto dto, Model model) throws Exception {
 		
-		
+		model.addAttribute("listPaging", codeGroupService.selectListWithoutPaging());
 		return "/xdm/infra/index/codeXdmInst";
 	}
 	
