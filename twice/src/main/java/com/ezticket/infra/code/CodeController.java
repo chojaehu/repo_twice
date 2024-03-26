@@ -87,7 +87,7 @@ public class CodeController {
 	//@ModelAttribute("vo")CodeDto dto,
 //	인덱스
 	@RequestMapping(value = "/codeXdmList")
-	public String codeXdmList(@ModelAttribute("vo")CodeVo vo, Model model) throws Exception {
+	public String codeXdmList(@ModelAttribute("vo")final CodeVo vo, Model model) throws Exception {
 		setSearch(vo);
 		
 		

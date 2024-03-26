@@ -18,7 +18,7 @@ public class CodeService {
 	CodeDao dao;
 	
 	
-	public List<CodeDto> selectList(CodeVo vo){
+	public List<CodeDto> selectList(final CodeVo vo){
 		return dao.selectList(vo);
 	}
 	public int count(CodeVo vo)

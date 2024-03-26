@@ -539,8 +539,9 @@
                 // 3. 이전 페이지가 있는 경우, 즉 시작 페이지(startPage)가 1이 아닌 경우 첫 페이지 버튼과 이전 페이지 버튼을 HTML에 추가
                 if (pagination.existPrevPage) {
                     html += `
-                        <a href="javascript:void(0);" onclick="movePage(1)" class="page_bt first">첫 페이지</a>
-                        <a href="javascript:void(0);" onclick="movePage(${pagination.startPage - 1})" class="page_bt prev">이전 페이지</a>
+                        <a href="javascript:void(0);" onclick="movePage(1)" class="page-link"><<</a>
+                        <a href="javascript:void(0);" onclick="movePage(${pagination.startPage - 1})" class="page-link">
+                        <i class="bi bi-arrow-left"></i></a>
                     `;
                 }
 
@@ -559,8 +560,10 @@
                 // 5. 현재 위치한 페이지 뒤에 데이터가 더 있는 경우, 다음 페이지 버튼과 끝 페이지 버튼을 HTML에 추가
                 if (pagination.existNextPage) {
                     html += `
-                        <a href="javascript:void(0);" onclick="movePage(${pagination.endPage + 1});" class="page_bt next">다음 페이지</a>
-                        <a href="javascript:void(0);" onclick="movePage(${pagination.totalPageCount});" class="page_bt last">마지막 페이지</a>
+                        <a href="javascript:void(0);" onclick="movePage(${pagination.endPage + 1});" class="page-link""><span aria-hidden="true">
+						<i class="bi bi-arrow-right"></i>
+						</a>
+                        <a href="javascript:void(0);" onclick="movePage(${pagination.totalPageCount});" class="page-link">>></a>
                     `;
                 }
 
@@ -575,7 +578,7 @@
                 // 1. drawPage( )의 각 버튼에 선언된 onclick 이벤트를 통해 전달받는 page(페이지 번호)를 기준으로 객체 생성
                 const queryParams = {
                     page: (page) ? page : 1,
-                    recordSize: 10,
+                    recordSize: 1,
                     pageSize: 10
                 }
 

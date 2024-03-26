@@ -9,12 +9,18 @@ public class CodeVo {
 	private String shValue;
 	
 	
-	private int page = 1;
-	private int recordSize = 10;
-	private int pageSize = 10;
+	private int page ;
+	private int recordSize ;
+	private int pageSize ;
 	private String keyword;       
 	private String searchType;
 	private Pagination pagination;
+	
+	public CodeVo() {
+		this.page = 3;
+		this.recordSize = 5;
+        this.pageSize = 10;
+	}
 	
 	public Integer getShDelNy() {
 		return shDelNy;
