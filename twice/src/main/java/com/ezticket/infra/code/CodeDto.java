@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class CodeDto {
-	
-	
-	
+import com.ezticket.infra.paging.pagingDto;
+
+public class CodeDto  {
+
 	private String ifcgSeq;
 	private String ifcgName;
 	

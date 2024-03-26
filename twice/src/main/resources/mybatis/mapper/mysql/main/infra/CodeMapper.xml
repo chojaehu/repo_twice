@@ -5,18 +5,7 @@
 
 	<resultMap id="resultMapObj" type="com.ezticket.infra.code.CodeDto"></resultMap>
 
-    <select id="selectList" resultMap="resultMapObj">
-        <!-- SELECT
-        	a.number as groupnumber
-            ,a.groupname
-            ,b.deleteNY
-            ,b.number
-            ,b.name
-            ,b.mdfcnDate
-            ,b.codegroup_number
-         FROM codegroup a, code b 
-        WHERE 1=1 and a.number = b.codegroup_number and b.deleteNY = 0 
-        ORDER BY b.number DESC -->
+    <select id="selectList" parameterType="com.ezticket.infra.paging.pagingDto" resultMap="resultMapObj">
         
         SELECT
         	a.ifcgSeq 
@@ -30,7 +19,7 @@
             ,b.codegroupIfcgseq
          FROM codegroup a
          join code b
-         on a.ifcgSeq  = b.codegroupIfcgseq AND codegroupIfcgseq
+         on a.ifcgSeq  = b.codegroupIfcgseq 
          <if test="shDelNy != null and !shDelNy.equals('')">AND b.ifcddeleteNY = #{shDelNy}</if>   
        <!--         
 				<choose>
@@ -42,6 +31,18 @@
 	            <when test="shOption == 2">AND b.ifcdName LIKE CONCAT('%',#{shValue},'%')</when>
 	        </choose> 
          ORDER BY b.ifcdSeq DESC
+         LIMIT #{pagination.limitStart}, #{recordSize}
+    </select>
+    <!-- LIMIT #{pagination.limitStart}, #{recordSize} -->
+    
+    <select id="count" parameterType="com.ezticket.infra.paging.pagingDto" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM
+            code a
+            LEFT JOIN codegroup b on b.ifcgSeq = a.ifcdSeq
+        WHERE
+            ifcddeleteNY = 0
     </select>
     
     

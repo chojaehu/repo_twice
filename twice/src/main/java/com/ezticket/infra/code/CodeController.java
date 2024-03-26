@@ -1,12 +1,21 @@
 package com.ezticket.infra.code;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ezticket.common.constants.Constants;
+import com.ezticket.common.util.UtilDateTime;
 import com.ezticket.infra.codegroup.CodeGroupService;
+import com.ezticket.infra.codegroup.CodeGroupVo;
+import com.ezticket.infra.paging.pagingDto;
+
+import jakarta.annotation.PostConstruct;
 
 @Controller
 public class CodeController {
@@ -16,6 +25,8 @@ public class CodeController {
 	
 	@Autowired
 	CodeGroupService codeGroupService;
+	
+
 	
 //	@RequestMapping(value = "/codeXdmList")
 //	public String codeXdmList(Model model) throws Exception
@@ -73,15 +84,23 @@ public class CodeController {
 	
 	
 	
-	
+	//@ModelAttribute("vo")CodeDto dto,
 //	인덱스
 	@RequestMapping(value = "/codeXdmList")
-	public String codeXdmList(Model model, CodeVo vo, CodeDto dto) throws Exception {
+	public String codeXdmList(@ModelAttribute("vo")CodeVo vo, Model model) throws Exception {
+		setSearch(vo);
 		
-		System.out.println(dto.getIfcgName());
+		
+		PagingResponse<CodeDto> response = service.findAllPost(vo);
+		model.addAttribute("page", response);
+		
+		 //List<CodeDto> list = service.selectList(vo);
+		 //model.addAttribute("list", list);
+		 
 		model.addAttribute("list", service.selectList(vo));
+		System.out.println("response.getPagination() :" + vo.getPagination());
 		
-		model.addAttribute("vo", vo);
+		//model.addAttribute("vo", vo);
 		
 		return "/xdm/infra/index/codeXdmList";
 	}
@@ -100,8 +119,26 @@ public class CodeController {
 		model.addAttribute("listPaging", codeGroupService.selectListWithoutPaging());
 		return "/xdm/infra/index/codeXdmInst";
 	}
+	public void setSearch(CodeVo vo) throws Exception {
+		/* 최초 화면 로딩시에 세팅은 문제가 없지만 */
+		/*이후 전체적으로 데이터를 조회를 하려면 null 값이 넘어 오는 관계로 문제가 전체 데이터 조회가 되지 못한다.*/
+		/*해서 BaseVo.java 에서 기본값을 주어서 처리*/
+//		vo.setShUseNy(vo.getShUseNy() == null ? 1 : vo.getShUseNy());
+//		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
+//		vo.setShOptionDate(vo.getShOptionDate() == null ? 2 : vo.getShOptionDate());
+		
+		/* 초기값 세팅이 있는 경우 사용 */
+		vo.setShDateStart(vo.getShDateStart() == null
+		    ? UtilDateTime.calculateDayReplace00TimeString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL)
+		    : UtilDateTime.add00TimeString(vo.getShDateStart()));
+		vo.setShDateEnd(vo.getShDateEnd() == null
+		    ? UtilDateTime.nowString()
+		    : UtilDateTime.add59TimeString(vo.getShDateEnd()));		
+		
+//		/* 초기값 세팅이 없는 경우 사용 */
+//		vo.setShDateStart(vo.getShDateStart() == null || vo.getShDateStart() == "" ? null : UtilDateTime.add00TimeString(vo.getShDateStart()));
+//		vo.setShDateEnd(vo.getShDateEnd() == null || vo.getShDateEnd() == "" ? null : UtilDateTime.add59TimeString(vo.getShDateEnd()));
+	}
 	
-
-
-
+	
 }

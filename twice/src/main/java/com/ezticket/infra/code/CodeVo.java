@@ -9,42 +9,138 @@ public class CodeVo {
 	private String shValue;
 	
 	
+	private int page = 1;
+	private int recordSize = 10;
+	private int pageSize = 10;
+	private String keyword;       
+	private String searchType;
+	private Pagination pagination;
 	
 	public Integer getShDelNy() {
 		return shDelNy;
 	}
+
+
 	public void setShDelNy(Integer shDelNy) {
 		this.shDelNy = shDelNy;
 	}
+
+
 	public Integer getShOptionDate() {
 		return shOptionDate;
 	}
+
+
 	public void setShOptionDate(Integer shOptionDate) {
 		this.shOptionDate = shOptionDate;
 	}
+
+
 	public String getShDateStart() {
 		return shDateStart;
 	}
+
+
 	public void setShDateStart(String shDateStart) {
 		this.shDateStart = shDateStart;
 	}
+
+
 	public String getShDateEnd() {
 		return shDateEnd;
 	}
+
+
 	public void setShDateEnd(String shDateEnd) {
 		this.shDateEnd = shDateEnd;
 	}
+
+
 	public Integer getShOption() {
 		return shOption;
 	}
+
+
 	public void setShOption(Integer shOption) {
 		this.shOption = shOption;
 	}
+
+
 	public String getShValue() {
 		return shValue;
 	}
+
+
 	public void setShValue(String shValue) {
 		this.shValue = shValue;
 	}
+
+
+	public int getPage() {
+		return page;
+	}
+
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+
+
+	public int getRecordSize() {
+		return recordSize;
+	}
+
+
+	public void setRecordSize(int recordSize) {
+		this.recordSize = recordSize;
+	}
+
+
+	public int getPageSize() {
+		return pageSize;
+	}
+
+
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+
+	public String getSearchType() {
+		return searchType;
+	}
+
+
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+
+
+	public Pagination getPagination() {
+		return pagination;
+	}
+
+
+	public void setPagination(Pagination pagination) {
+		this.pagination = pagination;
+	}
+
+
+	public int getOffset() {
+		return (page-1)* recordSize;
+	}
+	
+	
+
 
 }
