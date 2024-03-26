@@ -92,7 +92,7 @@ public class CodeController {
 		
 		
 		PagingResponse<CodeDto> response = service.findAllPost(vo);
-		model.addAttribute("page", response);
+		//model.addAttribute("page", response);
 		
 		 //List<CodeDto> list = service.selectList(vo);
 		 //model.addAttribute("list", list);

@@ -139,8 +139,4 @@ public class CodeVo {
 	public int getOffset() {
 		return (page-1)* recordSize;
 	}
-	
-	
-
-
 }
