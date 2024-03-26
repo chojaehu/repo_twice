@@ -92,13 +92,18 @@ public class CodeController {
 		
 		
 		PagingResponse<CodeDto> response = service.findAllPost(vo);
-		//model.addAttribute("page", response);
+		model.addAttribute("page", response);
+		System.out.println("vo.getPagination().getTotalPageCount()" + vo.getPagination().getTotalPageCount());
+		System.out.println("vo.getPagination().getEndPage() :" + vo.getPagination().getEndPage());
+		System.out.println("vo.getPagination().getStartPage() :" + vo.getPagination().getStartPage());
+		System.out.println("vo.getPagination().getStartPage() :" + vo.getPagination().getLimitStart());
+		System.out.println("vo.getPagination().getStartPage() :" + vo.getPagination().getTotalPageCount());
 		
 		 //List<CodeDto> list = service.selectList(vo);
 		 //model.addAttribute("list", list);
 		 
 		model.addAttribute("list", service.selectList(vo));
-		System.out.println("response.getPagination() :" + vo.getPagination());
+		
 		
 		//model.addAttribute("vo", vo);
 		
