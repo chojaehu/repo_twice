@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ezticket.infra.code.CodeDto;
+import com.ezticket.infra.code.CodeVo;
 
 @Service
 public class CodeGroupService {
@@ -29,6 +30,10 @@ public class CodeGroupService {
 	public List<CodeGroupDto> selectListWithoutPaging()
 	{
 		return dao.selectListWithoutPaging();
+	}
+	public int count(CodeGroupVo vo)
+	{
+		return dao.count(vo);
 	}
 	
 	

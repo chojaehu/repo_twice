@@ -136,18 +136,24 @@ public class CodeGroupController {
 	
 	@RequestMapping(value = "/codeGroupXdmList")
 	public String codeGroupXdmList(@ModelAttribute("vo") CodeGroupVo vo,Model model,CodeGroupDto dto) throws Exception {
-		
-		System.out.println("시작일"+vo.getShDateStart());
-		System.out.println("종료일"+vo.getShDateEnd());
-		
+
 		setSearch(vo);
 		
-		model.addAttribute("list", service.selectList(vo));
+		vo.setParamsPaging(service.count(vo));
 		
-//		model.addAttribute("vo", vo);
-		System.out.println("시작일"+vo.getShDateStart());
-		System.out.println("종료일"+vo.getShDateEnd());
 		
+		
+		if(vo.getTotalRows()>0)
+		{
+			model.addAttribute("list", service.selectList(vo));		
+		}		
+		
+		/*
+		 * System.out.println("vo.getEndPage() : " + vo.getEndPage());
+		 * System.out.println("vo.getStartPage() : "+ vo.getStartPage());
+		 * System.out.println("vo.getTotalPages() : " + vo.getTotalPages());
+		 * System.out.println("vo.getTotalRows() : " + vo.getTotalRows());
+		 */
 		return "/xdm/infra/index/codeGroupXdmList";
 	}
 	

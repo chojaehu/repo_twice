@@ -5,7 +5,7 @@
 
 	<resultMap id="resultMapObj" type="com.ezticket.infra.code.CodeDto"></resultMap>
 
-    <select id="selectList" parameterType="com.ezticket.infra.paging.pagingDto" resultMap="resultMapObj">
+    <select id="selectList"  resultMap="resultMapObj">
         
         SELECT
         	a.ifcgSeq 
@@ -20,29 +20,22 @@
          FROM codegroup a
          join code b
          on a.ifcgSeq  = b.codegroupIfcgseq 
-         <if test="shDelNy != null and !shDelNy.equals('')">AND b.ifcddeleteNY = #{shDelNy}</if>   
-       <!--         
-				<choose>
-					<when test="shOptionDate == 1">AND a.regDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-					<when test="shOptionDate == 2">AND a.modDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-					</choose> -->        
-	        <choose>
-	            <when test="shOption == 1">AND b.ifcdSeq = #{shValue}</when>
-	            <when test="shOption == 2">AND b.ifcdName LIKE CONCAT('%',#{shValue},'%')</when>
-	        </choose> 
+         <include refid="selectCommon" /> 
          ORDER BY b.ifcdSeq DESC
-         LIMIT #{pagination.limitStart}, #{recordSize}
+         limit #{rowNumToShow} offset #{startRnumForMysql}
     </select>
     <!-- LIMIT #{pagination.limitStart}, #{recordSize} -->
     
-    <select id="count" parameterType="com.ezticket.infra.paging.pagingDto" resultType="int">
+    <select id="count"  resultType="int">
         SELECT
             COUNT(*)
         FROM
-            code a
-            LEFT JOIN codegroup b on b.ifcgSeq = a.ifcdSeq
-        WHERE
-            ifcddeleteNY = 0
+            code b
+            JOIN codegroup a
+            on a.ifcgSeq = b.codegroupIfcgseq
+            <include refid="selectCommon" />  
+            where 1=1
+            
     </select>
     
     
@@ -103,6 +96,18 @@
 		WHERE 1=1
 			AND ifcddeleteNY = 0
    </select>
+   
+   <sql id ="selectCommon">
+   <if test="shDelNy != null and !shDelNy.equals('')">AND b.ifcddeleteNY = #{shDelNy}</if>   
+				<choose>
+					<when test="shOptionDate == 1">AND b.ifcdRgstrDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND b.ifcdModifiedDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				</choose>    
+	        <choose>
+	            <when test="shOption == 1">AND b.ifcdSeq = #{shValue}</when>
+	            <when test="shOption == 2">AND b.ifcdName LIKE CONCAT('%',#{shValue},'%')</when>
+	        </choose> 
+   </sql>
 
    <!--  ,(select count(aa.ifcdSeq) from infrCode aa where 1=1 and aa.ifcdDelNy = 0 and aa.ifcgSeq = a.ifcgSeq) as xifcdSeqCount -->
 	  

@@ -30,17 +30,19 @@
             ,(select count(*) from codegroup) as groupcount
          FROM codegroup a
         WHERE 1=1
-       <if test="shDelNy != null and !shDelNy.equals('')">AND a.ifcgdeleteNY = #{shDelNy}</if>   
-                
-				  <choose>
-					<when test="shOptionDate == 1">AND a.ifcgRgstrDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-					<when test="shOptionDate == 2">AND a.ifcgModifiedDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>  
-				</choose>      
-        <choose>	
-            <when test="shOption == 1">AND a.ifcgSeq = #{shValue}</when>
-            <when test="shOption == 2">AND a.ifcgName LIKE CONCAT('%',#{shValue},'%')</when>
-        </choose> 
+       <include refid="selectCommon" /> 
         ORDER BY a.ifcgSeq DESC
+        limit #{rowNumToShow} offset #{startRnumForMysql}
+    </select>
+    
+    <select id="count"  resultType="Integer">
+        SELECT
+            COUNT(*)
+        FROM
+            codegroup a
+            where 1=1
+            <include refid="selectCommon" />  
+            
     </select>
     
      <select id="selectListWithoutPaging" resultMap="resultMapObj">
@@ -110,6 +112,19 @@
     FROM codegroup
     WHERE ifcgSeq = #{ifcgSeq}
     </delete>
+    
+   <sql id ="selectCommon">
+   		<if test="shDelNy != null and !shDelNy.equals('')">AND a.ifcgdeleteNY = #{shDelNy}</if>   
+                
+				  <choose>
+					<when test="shOptionDate == 1">AND a.ifcgRgstrDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND a.ifcgModifiedDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>  
+				</choose>      
+        <choose>	
+            <when test="shOption == 1">AND a.ifcgSeq = #{shValue}</when>
+            <when test="shOption == 2">AND a.ifcgName LIKE CONCAT('%',#{shValue},'%')</when>
+        </choose> 
+   </sql>
     
     
     

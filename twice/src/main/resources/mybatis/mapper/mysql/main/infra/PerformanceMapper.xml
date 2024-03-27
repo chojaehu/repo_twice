@@ -21,18 +21,19 @@
         	prdeleteNY
         	FROM performanceList
         	WHERE 1=1
-        	<if test="shDelNy != null and !shDelNy.equals('')">AND prdeleteNY = #{shDelNy}</if>  
-        	<if test="shAge != null and !shAge.equals('')">AND prAgeLimit = #{shAge}</if>   
-                
-				  <choose>
-					<when test="shOptionDate == 1">AND prRgstrDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-					<when test="shOptionDate == 2">AND prModifiedDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>  
-				</choose>      
-	        <choose>	
-	            <when test="shOption == 1">AND prSeq = #{shValue}</when>
-	            <when test="shOption == 2">AND prTitle LIKE CONCAT('%',#{shValue},'%')</when>
-	        </choose> 
+        	<include refid="selectCommon" />  
          ORDER BY prSeq DESC
+         limit #{rowNumToShow} offset #{startRnumForMysql}
+    </select>
+    
+    <select id="count"  resultType="Integer">
+        SELECT
+            COUNT(*)
+        FROM
+            performanceList a
+            
+            where 1=1
+            <include refid="selectCommon" />  
     </select>
     
     <select id="selectOne">
@@ -87,6 +88,20 @@
     )
     
     </insert>
+    
+    <sql id ="selectCommon">
+   		<if test="shDelNy != null and !shDelNy.equals('')">AND prdeleteNY = #{shDelNy}</if>  
+        	<if test="shAge != null and !shAge.equals('')">AND prAgeLimit = #{shAge}</if>   
+                
+				  <choose>
+					<when test="shOptionDate == 1">AND prRgstrDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND prModifiedDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>  
+				</choose>      
+	        <choose>	
+	            <when test="shOption == 1">AND prSeq = #{shValue}</when>
+	            <when test="shOption == 2">AND prTitle LIKE CONCAT('%',#{shValue},'%')</when>
+	        </choose> 
+   </sql>
 
 
    <!--  ,(select count(aa.ifcdSeq) from infrCode aa where 1=1 and aa.ifcdDelNy = 0 and aa.ifcgSeq = a.ifcgSeq) as xifcdSeqCount -->

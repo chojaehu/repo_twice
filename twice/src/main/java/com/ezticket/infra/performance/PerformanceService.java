@@ -17,7 +17,9 @@ public class PerformanceService {
 	{
 		return dao.selectList(vo);
 	}
-	
+	public int count(PerformanceVo vo) {
+		return dao.count(vo);
+	}
 	public PerformanceDto selectOne(PerformanceDto dto)
 	{
 		return dao.selectOne(dto);
