@@ -134,11 +134,8 @@
 									</div>
 
 									<div class="row mt-1">
-										<div class="col-md">
-											<label>Total : <span></span>
-											</label>
-										</div>
-
+										<div th:replace="~{xdm/infra/block/pageselect :: total}"></div>
+										
 										<!-- 페이징 셀렉트 -->
 										<div th:replace="~{xdm/infra/block/pageselect :: pageselect}"></div>
 
