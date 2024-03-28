@@ -39,60 +39,128 @@
 	<body class="login-container">
 		<!-- Login box start -->
 		<div class="container">
-			<form action="index.html" class="row g-3 needs-validation" novalidate>
+			<form  class="row g-3" novalidate>
 				<div class="login-box rounded-2 p-5">
 					<div class="login-form">
 						<a href="index.html" class="login-logo mb-3">
 							<img src="xdm/images/logo.svg" alt="Best Admin Dashboards" />
 						</a>
-						<h5 class="fw-light mb-5">Sign in to access dashboard.</h5>
+						<h5 class="fw-light mb-5">로그인</h5>
 						<div class="mb-3">
 							<label class="form-label">이메일</label>
-							<input type="text" class="form-control" placeholder="Enter your email" id="validationCustomid" required/>
-							<div class="invalid-feedback">
-								Please a valid email.
-							</div>
+							<input type="text" class="form-control" placeholder="Enter your email" id="mbEmailchek" name = "mbEmailchek" required/>
+							<div class="invalid-feedback" id="mbEmailchekFeedback" name="prTitleFeedback"></div>
 						</div>
 						<div class="mb-3">
 							<label class="form-label">비밀번호</label>
-							<input type="password" class="form-control" placeholder="Enter password" id="validationCustompw" required/>
-							<div class="invalid-feedback">
-								Please a valid password.
-							</div>
+							<input type="password" class="form-control" placeholder="Enter password" id="mbPasswordCheck" name = "mbPasswordCheck" required/>
+							<div class="invalid-feedback" id="mbPasswordCheckFeedback" name="prTitleFeedback"></div>
 						</div>
 						<div class="d-flex align-items-center justify-content-between">
 							<div class="form-check m-0">
 								<input class="form-check-input" type="checkbox" value="" id="rememberPassword" />
 								<label class="form-check-label" for="rememberPassword">Remember</label>
 							</div>
-							<a href="forgot-password.html" class="text-blue text-decoration-underline">Lost password?</a>
 						</div>
 						<div class="d-grid py-3">
-							<button type="submit" class="btn btn-lg btn-primary">
+							<button id = "buttonSignIn" name = "buttonSignIn" type="button" class="btn btn-lg btn-primary">
 								Login
 							</button>
 						</div>
-						<div class="text-center py-3">or login with</div>
-						<div class="d-flex gap-2 justify-content-center">
-							<button type="submit" class="btn btn-outline-light">
-								<img src="xdm/images/google.svg" class="login-icon" alt="Login with Google" />
-							</button>
-							<button type="submit" class="btn btn-outline-light">
-								<img src="xdm/images/facebook.svg" class="login-icon" alt="Login with Facebook" />
-							</button>
-						</div>
-						<div class="text-center pt-3">
-							<span>Not registered?</span>
-							<a href="signup.html" class="text-blue text-decoration-underline ms-2">
-								Create an account</a>
-						</div>
+
 					</div>
 				</div>
 			</form>
 		</div>
 		<!-- Main Js Required -->
+		<script src="xdm/js/jquery.min.js"></script>
+		<script src="xdm/js/bootstrap.bundle.min.js"></script>
+		<script src="xdm/js/modernizr.js"></script>
+		<script src="xdm/js/moment.js"></script>
+
+		<!-- *************
+			************ Vendor Js Files *************
+		************* -->
+
+		<!-- Overlay Scroll JS -->
+		<script src="xdm/vendor/overlay-scroll/jquery.overlayScrollbars.min.js"></script>
+		<script src="xdm/vendor/overlay-scroll/custom-scrollbar.js"></script>
+
+		<!-- News ticker -->
+		<script src="xdm/vendor/newsticker/newsTicker.min.js"></script>
+		<script src="xdm/vendor/newsticker/custom-newsTicker.js"></script>
+
+		<!-- Main Js Required -->
 		<script src="xdm/js/main.js"></script>
-		<script src="xdm/js/validations.js"></script>
+		<script src="xdm/js/validationXdm.js" ></script>
+
+			
+		<script type="text/javascript">
+		
+		
+		let form = document.querySelector("form[name=formname]");
+		let goUrlXdmList = "/memberXdmList";
+		
+
+		
+		document.getElementById("buttonSignIn").onclick = function() {
+			
+			if(vallupdt() == false) return false;
+		
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/loginchek"
+				,data : { "mbEmailchek" : $("#mbEmailchek").val(), "mbPasswordCheck" : $("#mbPasswordCheck").val()}
+				,success: function(response) {
+					if(response.rt == "success") {
+						valInst();
+					} else {
+				 		/* document.getElementById("modalAlertTitle").innerText = "확 인";
+				 		document.getElementById("modalAlertBody").innerText = "일치하는 회원이 존재 하지 않습니다!";
+				 		$("#modalAlert").modal("show");  */
+				 		alert("틀립니다.")
+					}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+		}
+		
+		function vallupdt()
+		{
+			if(!checkOnlyKoreanEnglishNumber('mbEmailchek',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false}
+			if(!checkOnlyKoreanEnglishNumber('mbPasswordCheck',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false} 
+		}
+		
+		function valInst(){
+			valupdt();
+		}
+		
+		function valupdt(){
+			if(!empty(document.getElementById("mbEmailchek").value))
+				{
+				document.getElementById('mbEmailchek').classList.add("")
+				}
+			else{
+				form.action = goUrlXdmList;
+			    form.submit();
+			}
+
+		}
+		empty =  function(value)
+		{
+			if(value == null || value == 'null'|| value == 0){
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+		
+		</script>
 	</body>
 
 </html>

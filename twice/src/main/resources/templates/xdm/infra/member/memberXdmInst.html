@@ -30,7 +30,7 @@
 								<i class="bi bi-columns-gap"></i>
 							</div>
 							<div class="page-title d-none d-md-block">
-								<h5>코드그룹 관리</h5>
+								<h5>멤버 관리</h5>
 							</div>
 						</div>
 						<!-- Live updates start -->
@@ -66,21 +66,36 @@
 							<div class="col-xxl-12">
 								<div class="card">
 									<div class="card-body">
-										<form class="row g-3 needs-validation" name ="formname" method="post"  novalidate>
+										<form class="row g-3 " name ="formname" method="post"  novalidate>
 											<div class="col-md-6">
-												<input type="text" class="form-control form-control-sm" id="ifcgName"  name ="ifcgName" placeholder  ="그룹이름"  required />
-												<div class="valid-feedback" id="valred">Looks good!</div>
+												<input type="text" class="form-control form-control-sm" id="mbName"  name ="mbName" placeholder  ="이름"  required />
+												<div class="invalid-feedback" id="prTitleFeedback" name="prTitleFeedback"></div>
 											</div>
 											<div class="col-md-6">
+												<input type="text" class="form-control form-control-sm" id="mbEmail"  name ="mbEmail" placeholder  ="이메일"  required />
+												<div class="invalid-feedback" id="prTitleFeedback" name="prTitleFeedback"></div>
+											</div>
+											<div class="col-md-6">
+												<input type="text" class="form-control form-control-sm" id="mbPassword"  name ="mbPassword" placeholder  ="비밀번호"  required />
+												<div class="invalid-feedback" id="prTitleFeedback" name="prTitleFeedback"></div>
+											</div>
+											<div class="col-md-6">
+												<input type="text" class="form-control form-control-sm" id="mbPasswordCheck"  name ="mbPasswordCheck" placeholder  ="비밀번호 확인"  required />
+												<div class="invalid-feedback" id="prTitleFeedback" name="prTitleFeedback"></div>
+											</div>
+											
+											<div class="col-md-6">
 												<!-- <input type="text" class="form-control form-control-sm"  name ="deleteNY" placeholder  ="삭제여부"  required /> -->
-												<select class="form-control form-control-sm" aria-label=".form-select-lg example" name ="ifcgdeleteNY" placeholder  ="삭제여부"  required>
+												<select class="form-control form-control-sm" aria-label=".form-select-lg example" name ="mbdelectNY" placeholder  ="삭제여부"  required>
 												  <option value = 0 selected>n</option>
 												  <option value = 1>y</option>
 												</select>
-												<div class="valid-feedback">Looks good!</div>
+												<div class="invalid-feedback" id="prTitleFeedback" name="prTitleFeedback"></div>
+											</div>
+											<div class="col-md-6">
 											</div>
 											<div class="col-6 d-flex ">
-												<a th:href ="@{/codeGroupXdmList}">
+												<a th:href ="@{/memberXdmList}">
 												<button class="btn btn-primary " type="button">
 													돌아가기
 												</button>
@@ -144,13 +159,46 @@
 		<!-- Main Js Required -->
 		<script src="xdm/js/main.js"></script>
 		<script src="xdm/js/validations.js"></script>
+		<script src="xdm/js/validationXdm.js" ></script>
 		<script type="text/javascript">
 		let form = document.querySelector("form[name=formname]");
-		let goUrlXdmList = "/codeGroupInsert";	
+		let goUrlXdmList = "/memberInsert";	
 		
-		document.getElementById("btnsubmit").onclick = function(){
+		/* document.getElementById("btnsubmit").onclick = function(){
 			valInst();
 			
+		} */
+		
+		document.getElementById("btnsubmit").onclick = function () {
+			//valInst();
+			if(vallupdt() == false) return false;
+		
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/signinXdmProc"
+				,data : { "mbPassword" : $("#mbPassword").val(),"mbPasswordCheck" : $("#mbPasswordCheck").val()}
+				,success: function(response) {
+					if(response.rt == "success") {
+						valInst();
+					} else {
+				 		/* document.getElementById("modalAlertTitle").innerText = "확 인";
+				 		document.getElementById("modalAlertBody").innerText = "일치하는 회원이 존재 하지 않습니다!";
+				 		$("#modalAlert").modal("show");  */
+				 		alert("틀립니다.")
+					}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+		}
+		
+		function vallupdt()
+		{
+			if(!checkOnlyKoreanEnglishNumber('mbPassword',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false}
+			if(!checkOnlyKoreanEnglishNumber('mbPasswordCheck',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false}
 		}
 		
 		function valInst(){
@@ -158,9 +206,9 @@
 		}
 		
 		function valupdt(){
-			if(!empty(document.getElementById("ifcgName").value))
+			if(!empty(document.getElementById("mbEmail").value))
 				{
-				document.getElementById('ifcgName').classList.add("")
+				document.getElementById('mbEmail').classList.add("")
 				}
 			else{
 				form.action = goUrlXdmList;

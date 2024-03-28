@@ -53,6 +53,8 @@
 
 				<!-- Content wrapper start -->
 				<form name="formList" id="formList" method="post" autocomplete="off">
+				<input type="hidden" name="thisPage" th:value="${vo.thisPage}"
+						default="1" /> 
 					<div class="content-wrapper">
 						<!-- Row start -->
 						<div class="col-sm-12 col-12">
@@ -93,11 +95,11 @@
 										<div class="col-3">
 											<select id="shAge" name="shAge"
 												class="form-select form-select-sm">
-												<option value="" th:selected="${vo.shOption == null}">연령제한</option>
-												<option value="8" th:selected="${vo.shOption == null}">전체이용가</option>
-												<option value="9" th:selected="${vo.shOption == null}">12세이용가</option>
-												<option value="10" th:selected="${vo.shOption == null}">15세이용가</option>
-												<option value="11" th:selected="${vo.shOption == null}">청소년이용불가</option>
+												<option value="" th:selected="${vo.shAge == null}">연령제한</option>
+												<option value="8" th:selected="${vo.shAge == 8}">전체이용가</option>
+												<option value="9" th:selected="${vo.shAge == 9}">12세이용가</option>
+												<option value="10" th:selected="${vo.shAge == 10}">15세이용가</option>
+												<option value="11" th:selected="${vo.shAge == 11}">청소년이용불가</option>
 											</select>
 											<!-- <select id="prAgeLimit" name="prAgeLimit" class="form-select form-select-sm">
 														<option value="">선택하세요</option>
@@ -108,8 +110,8 @@
 											<select id="shOption" name="shOption"
 												class="form-select form-select-sm">
 												<option value="" th:selected="${vo.shOption == null}">검색구분</option>
-												<option value="1" th:selected="${vo.shOption == null}">공연코드</option>
-												<option value="2" th:selected="${vo.shOption == null}">공연타이틀</option>
+												<option value="1" th:selected="${vo.shOption == 1}">공연코드</option>
+												<option value="2" th:selected="${vo.shOption == 2}">공연타이틀</option>
 											</select>
 										</div>
 										<div class="col-md-3">

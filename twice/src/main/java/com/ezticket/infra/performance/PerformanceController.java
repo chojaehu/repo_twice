@@ -1,6 +1,7 @@
 package com.ezticket.infra.performance;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,10 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ezticket.common.constants.Constants;
 import com.ezticket.common.util.UtilDateTime;
-import com.ezticket.infra.code.CodeDto;
-import com.ezticket.infra.codegroup.CodeGroupDto;
-import com.ezticket.infra.codegroup.CodeGroupService;
-import com.ezticket.infra.member.MemeberVo;
+
 
 @Controller
 public class PerformanceController {
@@ -24,7 +22,7 @@ public class PerformanceController {
 	private String str = "/xdm/infra/performance";
 	
 	@RequestMapping(value = "/performanceXdmList")
-	public String performanceXdmList(@ModelAttribute("vo")PerformanceVo vo,Model model) throws Exception{
+	public String performanceXdmList(@ModelAttribute("vo")PerformanceVo vo,Model model,PerformanceDto dto) throws Exception{
 		setSearch(vo);
 		vo.setParamsPaging(service.count(vo));
 		
@@ -37,6 +35,35 @@ public class PerformanceController {
 		/*
 		 * model.addAttribute("list", service.selectList(vo)); model.addAttribute("vo",
 		 * vo);
+		 */
+		
+		/*
+		 * System.out.println("dto.getIfmmId(): " + dto.getPrTitle());
+		 * 
+		 * dto.setPrTitle(encodeBcrypt(dto.getPrTitle(), 10));
+		 * dto.setPrTitle(encodeBcrypt(dto.getPrTitle(), 10)); String encodedId =
+		 * dto.getPrTitle();
+		 * 
+		 * System.out.println("dto.getIfmmId()encoded: " + dto.getPrTitle());
+		 * 
+		 * System.out.println("---------------------");
+		 * 
+		 * System.out.println("dto.getIfmmName(): " + dto.getPrHostedPlanned());
+		 * 
+		 * String name = dto.getPrHostedPlanned();
+		 * dto.setPrHostedPlanned(encodeBcrypt(dto.getPrHostedPlanned(),9));
+		 * 
+		 * System.out.println("dto.getIfmmName().encoded: " + dto.getPrHostedPlanned());
+		 * 
+		 * System.out.println("---------------------");
+		 * 
+		 * 
+		 * System.out.println("---------------------");
+		 * 
+		 * if(matchesBcrypt(name, dto.getPrTitle(),10)) { System.out.println("true"); }
+		 * else { System.out.println("false"); }
+		 * 
+		 * System.out.println("###########################");
 		 */
 		
 		return "/xdm/infra/performance/performanceXdmList";
@@ -94,6 +121,15 @@ public class PerformanceController {
 //		vo.setShDateEnd(vo.getShDateEnd() == null || vo.getShDateEnd() == "" ? null : UtilDateTime.add59TimeString(vo.getShDateEnd()));
 		
 		
+	}
+	public String encodeBcrypt(String planeText, int strength) {
+		  return new BCryptPasswordEncoder(strength).encode(planeText);
+	}
+
+			
+	public boolean matchesBcrypt(String planeText, String hashValue, int strength) {
+	  BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(strength);
+	  return passwordEncoder.matches(planeText, hashValue);
 	}
 
 }

@@ -7,7 +7,9 @@ public class MemberDto {
 	private String mbSeq;
 	private String mbName;
 	private String mbEmail;
+	private String mbEmailchek;
 	private String mbPassword;
+	private String mbPasswordCheck;
 	private String mbgender;
 	private String mbPhone;
 	private Date mbDateBirth;
@@ -32,11 +34,23 @@ public class MemberDto {
 	public void setMbEmail(String mbEmail) {
 		this.mbEmail = mbEmail;
 	}
+	public String getMbEmailchek() {
+		return mbEmailchek;
+	}
+	public void setMbEmailchek(String mbEmailchek) {
+		this.mbEmailchek = mbEmailchek;
+	}
 	public String getMbPassword() {
 		return mbPassword;
 	}
 	public void setMbPassword(String mbPassword) {
 		this.mbPassword = mbPassword;
+	}
+	public String getMbPasswordCheck() {
+		return mbPasswordCheck;
+	}
+	public void setMbPasswordCheck(String mbPasswordCheck) {
+		this.mbPasswordCheck = mbPasswordCheck;
 	}
 	public String getMbgender() {
 		return mbgender;
@@ -76,8 +90,5 @@ public class MemberDto {
 	}
 	
 	
-
 	
-	
-
 }

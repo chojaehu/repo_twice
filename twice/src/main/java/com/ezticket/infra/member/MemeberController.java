@@ -1,13 +1,20 @@
 package com.ezticket.infra.member;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezticket.common.constants.Constants;
 import com.ezticket.common.util.UtilDateTime;
-import com.ezticket.infra.codegroup.CodeGroupVo;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MemeberController {
@@ -16,13 +23,105 @@ public class MemeberController {
 	MemeberService service;
 	
 	@RequestMapping(value = "/memberXdmList")
-	public String memberXdmList(Model model, MemeberVo vo)throws Exception {
+	public String memberXdmList(@ModelAttribute("vo")MemeberVo vo, Model model,MemberDto dto)throws Exception {
 		
 		setSearch(vo);
-		model.addAttribute("list", service.selectList(vo));
-		model.addAttribute("vo", vo);
+		
+		//dto.setMbEmail(encodeBcrypt(dto.getMbEmail(), 10));
+		vo.setParamsPaging(service.count(vo));
+		model.addAttribute("count", service.count(vo));
+		
+		
+		if(vo.getTotalRows() > 0)
+		{
+			model.addAttribute("list", service.selectList(vo));
+		}
+		System.out.println("dto.getMbPasswordCheck() : " + dto.getMbPasswordCheck());
+		
 		return "/xdm/infra/member/memberXdmList";
 	}
+	@RequestMapping(value = "/memberXdmForm")
+	public String memberXdmForm(MemberDto dto, Model model) throws Exception {
+		
+		model.addAttribute("item", service.selectOne(dto));
+		
+		return "/xdm/infra/index/memberXdmForm";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/signinXdmProc")
+	public Map<String, Object> signinXdmProc(MemberDto dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		
+		String pw = dto.getMbPassword();
+		dto.setMbPassword(encodeBcrypt(dto.getMbPassword(), 10));
+		
+		dto.setMbPasswordCheck(encodeBcrypt(dto.getMbPasswordCheck(), 10));
+		
+		if(matchesBcrypt(pw, dto.getMbPasswordCheck(),10)) {
+			returnMap.put("rt", "success");
+		} else {
+			returnMap.put("rt", "false");
+		}
+		return returnMap;
+	}
+	
+	@RequestMapping(value = "/memberXdmInst")
+	public String memberXdmInst() throws Exception{
+		return "/xdm/infra/member/memberXdmInst";
+	}
+	
+	@RequestMapping(value = "/memberInsert")
+	public String memberInsert(MemberDto dto) throws Exception {
+		
+		
+		dto.setMbPassword(encodeBcrypt(dto.getMbPassword(), 10));
+		
+		service.insert(dto);
+		//dto.setMbPassword(encodeBcrypt(dto.getMbPassword(), 10));
+		
+		System.out.println("dto.getMbPasswordCheck() : " + dto.getMbPasswordCheck());
+
+		return "redirect:/memberXdmList";
+	}
+	
+	@RequestMapping(value = "/login")
+	public String login() throws Exception {
+		
+
+		return "/xdm/infra/index/login";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/loginchek")
+	public Map<String, Object> loginchek(MemberDto dto, HttpSession httpSession,MemeberVo vo ,Model model) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		String aa = "";
+		
+		String id = dto.getMbEmail();
+		String pw = dto.getMbPassword();
+		MemberDto dDto = service.selectlogin(dto);
+		
+		if(dto.getMbEmail().equals(dDto.getMbEmailchek())) {
+			returnMap.put("rt", "success");
+			System.out.println("true");
+		} else {
+			returnMap.put("rt", "id");
+			System.out.println("false");
+		}
+		
+		 if(matchesBcrypt(pw, dto.getMbPasswordCheck(), 10)) { 
+			 returnMap.put("rt","success"); 
+			 } 
+		 else { 
+			 returnMap.put("rt", "pwfalse"); 
+			 }
+		 
+		return returnMap;
+	}
+
 	
 	
 	public void setSearch(MemeberVo vo) throws Exception {
@@ -46,6 +145,15 @@ public class MemeberController {
 //		vo.setShDateEnd(vo.getShDateEnd() == null || vo.getShDateEnd() == "" ? null : UtilDateTime.add59TimeString(vo.getShDateEnd()));
 		
 		
+	}
+	public String encodeBcrypt(String planeText, int strength) {
+		  return new BCryptPasswordEncoder(strength).encode(planeText);
+	}
+
+			
+	public boolean matchesBcrypt(String planeText, String hashValue, int strength) {
+	  BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(strength);
+	  return passwordEncoder.matches(planeText, hashValue);
 	}
 
 }

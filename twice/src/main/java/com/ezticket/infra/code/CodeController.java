@@ -33,24 +33,21 @@ public class CodeController {
 //		model.addAttribute("list", service.selectList());
 //		return "/xdm/infra/code/codeXdmList";
 //	}
-	@RequestMapping(value = "/codeView")
-	public String codeView(Model model, CodeDto dto) throws Exception
-	{
-		model.addAttribute("item", service.selectOne(dto));
-		return "/xdm/infra/code/codeView";
-	}
-	@RequestMapping(value = "/codeInsertRegistration")
-	public String codeInsertRegistration() throws Exception
-	{
-
-		return "/xdm/infra/code/codeInsertRegistration";
-	}
-	@RequestMapping(value = "/codeReplacement")
-	public String codeReplacement(Model model, CodeDto dto) throws Exception
-	{
-		model.addAttribute("item", service.selectOne(dto));
-		return "/xdm/infra/code/codeReplacement";
-	}
+	/*
+	 * @RequestMapping(value = "/codeView") public String codeView(Model model,
+	 * CodeDto dto) throws Exception { model.addAttribute("item",
+	 * service.selectOne(dto)); return "/xdm/infra/code/codeView"; }
+	 * 
+	 * @RequestMapping(value = "/codeInsertRegistration") public String
+	 * codeInsertRegistration() throws Exception {
+	 * 
+	 * return "/xdm/infra/code/codeInsertRegistration"; }
+	 * 
+	 * @RequestMapping(value = "/codeReplacement") public String
+	 * codeReplacement(Model model, CodeDto dto) throws Exception {
+	 * model.addAttribute("item", service.selectOne(dto)); return
+	 * "/xdm/infra/code/codeReplacement"; }
+	 */
 	
 	
 	

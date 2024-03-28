@@ -20,7 +20,64 @@
         	mbdelectNY
         	FROM members
         	WHERE 1=1
-        	<if test="shDelNy != null and !shDelNy.equals('')">AND mbdelectNY = #{shDelNy}</if>   
+        	<include refid="selectCommon" />  
+         ORDER BY mbSeq DESC
+         limit #{rowNumToShow} offset #{startRnumForMysql}
+    </select>
+    
+    <select id="count"  resultType="Integer">
+        SELECT
+            COUNT(*)
+        FROM
+            members
+            
+            where 1=1
+            <include refid="selectCommon" />  
+    </select>
+    
+    <select id="selectOne" resultMap="resultMapObj">
+        SELECT
+	        mbSeq
+	        ,mbName
+			,mbEmail
+			,mbPassword
+         FROM members
+        WHERE 1=1 
+    </select>
+    
+    <select id="selectlogin" resultMap="resultMapObj">
+        SELECT
+	        mbSeq
+			,mbEmail
+			,mbPassword
+         FROM members
+        WHERE mbEmail = ${mbEmailchek}
+    </select>
+    
+    
+    <insert id="insert">
+    
+    INSERT INTO members
+    (
+    mbName
+    ,mbEmail
+    ,mbPassword
+    ,mbdelectNY
+    )
+    VALUES
+    (
+    #{mbName}
+    ,#{mbEmail}
+    ,#{mbPassword}
+    ,#{mbdelectNY}
+    )
+    
+    </insert>
+    
+
+    
+    <sql id ="selectCommon">
+   		<if test="shDelNy != null and !shDelNy.equals('')">AND mbdelectNY = #{shDelNy}</if>   
                 
 				  <choose>
 					<when test="shOptionDate == 1">AND mbRgstrDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
@@ -30,8 +87,7 @@
 	            <when test="shOption == 1">AND mbSeq = #{shValue}</when>
 	            <when test="shOption == 2">AND mbName LIKE CONCAT('%',#{shValue},'%')</when>
 	        </choose> 
-         ORDER BY mbSeq DESC
-    </select>
+   </sql>
 
 
    <!--  ,(select count(aa.ifcdSeq) from infrCode aa where 1=1 and aa.ifcdDelNy = 0 and aa.ifcgSeq = a.ifcgSeq) as xifcdSeqCount -->

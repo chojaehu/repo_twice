@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head th:replace="~{xdm/infra/block/head :: head}"></head>
+
+	<body>
+
+		<!-- Page wrapper start -->
+		<div class="page-header" th:replace="~{xdm/infra/block/nav :: navtop}"></div>
+			<!-- Page header ends -->
+
+			<!-- Main container start -->
+			<div class="main-container">
+
+				<!-- Sidebar wrapper start -->
+				<nav class="sidebar-wrapper"
+				th:replace="~{xdm/infra/block/nav :: navleft}"></nav>
+				<!-- Sidebar wrapper end -->
+
+				<!-- Content wrapper scroll start -->
+				<div class="content-wrapper-scroll">
+
+					<!-- Main header starts -->
+					<div class="main-header d-flex align-items-center justify-content-between position-relative">
+						<div class="d-flex align-items-center justify-content-center">
+							<div class="page-icon">
+								<i class="bi bi-columns-gap"></i>
+							</div>
+							<div class="page-title d-none d-md-block">
+								<h5>코드그룹 관리</h5>
+							</div>
+						</div>
+						<!-- Live updates start -->
+						<ul class="updates d-flex align-items-end flex-column overflow-hidden" id="updates">
+							<li>
+								<a href="javascript:void(0)">
+									<i class="bi bi-envelope-paper text-red font-1x me-2"></i>
+									<span>12 emails from David Michaiah.</span>
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">
+									<i class="bi bi-bar-chart text-blue font-1x me-2"></i>
+									<span>15 new features updated successfully.</span>
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">
+									<i class="bi bi-folder-check text-yellow font-1x me-2"></i>
+									<span>The media folder is created successfully.</span>
+								</a>
+							</li>
+						</ul>
+						<!-- Live updates end -->
+					</div>
+					<!-- Main header ends -->
+
+					<!-- Content wrapper start -->
+					<div class="content-wrapper">
+
+						<!-- Row start -->
+						<div class="row gx-3">
+							<div class="col-xxl-12">
+								<div class="card">
+									<div class="card-body">
+											<form class="row g-3 needs-validation" name="formname" method="post"  novalidate>
+												<div class="col-md-6">
+													<input type="text" class="form-control form-control-sm" id ="mbSeq"  name ="mbSeq" th:value = "${item.mbSeq}" required />
+													<div class="valid-feedback">Looks good!</div>
+												</div>
+												<div class="col-md-6">
+													<input type="text" class="form-control form-control-sm" id ="mbName"  name ="mbName" th:value = "${item.mbName}" required />
+													<div class="valid-feedback">Looks good!</div>
+												</div>
+												<div class="col-md-6">
+													<input type="text" class="form-control form-control-sm" id ="mbEmail"  name ="mbEmail" th:value = "${item.mbEmail}" required />
+													<div class="valid-feedback">Looks good!</div>
+												</div>
+												<div class="col-md-6">
+													<input type="text" class="form-control form-control-sm" id ="mbPassword"  name ="mbPassword" th:value = "${item.mbPassword}" required />
+													<div class="valid-feedback">Looks good!</div>
+												</div>
+												<div class="col-6">
+													<a th:href ="@{/memberXdmList}">
+													<button class="btn btn-primary " type="button">
+														돌아가기
+													</button>
+													</a>
+												</div>
+						
+												<div class="col-6 d-flex gap-2  d-flex justify-content-end">
+													<button type="button" class="btn btn-danger " 
+													data-bs-toggle="modal" 
+													data-bs-target="#exampleModal">
+														
+														<i class="bi bi-trash-fill"></i>
+													</button>
+														<div class="modal fade" 
+														id="exampleModal" 
+														tabindex="-1" 
+														aria-labelledby="exampleModalLabel"
+														aria-hidden="true">	
+															<div class="modal-dialog">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<h5 class="modal-title" id="exampleModalLabel">
+																			삭제하시겠습니까?
+																		</h5>
+																		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+																	</div>
+																	<div class="modal-body">
+																	</div>
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >
+																				아니요.
+																		</button>
+																		<button type="submit" class="btn btn-primary" onclick="javascript: form.action='indexdelete';">
+																				예
+																		</button>
+																	</div>
+																</div>
+															</div>
+														</div> 
+													
+													<!-- <button class="btn btn-danger  d-flex justify-content-end" type="submit" onclick="javascript: form.action='indexdelete';">
+														삭제
+													</button> -->
+													<button class="btn btn-danger  " type="submit" onclick="javascript: form.action='indexupdatedelete';">
+														삭제X
+													</button>
+													<button class="btn btn-primary" id ="btnsubmit" type="button" >
+														저장
+													</button>
+													
+												</div>
+											</form>
+											
+											<!-- <form class="needs-validation " method="post" action="indexdelete" novalidate>
+												<div class="">
+													<input type="text" class="form-control form-control-sm"  name ="number" th:value = "${item.number}" style="display: none; "/>
+												</div>
+													<div class="col-12	 d-flex justify-content-end">												
+														<button class="btn btn-primary" type="submit">
+															삭제
+														</button>
+														
+													</div>
+											</form>
+
+											
+											<form class=" eeds-validation " method="post" action="indexupdatedelete" novalidate>
+												<div class="col-md-6">
+													<input type="text" class="form-control form-control-sm"  name ="number" th:value = "${item.number}" style="display: none; "/>
+												</div>
+												<div class="col-12	 d-flex justify-content-end">
+													<button class="btn btn-primary d-flex justify-content-end" type="submit">
+														deleteNY수정
+													</button>
+												</div>
+											</form> -->
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Content wrapper end -->
+
+				</div>
+				<!-- Content wrapper scroll end -->
+
+				<!-- App Footer start -->
+				<div class="app-footer">
+					<span>© Gear admin 2023</span>
+				</div>
+				<!-- App footer end -->
+
+			</div>
+			<!-- Main container end -->
+
+		</div>
+		<!-- Page wrapper end -->
+
+		<!-- *************
+			************ Required JavaScript Files *************
+		************* -->
+		<!-- Required jQuery first, then Bootstrap Bundle JS -->
+		<!-- <script src="xdm/js/jquery.min.js"></script> -->
+		<script src="xdm/js/bootstrap.bundle.min.js"></script>
+		<script src="xdm/js/modernizr.js"></script>
+		<script src="xdm/js/moment.js"></script>
+
+		<!-- *************
+			************ Vendor Js Files *************
+		************* -->
+
+		<!-- Overlay Scroll JS -->
+		<script src="xdm/vendor/overlay-scroll/jquery.overlayScrollbars.min.js"></script>
+		<script src="xdm/vendor/overlay-scroll/custom-scrollbar.js"></script>
+
+		<!-- News ticker -->
+		<script src="xdm/vendor/newsticker/newsTicker.min.js"></script>
+		<script src="xdm/vendor/newsticker/custom-newsTicker.js"></script>
+
+		<!-- Main Js Required -->
+		<script src="xdm/js/main.js"></script>
+		<script src="xdm/js/validations.js"></script>
+		
+		<script type="text/javascript">
+		let form = document.querySelector("form[name=formname]");
+		let goUrlXdmList = "/codeGroupupdate";	
+		let btninst = document.getElementById("btnsubmit");
+		
+		btninst.onclick = function(){
+			/* valupdt(); */
+			form.action = goUrlXdmList;
+		    form.submit();  
+		}
+		
+		/* function valInst(){
+			valuptp();
+			alert("valInst");
+		}
+		
+		function valupdt(){
+			alert("valupdt");
+			alert( document.getElementById("ifcgSeq").value);
+			alert( document.getElementById("ifcgName").value);
+			if(!empty(document.getElementById("ifcgName").value))
+				{
+				alert("입력하세요")
+				return false;
+				}
+
+		}
+		empty = funstion(value)
+		{
+			if(value == null || value == 'null'|| value == 0){
+				return false;
+			}
+			else {
+				return true;
+			}
+		} */
+		</script>
+		
+	</body>
+
+</html>
