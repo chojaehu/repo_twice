@@ -63,7 +63,7 @@
 							<div class="col-xxl-12">
 								<div class="card">
 									<div class="card-body">
-											<form class="row g-3 needs-validation" name="formname" method="post"  novalidate>
+											<form class="row g-3 " name="formname" method="post"  novalidate>
 												<div class="col-md-6">
 													<input type="text" class="form-control form-control-sm" id ="mbSeq"  name ="mbSeq" th:value = "${item.mbSeq}" required />
 													<div class="valid-feedback">Looks good!</div>
@@ -114,7 +114,7 @@
 																		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >
 																				아니요.
 																		</button>
-																		<button type="submit" class="btn btn-primary" onclick="javascript: form.action='indexdelete';">
+																		<button type="submit" class="btn btn-primary" onclick="javascript: form.action='memberdelete';">
 																				예
 																		</button>
 																	</div>
@@ -125,7 +125,7 @@
 													<!-- <button class="btn btn-danger  d-flex justify-content-end" type="submit" onclick="javascript: form.action='indexdelete';">
 														삭제
 													</button> -->
-													<button class="btn btn-danger  " type="submit" onclick="javascript: form.action='indexupdatedelete';">
+													<button class="btn btn-danger  " type="submit" onclick="javascript: form.action='memberupdatedelete';">
 														삭제X
 													</button>
 													<button class="btn btn-primary" id ="btnsubmit" type="button" >
@@ -134,30 +134,6 @@
 													
 												</div>
 											</form>
-											
-											<!-- <form class="needs-validation " method="post" action="indexdelete" novalidate>
-												<div class="">
-													<input type="text" class="form-control form-control-sm"  name ="number" th:value = "${item.number}" style="display: none; "/>
-												</div>
-													<div class="col-12	 d-flex justify-content-end">												
-														<button class="btn btn-primary" type="submit">
-															삭제
-														</button>
-														
-													</div>
-											</form>
-
-											
-											<form class=" eeds-validation " method="post" action="indexupdatedelete" novalidate>
-												<div class="col-md-6">
-													<input type="text" class="form-control form-control-sm"  name ="number" th:value = "${item.number}" style="display: none; "/>
-												</div>
-												<div class="col-12	 d-flex justify-content-end">
-													<button class="btn btn-primary d-flex justify-content-end" type="submit">
-														deleteNY수정
-													</button>
-												</div>
-											</form> -->
 										
 									</div>
 								</div>
@@ -178,33 +154,13 @@
 			</div>
 			<!-- Main container end -->
 
-		</div>
+
 		<!-- Page wrapper end -->
 
 		<!-- *************
 			************ Required JavaScript Files *************
 		************* -->
-		<!-- Required jQuery first, then Bootstrap Bundle JS -->
-		<!-- <script src="xdm/js/jquery.min.js"></script> -->
-		<script src="xdm/js/bootstrap.bundle.min.js"></script>
-		<script src="xdm/js/modernizr.js"></script>
-		<script src="xdm/js/moment.js"></script>
-
-		<!-- *************
-			************ Vendor Js Files *************
-		************* -->
-
-		<!-- Overlay Scroll JS -->
-		<script src="xdm/vendor/overlay-scroll/jquery.overlayScrollbars.min.js"></script>
-		<script src="xdm/vendor/overlay-scroll/custom-scrollbar.js"></script>
-
-		<!-- News ticker -->
-		<script src="xdm/vendor/newsticker/newsTicker.min.js"></script>
-		<script src="xdm/vendor/newsticker/custom-newsTicker.js"></script>
-
-		<!-- Main Js Required -->
-		<script src="xdm/js/main.js"></script>
-		<script src="xdm/js/validations.js"></script>
+		<div th:replace="~{xdm/infra/block/jsscr :: scr}"></div>
 		
 		<script type="text/javascript">
 		let form = document.querySelector("form[name=formname]");

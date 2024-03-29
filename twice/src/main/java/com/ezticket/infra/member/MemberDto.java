@@ -6,8 +6,9 @@ public class MemberDto {
 
 	private String mbSeq;
 	private String mbName;
+	
 	private String mbEmail;
-	private String mbEmailchek;
+	
 	private String mbPassword;
 	private String mbPasswordCheck;
 	private String mbgender;
@@ -33,12 +34,6 @@ public class MemberDto {
 	}
 	public void setMbEmail(String mbEmail) {
 		this.mbEmail = mbEmail;
-	}
-	public String getMbEmailchek() {
-		return mbEmailchek;
-	}
-	public void setMbEmailchek(String mbEmailchek) {
-		this.mbEmailchek = mbEmailchek;
 	}
 	public String getMbPassword() {
 		return mbPassword;

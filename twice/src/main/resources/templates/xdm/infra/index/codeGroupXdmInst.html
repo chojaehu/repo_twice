@@ -124,26 +124,10 @@
 			************ Required JavaScript Files *************
 		************* -->
 		<!-- Required jQuery first, then Bootstrap Bundle JS -->
-		<script src="xdm/js/jquery.min.js"></script>
-		<script src="xdm/js/bootstrap.bundle.min.js"></script>
-		<script src="xdm/js/modernizr.js"></script>
-		<script src="xdm/js/moment.js"></script>
-
-		<!-- *************
-			************ Vendor Js Files *************
-		************* -->
-
-		<!-- Overlay Scroll JS -->
-		<script src="xdm/vendor/overlay-scroll/jquery.overlayScrollbars.min.js"></script>
-		<script src="xdm/vendor/overlay-scroll/custom-scrollbar.js"></script>
-
-		<!-- News ticker -->
-		<script src="xdm/vendor/newsticker/newsTicker.min.js"></script>
-		<script src="xdm/vendor/newsticker/custom-newsTicker.js"></script>
-
-		<!-- Main Js Required -->
-		<script src="xdm/js/main.js"></script>
-		<script src="xdm/js/validations.js"></script>
+		<div th:replace="~{xdm/infra/block/jsscr :: scr}"></div>
+		
+		
+		
 		<script type="text/javascript">
 		let form = document.querySelector("form[name=formname]");
 		let goUrlXdmList = "/codeGroupInsert";	

@@ -42,18 +42,38 @@
 			,mbEmail
 			,mbPassword
          FROM members
-        WHERE 1=1 
+        WHERE mbSeq = #{mbSeq}
     </select>
     
     <select id="selectlogin" resultMap="resultMapObj">
         SELECT
 	        mbSeq
+	        ,mbName
 			,mbEmail
 			,mbPassword
          FROM members
-        WHERE mbEmail = ${mbEmailchek}
+        WHERE mbEmail = '${mbEmail}'
+        ;
     </select>
     
+     <select id="emailChek" resultMap="resultMapObj">
+        SELECT
+	        mbSeq
+			,mbEmail
+         FROM members
+        WHERE 1 = 1
+        ;
+    </select>
+    
+    
+    <update id="updatedelete">
+    
+    UPDATE members
+    SET
+    mbdelectNY = 1
+    WHERE mbSeq = #{mbSeq}
+    
+    </update>
     
     <insert id="insert">
     
@@ -73,6 +93,8 @@
     )
     
     </insert>
+    
+
     
 
     

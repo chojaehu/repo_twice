@@ -1,6 +1,7 @@
 package com.ezticket.infra.member;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezticket.common.constants.Constants;
@@ -22,6 +24,7 @@ public class MemeberController {
 	@Autowired
 	MemeberService service;
 	
+    //리스트 페이지
 	@RequestMapping(value = "/memberXdmList")
 	public String memberXdmList(@ModelAttribute("vo")MemeberVo vo, Model model,MemberDto dto)throws Exception {
 		
@@ -36,18 +39,21 @@ public class MemeberController {
 		{
 			model.addAttribute("list", service.selectList(vo));
 		}
-		System.out.println("dto.getMbPasswordCheck() : " + dto.getMbPasswordCheck());
+		//System.out.println("dto.getMbPasswordCheck() : " + dto.getMbPasswordCheck());
 		
 		return "/xdm/infra/member/memberXdmList";
 	}
+	
+	//수정페이지
 	@RequestMapping(value = "/memberXdmForm")
 	public String memberXdmForm(MemberDto dto, Model model) throws Exception {
 		
 		model.addAttribute("item", service.selectOne(dto));
 		
-		return "/xdm/infra/index/memberXdmForm";
+		return "/xdm/infra/member/memberXdmForm";
 	}
 	
+	// 비밀번호 암호화
 	@ResponseBody
 	@RequestMapping(value = "/signinXdmProc")
 	public Map<String, Object> signinXdmProc(MemberDto dto, HttpSession httpSession) throws Exception {
@@ -67,11 +73,20 @@ public class MemeberController {
 		return returnMap;
 	}
 	
+	// 둥록페이지
 	@RequestMapping(value = "/memberXdmInst")
 	public String memberXdmInst() throws Exception{
 		return "/xdm/infra/member/memberXdmInst";
 	}
 	
+	// 로그인 페이지
+	@RequestMapping(value = "/login")
+	public String login() throws Exception {
+
+		return "/xdm/infra/index/login";
+	}
+	
+	//회원 추가
 	@RequestMapping(value = "/memberInsert")
 	public String memberInsert(MemberDto dto) throws Exception {
 		
@@ -86,44 +101,120 @@ public class MemeberController {
 		return "redirect:/memberXdmList";
 	}
 	
-	@RequestMapping(value = "/login")
-	public String login() throws Exception {
+	//화원 정보 삭제
+	@RequestMapping(value = "/memberdelete")
+	public String memberdelete(MemberDto dto) throws Exception
+	{
+		service.delete(dto);
 		
+		return "redirect:/memberXdmList";
+	}
+	
+	//회원 정보 deleteNY false
+	@RequestMapping(value  = "/memberupdatedelete")
+	public String memberupdatedelete(MemberDto dto) throws Exception
+	{
+		service.updatedelete(dto);
+		return "redirect:/memberXdmList";
+	}
+	
+	/*
+	 * @RequestParam("mbEmailchek") String mbEmailchek,
+	 * 
+	 * @RequestParam("mbPasswordCheck") String mbPasswordCheck,
+	 */
+	
+	
+	// 로그인 체크
+	@ResponseBody
+	@RequestMapping(value = "/loginchek")
+	public Map<String, Object> loginchek( 
+			MemberDto dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
 
-		return "/xdm/infra/index/login";
+		
+		
+		MemberDto dDto =  service.selectlogin(dto);
+		
+		if(dDto != null)
+		{
+			//dto.setMbPassword(encodeBcrypt(dto.getMbPassword(), 10));
+			
+			
+			String id = dto.getMbEmail();
+			String pw = dto.getMbPassword();
+			
+		
+			dDto.setMbPassword(encodeBcrypt(dDto.getMbPassword(), 10));
+			
+			System.out.println("dDto.getMbEmail() : " + id);
+			System.out.println("dDto.getMbPassword() : " + pw);
+			
+			System.out.println("dDto.getMbEmail() : " + dDto.getMbEmail());
+			System.out.println("dDto.getMbPassword() : " + dDto.getMbPassword());
+
+			if(id.equals(dDto.getMbEmail())) {
+				returnMap.put("rt", "success");
+				System.out.println("true");
+				
+			} else {
+				returnMap.put("rt", "id");
+				System.out.println("false");
+			}
+			
+			if(matchesBcrypt(pw, dDto.getMbPassword(), 10)) { 
+				httpSession.setMaxInactiveInterval(120 * Constants.SESSION_MINUTE_XDM); // 60second * 30 = 30minute
+				httpSession.setAttribute("sessSeqXdm", dDto.getMbSeq());
+				httpSession.setAttribute("sessNameXdm", dDto.getMbName());
+				httpSession.setAttribute("sessIdXdm", dDto.getMbEmail());
+				httpSession.setAttribute("sessPwXdm", dDto.getMbPassword());
+				 returnMap.put("rt","success"); 
+			} 
+			else 
+			{ 
+				 returnMap.put("rt", "pwfalse"); 
+				 System.out.println("false");
+			}
+
+		}
+		else
+		{
+			returnMap.put("rt", "email");
+		}
+		
+		 
+		return returnMap;
+	}
+	
+	//이메일 중복검사
+	@ResponseBody
+	@RequestMapping(value = "/emailChek")
+	public Map<String, Object> emailChek( 
+			MemberDto dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		
+		List<MemberDto> list = service.emailChek();
+		 
+		return returnMap;
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/loginchek")
-	public Map<String, Object> loginchek(MemberDto dto, HttpSession httpSession,MemeberVo vo ,Model model) throws Exception {
+	@RequestMapping(value = "/loginoutXdm")
+	public Map<String, Object> loginoutXdm( 
+			MemberDto dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		String aa = "";
+		httpSession.invalidate();
+		returnMap.put("rt","success");
 		
-		String id = dto.getMbEmail();
-		String pw = dto.getMbPassword();
-		MemberDto dDto = service.selectlogin(dto);
 		
-		if(dto.getMbEmail().equals(dDto.getMbEmailchek())) {
-			returnMap.put("rt", "success");
-			System.out.println("true");
-		} else {
-			returnMap.put("rt", "id");
-			System.out.println("false");
-		}
-		
-		 if(matchesBcrypt(pw, dto.getMbPasswordCheck(), 10)) { 
-			 returnMap.put("rt","success"); 
-			 } 
-		 else { 
-			 returnMap.put("rt", "pwfalse"); 
-			 }
-		 
 		return returnMap;
 	}
 
 	
 	
+	// 검색 기능
 	public void setSearch(MemeberVo vo) throws Exception {
 		/* 최초 화면 로딩시에 세팅은 문제가 없지만 */
 		/*이후 전체적으로 데이터를 조회를 하려면 null 값이 넘어 오는 관계로 문제가 전체 데이터 조회가 되지 못한다.*/

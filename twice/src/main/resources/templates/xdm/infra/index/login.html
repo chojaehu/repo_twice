@@ -48,12 +48,13 @@
 						<h5 class="fw-light mb-5">로그인</h5>
 						<div class="mb-3">
 							<label class="form-label">이메일</label>
-							<input type="text" class="form-control" placeholder="Enter your email" id="mbEmailchek" name = "mbEmailchek" required/>
+							<input type="text" class="form-control" placeholder="Enter your email" id="mbEmail" name = "mbEmail" required/>
+							<!-- <button type="button" class="btn btn-outline-primary" id = "emailChek" name = "emailChek">중복검사</button> -->
 							<div class="invalid-feedback" id="mbEmailchekFeedback" name="prTitleFeedback"></div>
 						</div>
 						<div class="mb-3">
 							<label class="form-label">비밀번호</label>
-							<input type="password" class="form-control" placeholder="Enter password" id="mbPasswordCheck" name = "mbPasswordCheck" required/>
+							<input type="password" class="form-control" placeholder="Enter password" id="mbPassword" name = "mbPassword" required/>
 							<div class="invalid-feedback" id="mbPasswordCheckFeedback" name="prTitleFeedback"></div>
 						</div>
 						<div class="d-flex align-items-center justify-content-between">
@@ -94,12 +95,11 @@
 		<script src="xdm/js/main.js"></script>
 		<script src="xdm/js/validationXdm.js" ></script>
 
-			
+
 		<script type="text/javascript">
 		
 		
-		let form = document.querySelector("form[name=formname]");
-		let goUrlXdmList = "/memberXdmList";
+		let goUrlXdmList = "/indexs";
 		
 
 		
@@ -112,15 +112,15 @@
 				,cache: false
 				,type: "post"
 				,url: "/loginchek"
-				,data : { "mbEmailchek" : $("#mbEmailchek").val(), "mbPasswordCheck" : $("#mbPasswordCheck").val()}
+				,data : { "mbEmail" : $("#mbEmail").val(), "mbPassword" : $("#mbPassword").val()}
 				,success: function(response) {
 					if(response.rt == "success") {
-						valInst();
-					} else {
-				 		/* document.getElementById("modalAlertTitle").innerText = "확 인";
-				 		document.getElementById("modalAlertBody").innerText = "일치하는 회원이 존재 하지 않습니다!";
-				 		$("#modalAlert").modal("show");  */
-				 		alert("틀립니다.")
+						valLogin();
+					} else if(response.rt == "email") {
+				 		alert("없는 이메일 입니다")
+					}
+					else{
+						alert("비밀번호가 일치하지않습니다.")
 					}
 				}
 				,error : function(jqXHR, textStatus, errorThrown){
@@ -131,34 +131,15 @@
 		
 		function vallupdt()
 		{
-			if(!checkOnlyKoreanEnglishNumber('mbEmailchek',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false}
-			if(!checkOnlyKoreanEnglishNumber('mbPasswordCheck',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false} 
+			//if(!checkEmail('mbEmailchek',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false}
+			//if(!checkOnlyKoreanEnglishNumber('mbPasswordCheck',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false} 
 		}
 		
-		function valInst(){
-			valupdt();
+		function valLogin(){
+			location.href = goUrlXdmList;
 		}
 		
-		function valupdt(){
-			if(!empty(document.getElementById("mbEmailchek").value))
-				{
-				document.getElementById('mbEmailchek').classList.add("")
-				}
-			else{
-				form.action = goUrlXdmList;
-			    form.submit();
-			}
 
-		}
-		empty =  function(value)
-		{
-			if(value == null || value == 'null'|| value == 0){
-				return false;
-			}
-			else {
-				return true;
-			}
-		}
 		
 		</script>
 	</body>

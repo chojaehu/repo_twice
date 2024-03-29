@@ -14,6 +14,11 @@ public class MemeberService {
 	
 	public List<MemberDto> selectList(MemeberVo vo){ return dao.selectList(vo);};
 	
+	public List<MemberDto> emailChek()
+	{
+		return dao.emailChek();
+	}
+	
 	public MemberDto selectlogin(MemberDto dto) {
 		return dao.selectlogin(dto);
 	}
@@ -29,6 +34,14 @@ public class MemeberService {
 	public int insert(MemberDto dto)
 	{
 		return dao.insert(dto);
+	}
+	public int delete(MemberDto dto)
+	{
+		return dao.delete(dto);
+	}
+	public int updatedelete(MemberDto dto)
+	{
+		return dao.updatedelete(dto);
 	}
 
 }
