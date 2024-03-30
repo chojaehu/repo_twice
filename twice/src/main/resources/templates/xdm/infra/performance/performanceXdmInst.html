@@ -191,10 +191,11 @@
 		}
 		
 		function valInst(){
-			valupdt();
+			form.action = goUrlXdmList;
+		    form.submit();
 		}
 		
-		function valupdt(){
+		/* function valupdt(){
 			if(!empty(document.getElementById("prTitle").value))
 				{
 				document.getElementById('prTitle').classList.add("")
@@ -213,7 +214,7 @@
 			else {
 				return true;
 			}
-		}
+		} */
 
 		</script>
 	</body>

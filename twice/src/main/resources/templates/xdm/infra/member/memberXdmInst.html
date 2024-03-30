@@ -69,31 +69,48 @@
 										<form class="row g-3 " name ="formname" method="post"  novalidate>
 											<div class="col-md-6">
 												<input type="text" class="form-control form-control-sm" id="mbName"  name ="mbName" placeholder  ="이름"  required />
-												<div class="invalid-feedback" id="prTitleFeedback" name="prTitleFeedback"></div>
+												<div class="invalid-feedback" id="mbNameFeedback" name="mbNameFeedback"></div>
 											</div>
 											<div class="col-md-6">
 												<input type="text" class="form-control form-control-sm" id="mbEmail"  name ="mbEmail" placeholder  ="이메일"  required />
-												<div class="invalid-feedback" id="prTitleFeedback" name="prTitleFeedback"></div>
+												<div class="invalid-feedback" id="mbEmailFeedback" name="mbEmailFeedback"></div>
 											</div>
 											<div class="col-md-6">
 												<input type="text" class="form-control form-control-sm" id="mbPassword"  name ="mbPassword" placeholder  ="비밀번호"  required />
-												<div class="invalid-feedback" id="prTitleFeedback" name="prTitleFeedback"></div>
+												<div class="invalid-feedback" id="mbPasswordFeedback" name="mbPasswordFeedback"></div>
 											</div>
 											<div class="col-md-6">
 												<input type="text" class="form-control form-control-sm" id="mbPasswordCheck"  name ="mbPasswordCheck" placeholder  ="비밀번호 확인"  required />
-												<div class="invalid-feedback" id="prTitleFeedback" name="prTitleFeedback"></div>
+												<div class="invalid-feedback" id="mbPasswordCheckFeedback" name="mbPasswordCheckFeedback"></div>
+											</div>
+											<div class="col-md-6">
+												<input type="text" class="form-control form-control-sm" id="mbPhone"  name ="mbPhone" placeholder  ="전화번호"  required />
+												<div class="invalid-feedback" id="mbPhoneFeedback" name="mbPhoneFeedback"></div>
+											</div>
+											<div class="col-md-6">
+													<input type="text" id="mbDateBirth" name="mbDateBirth" placeholder="생년월일"  class="form-control form-control-sm" autocomplete="off">
+													<div class="invalid-feedback" id="mbDateBirthFeedback" name="mbDateBirthFeedback"></div>
 											</div>
 											
 											<div class="col-md-6">
+													<select id="mbgender" name="mbgender" class="form-select form-select-sm">
+														<option value="">성별을 선택하세요</option>
+														<option th:each="list : ${@codeService.selectListCachedCode(3)}" th:value="${list.ifcdSeq}" th:text="${list.ifcdName}"></option>
+													</select>
+													<div class="invalid-feedback" id="mbgenderFeedback" name="mbgenderFeedback"></div>
+												</div> 
+			
+											
+											<div class="col-md-6">
 												<!-- <input type="text" class="form-control form-control-sm"  name ="deleteNY" placeholder  ="삭제여부"  required /> -->
-												<select class="form-control form-control-sm" aria-label=".form-select-lg example" name ="mbdelectNY" placeholder  ="삭제여부"  required>
+												<select class="form-control form-control-sm" aria-label=".form-select-lg example" id= "mbdelectNY" name ="mbdelectNY" placeholder  ="삭제여부"  required>
 												  <option value = 0 selected>n</option>
 												  <option value = 1>y</option>
 												</select>
-												<div class="invalid-feedback" id="prTitleFeedback" name="prTitleFeedback"></div>
+												<div class="invalid-feedback" id="mbdelectNYFeedback" name="mbdelectNYFeedback"></div>
 											</div>
-											<div class="col-md-6">
-											</div>
+											<!-- <div class="col-md-6">
+											</div> -->
 											<div class="col-6 d-flex ">
 												<a th:href ="@{/memberXdmList}">
 												<button class="btn btn-primary " type="button">
@@ -152,6 +169,13 @@
 			
 		} */
 		
+		window.addEventListener('load', function() {
+			$("#mbDateBirth").datetimepicker({
+				timepicker:false,
+	 			format: 'Y/m/d'
+			});
+		});
+		
 		document.getElementById("btnsubmit").onclick = function () {
 			//valInst();
 			if(vallupdt() == false) return false;
@@ -180,8 +204,14 @@
 		
 		function vallupdt()
 		{
-			if(!checkOnlyKoreanEnglishNumber('mbPassword',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false}
-			if(!checkOnlyKoreanEnglishNumber('mbPasswordCheck',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false}
+			if(!checkOnlyKoreanEnglishNumber('mbName',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false}
+			if(!checkEmail('mbEmail',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false}
+			if(!checkPassword('mbPassword',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false}
+			if(!checkPassword('mbPasswordCheck',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false} 
+			if(!checkPhones('mbPhone', 2,0,"010-5555-6666형식으로 적으세요")){return false} 
+			if(!checkDate('mbDateBirth',2,0,"2024/02/21 형식으로만 입력 가능")){return false}	
+			if(!checkSelectNull('mbgender',2,"성별을 선택하세요")){return false}	
+			//if(!checkSelectNull('mbdelectNY',2,"선택하세요")){return false}	
 		}
 		
 		function valInst(){

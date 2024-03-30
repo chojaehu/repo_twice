@@ -73,6 +73,8 @@
         	AND a.ifcgSeq = #{ifcgSeq}
     </select>
     
+    
+    
     <update id="update">
     
     UPDATE codegroup

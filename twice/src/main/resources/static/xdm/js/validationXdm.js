@@ -36,6 +36,13 @@ function checkDate (objName, pattern, nullAllowedNy, message) {
     var regExp = /^\d{4}\/(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])$/;
     return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
 }
+
+function checkPhones (objName, pattern, nullAllowedNy, message) {
+// checkDate = function (objName, pattern, nullAllowedNy, message) { {
+    var regExp = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+    return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
+}
+
 function checkAgeLimit (objName, pattern, nullAllowedNy, message) {
 // checkDate = function (objName, pattern, nullAllowedNy, message) { {
     var regExp = /^[0-9]*$/;

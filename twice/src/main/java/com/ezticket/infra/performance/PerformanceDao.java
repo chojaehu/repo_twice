@@ -12,5 +12,7 @@ public interface PerformanceDao {
 	
 	public int update(PerformanceDto dto);
 	public int insert(PerformanceDto dto);
+	public int delete(PerformanceDto dto);
+	public int updatedelete(PerformanceDto dto);
 
 }

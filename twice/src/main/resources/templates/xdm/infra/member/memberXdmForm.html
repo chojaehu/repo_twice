@@ -160,7 +160,7 @@
 		<!-- *************
 			************ Required JavaScript Files *************
 		************* -->
-		<div th:replace="~{xdm/infra/block/jsscr :: scr}"></div>
+	<!-- 	<div th:replace="~{xdm/infra/block/jsscr :: scr}"></div>
 		
 		<script type="text/javascript">
 		let form = document.querySelector("form[name=formname]");
@@ -168,12 +168,12 @@
 		let btninst = document.getElementById("btnsubmit");
 		
 		btninst.onclick = function(){
-			/* valupdt(); */
+			valupdt(); 
 			form.action = goUrlXdmList;
 		    form.submit();  
 		}
 		
-		/* function valInst(){
+		 function valInst(){
 			valuptp();
 			alert("valInst");
 		}
@@ -197,7 +197,68 @@
 			else {
 				return true;
 			}
+		} 
+		</script> -->
+		
+		<script type="text/javascript">
+		
+		window.addEventListener('load', function() {
+			$("#prStartDate, #prEndDate").datetimepicker({
+				timepicker:false,
+	 			format: 'Y/m/d'
+			});
+		});
+		
+		function vallupdt()
+		{
+			if(!checkOnlyKoreanEnglishNumber('prTitle',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false}
+			if(!checkSelectNull('prdeleteNY',2,"선택하세요")){return false}	
+			if(!checkOnlyKoreanEnglishNumber('prHostedPlanned',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false}	
+			if(!checkSelectNull('prAgeLimit',2,"선택하세요")){return false}	
+			if(!checkDate('prStartDate',2,0,"2024/02/21 형식으로만 입력 가능")){return false}		
+			if(!checkDate('prEndDate',2,0,"2024/02/21 형식으로만 입력 가능")){return false}	
+		}
+		let form = document.querySelector("form[name=formname]");
+		let goUrlXdmList = "/performanceinsert";	
+		
+		document.getElementById("btnsubmit").onclick = function(){	
+			vallupdt();
+			if(vallupdt() == false)
+				{
+				return false
+				}
+			else
+				{
+				valInst()
+				}
+		}
+		
+		function valInst(){
+			form.action = goUrlXdmList;
+		    form.submit();
+		}
+		
+		/* function valupdt(){
+			if(!empty(document.getElementById("prTitle").value))
+				{
+				document.getElementById('prTitle').classList.add("")
+				}
+			else{
+				form.action = goUrlXdmList;
+			    form.submit();
+			}
+
+		}
+		empty =  function(value)
+		{
+			if(value == null || value == 'null'|| value == 0){
+				return false;
+			}
+			else {
+				return true;
+			}
 		} */
+
 		</script>
 		
 	</body>

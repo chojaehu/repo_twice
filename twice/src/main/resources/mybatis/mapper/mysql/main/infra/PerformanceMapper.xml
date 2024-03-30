@@ -89,6 +89,21 @@
     
     </insert>
     
+    <update id="updatedelete">
+    
+    UPDATE performanceList
+    SET
+    prdeleteNY = 1
+    WHERE prSeq = #{prSeq}
+    
+    </update>
+    
+    <delete id="delete">
+    DELETE 
+    FROM performanceList
+    WHERE prSeq = #{prSeq}
+    </delete>
+    
     <sql id ="selectCommon">
    		<if test="shDelNy != null and !shDelNy.equals('')">AND prdeleteNY = #{shDelNy}</if>  
         	<if test="shAge != null and !shAge.equals('')">AND prAgeLimit = #{shAge}</if>   

@@ -24,6 +24,8 @@ public class PerformanceService {
 	{
 		return dao.selectOne(dto);
 	}
+	
+	
 	public int update(PerformanceDto dto)
 	{
 		return dao.update(dto);
@@ -31,6 +33,14 @@ public class PerformanceService {
 	public int insert(PerformanceDto dto)
 	{
 		return dao.insert(dto);
+	}
+	public int delete(PerformanceDto dto)
+	{
+		return dao.delete(dto);
+	}
+	public int updatedelete(PerformanceDto dto)
+	{
+		return dao.updatedelete(dto);
 	}
 
 }

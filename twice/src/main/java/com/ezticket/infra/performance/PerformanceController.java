@@ -81,6 +81,9 @@ public class PerformanceController {
 	{
 		return str + "/performanceXdmInst";
 	}
+	
+	
+	
 	@RequestMapping(value = "/performanceinsert")
 	public String performanceinsert(PerformanceDto dto) throws Exception
 	{
@@ -92,13 +95,28 @@ public class PerformanceController {
 	@RequestMapping(value = "/performanceupdate")
 	public String performanceupdate(PerformanceDto dto) throws Exception {
 		
-		
 		System.out.println("dto.getPrStartDate : "+dto.getPrStartDate());
 		System.out.println("dto.getPrEndDate : "+dto.getPrEndDate());
 		service.update(dto);
 
 		return "redirect:/performanceXdmList";
 	}
+	
+	@RequestMapping(value = "/performancedelete")
+	public String performancedelete(PerformanceDto dto) throws Exception
+	{
+		service.insert(dto);
+		return "redirect:/performanceXdmList";
+	}
+	
+	@RequestMapping(value = "/performanceupdatedelete")
+	public String performanceupdatedelete(PerformanceDto dto) throws Exception
+	{
+		service.updatedelete(dto);
+		return "redirect:/performanceXdmList";
+	}
+	
+	
 	
 	public void setSearch(PerformanceVo vo) throws Exception {
 		/* 최초 화면 로딩시에 세팅은 문제가 없지만 */

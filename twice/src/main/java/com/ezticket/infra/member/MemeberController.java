@@ -24,6 +24,14 @@ public class MemeberController {
 	@Autowired
 	MemeberService service;
 	
+	
+	// 로그인 페이지
+		@RequestMapping(value = "/login")
+		public String login() throws Exception {
+
+			return "/xdm/infra/index/login";
+		}
+	
     //리스트 페이지
 	@RequestMapping(value = "/memberXdmList")
 	public String memberXdmList(@ModelAttribute("vo")MemeberVo vo, Model model,MemberDto dto)throws Exception {
@@ -53,6 +61,7 @@ public class MemeberController {
 		return "/xdm/infra/member/memberXdmForm";
 	}
 	
+	
 	// 비밀번호 암호화
 	@ResponseBody
 	@RequestMapping(value = "/signinXdmProc")
@@ -79,12 +88,6 @@ public class MemeberController {
 		return "/xdm/infra/member/memberXdmInst";
 	}
 	
-	// 로그인 페이지
-	@RequestMapping(value = "/login")
-	public String login() throws Exception {
-
-		return "/xdm/infra/index/login";
-	}
 	
 	//회원 추가
 	@RequestMapping(value = "/memberInsert")
@@ -199,6 +202,8 @@ public class MemeberController {
 		return returnMap;
 	}
 	
+	
+	//로그 아웃
 	@ResponseBody
 	@RequestMapping(value = "/loginoutXdm")
 	public Map<String, Object> loginoutXdm( 
