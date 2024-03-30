@@ -40,10 +40,16 @@
     <!-- 데이터중 하나 출력 -->
     <select id="selectOne" resultMap="resultMapObj">
         SELECT
-	        mbSeq
-	        ,mbName
-			,mbEmail
-			,mbPassword
+	        mbSeq,
+        	mbName,
+        	mbEmail,
+        	mbPassword,
+        	mbgender,
+        	mbPhone,
+        	mbDateBirth,
+        	mbRgstrDate,
+        	mbModifiedDate,
+        	mbdelectNY
          FROM members
         WHERE mbSeq = #{mbSeq}
     </select>
