@@ -96,33 +96,40 @@ public class CodeGroupController {
 
 		return "/xdm/infra/index/forgotpassword";
 	}
-	
-	@RequestMapping(value = "/codeGroupXdmForm")
-	public String codeGroupXdmForm(CodeGroupDto dto, Model model) throws Exception {
-		
-		model.addAttribute("item", service.selectOne(dto));
-		
-		return "/xdm/infra/index/codeGroupXdmForm";
-	}
-	
-	@RequestMapping(value = "/codeGroupXdmInst")
-	public String codeGroupXdmInst(CodeGroupDto dto, Model model) throws Exception {
-		
-		
-		return "/xdm/infra/index/codeGroupXdmInst";
-	}
-	
-	
 	@RequestMapping(value = "/signup")
 	public String signup() throws Exception {
 		
 
 		return "/xdm/infra/index/signup";
 	}
+	@RequestMapping(value = "/waring")
+	public String waring() throws Exception {
+		
+
+		return "/xdm/infra/index/waring";
+	}
 	
 	
 	
 	
+	
+	
+	@RequestMapping(value = "/codeGroupXdmForm")
+	public String codeGroupXdmForm(CodeGroupDto dto, Model model) throws Exception {
+		
+		model.addAttribute("item", service.selectOne(dto));
+		
+		return "/xdm/infra/codegroup/codeGroupXdmForm";
+	}
+	
+	@RequestMapping(value = "/codeGroupXdmInst")
+	public String codeGroupXdmInst(CodeGroupDto dto, Model model) throws Exception {
+		
+		
+		return "/xdm/infra/codegroup/codeGroupXdmInst";
+	}
+	
+		
 	@RequestMapping(value = "/codeGroupXdmList")
 	public String codeGroupXdmList(@ModelAttribute("vo") CodeGroupVo vo,Model model,CodeGroupDto dto) throws Exception {
 
@@ -143,15 +150,10 @@ public class CodeGroupController {
 		 * System.out.println("vo.getTotalPages() : " + vo.getTotalPages());
 		 * System.out.println("vo.getTotalRows() : " + vo.getTotalRows());
 		 */
-		return "/xdm/infra/index/codeGroupXdmList";
+		return "/xdm/infra/codegroup/codeGroupXdmList";
 	}
 	
-	@RequestMapping(value = "/waring")
-	public String waring() throws Exception {
-		
 
-		return "/xdm/infra/index/waring";
-	}
 	
 	
 	public void setSearch(CodeGroupVo vo) throws Exception {

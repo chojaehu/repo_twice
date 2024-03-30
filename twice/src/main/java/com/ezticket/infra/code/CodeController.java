@@ -112,7 +112,7 @@ public class CodeController {
 		
 		//model.addAttribute("vo", vo);
 		
-		return "/xdm/infra/index/codeXdmList";
+		return "/xdm/infra/code/codeXdmList";
 	}
 	
 	@RequestMapping(value = "/codeXdmForm")
@@ -121,13 +121,13 @@ public class CodeController {
 		
 		model.addAttribute("item", service.selectOne(dto));
 		
-		return "/xdm/infra/index/codeXdmForm";
+		return "/xdm/infra/code/codeXdmForm";
 	}
 	@RequestMapping(value = "/codeXdmInst")
 	public String codeXdmInst(CodeDto dto, Model model) throws Exception {
 		
 		model.addAttribute("listPaging", codeGroupService.selectListWithoutPaging());
-		return "/xdm/infra/index/codeXdmInst";
+		return "/xdm/infra/code/codeXdmInst";
 	}
 	public void setSearch(CodeVo vo) throws Exception {
 		vo.setShDateStart(vo.getShDateStart() == null

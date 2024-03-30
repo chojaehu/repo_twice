@@ -120,7 +120,7 @@
 										</a>
 									</li>
 									
-									<li class="sidebar-dropdown">
+									<!-- <li class="sidebar-dropdown">
 										<a href="#">
 											<i class="bi bi-columns-gap"></i>
 											<span class="menu-text">Forms</span>
@@ -132,12 +132,22 @@
 												</li>
 											</ul>
 										</div>
-									</li>
-									<li>
-										<a th:href="@{/codeGroupXdmList}">
-											<i class="bi bi-grid-3x3"></i>
-											<span class="menu-text">Tables</span>
+									</li> -->
+									<li class="sidebar-dropdown">
+										<a href="#">
+											<i class="bi bi-columns-gap"></i>
+											<span class="menu-text">코드 태이블</span>
 										</a>
+										<div class="sidebar-submenu">
+											<ul>
+												<li>
+													<a th:href="@{/codeGroupXdmList}">코드그룹 테이블</a>
+												</li>
+												<li>
+													<a th:href="@{/codeXdmList}">코드 테이블</a>
+												</li>
+											</ul>
+										</div>
 									</li>
 									
 									<li>
