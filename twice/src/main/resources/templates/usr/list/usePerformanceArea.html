@@ -1,114 +1,53 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<head>
-    <!-- Basic Page Needs -->
+<head th:replace="~{usr/block/usehead :: head}"></head>
+<!-- <head>
+    Basic Page Needs
     <meta charset="utf-8">
     <title>AMovie - Movie list</title>
     <meta name="description" content="A Template by Gozha.net">
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="author" content="Gozha.net">
 
-    <!-- Mobile Specific Metas-->
+    Mobile Specific Metas
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="telephone=no" name="format-detection">
 
-    <!-- Fonts -->
-    <!-- Font awesome - icon font -->
+    Fonts
+    Font awesome - icon font
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Roboto -->
+    Roboto
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
 
-    <!-- Stylesheets -->
-    <!-- jQuery UI -->
+    Stylesheets
+    jQuery UI
     <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
 
-    <!-- Mobile menu -->
+    Mobile menu
     <link href="css/gozha-nav.css" rel="stylesheet" />
-    <!-- Select -->
+    Select
     <link href="css/external/jquery.selectbox.css" rel="stylesheet" />
 
-    <!-- Custom -->
+    Custom
     <link href="css/style.css?v=1" rel="stylesheet" />
 
-    <!-- Modernizr -->
+    Modernizr
     <script src="js/external/modernizr.custom.js"></script>
 
 
 </head>
-
+ -->
 <body>
     <div class="wrapper">
         <!-- Banner -->
         <div class="banner-top">
-            <img alt='top banner' src="ticketimg/title.jpg">
+            <img alt='top banner' src="ticketimg/title.jpg" >
         </div>
 
         <!-- Header section -->
-        <header class="header-wrapper">
-            <div class="container">
-                <!-- Logo link-->
-                <a href='index.html' class="logo">
-                    <img alt='logo' src="images/logo.png">
-                </a>
-
-                <!-- Main website navigation-->
-                <nav id="navigation-box">
-                    <!-- Toggle for mobile menu mode -->
-                    <a href="#" id="navigation-toggle">
-                        <span class="menu-icon">
-                            <span class="icon-toggle" role="button" aria-label="Toggle Navigation">
-                                <span class="lines"></span>
-                            </span>
-                        </span>
-                    </a>
-
-                    <!-- Link navigation -->
-                    <ul id="navigation">
-                        <li>
-                            <span class="sub-nav-toggle plus"></span>
-                            <a href="movie-list-full.html">공연</a>
-                            <ul>
-                                <li class="menu__nav-item"><a href="movie-list-full.html">뮤지컬</a>
-                                </li>
-                                <li class="menu__nav-item"><a href="movie-list-full.html">콘서트</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="sub-nav-toggle plus"></span>
-                            <a href="movie-ranking.html">랭킹</a>
-                        </li>
-                        <li>
-                            <span class="sub-nav-toggle plus"></span>
-                            <a href="gallery-four.html">지역</a>
-                            <ul>
-                                <li class="menu__nav-item"><a href="gallery-four.html">서울</a></li>
-                                <li class="menu__nav-item"><a href="gallery-four.html">경기 / 인천</a></li>
-                                <li class="menu__nav-item"><a href="gallery-four.html">대전 / 충청</a></li>
-                                <li class="menu__nav-item"><a href="gallery-four.html">강원도</a></li>
-                                <li class="menu__nav-item"><a href="gallery-four.html">부산 / 울산 / 경남</a></li>
-                                <li class="menu__nav-item"><a href="gallery-four.html">대구 / 경북</a></li>
-                                <li class="menu__nav-item"><a href="gallery-four.html">전라 / 광주</a></li>
-                                <li class="menu__nav-item"><a href="gallery-four.html">제주도</a></li>
-                            </ul> 
-                        </li>
-                        <li>
-                            <span class="sub-nav-toggle plus"></span>
-                            <a href="information.html">마이페이지</a>
-                        </li>
-                        <li>
-                            <span class="sub-nav-toggle plus"></span>
-                            <a href="contact.html">문의하기</a>
-                        </li>
-                    </ul>
-                </nav>
-
-                <!-- Additional header buttons / Auth and direct link to booking-->
-                <div class="control-panel">
-                    <a href="login.html" class="btn btn--sign ">Sign in</a>
-                </div>
-
+        <header class="header-wrapper" >
+            <div class="container" th:replace="~{usr/block/usenav :: navtop}">
+                
             </div>
         </header>
 

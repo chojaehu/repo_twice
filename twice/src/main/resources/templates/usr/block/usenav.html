@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">	
 
-		<header class="header-wrapper header-wrapper--home" th:fragment="navtop">
-            <div class="container">
+		<header class="header-wrapper header-wrapper--home">
+            <div class="container"  th:fragment="navtop">
                 <!-- Logo link-->
                 <a href='index.html' class="logo">
                     <img alt='logo' src="images/logo.png">
@@ -65,5 +65,73 @@
 
             </div>
         </header>
+        
+        <header class="header-wrapper" th:replace="~{usr/block/usenav :: navtop}">
+            <div class="container">
+                <!-- Logo link-->
+                <a href='index.html' class="logo">
+                    <img alt='logo' src="images/logo.png">
+                </a>
+
+                <!-- Main website navigation-->
+                <nav id="navigation-box">
+                    <!-- Toggle for mobile menu mode -->
+                    <a href="#" id="navigation-toggle">
+                        <span class="menu-icon">
+                            <span class="icon-toggle" role="button" aria-label="Toggle Navigation">
+                                <span class="lines"></span>
+                            </span>
+                        </span>
+                    </a>
+
+                    <!-- Link navigation -->
+                    <ul id="navigation">
+                        <li>
+                            <span class="sub-nav-toggle plus"></span>
+                            <a href="movie-list-full.html">공연</a>
+                            <ul>
+                                <li class="menu__nav-item"><a href="movie-list-full.html">뮤지컬</a>
+                                </li>
+                                <li class="menu__nav-item"><a href="movie-list-full.html">콘서트</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="sub-nav-toggle plus"></span>
+                            <a href="movie-ranking.html">랭킹</a>
+                        </li>
+                        <li>
+                            <span class="sub-nav-toggle plus"></span>
+                            <a href="gallery-four.html">지역</a>
+                            <ul>
+                                <li class="menu__nav-item"><a href="gallery-four.html">서울</a></li>
+                                <li class="menu__nav-item"><a href="gallery-four.html">경기 / 인천</a></li>
+                                <li class="menu__nav-item"><a href="gallery-four.html">대전 / 충청</a></li>
+                                <li class="menu__nav-item"><a href="gallery-four.html">강원도</a></li>
+                                <li class="menu__nav-item"><a href="gallery-four.html">부산 / 울산 / 경남</a></li>
+                                <li class="menu__nav-item"><a href="gallery-four.html">대구 / 경북</a></li>
+                                <li class="menu__nav-item"><a href="gallery-four.html">전라 / 광주</a></li>
+                                <li class="menu__nav-item"><a href="gallery-four.html">제주도</a></li>
+                            </ul> 
+                        </li>
+                        <li>
+                            <span class="sub-nav-toggle plus"></span>
+                            <a href="information.html">마이페이지</a>
+                        </li>
+                        <li>
+                            <span class="sub-nav-toggle plus"></span>
+                            <a href="contact.html">문의하기</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Additional header buttons / Auth and direct link to booking-->
+                <div class="control-panel">
+                    <a href="login.html" class="btn btn--sign ">Sign in</a>
+                </div>
+
+            </div>
+        </header>
+
 
 </html>

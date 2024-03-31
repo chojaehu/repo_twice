@@ -1,44 +1,45 @@
 <!doctype html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <!-- Basic Page Needs -->
+<!-- <head th:replace="~{usr/block/usehead :: head}"></head>  -->
+ <head>
+<!--     Basic Page Needs -->
     <meta charset="utf-8">
     <title>AMovie</title>
     <meta name="description" content="A Template by Gozha.net">
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="author" content="Gozha.net">
 
-    <!-- Mobile Specific Metas-->
+    <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="telephone=no" name="format-detection">
 
-    <!-- Fonts -->
-    <!-- Font awesome - icon font -->
+    <!-- Fonts
+    Font awesome - icon font -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Roboto -->
+   <!--  Roboto -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,700' rel='stylesheet' type='text/css'>
-    <!-- Open Sans -->
+   <!--  Open Sans -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
 
-    <!-- Stylesheets -->
+   <!--  Stylesheets
 
-    <!-- Mobile menu -->
-    <link href="css/gozha-nav.css" rel="stylesheet" />
-    <!-- Select -->
-    <link href="css/external/jquery.selectbox.css" rel="stylesheet" />
+    Mobile menu -->
+    <link href="usr/css/gozha-nav.css" rel="stylesheet" />
+  <!--   Select -->
+    <link href="usr/css/external/jquery.selectbox.css" rel="stylesheet" />
 
-    <!-- Slider Revolution CSS Files -->
-    <link rel="stylesheet" type="text/css" href="revolution/css/settings.css">
-    <link rel="stylesheet" type="text/css" href="revolution/css/layers.css">
-    <link rel="stylesheet" type="text/css" href="revolution/css/navigation.css">
+  <!--   Slider Revolution CSS Files -->
+    <link rel="stylesheet" type="text/css" href="usr/revolution/css/settings.css">
+    <link rel="stylesheet" type="text/css" href="usr/revolution/css/layers.css">
+    <link rel="stylesheet" type="text/css" href="usr/revolution/css/navigation.css">
 
     <!-- Custom -->
-    <link href="css/style.css?v=1" rel="stylesheet" />
+    <link href="usr/css/style.css" rel="stylesheet" />
 
 
     <!-- Modernizr -->
-    <script src="js/external/modernizr.custom.js"></script>
+    <script src="usr/js/external/modernizr.custom.js"></script>
 
 
 </head>
@@ -47,93 +48,13 @@
     <div class="wrapper">
         <!-- Banner -->
         <div class="banner-top">
-            <img alt='top banner' src="ticketimg/title.jpg">
+            <img alt='top banner' src="usr/ticketimg/title.jpg">
         </div>
 
         <!-- Header section -->
         <header class="header-wrapper header-wrapper--home">
-            <div class="container">
-                <!-- Logo link-->
-                <a href='index.html' class="logo">
-                    <img alt='logo' src="images/logo.png">
-                </a>
-
-                <!-- Main website navigation-->
-                <nav id="navigation-box">
-                    <!-- Toggle for mobile menu mode -->
-                    <a href="#" id="navigation-toggle">
-                        <span class="menu-icon">
-                            <span class="icon-toggle" role="button" aria-label="Toggle Navigation">
-                                <span class="lines"></span>
-                            </span>
-                        </span>
-                    </a>
-
-                    <!-- Link navigation -->
-                    <ul id="navigation">
-                        <li>
-                            <span class="sub-nav-toggle plus"></span>
-                            <a href="movie-list-full.html">공연</a>
-                            <ul>
-                                <li class="menu__nav-item"><a href="movie-list-full.html">뮤지컬</a>
-                                </li>
-                                <li class="menu__nav-item"><a href="movie-list-full.html">콘서트</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="sub-nav-toggle plus"></span>
-                            <a href="movie-ranking.html">랭킹</a>
-                        </li>
-                        <li>
-                            <span class="sub-nav-toggle plus"></span>
-                            <a href="gallery-four.html">지역</a>
-                            <ul>
-                                <li class="menu__nav-item"><a href="gallery-four.html">서울</a></li>
-                                <li class="menu__nav-item"><a href="gallery-four.html">경기 / 인천</a></li>
-                                <li class="menu__nav-item"><a href="gallery-four.html">대전 / 충청</a></li>
-                                <li class="menu__nav-item"><a href="gallery-four.html">강원도</a></li>
-                                <li class="menu__nav-item"><a href="gallery-four.html">부산 / 울산 / 경남</a></li>
-                                <li class="menu__nav-item"><a href="gallery-four.html">대구 / 경북</a></li>
-                                <li class="menu__nav-item"><a href="gallery-four.html">전라 / 광주</a></li>
-                                <li class="menu__nav-item"><a href="gallery-four.html">제주도</a></li>
-                            </ul> 
-                        </li>
-                        <li>
-                            <span class="sub-nav-toggle plus"></span>
-                            <a href="information.html">마이페이지</a>
-                        </li>
-                        <li>
-                            <span class="sub-nav-toggle plus"></span>
-                            <a href="contact.html">문의하기</a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="control-panel">
-                    <a href="login.html" class="btn btn--sign">Sign in</a>
-                </div>
-
-                <!-- Additional header buttons / Auth and direct link to booking-->
-                <!-- <div class="control-panel">
-                    <div class="auth auth--home">
-                        <div class="auth__show">
-                            <span class="auth__image">
-                                <img alt="" src="images/client-photo/auth.png">
-                            </span>
-                        </div>
-                        <a href="#" class="btn btn--sign btn--singin">
-                            me
-                        </a>
-                        <ul class="auth__function">
-                            <li><a href="#" class="auth__function-item">Watchlist</a></li>
-                            <li><a href="#" class="auth__function-item">Booked tickets</a></li>
-                            <li><a href="#" class="auth__function-item">Discussion</a></li>
-                            <li><a href="#" class="auth__function-item">Settings</a></li>
-                        </ul>
-
-                    </div>
-                </div> -->
-
+            <div class="container" th:replace="~{usr/block/usenav :: navtop}">
+                
             </div>
         </header>
 
@@ -148,18 +69,18 @@
                     <!-- SLIDE 1 -->
                     <li data-transition="fade" class="slide" data-title='Rush.'>
                         <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-                        <img class="rev-slidebg" alt='' src="ticketimg/main1.jpg">
+                        <img class="rev-slidebg" alt='' src="usr/ticketimg/main1.jpg">
                     </li>
 
                     <li data-transition="fade" class="slide" data-title='Rush.'>
                         <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-                        <img class="rev-slidebg" alt='' src="ticketimg/main2.jpg">
+                        <img class="rev-slidebg" alt='' src="usr/ticketimg/main2.jpg">
                     </li>
 
                     <!-- SLIDE 3 -->
                     <li data-transition="fade" class="slide" data-title='Stop wishing. Start doing.'>
                         <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-                        <img class="rev-slidebg" alt='' src="ticketimg/main3.jpg">
+                        <img class="rev-slidebg" alt='' src="usr/ticketimg/main3.jpg">
                     </li>
                 </ul><!-- END SLIDES LIST -->
             </div><!-- END SLIDER CONTAINER -->
@@ -170,41 +91,42 @@
                 <div class="col-sm-12 change--col">
                     <div class="movie-beta__item ">
                         <a href="movie-page-full.html">
-                            <img alt='' src="ticketimg/main1.jpg" class="imgsize2">
+                            <img alt='' src="usr/ticketimg/main1.jpg" class="imgsize2">
                             <span class="best-rate">1</span>
                         </a>
                     </div>
                     <div class="movie-beta__item second--item">
                         <a href="movie-page-full.html">
-                            <img alt='' src="ticketimg/main2.jpg" class="imgsize2">
+                            <img alt='' src="usr/ticketimg/main2.jpg" class="imgsize2">
                             <span class="best-rate">2</span>
                         </a>
                     </div>
                     <div class="movie-beta__item third--item">
                         <a href="movie-page-full.html">
-                            <img alt='' src="ticketimg/main3.jpg" class="imgsize2">
+                            <img alt='' src="usr/ticketimg/main3.jpg" class="imgsize2">
                             <span class="best-rate">3</span>
                         </a>
                     </div>
                     <div class="movie-beta__item hidden-xs">
                         <a href="movie-page-full.html">
-                            <img alt='' src="ticketimg/main4.jpg" class="imgsize2">
+                            <img alt='' src="usr/ticketimg/main4.jpg" class="imgsize2">
                             <span class="best-rate">4</span>
                         </a>
                     </div>
                     <div class="movie-beta__item hidden-xs hidden-sm">
                         <a href="movie-page-full.html">
-                            <img alt='' src="ticketimg/main5.jpg" class="imgsize2">
+                            <img alt='' src="usr/ticketimg/main5.jpg" class="imgsize2">
                             <span class="best-rate">5</span>
                         </a>
                     </div>
                     <div class="movie-beta__item hidden-xs hidden-sm">
                         <a href="movie-page-full.html">
-                            <img alt='' src="ticketimg/main6.jpg" class="imgsize2">
+                            <img alt='' src="usr/ticketimg/main6.jpg" class="imgsize2">
                             <span class="best-rate">6</span>
                         </a>
                     </div>
                 </div>
+                 <div class="col-sm-10 col-sm-offset-1 movie-best__check">check all movies now playing</div>
             </div>
 
             <div class="clearfix"></div>
@@ -332,7 +254,7 @@
                             <a href="#">10</a>
                             <a class="arrow next" href="#"> >> </a>
                         </div>
-                    </div>s
+                    </div>
                 </div>
             </div>
             
@@ -431,42 +353,42 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')</script>
     <!-- Migrate -->
-    <script src="js/external/jquery-migrate-1.2.1.min.js"></script>
+    <script src="usr/js/external/jquery-migrate-1.2.1.min.js"></script>
     <!-- Bootstrap 3-->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
     <!-- Slider Revolution core JavaScript files -->
-    <script type="text/javascript" src="revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script type="text/javascript" src="revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/jquery.themepunch.revolution.min.js"></script>
 
     <!-- Slider Revolution extension scripts. -->
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.video.min.js"></script>
 
     <!-- Mobile menu -->
-    <script src="js/jquery.mobile.menu.js"></script>
+    <script src="usr/js/jquery.mobile.menu.js"></script>
     <!-- Select -->
-    <script src="js/external/jquery.selectbox-0.2.min.js"></script>
+    <script src="usr/js/external/jquery.selectbox-0.2.min.js"></script>
     <!-- Stars rate -->
-    <script src="js/external/jquery.raty.js"></script>
+    <script src="usr/js/external/jquery.raty.js"></script>
 
     <!-- Form element -->
-    <script src="js/external/form-element.js"></script>
+    <script src="usr/js/external/form-element.js"></script>
     <!-- Form validation -->
-    <script src="js/form.js"></script>
+    <script src="usr/js/form.js"></script>
 
     <!-- Twitter feed -->
-    <script src="js/external/twitterfeed.js"></script>
+    <script src="usr/js/external/twitterfeed.js"></script>
 
     <!-- Custom -->
-    <script src="js/custom.js"></script>
+    <script src="usr/js/custom.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {

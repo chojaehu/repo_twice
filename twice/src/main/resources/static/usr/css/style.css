@@ -6398,7 +6398,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 }
 .cinema .cinema-rating:before {
   content: '';
-  background-image: url(../images/rate/star-off.svg);
+  background-image: url(usr/images/rate/star-off.svg);
   background-repeat: no-repeat;
   -webkit-background-size: 14px 14px;
   background-size: 14px 14px;
@@ -6411,7 +6411,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 }
 .cinema .cinema-rating:after {
   content: '';
-  background-image: url(../images/rate/star-off.svg);
+  background-image: url(usr/images/rate/star-off.svg);
   background-repeat: no-repeat;
   -webkit-background-size: 14px 14px;
   background-size: 14px 14px;
@@ -8285,7 +8285,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
   transition: 0.5s;
 }
 .movie-best .movie-beta__item .best-rate:before {
-  background-image: url("../images/rate/star-off.svg");
+  background-image: url("usr/images/rate/star-off.svg");
   background-repeat: no-repeat;
   background-size: 14px 14px;
   content: "";
@@ -8297,7 +8297,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
   width: 14px;
 }
 .movie-best .movie-beta__item .best-rate:after {
-  background-image: url("../images/rate/star-off.svg");
+  background-image: url("usr/images/rate/star-off.svg");
   background-repeat: no-repeat;
   background-size: 14px 14px;
   bottom: 20px;
