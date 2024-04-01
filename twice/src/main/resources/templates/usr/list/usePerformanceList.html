@@ -1,7 +1,40 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{usr/block/usehead :: head}"></head>
+<head th:replace="~{usr/block/usehead :: headlist}"></head> 
+
+<!-- <head>
+
+    <meta charset="utf-8">
+    <title>AMovie - Movie list</title>
+    <meta name="description" content="A Template by Gozha.net">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="Gozha.net">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="telephone=no" name="format-detection">
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+
+
+    <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
+
+
+    <link href="usr/css/gozha-nav.css" rel="stylesheet" />
+
+    <link href="usr/css/external/jquery.selectbox.css" rel="stylesheet" />
+
+
+    <link href="usr/css/style.css?v=1" rel="stylesheet" />
+
+    <script src="usr/js/external/modernizr.custom.js"></script>
+
+
+</head> -->
 
 <body>
     <div class="wrapper">
@@ -56,6 +89,7 @@
                 </div>
 
                 <!-- Movie preview item -->
+                
                 <div class="movie movie--preview movie--full release">
                     <div class="col-sm-3 col-md-2 col-lg-2">
                         <div class="movie__images">
@@ -95,8 +129,7 @@
                                     class="movie__rating">5.0</span>
                             </div>
 
-<!-- 
-                            <a href="#" class="movie__show-btn">Showtime</a> -->
+
                         </div>
                     </div>
 
@@ -142,8 +175,7 @@
                                     class="movie__rating">5.0</span>
                             </div>
 
-<!-- 
-                            <a href="#" class="movie__show-btn">Showtime</a> -->
+
                         </div>
                     </div>
 
@@ -189,8 +221,7 @@
                                     class="movie__rating">5.0</span>
                             </div>
 
-<!-- 
-                            <a href="#" class="movie__show-btn">Showtime</a> -->
+
                         </div>
                     </div>
 
@@ -235,8 +266,6 @@
                                     class="movie__rating">5.0</span>
                             </div>
 
-<!-- 
-                            <a href="#" class="movie__show-btn">Showtime</a> -->
                         </div>
                     </div>
 
@@ -288,14 +317,9 @@
 
                     <div class="clearfix"></div>
 
-                    <!-- Time table (choose film start time)-->
-                    <!-- end time table-->
-
 
                 </div>
-                <!-- end movie preview item -->
 
-                <!-- Movie preview item -->
                 <div class="movie movie--preview movie--full ending">
                     <div class="col-sm-3 col-md-2 col-lg-2">
                         <div class="movie__images">
@@ -339,14 +363,9 @@
 
                     <div class="clearfix"></div>
 
-                    <!-- Time table (choose film start time)-->
-                    
-                    <!-- end time table-->
 
                 </div>
-                <!-- end movie preview item -->
 
-                <!-- Movie preview item -->
                 <div class="movie movie--preview movie--full popularity ending">
                     <div class="col-sm-3 col-md-2 col-lg-2">
                         <div class="movie__images">
@@ -391,14 +410,10 @@
 
                     <div class="clearfix"></div>
 
-                    <!-- Time table (choose film start time)-->
-                    
-                    <!-- end time table-->
+
 
                 </div>
-                <!-- end movie preview item -->
 
-                <!-- Movie preview item -->
                 <div class="movie movie--preview movie--full comments">
                     <div class="col-sm-3 col-md-2 col-lg-2">
                         <div class="movie__images">
@@ -440,10 +455,7 @@
                     </div>
 
                     <div class="clearfix"></div>
-                    
-
-                    <!-- Time table (choose film start time)-->
-                    <!-- end time table-->
+ 
 
                 </div>
                 <div class="page_wrap">
@@ -462,7 +474,6 @@
                         <a class="arrow next" href="#"> >> </a>
                     </div>
                 </div>
-                <!-- end movie preview item -->
 
             </div>
 
@@ -556,30 +567,30 @@
 
     <!-- JavaScript-->
     <!-- jQuery 3.1.1-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')</script>
     <!-- Migrate -->
-    <script src="js/external/jquery-migrate-1.2.1.min.js"></script>
+    <script src="usr/js/external/jquery-migrate-1.2.1.min.js"></script>
     <!-- jQuery UI -->
     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <!-- Bootstrap 3-->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
     <!-- Mobile menu -->
-    <script src="js/jquery.mobile.menu.js"></script>
+    <script src="usr/js/jquery.mobile.menu.js"></script>
     <!-- Select -->
-    <script src="js/external/jquery.selectbox-0.2.min.js"></script>
+    <script src="usr/js/external/jquery.selectbox-0.2.min.js"></script>
 
     <!-- Stars rate -->
-    <script src="js/external/jquery.raty.js"></script>
+    <script src="usr/js/external/jquery.raty.js"></script>
 
     <!-- Form element -->
-    <script src="js/external/form-element.js"></script>
+    <script src="usr/js/external/form-element.js"></script>
     <!-- Form validation -->
-    <script src="js/form.js"></script>
+    <script src="usr/js/form.js"></script>
 
     <!-- Custom -->
-    <script src="js/custom.js"></script>
+    <script src="usr/js/custom.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {

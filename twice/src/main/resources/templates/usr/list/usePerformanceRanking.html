@@ -2,44 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <!-- <head th:replace="~{usr/block/usehead :: head}"></head>  -->
- <head>
-<!--     Basic Page Needs -->
-    <meta charset="utf-8">
-    <title>AMovie</title>
-    <meta name="description" content="A Template by Gozha.net">
-    <meta name="keywords" content="HTML, CSS, JavaScript">
-    <meta name="author" content="Gozha.net">
+ <head th:replace="~{usr/block/usehead :: headindex}">
 
-    <!-- Mobile Specific Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="telephone=no" name="format-detection">
-
-    <!-- Fonts
-    Font awesome - icon font -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-   <!--  Roboto -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,700' rel='stylesheet' type='text/css'>
-   <!--  Open Sans -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
-
-   <!--  Stylesheets
-
-    Mobile menu -->
-    <link href="usr/css/gozha-nav.css" rel="stylesheet" />
-  <!--   Select -->
-    <link href="usr/css/external/jquery.selectbox.css" rel="stylesheet" />
-
-  <!--   Slider Revolution CSS Files -->
-    <link rel="stylesheet" type="text/css" href="usr/revolution/css/settings.css">
-    <link rel="stylesheet" type="text/css" href="usr/revolution/css/layers.css">
-    <link rel="stylesheet" type="text/css" href="usr/revolution/css/navigation.css">
-
-    <!-- Custom -->
-    <link href="usr/css/style.css" rel="stylesheet" />
-
-
-    <!-- Modernizr -->
-    <script src="usr/js/external/modernizr.custom.js"></script>
 
 
 </head>
@@ -372,6 +336,12 @@
     <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
     <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.video.min.js"></script>
 
+
+
+	<!-- Migrate -->
+    <script src="usr/js/external/jquery-migrate-1.2.1.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <!-- Mobile menu -->
     <script src="usr/js/jquery.mobile.menu.js"></script>
     <!-- Select -->
@@ -389,10 +359,14 @@
 
     <!-- Custom -->
     <script src="usr/js/custom.js"></script>
+    
+    
+    
 
     <script type="text/javascript">
         $(document).ready(function () {
             init_Home();
+            init_MovieList();
         });
     </script>
 

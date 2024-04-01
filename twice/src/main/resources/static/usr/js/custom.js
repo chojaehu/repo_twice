@@ -1027,7 +1027,7 @@ function init_MovieList () {
     $('.score').raty({
         width:130, 
         score: 0,
-        path: 'images/rate/',
+        path: 'usr/images/rate/',
         starOff : 'star-off.svg',
         starOn  : 'star-on.svg' 
     });
@@ -1079,7 +1079,7 @@ function init_MoviePage () {
     $('.score').raty({
         width:130, 
         score: 5,
-        path: 'images/rate/',
+        path: 'usr/images/rate/',
         starOff : 'star-off.svg',
         starOn  : 'star-on.svg' 
     });
@@ -1310,13 +1310,13 @@ function init_MoviePage () {
                     $(this).blur();
                 });
 
-                $(window).load(function() {
+               /* $(window).load(function() {
                     $('.map').addClass('hide-map');
-                });
+                });*/
 
    	//9. Init map with several markers on.
    					//Map start init
-                    var mapOptions = {
+                    /*var mapOptions = {
                         scaleControl: true,
                         center: new google.maps.LatLng(51.508798, -0.131687),
                         zoom: 15,
@@ -1359,7 +1359,7 @@ function init_MoviePage () {
                     var styled_map = new google.maps.StyledMapType(map_style, {name: "Cusmome style"});
 
                     map.mapTypes.set('map_styles', styled_map);
-                    map.setMapTypeId('map_styles');
+                    map.setMapTypeId('map_styles');*/
 
                     //=====================================
 
@@ -1372,7 +1372,7 @@ function init_MoviePage () {
                     boxTextA.innerHTML = '<span class="pop_up_box_text">Cineworld, 63-65 Haymarket, London</span>';
 
                     //Sets up the configuration options of the pop-up info box.
-                    var infoboxOptionsA = {
+                   /* var infoboxOptionsA = {
                      content: boxTextA
                      ,disableAutoPan: false
                      ,maxWidth: 0
@@ -1392,9 +1392,9 @@ function init_MoviePage () {
                      ,isHidden: false
                      ,pane: "floatPane"
                      ,enableEventPropagation: false
-                    };
+                    };*/
 
-                    
+                 /*   
                     //Creates the pop-up infobox for Glastonbury, adding the configuration options set above.
                     var infoboxA = new InfoBox(infoboxOptionsA);
 
@@ -1405,7 +1405,7 @@ function init_MoviePage () {
                      infoboxA.open(map, this);
                      //Sets the Glastonbury marker to be the center of the map.
                      map.setCenter(marker.getPosition());
-                    });
+                    });*/
 
 
 
@@ -1416,7 +1416,7 @@ function init_MoviePage () {
                     //=====================================
 
                     //Creates the information to go in the pop-up info box.
-                    var boxTextB = document.createElement("div");
+                   /* var boxTextB = document.createElement("div");
                     boxTextB.innerHTML = '<span class="pop_up_box_text">Empire Cinemas, 5-6 Leicester Square, London</span>';
 
                     //Sets up the configuration options of the pop-up info box.
@@ -1453,7 +1453,7 @@ function init_MoviePage () {
                      infoboxB.open(map, this);
                      //Sets the Glastonbury marker to be the center of the map.
                      map.setCenter(markerB.getPosition());
-                    });
+                    });*/
 
                     //=====================================
 
@@ -1463,7 +1463,7 @@ function init_MoviePage () {
 
 
                     //Creates the information to go in the pop-up info box.
-                    var boxTextC = document.createElement("div");
+                   /* var boxTextC = document.createElement("div");
                     boxTextC.innerHTML = '<span class="pop_up_box_text">Curzon Soho, 99 Shaftesbury Ave , London</span>';
 
                     //Sets up the configuration options of the pop-up info box.
@@ -1487,11 +1487,11 @@ function init_MoviePage () {
                      ,isHidden: false
                      ,pane: "floatPane"
                      ,enableEventPropagation: false
-                    };
+                    };*/
 
                     
                     //Creates the pop-up infobox for Glastonbury, adding the configuration options set above.
-                    var infoboxC = new InfoBox(infoboxOptionsC);
+                   /* var infoboxC = new InfoBox(infoboxOptionsC);
 
 
                     //Add an 'event listener' to the Glastonbury map marker to listen out for when it is clicked.
@@ -1500,7 +1500,7 @@ function init_MoviePage () {
                      infoboxC.open(map, this);
                      //Sets the Glastonbury marker to be the center of the map.
                      map.setCenter(markerC.getPosition());
-                    });
+                    });*/
 
                     //=====================================
 
@@ -1509,7 +1509,7 @@ function init_MoviePage () {
                     //=====================================
 
                     //Creates the information to go in the pop-up info box.
-                    var boxTextD = document.createElement("div");
+                    /*var boxTextD = document.createElement("div");
                     boxTextD.innerHTML = '<span class="pop_up_box_text">Odeon Cinema West End, Leicester Square, London</span>';
 
                     //Sets up the configuration options of the pop-up info box.
@@ -1546,7 +1546,7 @@ function init_MoviePage () {
                      infoboxD.open(map, this);
                      //Sets the Glastonbury marker to be the center of the map.
                      map.setCenter(markerD.getPosition());
-                    });
+                    });*/
 
 
 
@@ -1557,7 +1557,7 @@ function init_MoviePage () {
                     //=====================================
 
                     //Creates the information to go in the pop-up info box.
-                    var boxTextE = document.createElement("div");
+                    /*var boxTextE = document.createElement("div");
                     boxTextE.innerHTML = '<span class="pop_up_box_text">Picturehouse Cinemas Ltd, Orange Street, London</span>';
 
                     //Sets up the configuration options of the pop-up info box.
@@ -1594,7 +1594,7 @@ function init_MoviePage () {
                      infoboxE.open(map, this);
                      //Sets the Glastonbury marker to be the center of the map.
                      map.setCenter(markerE.getPosition());
-                    });
+                    });*/
     
     //10. Scroll down navigation function
     //scroll down

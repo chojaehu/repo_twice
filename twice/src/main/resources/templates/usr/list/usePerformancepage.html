@@ -1,7 +1,48 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{usr/block/usehead :: head}"></head>
+<!-- <head th:replace="~{usr/block/usehead :: head}"></head> -->
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <title>AMovie - Movie page</title>
+    <meta name="description" content="A Template by Gozha.net">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="Gozha.net">
+
+    <!-- Mobile Specific Metas-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="telephone=no" name="format-detection">
+
+    <!-- Fonts -->
+    <!-- Font awesome - icon font -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Roboto -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Stylesheets -->
+    <!-- jQuery UI -->
+    <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
+
+    <!-- Mobile menu -->
+    <link href="usr/css/gozha-nav.css" rel="stylesheet" />
+    <!-- Select -->
+    <link href="usr/css/external/jquery.selectbox.css" rel="stylesheet" />
+    <!-- Swiper slider -->
+    <link href="usr/css/external/idangerous.swiper.css" rel="stylesheet" />
+    <!-- Magnific-popup -->
+    <link href="usr/css/external/magnific-popup.css" rel="stylesheet" />
+
+
+    <!-- Custom -->
+    <link href="usr/css/style.css?v=1" rel="stylesheet" />
+
+    <!-- Modernizr -->
+    <script src="usr/js/external/modernizr.custom.js"></script>
+
+
+</head>
 
 <body>
     <div class="wrapper">
@@ -44,7 +85,7 @@
                         <div class="col-sm-4 col-md-3 movie-mobile">
                             <div class="movie__images">
                                 <span class="movie__rating">5.0</span>
-                                <img alt='' src="ticketimg/main1.jpg">
+                                <img alt='' src="usr/ticketimg/main1.jpg">
                             </div>
                             <div class="movie__rate">Your vote: <div id='score' class="score"></div>
                             </div>
@@ -71,13 +112,13 @@
                                 <a href="book1.html" class="btn btn-md btn--warning">예매하기</a>
                             </div>
 
-                            <div class="share">
+                           <!--  <div class="share">
                                 <div class="addthis_toolbox addthis_default_style ">
                                     <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
                                     <a class="addthis_button_tweet"></a>
                                     <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
@@ -113,70 +154,75 @@
                                 <!--First Slide-->
                                 <div class="swiper-slide media-video">
                                     <a href='https://www.youtube.com/watch?v=Y5AehBA3IsE' class="movie__media-item ">
-                                        <img alt='' src="images/movie/movie-video1.jpg">
+                                        <img alt='' src="usr/images/movie/movie-video1.jpg">
                                     </a>
                                 </div>
 
                                 <!--Second Slide-->
                                 <div class="swiper-slide media-video">
                                     <a href='https://www.youtube.com/watch?v=Kb3ykVYvT4U' class="movie__media-item">
-                                        <img alt='' src="images/movie/movie-video2.jpg">
+                                        <img alt='' src="usr/images/movie/movie-video2.jpg">
                                     </a>
                                 </div>
 
                                 <!--Third Slide-->
                                 <div class="swiper-slide media-photo">
                                     <a href='images/movie/movie-img1-lg.jpg' class="movie__media-item">
-                                        <img alt='' src="images/movie/movie-img1.jpg">
+                                        <img alt='' src="usr/images/movie/movie-img1.jpg">
                                     </a>
                                 </div>
 
                                 <!--Four Slide-->
                                 <div class="swiper-slide media-photo">
                                     <a href='images/movie/movie-img2-lg.jpg' class="movie__media-item">
-                                        <img alt='' src="images/movie/movie-img2.jpg">
+                                        <img alt='' src="usr/images/movie/movie-img2.jpg">
                                     </a>
                                 </div>
 
                                 <!--Slide-->
                                 <div class="swiper-slide media-photo">
                                     <a href='images/gallery/large/item-7.jpg' class="movie__media-item">
-                                        <img alt='' src="images/movie/movie-img3.jpg">
+                                        <img alt='' src="usr/images/movie/movie-img3.jpg">
                                     </a>
                                 </div>
 
                                 <!--Slide-->
                                 <div class="swiper-slide media-photo">
                                     <a href='images/gallery/large/item-11.jpg' class="movie__media-item">
-                                        <img alt='' src="images/movie/movie-img4.jpg">
+                                        <img alt='' src="usr/images/movie/movie-img4.jpg">
                                     </a>
                                 </div>
 
                                 <!--First Slide-->
                                 <div class="swiper-slide media-video">
                                     <a href='https://www.youtube.com/watch?v=Y5AehBA3IsE' class="movie__media-item ">
-                                        <img alt='' src="images/movie/movie-video1.jpg">
+                                        <img alt='' src="usr/images/movie/movie-video1.jpg">
                                     </a>
                                 </div>
 
                                 <!--Second Slide-->
                                 <div class="swiper-slide media-video">
                                     <a href='https://www.youtube.com/watch?v=Kb3ykVYvT4U' class="movie__media-item">
-                                        <img alt='' src="images/movie/movie-video2.jpg">
+                                        <img alt='' src="usr/images/movie/movie-video2.jpg">
                                     </a>
                                 </div>
 
                                 <!--Slide-->
                                 <div class="swiper-slide media-photo">
                                     <a href='images/gallery/large/item-15.jpg' class="movie__media-item">
-                                        <img alt='' src="images/movie/movie-img5.jpg">
+                                        <img alt='' src="usr/images/movie/movie-img5.jpg">
                                     </a>
                                 </div>
 
                                 <!--Slide-->
                                 <div class="swiper-slide media-photo">
                                     <a href='images/gallery/large/item-16.jpg' class="movie__media-item">
-                                        <img alt='' src="images/movie/movie-img6.jpg">
+                                        <img alt='' src="usr/images/movie/movie-img6.jpg">
+                                    </a>
+                                </div>
+                                 <div class="swiper-slide media-photo">
+                                    <a href='images/gallery/large/item-16.jpg' class="movie__media-item">
+                                        <img alt='' src="usr/images/movie/movie-img6.jpg">
                                     </a>
                                 </div>
 
@@ -316,7 +362,7 @@
                 </div>
             </div>
 
-        </section>
+        
 
         <div class="clearfix"></div>
 
@@ -406,48 +452,86 @@
 
     <!-- JavaScript-->
     <!-- jQuery 3.1.1-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')</script>
+
+    <script src="usr/js/external/jquery-migrate-1.2.1.min.js"></script>
+
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+
+    <script src="usr/js/jquery.mobile.menu.js"></script>
+
+    <script src="usr/js/external/jquery.selectbox-0.2.min.js"></script>
+
+
+    <script src="usr/js/external/jquery.raty.js"></script>
+
+    <script src="usr/js/external/idangerous.swiper.min.js"></script>
+
+    <script src="usr/js/external/jquery.magnific-popup.min.js"></script>
+
+
+    <script type="usr/text/javascript">var addthis_config = { "data_track_addressbar": true };</script>
+    <script type="usr/text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-525fd5e9061e7ef0"></script>
+
+
+    <script src="usr/js/external/form-element.js"></script>
+
+    <script src="usr/js/form.js"></script>
+
+
+    <script src="usr/js/custom.js"></script>-->
+    
+    
+    <!-- JavaScript-->
+    <!-- jQuery 3.1.1-->
+  <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+    <script>window.jQuery || document.write('<script src="usr/js/external/jquery-3.1.1.min.js"><\/script>')</script>
     <!-- Migrate -->
-    <script src="js/external/jquery-migrate-1.2.1.min.js"></script>
+    <script src="usr/js/external/jquery-migrate-1.2.1.min.js"></script>
     <!-- jQuery UI -->
     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <!-- Bootstrap 3-->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
     <!-- Mobile menu -->
-    <script src="js/jquery.mobile.menu.js"></script>
+    <script src="usr/js/jquery.mobile.menu.js"></script>
     <!-- Select -->
-    <script src="js/external/jquery.selectbox-0.2.min.js"></script>
+    <script src="usr/js/external/jquery.selectbox-0.2.min.js"></script>
 
     <!-- Stars rate -->
-    <script src="js/external/jquery.raty.js"></script>
+    <script src="usr/js/external/jquery.raty.js"></script>
     <!-- Swiper slider -->
-    <script src="js/external/idangerous.swiper.min.js"></script>
+    <script src="usr/js/external/idangerous.swiper.min.js"></script>
     <!-- Magnific-popup -->
-    <script src="js/external/jquery.magnific-popup.min.js"></script>
+    <script src="usr/js/external/jquery.magnific-popup.min.js"></script>
 
     <!--*** Google map  ***-->
-    <script src="https://maps.google.com/maps/api/js?sensor=true"></script>
-    <!--*** Google map infobox  ***-->
-    <script src="js/external/infobox.js"></script>
+    <!-- <script src="usr/https://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="usr/js/external/infobox.js"></script> -->
+    
+    
+    
+    <script src="usr/js/custom.js"></script>
+    
+    
+    
 
-    <!-- Share buttons -->
-    <script type="text/javascript">var addthis_config = { "data_track_addressbar": true };</script>
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-525fd5e9061e7ef0"></script>
-
-    <!-- Form element -->
-    <script src="js/external/form-element.js"></script>
-    <!-- Form validation -->
-    <script src="js/form.js"></script>
-
-    <!-- Custom -->
-    <script src="js/custom.js"></script>
-
-    <script type="text/javascript">
+   <!--  <script type="text/javascript">
         $(document).ready(function () {
-            init_MoviePage();
-            init_MoviePageFull();
+        	 init_MovieList();
+        	init_MoviePage();
+            init_MoviePageFull(); 
+        });
+    </script> -->
+    
+     <script type="text/javascript">
+        $(document).ready(function () {
+          init_MoviePage();
+            init_MoviePageFull();  
         });
     </script>
 

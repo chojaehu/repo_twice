@@ -83,6 +83,13 @@ public class CodeGroupController {
 	
 	
 //	인덱스
+	
+	@RequestMapping(value = "/startindex")
+	public String startindex() throws Exception {
+		
+
+		return "/xdm/infra/index/startindex";
+	}
 	@RequestMapping(value = "/indexs")
 	public String indexs() throws Exception {
 		
