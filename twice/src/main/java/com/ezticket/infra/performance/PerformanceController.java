@@ -116,6 +116,35 @@ public class PerformanceController {
 		return "redirect:/performanceXdmList";
 	}
 	
+//	사용자 화면
+	
+	
+	private String str2 = "/usr/list";
+	
+	@RequestMapping(value = "/usePerformanceList")
+	public String usePerformanceList() {
+		
+		return str2 + "/usePerformanceList";
+	}
+	
+	@RequestMapping(value = "/usePerformanceArea")
+	public String usePerformanceArea() {
+		
+		return str2 + "/usePerformanceArea";
+	}
+	
+	@RequestMapping(value = "/usePerformanceRanking")
+	public String usePerformanceRanking() {
+		
+		return str2 + "/usePerformanceRanking";
+	}
+	
+	@RequestMapping(value = "/usePerformancepage")
+	public String usePerformancepage() {
+		
+		return str2 + "/usePerformancepage";
+	}
+	
 	
 	
 	public void setSearch(PerformanceVo vo) throws Exception {
