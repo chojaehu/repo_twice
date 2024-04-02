@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ezticket.infra.codegroup.CodeGroupDao">
+
+	<resultMap id="resultMapObj" type="com.ezticket.infra.codegroup.CodeGroupDto"></resultMap>
+
+   <!-- <select id="selectList" resultMap="resultMapObj">
+        SELECT
+            a.number
+            ,a.groupname
+            ,a.regDate
+            ,(select count(aa.number) from code aa where 1=1 and aa.deleteNY = 0 and aa.codegroup_number = a.number) as xCount
+            ,a.mdfcnDate
+            ,a.deleteNY
+            ,(select count(*) from codegroup) as groupcount
+         FROM codegroup a
+        WHERE 1=1
+        ORDER BY a.number DESC
+    </select>   -->
+  <!--    ,(select count(aa.number) from code aa where 1=1 and aa.deleteNY = 0 and aa.codegroup_number = a.number) as xCount -->
+   <select id="selectList" resultMap="resultMapObj">
+        SELECT
+            a.ifcgSeq
+            ,a.ifcgName
+            ,a.ifcgRgstrDate
+           
+            ,a.ifcgModifiedDate
+            ,a.ifcgdeleteNY
+            ,(select count(*) from codegroup) as groupcount
+         FROM codegroup a
+        WHERE 1=1
+       <include refid="selectCommon" /> 
+        ORDER BY a.ifcgSeq DESC
+        limit #{rowNumToShow} offset #{startRnumForMysql}
+    </select>
+    
+    <select id="count"  resultType="Integer">
+        SELECT
+            COUNT(*)
+        FROM
+            codegroup a
+            where 1=1
+            <include refid="selectCommon" />  
+            
+    </select>
+    
+     <select id="selectListWithoutPaging" resultMap="resultMapObj">
+        SELECT
+         a.ifcgSeq
+         ,a.ifcgName
+        FROM codegroup a
+        WHERE a.ifcgdeleteNY = 0
+        ORDER BY a.ifcgSeq DESC
+    </select>
+     
+    <select id="selectCount" resultMap="resultMapObj">
+        SELECT count(*) as groupcount
+         FROM codegroup 
+    </select>
+    
+ 
+    
+    <select id="selectOne" resultMap="resultMapObj">
+        SELECT
+            a.ifcgSeq
+            ,a.ifcgName
+            ,a.ifcgRgstrDate
+            ,a.ifcgModifiedDate
+            ,a.ifcgdeleteNY
+         FROM codegroup a
+        WHERE 1=1 
+        	AND a.ifcgSeq = #{ifcgSeq}
+    </select>
+    
+    
+    
+    <update id="update">
+    
+    UPDATE codegroup
+    SET
+    ifcgName = #{ifcgName}
+    WHERE ifcgSeq = #{ifcgSeq}
+    
+    </update>
+    
+
+    <insert id="insert">
+    
+    INSERT INTO codegroup
+    (
+    ifcgName
+    ,ifcgdeleteNY
+    )
+    VALUES
+    (
+    #{ifcgName}
+    ,#{ifcgdeleteNY}
+    )
+    
+    </insert>
+    <update id="updatedelete">
+    
+    UPDATE codegroup
+    SET
+    ifcgdeleteNY = 1
+    WHERE ifcgSeq = #{ifcgSeq}
+    
+    </update>
+    
+    
+    <delete id="delete">
+    DELETE 
+    FROM codegroup
+    WHERE ifcgSeq = #{ifcgSeq}
+    </delete>
+    
+   <sql id ="selectCommon">
+   		<if test="shDelNy != null and !shDelNy.equals('')">AND a.ifcgdeleteNY = #{shDelNy}</if>   
+                
+				  <choose>
+					<when test="shOptionDate == 1">AND a.ifcgRgstrDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND a.ifcgModifiedDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>  
+				</choose>      
+        <choose>	
+            <when test="shOption == 1">AND a.ifcgSeq = #{shValue}</when>
+            <when test="shOption == 2">AND a.ifcgName LIKE CONCAT('%',#{shValue},'%')</when>
+        </choose> 
+   </sql>
+    
+    
+    
+
+
+   <!--  ,(select count(aa.ifcdSeq) from infrCode aa where 1=1 and aa.ifcdDelNy = 0 and aa.ifcgSeq = a.ifcgSeq) as xifcdSeqCount -->
+	  
+</mapper>

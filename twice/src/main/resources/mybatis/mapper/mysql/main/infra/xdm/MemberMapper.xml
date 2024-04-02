@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ezticket.infra.member.MemeberDao">
+
+	<resultMap id="resultMapObj" type="com.ezticket.infra.member.MemberDto"></resultMap>
+	
+	
+	<!-- 리스트 출력 -->
+	<select id="selectList" resultMap="resultMapObj">
+        SELECT
+        	mbSeq,
+        	mbName,
+        	mbEmail,
+        	mbPassword,
+        	mbgender,
+        	mbPhone,
+        	mbDateBirth,
+        	mbRgstrDate,
+        	mbModifiedDate,
+        	mbdelectNY
+        	FROM members
+        	WHERE 1=1
+        	<include refid="selectCommon" />  
+         ORDER BY mbSeq DESC
+         limit #{rowNumToShow} offset #{startRnumForMysql}
+    </select>
+    
+    <!-- 데이터 갯수 -->
+    <select id="count"  resultType="Integer">
+        SELECT
+            COUNT(*)
+        FROM
+            members
+            
+            where 1=1
+            <include refid="selectCommon" />  
+    </select>
+    
+    <!-- 데이터중 하나 출력 -->
+    <select id="selectOne" resultMap="resultMapObj">
+        SELECT
+	        mbSeq,
+        	mbName,
+        	mbEmail,
+        	mbPassword,
+        	mbgender,
+        	mbPhone,
+        	mbDateBirth,
+        	mbRgstrDate,
+        	mbModifiedDate,
+        	mbdelectNY
+         FROM members
+        WHERE mbSeq = #{mbSeq}
+    </select>
+    
+    
+    <!-- 로그인시 조건에 맞는 데이터 호출 -->
+    <select id="selectlogin" resultMap="resultMapObj">
+        SELECT
+	        mbSeq
+	        ,mbName
+			,mbEmail
+			,mbPassword
+         FROM members
+        WHERE mbEmail = '${mbEmail}'
+        ;
+    </select>
+    
+    <!-- 이메일 확인 현재 구현중 -->
+     <select id="emailChek" resultMap="resultMapObj">
+        SELECT
+	        mbSeq
+			,mbEmail
+         FROM members
+        WHERE 1 = 1
+        ;
+    </select>
+    
+    
+    <!-- 등록 -->
+    <insert id="insert">
+    
+    INSERT INTO members
+    (
+    mbName
+    ,mbEmail
+    ,mbPassword
+    ,mbgender
+    ,mbPhone
+    ,mbDateBirth
+    ,mbdelectNY
+    )
+    VALUES
+    (
+    #{mbName}
+    ,#{mbEmail}
+    ,#{mbPassword}
+    ,#{mbgender}
+    ,#{mbPhone}
+    ,#{mbDateBirth}
+    ,#{mbdelectNY}
+    )
+    
+    </insert>
+    
+    <!-- deleteNY 변경 -->
+    <update id="updatedelete">
+    
+    UPDATE members
+    SET
+    mbdelectNY = 1
+    WHERE mbSeq = #{mbSeq}
+    
+    </update>
+    
+    
+    
+    <!-- 삭제 -->
+    <delete id="delete">
+    DELETE 
+    FROM members
+    WHERE mbSeq = #{mbSeq}
+    </delete>
+    
+
+
+
+    <sql id ="selectCommon">
+   		<if test="shDelNy != null and !shDelNy.equals('')">AND mbdelectNY = #{shDelNy}</if>   
+                
+				  <choose>
+					<when test="shOptionDate == 1">AND mbRgstrDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND mbModifiedDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>  
+				</choose>      
+	        <choose>	
+	            <when test="shOption == 1">AND mbSeq = #{shValue}</when>
+	            <when test="shOption == 2">AND mbName LIKE CONCAT('%',#{shValue},'%')</when>
+	        </choose> 
+   </sql>
+
+
+   <!--  ,(select count(aa.ifcdSeq) from infrCode aa where 1=1 and aa.ifcdDelNy = 0 and aa.ifcgSeq = a.ifcgSeq) as xifcdSeqCount -->
+	  
+</mapper>
