@@ -26,7 +26,13 @@ public class BaseVo {
 	
 	private int startRnumForMysql = 0;
 	
+	private int shperformance;
+	private int shRanking;
 	
+	
+	
+	
+
 
 
 public void setParamsPaging(int totalRows) {
@@ -80,7 +86,27 @@ public void setParamsPaging(int totalRows) {
 	}
 
 	
+	public int getShperformance() {
+		return shperformance;
+	}
 	
+	
+	
+	public void setShperformance(int shperformance) {
+		this.shperformance = shperformance;
+	}
+	
+	
+	
+	public int getShRanking() {
+		return shRanking;
+	}
+	
+	
+	
+	public void setShRanking(int shRanking) {
+		this.shRanking = shRanking;
+	}
 	public Integer getShAge() {
 		return shAge;
 	}

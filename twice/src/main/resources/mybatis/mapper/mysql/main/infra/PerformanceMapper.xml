@@ -59,6 +59,8 @@
         	join place d
         	on d.plSeq = b.plSeq
         	WHERE 1=1 
+        	
+        	<if test="shperformance != null and !shperformance.equals('')">AND a.prperformanceType = #{shperformance}</if>   
          ORDER BY prSeq DESC
     </select>
     

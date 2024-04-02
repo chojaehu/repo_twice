@@ -1,7 +1,49 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{usr/block/usehead :: head}"></head>
+<!-- <head th:replace="~{usr/block/usehead :: head}"></head> -->
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <title>AMovie</title>
+    <meta name="description" content="A Template by Gozha.net">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="Gozha.net">
+
+    <!-- Mobile Specific Metas-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="telephone=no" name="format-detection">
+
+    <!-- Fonts -->
+    <!-- Font awesome - icon font -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Roboto -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,700' rel='stylesheet' type='text/css'>
+    <!-- Open Sans -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
+
+    <!-- Stylesheets -->
+
+    <!-- Mobile menu -->
+    <link href="usr/css/gozha-nav.css" rel="stylesheet" />
+    <!-- Select -->
+    <link href="usr/css/external/jquery.selectbox.css" rel="stylesheet" />
+
+    <!-- Slider Revolution CSS Files -->
+    <link rel="stylesheet" type="text/css" href="usr/revolution/css/settings.css">
+    <link rel="stylesheet" type="text/css" href="usr/revolution/css/layers.css">
+    <link rel="stylesheet" type="text/css" href="usr/revolution/css/navigation.css">
+
+    <!-- Custom -->
+    <link href="usr/css/style.css?v=1" rel="stylesheet" />
+
+
+    <!-- Modernizr -->
+    <script src="usr/js/external/modernizr.custom.js"></script>
+
+
+</head>
 
 <body>
     <div class="wrapper">
@@ -29,14 +71,14 @@
                     <li data-transition="fade" class="slide" data-title='Rush.'>
 
                         <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-                        <img class="rev-slidebg" alt='' src="ticketimg/main1.jpg">
+                        <img class="rev-slidebg" alt='' src="usr/ticketimg/main1.jpg">
                     </li>
                     <li data-transition="fade" class="slide" data-title='slide'>
                         <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-                        <img class="rev-slidebg" alt='' src="ticketimg/main2.jpg">
+                        <img class="rev-slidebg" alt='' src="usr/ticketimg/main2.jpg">
                     </li>
                     <li data-transition="fade" class="slide" data-title='Stop wishing. Start doing.'>
-                        <img class="rev-slidebg" alt='' src="ticketimg/main3.jpg">
+                        <img class="rev-slidebg" alt='' src="usr/ticketimg/main3.jpg">
                     </li>
 
 
@@ -54,7 +96,7 @@
                 <div class="col-sm-10 col-sm-offset-1 movie-best__rating">오늘의 추천</div>
                 <div class="col-sm-12 change--col">
                     <div class="movie-beta__item ">
-                        <img alt='' src="ticketimg/main1.jpg" class="imgsize2">
+                        <img alt='' src="usr/ticketimg/main1.jpg" class="imgsize2">
                         <span class="best-rate">5.0</span>
 
                         <ul class="movie-beta__info">
@@ -70,7 +112,7 @@
                         </ul>
                     </div>
                     <div class="movie-beta__item second--item">
-                        <img alt='' src="ticketimg/main2.jpg" class="imgsize2">
+                        <img alt='' src="usr/ticketimg/main2.jpg" class="imgsize2">
                         <span class="best-rate">5.0</span>
 
                         <ul class="movie-beta__info">
@@ -81,12 +123,12 @@
                                 
                             </li>
                             <li class="last-block">
-                                <a hrfull" class="slide__link">more</a>
+                                <a  class="slide__link">more</a>
                             </li>
                         </ul>
                     </div>
                     <div class="movie-beta__item third--item">
-                        <img alt='' src="ticketimg/main3.jpg" class="imgsize2">
+                        <img alt='' src="usr/ticketimg/main3.jpg" class="imgsize2">
                         <span class="best-rate">5.0</span>
 
                         <ul class="movie-beta__info">
@@ -97,12 +139,12 @@
                                 
                             </li>
                             <li class="last-block">
-                                <a hrfull" class="slide__link">more</a>
+                                <a  class="slide__link">more</a>
                             </li>
                         </ul>
                     </div>
                     <div class="movie-beta__item hidden-xs">
-                        <img alt='' src="ticketimg/main4.jpg" class="imgsize2">
+                        <img alt='' src="usr/ticketimg/main4.jpg" class="imgsize2">
                         <span class="best-rate">5.0</span>
 
                         <ul class="movie-beta__info">
@@ -113,12 +155,12 @@
                                 
                             </li>
                             <li class="last-block">
-                                <a hrfull" class="slide__link">more</a>
+                                <a  class="slide__link">more</a>
                             </li>
                         </ul>
                     </div>
                     <div class="movie-beta__item hidden-xs hidden-sm">
-                        <img alt='' src="ticketimg/main5.jpg" class="imgsize2">
+                        <img alt='' src="usr/ticketimg/main5.jpg" class="imgsize2">
                         <span class="best-rate">5.0</span>
 
                         <ul class="movie-beta__info">
@@ -129,12 +171,12 @@
                                 
                             </li>
                             <li class="last-block">
-                                <a hrfull" class="slide__link">more</a>
+                                <a class="slide__link">more</a>
                             </li>
                         </ul>
                     </div>
                     <div class="movie-beta__item hidden-xs hidden-sm">
-                        <img alt='' src="ticketimg/main6.jpg" class="imgsize2">
+                        <img alt='' src="usr/ticketimg/main6.jpg" class="imgsize2">
                         <span class="best-rate">5.0</span>
 
                         <ul class="movie-beta__info">
@@ -145,7 +187,7 @@
                                 
                             </li>
                             <li class="last-block">
-                                <a hrfull" class="slide__link">more</a>
+                                <a class="slide__link">more</a>
                             </li>
                         </ul>
                     </div>
@@ -165,15 +207,7 @@
                         </div>
 
                         <div class="marker-indecator film-category">
-                            <p class="select-marker"><br>Concert</p>
-                        </div>
-
-                        <div class="marker-indecator actors">
-                            <p class="select-marker"><br>classical/dance</p>
-                        </div>
-
-                        <div class="marker-indecator director">
-                            <p class="select-marker"><br>children/family</p>
+                            <p class="select-marker"><br>theater</p>
                         </div>
                     </div>
 
@@ -185,11 +219,7 @@
                             <li class="filter-wrap"><a href="#" class="mega-select__filter"
                                     data-filter='cinema'>뮤지컬</a></li>
                             <li class="filter-wrap"><a href="#" class="mega-select__filter"
-                                    data-filter='film-category'>콘서트</a></li>
-                            <li class="filter-wrap"><a href="#" class="mega-select__filter"
-                                    data-filter='actors'>클래식/무용</a></li>
-                            <li class="filter-wrap"><a href="#" class="mega-select__filter"
-                                    data-filter='director'>아동/가족</a></li>
+                                    data-filter='film-category'>연극</a></li>
                         </ul>
 
                         <input name="search-input" type='text' class="select__field">
@@ -273,7 +303,7 @@
                         <div class="movie movie--test movie--test--dark movie--test--left">
                             <div class="movie__images">
                                 <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="ticketimg/main4.jpg" class="imgsize">
+                                    <img alt='' src="usr/ticketimg/main4.jpg" class="imgsize">
                                 </a>
                             </div>
 
@@ -285,7 +315,6 @@
                                 <p class="movie__option"><a href="#">뮤지컬</a></p>
 
                                 <div class="movie__rate">
-                                    <div class="score"></div>
                                     <span class="movie__rating">4.1</span>
                                 </div>
                             </div>
@@ -296,7 +325,7 @@
                         <div class="movie movie--test movie--test--light movie--test--left">
                             <div class="movie__images">
                                 <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="ticketimg/main3.jpg" class="imgsize">
+                                    <img alt='' src="usr/ticketimg/main3.jpg" class="imgsize">
                                 </a>
                             </div>
 
@@ -309,7 +338,6 @@
                                 <p class="movie__option"><a href="#">뮤지컬</a></p>
 
                                 <div class="movie__rate">
-                                    <div class="score"></div>
                                     <span class="movie__rating">5.0</span>
                                 </div>
                             </div>
@@ -320,7 +348,7 @@
                         <div class="movie movie--test movie--test--light movie--test--right">
                             <div class="movie__images">
                                 <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="ticketimg/main2.jpg"  class="imgsize">
+                                    <img alt='' src="usr/ticketimg/main2.jpg"  class="imgsize">
                                 </a>
                             </div>
 
@@ -333,7 +361,6 @@
                                 <p class="movie__option"><a href="#">콘서트</a></p>
 
                                 <div class="movie__rate">
-                                    <div class="score"></div>
                                     <span class="movie__rating">4.9</span>
                                 </div>
                             </div>
@@ -344,7 +371,7 @@
                         <div class="movie movie--test movie--test--dark movie--test--right">
                             <div class="movie__images">
                                 <a href="movie-page-left.html" class="movie-beta__link" >
-                                    <img alt='' src="ticketimg/main1.jpg"  class="imgsize">
+                                    <img alt='' src="usr/ticketimg/main1.jpg"  class="imgsize">
                                 </a>
                             </div>
 
@@ -356,7 +383,6 @@
                                 <p class="movie__option"><a href="#">뮤지컬</a></p>
 
                                 <div class="movie__rate">
-                                    <div class="score"></div>
                                     <span class="movie__rating">5.0</span>
                                 </div>
                             </div>
@@ -364,7 +390,7 @@
                         <div class="movie movie--test movie--test--dark movie--test--left">
                             <div class="movie__images">
                                 <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="ticketimg/main6.jpg" class="imgsize">
+                                    <img alt='' src="usr/ticketimg/main6.jpg" class="imgsize">
                                 </a>
                             </div>
 
@@ -376,7 +402,6 @@
                                 <p class="movie__option"><a href="#">뮤지컬</a></p>
 
                                 <div class="movie__rate">
-                                    <div class="score"></div>
                                     <span class="movie__rating">4.1</span>
                                 </div>
                             </div>
@@ -387,7 +412,7 @@
                         <div class="movie movie--test movie--test--light movie--test--left">
                             <div class="movie__images">
                                 <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="ticketimg/main5.jpg" class="imgsize">
+                                    <img alt='' src="usr/ticketimg/main5.jpg" class="imgsize">
                                 </a>
                             </div>
 
@@ -400,7 +425,6 @@
                                 <p class="movie__option"><a href="#">콘서트</a></p>
 
                                 <div class="movie__rate">
-                                    <div class="score"></div>
                                     <span class="movie__rating">5.0</span>
                                 </div>
                             </div>
@@ -512,37 +536,37 @@
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
     <!-- Slider Revolution core JavaScript files -->
-    <script type="text/javascript" src="revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script type="text/javascript" src="revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/jquery.themepunch.revolution.min.js"></script>
 
     <!-- Slider Revolution extension scripts. -->
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.video.min.js"></script>
 
     <!-- Mobile menu -->
-    <script src="js/jquery.mobile.menu.js"></script>
+    <script src="usr/js/jquery.mobile.menu.js"></script>
     <!-- Select -->
-    <script src="js/external/jquery.selectbox-0.2.min.js"></script>
+    <script src="usr/js/external/jquery.selectbox-0.2.min.js"></script>
     <!-- Stars rate -->
-    <script src="js/external/jquery.raty.js"></script>
+    <script src="usr/js/external/jquery.raty.js"></script>
 
     <!-- Form element -->
-    <script src="js/external/form-element.js"></script>
+    <script src="usr/js/external/form-element.js"></script>
     <!-- Form validation -->
-    <script src="js/form.js"></script>
+    <script src="usr/js/form.js"></script>
 
     <!-- Twitter feed -->
-    <script src="js/external/twitterfeed.js"></script>
+    <script src="usr/js/external/twitterfeed.js"></script>
 
     <!-- Custom -->
-    <script src="js/custom.js"></script>
+    <script src="usr/js/custom.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {

@@ -121,6 +121,14 @@ public class PerformanceController {
 	
 	private String str2 = "/usr/list";
 	
+	@RequestMapping(value = "/useIndex")
+	public String useIndex(PerformanceVo vo,Model model) {
+		
+		
+		/* model.addAttribute("list", service.usrselectList(vo)); */
+		return str2 + "/useIndex";
+	}
+	
 	@RequestMapping(value = "/usePerformanceList")
 	public String usePerformanceList(PerformanceVo vo,Model model) throws Exception{
 		

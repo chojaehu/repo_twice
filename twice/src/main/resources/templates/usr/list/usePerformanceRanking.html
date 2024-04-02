@@ -2,350 +2,392 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <!-- <head th:replace="~{usr/block/usehead :: head}"></head>  -->
- <head th:replace="~{usr/block/usehead :: headindex}">
+<head th:replace="~{usr/block/usehead :: headindex}">
 
 
 
 </head>
 
 <body>
-    <div class="wrapper">
-        <!-- Banner -->
-        <div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
+	<div class="wrapper">
+		<!-- Banner -->
+		<div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
 		</div>
 
-        <!-- Header section -->
-        <header class="header-wrapper header-wrapper--home">
-            <div class="container" th:replace="~{usr/block/usenav :: navtop}">
-                
-            </div>
-        </header>
+		<!-- Header section -->
+		<header class="header-wrapper header-wrapper--home">
+			<div class="container" th:replace="~{usr/block/usenav :: navtop}">
 
-        <!-- Slider -->
-        <div class="bannercontainer rev_slider_wrapper">
+			</div>
+		</header>
 
-            <!-- the ID here will be used in the JavaScript below to initialize the slider -->
-            <div id="rev_slider_1" class="banner rev_slider" style="display:none">
+		<!-- Slider -->
+		<div class="bannercontainer rev_slider_wrapper">
 
-                <!-- BEGIN SLIDES LIST -->
-                <ul>
-                    <!-- SLIDE 1 -->
-                    <li data-transition="fade" class="slide" data-title='Rush.'>
-                        <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-                        <img class="rev-slidebg" alt='' src="usr/ticketimg/main1.jpg">
-                    </li>
+			<!-- the ID here will be used in the JavaScript below to initialize the slider -->
+			<div id="rev_slider_1" class="banner rev_slider"
+				style="display: none">
 
-                    <li data-transition="fade" class="slide" data-title='Rush.'>
-                        <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-                        <img class="rev-slidebg" alt='' src="usr/ticketimg/main2.jpg">
-                    </li>
+				<!-- BEGIN SLIDES LIST -->
+				<ul>
+					<!-- SLIDE 1 -->
+					<li data-transition="fade" class="slide" data-title='Rush.'>
+						<!-- SLIDE'S MAIN BACKGROUND IMAGE --> <img class="rev-slidebg"
+						alt='' src="usr/ticketimg/main1.jpg">
+					</li>
 
-                    <!-- SLIDE 3 -->
-                    <li data-transition="fade" class="slide" data-title='Stop wishing. Start doing.'>
-                        <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-                        <img class="rev-slidebg" alt='' src="usr/ticketimg/main3.jpg">
-                    </li>
-                </ul><!-- END SLIDES LIST -->
-            </div><!-- END SLIDER CONTAINER -->
-        </div>
-        <form name="formList" id="formList" method="get" autocomplete="off">
-        <section class="container">
-            <div class="movie-best">
-                <div class="col-sm-10 col-sm-offset-1 movie-best__rating">베스트 랭킹</div>
-                <div class="col-sm-12 change--col">
-                    <div class="movie-beta__item ">
-                        <a href="movie-page-full.html">
-                            <img alt='' src="usr/ticketimg/main1.jpg" class="imgsize2">
-                            <span class="best-rate">1</span>
-                        </a>
-                    </div>
-                    <div class="movie-beta__item second--item">
-                        <a href="movie-page-full.html">
-                            <img alt='' src="usr/ticketimg/main2.jpg" class="imgsize2">
-                            <span class="best-rate">2</span>
-                        </a>
-                    </div>
-                    <div class="movie-beta__item third--item">
-                        <a href="movie-page-full.html">
-                            <img alt='' src="usr/ticketimg/main3.jpg" class="imgsize2">
-                            <span class="best-rate">3</span>
-                        </a>
-                    </div>
-                    <div class="movie-beta__item hidden-xs">
-                        <a href="movie-page-full.html">
-                            <img alt='' src="usr/ticketimg/main4.jpg" class="imgsize2">
-                            <span class="best-rate">4</span>
-                        </a>
-                    </div>
-                    <div class="movie-beta__item hidden-xs hidden-sm">
-                        <a href="movie-page-full.html">
-                            <img alt='' src="usr/ticketimg/main5.jpg" class="imgsize2">
-                            <span class="best-rate">5</span>
-                        </a>
-                    </div>
-                    <div class="movie-beta__item hidden-xs hidden-sm">
-                        <a href="movie-page-full.html">
-                            <img alt='' src="usr/ticketimg/main6.jpg" class="imgsize2">
-                            <span class="best-rate">6</span>
-                        </a>
-                    </div>
-                </div>
-                 <div class="col-sm-10 col-sm-offset-1 movie-best__check">check all movies now playing</div>
-            </div>
+					<li data-transition="fade" class="slide" data-title='Rush.'>
+						<!-- SLIDE'S MAIN BACKGROUND IMAGE --> <img class="rev-slidebg"
+						alt='' src="usr/ticketimg/main2.jpg">
+					</li>
 
-            <div class="clearfix"></div>
+					<!-- SLIDE 3 -->
+					<li data-transition="fade" class="slide"
+						data-title='Stop wishing. Start doing.'>
+						<!-- SLIDE'S MAIN BACKGROUND IMAGE --> <img class="rev-slidebg"
+						alt='' src="usr/ticketimg/main3.jpg">
+					</li>
+				</ul>
+				<!-- END SLIDES LIST -->
+			</div>
+			<!-- END SLIDER CONTAINER -->
+		</div>
+		<form name="formList" id="formList" method="get" autocomplete="off">
+			<section class="container">
+				<div class="movie-best">
+					<div class="col-sm-10 col-sm-offset-1 movie-best__rating">베스트
+						랭킹</div>
+					<div class="col-sm-12 change--col">
+						<div class="movie-beta__item ">
+							<a href="movie-page-full.html"> <img alt=''
+								src="usr/ticketimg/main1.jpg" class="imgsize2"> <span
+								class="best-rate">1</span>
+							</a>
+						</div>
+						<div class="movie-beta__item second--item">
+							<a href="movie-page-full.html"> <img alt=''
+								src="usr/ticketimg/main2.jpg" class="imgsize2"> <span
+								class="best-rate">2</span>
+							</a>
+						</div>
+						<div class="movie-beta__item third--item">
+							<a href="movie-page-full.html"> <img alt=''
+								src="usr/ticketimg/main3.jpg" class="imgsize2"> <span
+								class="best-rate">3</span>
+							</a>
+						</div>
+						<div class="movie-beta__item hidden-xs">
+							<a href="movie-page-full.html"> <img alt=''
+								src="usr/ticketimg/main4.jpg" class="imgsize2"> <span
+								class="best-rate">4</span>
+							</a>
+						</div>
+						<div class="movie-beta__item hidden-xs hidden-sm">
+							<a href="movie-page-full.html"> <img alt=''
+								src="usr/ticketimg/main5.jpg" class="imgsize2"> <span
+								class="best-rate">5</span>
+							</a>
+						</div>
+						<div class="movie-beta__item hidden-xs hidden-sm">
+							<a href="movie-page-full.html"> <img alt=''
+								src="usr/ticketimg/main6.jpg" class="imgsize2"> <span
+								class="best-rate">6</span>
+							</a>
+						</div>
+					</div>
+					<div class="col-sm-10 col-sm-offset-1 movie-best__check">check
+						all movies now playing</div>
+				</div>
 
-            <h2 id='target' class="page-heading heading--outcontainer">랭킹</h2>
-            <div class="tags-area">
+				<div class="clearfix"></div>
 
-                <div class="tags tags--unmarked">
-                    <ul>
-                        <li class="item-wrap"><a href="#" class="tags__item item-active" data-filter='all'>전체</a>
-                        </li>
-                        <li class="item-wrap"><a href="#" class="tags__item" data-filter='release'>뮤지컬</a>
-                        </li>
-                        <li class="item-wrap"><a href="#" class="tags__item" data-filter='release'>콘서트</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+				<h2 id='target' class="page-heading heading--outcontainer">랭킹</h2>
+				<div class="tags-area">
 
-            <div class="col-sm-12">
-                <div class="row ">
-                    <div class="movie movie--preview movie--full release"
-                    th:if="${!#lists.isEmpty(list)}"
-					th:each="list : ${list}">
-                        <div class="col-md-1 " >
-                            <p class="gridBox">1</p>
-                    </div>
-                        <div class=" col-md-2 ">
-                            <div class="movie__images">
-                                <img alt='' src="ticketimg/main1.jpg">
-                            </div>
-                            <div class="movie__feature">
-                                <a href="#" class="movie__feature-item movie__feature--comment">123</a>
-                                <a href="#" class="movie__feature-item movie__feature--video">7</a>
-                                <a href="#" class="movie__feature-item movie__feature--photo">352</a>
-                            </div>
-                        </div>
-    
-                        <div class=" col-md-9  movie__about">
-                            <a href='movie-page-full.html' class="movie__title link--huge" 
-	                        th:href="@{/performanceXdmForm(prSeq=${list.prSeq})}"
-															th:text="${list.prTitle}"></a>
-	
-	                        <p class="movie__time" th:text="${list.prViewingTime}">105 min</p>
-	
-	                        <p class="movie__option"><strong>장소: </strong><a href="#" th:text="${list.plplace}"></a></p>
-	                        
-	                        <p class="movie__option"><strong>장르: </strong><a href="#" th:text="${@codeService.selectOneCachedCode(list.prperformanceType)}"></a></p>
-	                        
-	                        <p class="movie__option"><strong>기간: </strong>
-	                        <span th:text="${#dates.format(list.prStartDate,'yyyy/MM/dd')}"></span>~
-	                        <span th:text="${#dates.format(list.prEndDate,'yyyy/MM/dd')}"></span></p>
-	                        
-	                        
-	                        <p class="movie__option"><strong>주최/기획 </strong><a href="#" th:text="${list.prHostedPlanned}"></a></p>
-	                        
-	                        
-	                        <p class="movie__option"><strong>출연진: </strong><a href="#" >황정민</a>, <a
-	                            href="#">정우성</a>, <a href="#">이성민</a>, <a href="#">박해준</a>, 
-	                            <a href="#">김성균</a>, <a href="#">이모개</a>, <a
-	                            href="#">은희상</a>, <a href="#">박준용</a>, <a href="#">장근영</a> <a
-	                            href="#">...</a></p>
-	                            
-	                            
-	                        <p class="movie__option"><strong>연령제한: 
-	                        </strong><a href="#" th:text="${@codeService.selectOneCachedCode(list.prAgeLimit)}"></a></p>
-	                        
-	                        
-	                        <p class="movie__option"><strong>관객수: </strong><a href="#" th:text="${list.prAttenDance}"></a></p>
-	
-	                        <div class="movie__btns">
-	                            <a href="movie-page-full.html" class="btn btn-md btn--warning">예매 하기 </a>
-	                        </div>
-	
-	                        <div class="preview-footer">
-	                            <div class="movie__rate">
-	                                <div class="score"></div><span class="movie__rate-number">170 votes</span> <span
-	                                    class="movie__rating">5.0</span>
-	                            </div>
-	
-	
-	                        </div>
-	                    </div>
-	
-	                    <div class="clearfix"></div>
-                        </div>
+					<div class="tags tags--unmarked">
+						<ul>
+							<li class="item-wrap"><a href="#"
+								class="tags__item item-active" data-filter='all'>전체</a></li>
+							<li class="item-wrap"><a href="#" class="tags__item"
+								data-filter='release'>뮤지컬</a></li>
+							<li class="item-wrap"><a href="#" class="tags__item"
+								data-filter='release'>콘서트</a></li>
+						</ul>
+					</div>
+				</div>
 
-                    </div>
-                    <div class="page_wrap">
-                        <div class="page_nation">
-                            <a class="arrow prev" href="#"> << </a>
-                            <a href="#" class="active">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#">6</a>
-                            <a href="#">7</a>
-                            <a href="#">8</a>
-                            <a href="#">9</a>
-                            <a href="#">10</a>
-                            <a class="arrow next" href="#"> >> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            
+				<div class="col-sm-12">
+					<div class="row ">
+						<div class="movie movie--preview movie--full release"
+							th:if="${!#lists.isEmpty(list)}" th:each="list : ${list}">
+							<div class="col-md-1 ">
+								<p class="gridBox">1</p>
+							</div>
+							<div class=" col-md-2 ">
+								<div class="movie__images">
+									<img alt='' src="ticketimg/main1.jpg">
+								</div>
+								<div class="movie__feature">
+									<a href="#" class="movie__feature-item movie__feature--comment">123</a>
+									<a href="#" class="movie__feature-item movie__feature--video">7</a>
+									<a href="#" class="movie__feature-item movie__feature--photo">352</a>
+								</div>
+							</div>
 
-        </section>
-        </form>
+							<div class=" col-md-9  movie__about">
+								<a href='movie-page-full.html' class="movie__title link--huge"
+									th:href="@{/performanceXdmForm(prSeq=${list.prSeq})}"
+									th:text="${list.prTitle}"></a>
 
-        <div class="clearfix"></div>
+								<p class="movie__time" th:text="${list.prViewingTime}">105
+									min</p>
 
-        <footer class="footer-wrapper">
-            <section class="container">
-                <div class="col-xs-4 col-md-2 footer-nav">
-                    <ul class="nav-link">
-                        <li><a href="#" class="nav-link__item">Cities</a></li>
-                        <li><a href="movie-list-left.html" class="nav-link__item">Movies</a></li>
-                        <li><a href="trailer.html" class="nav-link__item">Trailers</a></li>
-                        <li><a href="rates-left.html" class="nav-link__item">Rates</a></li>
-                    </ul>
-                </div>
-                <div class="col-xs-4 col-md-2 footer-nav">
-                    <ul class="nav-link">
-                        <li><a href="coming-soon.html" class="nav-link__item">Coming soon</a></li>
-                        <li><a href="cinema-list.html" class="nav-link__item">Cinemas</a></li>
-                        <li><a href="offers.html" class="nav-link__item">Best offers</a></li>
-                        <li><a href="news-left.html" class="nav-link__item">News</a></li>
-                    </ul>
-                </div>
-                <div class="col-xs-4 col-md-2 footer-nav">
-                    <ul class="nav-link">
-                        <li><a href="#" class="nav-link__item">Terms of use</a></li>
-                        <li><a href="gallery-four.html" class="nav-link__item">Gallery</a></li>
-                        <li><a href="contact.html" class="nav-link__item">Contacts</a></li>
-                        <li><a href="page-elements.html" class="nav-link__item">Shortcodes</a></li>
-                    </ul>
-                </div>
-                <div class="col-xs-12 col-md-6">
-                    <div class="footer-info">
-                        <p class="heading-special--small">A.Movie<br><span class="title-edition">in the social
-                                media</span></p>
+								<p class="movie__option">
+									<strong>장소: </strong><a href="#" th:text="${list.plplace}"></a>
+								</p>
 
-                        <div class="social">
-                            <a href='#' class="social__variant fa fa-facebook"></a>
-                            <a href='#' class="social__variant fa fa-twitter"></a>
-                            <a href='#' class="social__variant fa fa-vk"></a>
-                            <a href='#' class="social__variant fa fa-instagram"></a>
-                            <a href='#' class="social__variant fa fa-tumblr"></a>
-                            <a href='#' class="social__variant fa fa-pinterest"></a>
-                        </div>
+								<p class="movie__option">
+									<strong>장르: </strong><a href="#"
+										th:text="${@codeService.selectOneCachedCode(list.prperformanceType)}"></a>
+								</p>
 
-                        <div class="clearfix"></div>
-                        <p class="copy">&copy; A.Movie, 2013. All rights reserved. Done by Olia Gozha</p>
-                    </div>
-                </div>
-            </section>
-        </footer>
-    </div>
+								<p class="movie__option">
+									<strong>기간: </strong> <span
+										th:text="${#dates.format(list.prStartDate,'yyyy/MM/dd')}"></span>~
+									<span th:text="${#dates.format(list.prEndDate,'yyyy/MM/dd')}"></span>
+								</p>
 
-    <!-- open/close -->
-    <div class="overlay overlay-hugeinc">
 
-        <section class="container">
+								<p class="movie__option">
+									<strong>주최/기획 </strong><a href="#"
+										th:text="${list.prHostedPlanned}"></a>
+								</p>
 
-            <div class="col-sm-4 col-sm-offset-4">
-                <button type="button" class="overlay-close">Close</button>
-                <form id="login-form" class="login" method='get' novalidate=''>
-                    <p class="login__title">sign in <br><span class="login-edition">welcome to A.Movie</span></p>
 
-                    <div class="social social--colored">
-                        <a href='#' class="social__variant fa fa-facebook"></a>
-                        <a href='#' class="social__variant fa fa-twitter"></a>
-                        <a href='#' class="social__variant fa fa-tumblr"></a>
-                    </div>
+								<p class="movie__option">
+									<strong>출연진: </strong><a href="#">황정민</a>, <a href="#">정우성</a>,
+									<a href="#">이성민</a>, <a href="#">박해준</a>, <a href="#">김성균</a>,
+									<a href="#">이모개</a>, <a href="#">은희상</a>, <a href="#">박준용</a>,
+									<a href="#">장근영</a> <a href="#">...</a>
+								</p>
 
-                    <p class="login__tracker">or</p>
 
-                    <div class="field-wrap">
-                        <input type='email' placeholder='Email' name='user-email' class="login__input">
-                        <input type='password' placeholder='Password' name='user-password' class="login__input">
+								<p class="movie__option">
+									<strong>연령제한: </strong><a href="#"
+										th:text="${@codeService.selectOneCachedCode(list.prAgeLimit)}"></a>
+								</p>
 
-                        <input type='checkbox' id='#informed' class='login__check styled'>
-                        <label for='#informed' class='login__check-info'>remember me</label>
-                    </div>
 
-                    <div class="login__control">
-                        <button type='submit' class="btn btn-md btn--warning btn--wider">sign in</button>
-                        <a href="#" class="login__tracker form__tracker">Forgot password?</a>
-                    </div>
-                </form>
-            </div>
+								<p class="movie__option">
+									<strong>관객수: </strong><a href="#"
+										th:text="${list.prAttenDance}"></a>
+								</p>
 
-        </section>
-    </div>
+								<div class="movie__btns">
+									<a href="movie-page-full.html" class="btn btn-md btn--warning">예매
+										하기 </a>
+								</div>
 
-    <!-- JavaScript-->
-    <!-- jQuery 3.1.1-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')</script>
-    <!-- Migrate -->
-    <script src="usr/js/external/jquery-migrate-1.2.1.min.js"></script>
-    <!-- Bootstrap 3-->
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+								<div class="preview-footer">
+									<div class="movie__rate">
+										<div class="score"></div>
+										<span class="movie__rate-number">170 votes</span> <span
+											class="movie__rating">5.0</span>
+									</div>
 
-    <!-- Slider Revolution core JavaScript files -->
-    <script type="text/javascript" src="usr/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script type="text/javascript" src="usr/revolution/js/jquery.themepunch.revolution.min.js"></script>
 
-    <!-- Slider Revolution extension scripts. -->
-    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.video.min.js"></script>
+								</div>
+							</div>
+
+							<div class="clearfix"></div>
+						</div>
+
+					</div>
+					<div class="page_wrap">
+						<div class="page_nation">
+							<a class="arrow prev" href="#"> << </a> <a href="#"
+								class="active">1</a> <a href="#">2</a> <a href="#">3</a> <a
+								href="#">4</a> <a href="#">5</a> <a href="#">6</a> <a href="#">7</a>
+							<a href="#">8</a> <a href="#">9</a> <a href="#">10</a> <a
+								class="arrow next" href="#"> >> </a>
+						</div>
+					</div>
+				</div>
+	</section>
+	</form>
+
+	<div class="clearfix"></div>
+
+	<footer class="footer-wrapper">
+		<section class="container">
+			<div class="col-xs-4 col-md-2 footer-nav">
+				<ul class="nav-link">
+					<li><a href="#" class="nav-link__item">Cities</a></li>
+					<li><a href="movie-list-left.html" class="nav-link__item">Movies</a></li>
+					<li><a href="trailer.html" class="nav-link__item">Trailers</a></li>
+					<li><a href="rates-left.html" class="nav-link__item">Rates</a></li>
+				</ul>
+			</div>
+			<div class="col-xs-4 col-md-2 footer-nav">
+				<ul class="nav-link">
+					<li><a href="coming-soon.html" class="nav-link__item">Coming
+							soon</a></li>
+					<li><a href="cinema-list.html" class="nav-link__item">Cinemas</a></li>
+					<li><a href="offers.html" class="nav-link__item">Best
+							offers</a></li>
+					<li><a href="news-left.html" class="nav-link__item">News</a></li>
+				</ul>
+			</div>
+			<div class="col-xs-4 col-md-2 footer-nav">
+				<ul class="nav-link">
+					<li><a href="#" class="nav-link__item">Terms of use</a></li>
+					<li><a href="gallery-four.html" class="nav-link__item">Gallery</a></li>
+					<li><a href="contact.html" class="nav-link__item">Contacts</a></li>
+					<li><a href="page-elements.html" class="nav-link__item">Shortcodes</a></li>
+				</ul>
+			</div>
+			<div class="col-xs-12 col-md-6">
+				<div class="footer-info">
+					<p class="heading-special--small">
+						A.Movie<br>
+						<span class="title-edition">in the social media</span>
+					</p>
+
+					<div class="social">
+						<a href='#' class="social__variant fa fa-facebook"></a> <a
+							href='#' class="social__variant fa fa-twitter"></a> <a href='#'
+							class="social__variant fa fa-vk"></a> <a href='#'
+							class="social__variant fa fa-instagram"></a> <a href='#'
+							class="social__variant fa fa-tumblr"></a> <a href='#'
+							class="social__variant fa fa-pinterest"></a>
+					</div>
+
+					<div class="clearfix"></div>
+					<p class="copy">&copy; A.Movie, 2013. All rights reserved. Done
+						by Olia Gozha</p>
+				</div>
+			</div>
+		</section>
+	</footer>
+	</div>
+
+	<!-- open/close -->
+	<div class="overlay overlay-hugeinc">
+
+		<section class="container">
+
+			<div class="col-sm-4 col-sm-offset-4">
+				<button type="button" class="overlay-close">Close</button>
+				<form id="login-form" class="login" method='get' novalidate=''>
+					<p class="login__title">
+						sign in <br>
+						<span class="login-edition">welcome to A.Movie</span>
+					</p>
+
+					<div class="social social--colored">
+						<a href='#' class="social__variant fa fa-facebook"></a> <a
+							href='#' class="social__variant fa fa-twitter"></a> <a href='#'
+							class="social__variant fa fa-tumblr"></a>
+					</div>
+
+					<p class="login__tracker">or</p>
+
+					<div class="field-wrap">
+						<input type='email' placeholder='Email' name='user-email'
+							class="login__input"> <input type='password'
+							placeholder='Password' name='user-password' class="login__input">
+
+						<input type='checkbox' id='#informed' class='login__check styled'>
+						<label for='#informed' class='login__check-info'>remember
+							me</label>
+					</div>
+
+					<div class="login__control">
+						<button type='submit' class="btn btn-md btn--warning btn--wider">sign
+							in</button>
+						<a href="#" class="login__tracker form__tracker">Forgot
+							password?</a>
+					</div>
+				</form>
+			</div>
+
+		</section>
+	</div>
+
+	<!-- JavaScript-->
+	<!-- jQuery 3.1.1-->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')
+	</script>
+	<!-- Migrate -->
+	<script src="usr/js/external/jquery-migrate-1.2.1.min.js"></script>
+	<!-- Bootstrap 3-->
+	<script
+		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+	<!-- Slider Revolution core JavaScript files -->
+	<script type="text/javascript"
+		src="usr/revolution/js/jquery.themepunch.tools.min.js"></script>
+	<script type="text/javascript"
+		src="usr/revolution/js/jquery.themepunch.revolution.min.js"></script>
+
+	<!-- Slider Revolution extension scripts. -->
+	<script type="text/javascript"
+		src="usr/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+	<script type="text/javascript"
+		src="usr/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+	<script type="text/javascript"
+		src="usr/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script type="text/javascript"
+		src="usr/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script type="text/javascript"
+		src="usr/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+	<script type="text/javascript"
+		src="usr/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script type="text/javascript"
+		src="usr/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+	<script type="text/javascript"
+		src="usr/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript"
+		src="usr/revolution/js/extensions/revolution.extension.video.min.js"></script>
 
 
 
 	<!-- Migrate -->
-    <script src="usr/js/external/jquery-migrate-1.2.1.min.js"></script>
-    <!-- jQuery UI -->
-    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <!-- Mobile menu -->
-    <script src="usr/js/jquery.mobile.menu.js"></script>
-    <!-- Select -->
-    <script src="usr/js/external/jquery.selectbox-0.2.min.js"></script>
-    <!-- Stars rate -->
-    <script src="usr/js/external/jquery.raty.js"></script>
+	<script src="usr/js/external/jquery-migrate-1.2.1.min.js"></script>
+	<!-- jQuery UI -->
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<!-- Mobile menu -->
+	<script src="usr/js/jquery.mobile.menu.js"></script>
+	<!-- Select -->
+	<script src="usr/js/external/jquery.selectbox-0.2.min.js"></script>
+	<!-- Stars rate -->
+	<script src="usr/js/external/jquery.raty.js"></script>
 
-    <!-- Form element -->
-    <script src="usr/js/external/form-element.js"></script>
-    <!-- Form validation -->
-    <script src="usr/js/form.js"></script>
+	<!-- Form element -->
+	<script src="usr/js/external/form-element.js"></script>
+	<!-- Form validation -->
+	<script src="usr/js/form.js"></script>
 
-    <!-- Twitter feed -->
-    <!-- <script src="usr/js/external/twitterfeed.js"></script> -->
+	<!-- Twitter feed -->
+	<!-- <script src="usr/js/external/twitterfeed.js"></script> -->
 
-    <!-- Custom -->
-    <script src="usr/js/custom.js"></script>
-    
-    
-    
+	<!-- Custom -->
+	<script src="usr/js/custom.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            init_Home();
-            init_MovieList();
-        });
-    </script>
+
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			init_Home();
+			init_MovieList();
+		});
+	</script>
 
 </body>
 
