@@ -13,9 +13,28 @@ public class PerformanceService {
 	@Autowired
 	PerformanceDao dao;
 	
+//	관리자 리스트
 	public List<PerformanceDto> selectList(PerformanceVo vo)
 	{
 		return dao.selectList(vo);
+	}
+	
+//	사용자 리스트
+	public List<PerformanceDto> usrselectList(PerformanceVo vo)
+	{
+		return dao.usrselectList(vo);
+	}
+	
+//	사용자 랭킹 리스트
+	public List<PerformanceDto> usrselectRanking(PerformanceVo vo)
+	{
+		return dao.usrselectRanking(vo);
+	}
+	
+//	사용자 배우 리스트
+	public List<PerformanceDto> castMemberList(PerformanceVo vo)
+	{
+		return dao.castMemberList(vo);
 	}
 	public int count(PerformanceVo vo) {
 		return dao.count(vo);

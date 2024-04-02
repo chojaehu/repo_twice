@@ -53,8 +53,8 @@
 
 				<!-- Content wrapper start -->
 				<form name="formList" id="formList" method="post" autocomplete="off">
-				<input type="hidden" name="thisPage" th:value="${vo.thisPage}"
-						default="1" /> 
+					<input type="hidden" name="thisPage" th:value="${vo.thisPage}"
+						default="1" />
 					<div class="content-wrapper">
 						<!-- Row start -->
 						<div class="col-sm-12 col-12">
@@ -137,7 +137,7 @@
 
 									<div class="row mt-1">
 										<div th:replace="~{xdm/infra/block/pageselect :: total}"></div>
-										
+
 										<!-- 페이징 셀렉트 -->
 										<div th:replace="~{xdm/infra/block/pageselect :: pageselect}"></div>
 
@@ -149,6 +149,9 @@
 													<th><input class="form-check-input" type="checkbox" /></th>
 													<th>#</th>
 													<th>제목</th>
+													<th>장르</th>
+													<th>공연장소</th>
+													<th>상영시간</th>
 													<th>기획/주최사</th>
 													<th>연령제한</th>
 													<th>관객수</th>
@@ -171,25 +174,52 @@
 													<!-- <td>
 																<img src="xdm/images/flags/1x1/hk.svg" class="flag-img" alt="Hong Kong" />
 															</td> -->
+
+													<!-- 공연제목 -->
 													<td><a
 														th:href="@{/performanceXdmForm(prSeq=${list.prSeq})}"
 														th:text="${list.prTitle}"></a></td>
+
+													<!-- 장르 -->
+													<td th:if="${list.prperformanceType != null}"
+														th:text="${@codeService.selectOneCachedCode(list.prperformanceType)}"></td>
+													<td th:unless="${list.prperformanceType != null}"></td>
+
+													<!-- 공연장소 -->
+													<td th:text="${list.plplace}"></td>
+													
+													<!-- 사영시간 -->
+													<td th:text="${list.prViewingTime}"></td>
+
+													<!-- 기획/주최사 -->
 													<td th:text="${list.prHostedPlanned}"></td>
 
+
 													<!-- <td th:text = "${list.prAgeLimit}"></td> -->
+
+													<!-- 연령제한 -->
 													<td th:if="${list.prAgeLimit != null}"
 														th:text="${@codeService.selectOneCachedCode(list.prAgeLimit)}"></td>
 													<td th:unless="${list.prAgeLimit != null}"></td>
 
+													<!-- 관람수 -->
 													<td th:text="${list.prAttenDance}"></td>
+
+													<!-- 상세설명 -->
 													<td th:text="${list.prDetails}"></td>
+
+													<!-- 등록일 -->
 													<td
 														th:text="${#dates.format(list.prStartDate,'yyyy/MM/dd')}"></td>
 													<td th:text="${#dates.format(list.prEndDate,'yyyy/MM/dd')}"></td>
+
+													<!-- 수정일 -->
 													<td
 														th:text="${#dates.format(list.prRgstrDate,'yyyy/MM/dd HH:mm:ss')}"></td>
 													<td
 														th:text="${#dates.format(list.prModifiedDate,'yyyy/MM/dd HH:mm:ss')}"></td>
+
+													<!-- 삭제여부 -->
 													<td th:if="${list.prdeleteNY eq 0}"><span
 														class="badge shade-green">n</span></td>
 													<td th:unless="${list.prdeleteNY eq 0}"><span

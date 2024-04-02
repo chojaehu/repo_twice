@@ -122,25 +122,35 @@ public class PerformanceController {
 	private String str2 = "/usr/list";
 	
 	@RequestMapping(value = "/usePerformanceList")
-	public String usePerformanceList() {
+	public String usePerformanceList(PerformanceVo vo,Model model) throws Exception{
+		
+		model.addAttribute("castlist", service.castMemberList(vo));
+		model.addAttribute("list", service.usrselectList(vo));
+		
 		
 		return str2 + "/usePerformanceList";
 	}
 	
 	@RequestMapping(value = "/usePerformanceArea")
-	public String usePerformanceArea() {
+	public String usePerformanceArea(PerformanceVo vo,Model model) {
 		
+		
+		model.addAttribute("list", service.usrselectList(vo));
 		return str2 + "/usePerformanceArea";
 	}
 	
 	@RequestMapping(value = "/usePerformanceRanking")
-	public String usePerformanceRanking() {
+	public String usePerformanceRanking(PerformanceVo vo,Model model) {
 		
+		
+		model.addAttribute("list", service.usrselectRanking(vo));
 		return str2 + "/usePerformanceRanking";
 	}
 	
 	@RequestMapping(value = "/usePerformancepage")
-	public String usePerformancepage() {
+	public String usePerformancepage(PerformanceVo vo,PerformanceDto dto,Model model) {
+		model.addAttribute("castlist", service.castMemberList(vo));
+		model.addAttribute("item", service.selectOne(dto));
 		
 		return str2 + "/usePerformancepage";
 	}

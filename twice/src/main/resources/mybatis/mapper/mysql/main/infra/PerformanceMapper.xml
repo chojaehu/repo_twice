@@ -5,25 +5,105 @@
 
 	<resultMap id="resultMapObj" type="com.ezticket.infra.performance.PerformanceDto"></resultMap>
 	
-	
+	<!-- 관리자 리스트 -->
 	<select id="selectList" resultMap="resultMapObj">
         SELECT
-        	prSeq,
-        	prTitle,
-        	prStartDate,
-        	prEndDate,
-        	prHostedPlanned,
-        	prAgeLimit,
-        	prAttenDance,
-        	prDetails,
-        	prRgstrDate,
-        	prModifiedDate,
-        	prdeleteNY
-        	FROM performanceList
+        	a.prSeq,
+        	a.prTitle,
+        	a.prperformanceType,
+        	a.prViewingTime,
+        	d.plplace,
+        	a.prStartDate,
+        	a.prEndDate,
+        	a.prHostedPlanned,
+        	a.prAgeLimit,
+        	a.prAttenDance,
+        	a.prDetails,
+        	a.prRgstrDate,
+        	a.prModifiedDate,
+        	a.prdeleteNY
+        	
+        	FROM performanceList a
+        	join placemapping b
+        	on a.prSeq = b.prSeq
+        	join place d
+        	on d.plSeq = b.plSeq
         	WHERE 1=1
-        	<include refid="selectCommon" />  
+        	 <include refid="selectCommon" />   
          ORDER BY prSeq DESC
-         limit #{rowNumToShow} offset #{startRnumForMysql}
+          limit #{rowNumToShow} offset #{startRnumForMysql}
+    </select>
+    
+    
+    <!-- 유저 리스트 -->
+    <select id="usrselectList" resultMap="resultMapObj">
+        SELECT
+        	a.prSeq,
+        	a.prTitle,
+        	a.prperformanceType,
+        	a.prViewingTime,
+        	d.plplace,
+        	a.prStartDate,
+        	a.prEndDate,
+        	a.prHostedPlanned,
+        	a.prAgeLimit,
+        	a.prAttenDance,
+        	a.prDetails,
+        	a.prRgstrDate,
+        	a.prModifiedDate,
+        	a.prdeleteNY
+        	
+        	FROM performanceList a
+        	join placemapping b
+        	on a.prSeq = b.prSeq
+        	join place d
+        	on d.plSeq = b.plSeq
+        	WHERE 1=1 
+         ORDER BY prSeq DESC
+    </select>
+    
+    <!-- 유저 리스트 랭킹 -->
+    <select id="usrselectRanking" resultMap="resultMapObj">
+        SELECT
+        	a.prSeq,
+        	a.prTitle,
+        	a.prperformanceType,
+        	a.prViewingTime,
+        	d.plplace,
+        	a.prStartDate,
+        	a.prEndDate,
+        	a.prHostedPlanned,
+        	a.prAgeLimit,
+        	a.prAttenDance,
+        	a.prDetails,
+        	a.prRgstrDate,
+        	a.prModifiedDate,
+        	a.prdeleteNY
+        	
+        	FROM performanceList a
+        	join placemapping b
+        	on a.prSeq = b.prSeq
+        	join place d
+        	on d.plSeq = b.plSeq
+        	WHERE 1=1
+         ORDER BY a.prAttenDance DESC
+    </select>
+    
+    
+    <!-- 유저 배우 리스트 -->
+    <select id="castMemberList" resultMap="resultMapObj">
+        SELECT
+			a.prSeq, 
+			a.prTitle, 
+			d.cmName,
+			b.cpSeq,
+			b.cpRole
+			from performancelist a
+			join castmembermapping b
+			on a.prSeq = b.prSeq 
+			join castmember d
+			on d.cmseq = b.cmseq
+			where b.prSeq = #{prSeq}
     </select>
     
     <select id="count"  resultType="Integer">
@@ -38,19 +118,27 @@
     
     <select id="selectOne">
     SELECT 
-    		prSeq,
-        	prTitle,
-        	prStartDate,
-        	prEndDate,
-        	prHostedPlanned,
-        	prAgeLimit,
-        	prAttenDance,
-        	prDetails,
-        	prRgstrDate,
-        	prModifiedDate,
-        	prdeleteNY
-    FROM performanceList 
-    WHERE 1=1 AND prSeq = #{prSeq}
+    		a.prSeq,
+        	a.prTitle,
+        	a.prperformanceType,
+        	a.prViewingTime,
+        	d.plplace,
+        	a.prStartDate,
+        	a.prEndDate,
+        	a.prHostedPlanned,
+        	a.prAgeLimit,
+        	a.prAttenDance,
+        	a.prDetails,
+        	a.prRgstrDate,
+        	a.prModifiedDate,
+        	a.prdeleteNY
+        	
+        	FROM performanceList a
+        	join placemapping b
+        	on a.prSeq = b.prSeq
+        	join place d
+        	on d.plSeq = b.plSeq 
+    WHERE 1=1 AND a.prSeq = #{prSeq}
     </select>
     
     <update id="update">
