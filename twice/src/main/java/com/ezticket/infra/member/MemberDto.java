@@ -17,6 +17,7 @@ public class MemberDto {
 	private Date mbRgstrDate;
 	private Date mbModifiedDate;
 	private Integer mbdelectNY;
+	
 	public String getMbSeq() {
 		return mbSeq;
 	}

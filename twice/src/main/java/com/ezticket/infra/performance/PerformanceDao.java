@@ -23,6 +23,13 @@ public interface PerformanceDao {
 //	공연 날짜/시간
 	public List<PerformanceDto> bookOneList(PerformanceVo vo);
 	
+//	리뷰 리스트
+	public List<PerformanceDto> reviewList(PerformanceVo vo);
+	
+	
+//	리뷰 답글 리스트
+	public List<PerformanceDto> replyList(PerformanceVo vo);
+	
 //	배우 리스트
 	public List<PerformanceDto> castMemberList(PerformanceVo vo);
 	public int count(PerformanceVo vo);

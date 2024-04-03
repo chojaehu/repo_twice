@@ -167,8 +167,11 @@ public class PerformanceController {
 	// 공연 페이지
 	@RequestMapping(value = "/usePerformancepage")
 	public String usePerformancepage(PerformanceVo vo,PerformanceDto dto,Model model) {
+
 		model.addAttribute("castlist", service.castMemberList(vo));
 		model.addAttribute("item", service.selectOne(dto));
+		model.addAttribute("review", service.reviewList(vo));
+		//model.addAttribute("reply", service.replyList(vo));
 		
 		return str2 + "/usePerformancepage";
 	}

@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <style>
     table {
         width: 100%;
@@ -127,7 +127,7 @@
                                     <tr>
                                         <th>이메일</th>
                                         <td>
-                                            <span>fprm5741@naver.com</span>
+                                            <span th:text="${item.mbEmail}"></span>
                                         </td>
                                         <td>
 
@@ -145,7 +145,7 @@
                                     <tr>
                                         <th>이름</th>
                                         <td>
-                                            <span>조재훈</span>
+                                            <span th:text="${item.mbName}">조재훈</span>
                                         </td>
                                         <td>
 
@@ -154,7 +154,7 @@
                                     <tr>
                                         <th>성별</th>
                                         <td>
-                                            <span>남자</span>
+                                            <span th:text="${@codeService.selectOneCachedCode(item.mbgender)}"></span>
                                         </td>
                                         <td>
 
@@ -163,7 +163,7 @@
                                     <tr>
                                         <th>전화번호</th>
                                         <td>
-                                            <span>010-4809-5741</span>
+                                            <span th:text="${item.mbPhone}">010-4809-5741</span>
                                         </td>
                                         <td>
 

@@ -82,7 +82,8 @@
 		</div>
 
 		<!-- Main content -->
-		<form name="formList" id="formList" method="get" class="comment-form"  autocomplete="off">
+		<form name="formList" id="formList" method="get" class="comment-form"
+			autocomplete="off">
 			<section class="container">
 				<div class="col-sm-12">
 					<div class="movie">
@@ -137,9 +138,8 @@
 
 
 								<div class="movie__btns movie__btns--full">
-									<a class="btn btn-md btn--warning" 
-
-									th:href="@{/useBookOne(prSeq=${item.prSeq},plSeq=${item.plSeq})}">예매하기</a>
+									<a class="btn btn-md btn--warning"
+										th:href="@{/useBookOne(prSeq=${item.prSeq},plSeq=${item.plSeq})}">예매하기</a>
 								</div>
 
 								<!--  <div class="share">
@@ -291,108 +291,91 @@
 
 						<div class="comment-sets">
 
-							<div class="comment">
-								<div class="comment__images">
-									<img alt='' src="images/comment/avatar.jpg">
-								</div>
-
-								<a href='#' class="comment__author"><span
-									class="social-used fa fa-facebook"></span>Roberta Inetti</a>
-								<p class="comment__date">today | 03:04</p>
-								<p class="comment__message">Lorem ipsum dolor sit amet,
-									consectetur adipiscing elit. Ut vitae enim sollicitudin,
-									euismod erat id, fringilla lacus. Cras ut rutrum lectus. Etiam
-									ante justo, volutpat at viverra a, mattis in velit. Morbi
-									molestie rhoncus enim, vitae sagittis dolor tristique et.</p>
-								<a href='#' class="comment__reply">답글</a>
-							</div>
-
-							<div class="comment">
-								<div class="comment__images">
-									<img alt='' src="images/comment/avatar-olia.jpg">
-								</div>
-
-								<a href='#' class="comment__author"><span
-									class="social-used fa fa-vk"></span>Olia Gozha</a>
-								<p class="comment__date">22.10.2013 | 14:40</p>
-								<p class="comment__message">Lorem ipsum dolor sit amet,
-									consectetur adipiscing elit. Ut vitae enim sollicitudin,
-									euismod erat id, fringilla lacus. Cras ut rutrum lectus. Etiam
-									ante justo, volutpat at viverra a, mattis in velit. Morbi
-									molestie rhoncus enim, vitae sagittis dolor tristique et.</p>
-								<a href='#' class="comment__reply">답글</a>
-							</div>
-
-							<div class="comment comment--answer">
-								<div class="comment__images">
-									<img alt='' src="images/comment/avatar-dmitriy.jpg">
-								</div>
-
-								<a href='#' class="comment__author"><span
-									class="social-used fa fa-vk"></span>Dmitriy Pustovalov</a>
-								<p class="comment__date">today | 10:19</p>
-								<p class="comment__message">Lorem ipsum dolor sit amet,
-									consectetur adipiscing elit. Ut vitae enim sollicitudin,
-									euismod erat id, fringilla lacus. Cras ut rutrum lectus. Etiam
-									ante justo, volutpat at viverra a, mattis in velit. Morbi
-									molestie rhoncus enim, vitae sagittis dolor tristique et.</p>
-								<a href='#' class="comment__reply">답글</a>
-							</div>
-
-							<div class="comment comment--last">
-								<div class="comment__images">
-									<img alt='' src="images/comment/avatar-sia.jpg">
-								</div>
-
-								<a href='#' class="comment__author"><span
-									class="social-used fa fa-facebook"></span>Sia Andrews</a>
-								<p class="comment__date">22.10.2013 | 12:31</p>
-								<p class="comment__message">Lorem ipsum dolor sit amet,
-									consectetur adipiscing elit. Ut vitae enim sollicitudin,
-									euismod erat id, fringilla lacus. Cras ut rutrum lectus. Etiam
-									ante justo, volutpat at viverra a, mattis in velit. Morbi
-									molestie rhoncus enim, vitae sagittis dolor tristique et.</p>
-								<a href='#' class="comment__reply">답글</a>
-							</div>
-
-							<div id='hide-comments' class="hide-comments">
+							<div
+							th:if="${!#lists.isEmpty(review)}"
+							th:each="review : ${review}">
 								<div class="comment">
 									<div class="comment__images">
-										<img alt='' src="images/comment/avatar.jpg">
+										<img alt='' src="usr/images/comment/avatar-olia.jpg">
 									</div>
 
-									<a href='#' class="comment__author"><span
-										class="social-used fa fa-facebook"></span>Roberta Inetti</a>
-									<p class="comment__date">today | 03:04</p>
-									<p class="comment__message">Lorem ipsum dolor sit amet,
-										consectetur adipiscing elit. Ut vitae enim sollicitudin,
-										euismod erat id, fringilla lacus. Cras ut rutrum lectus. Etiam
-										ante justo, volutpat at viverra a, mattis in velit. Morbi
-										molestie rhoncus enim, vitae sagittis dolor tristique et.</p>
-									<a href='#' class="comment__reply">답글</a>
-								</div>
-
-								<div class="comment">
-									<div class="comment__images">
-										<img alt='' src="images/comment/avatar-olia.jpg">
-									</div>
-
-									<a href='#' class="comment__author"><span
+									<a href='#' class="comment__author" th:text = "${review.rvWriter}"><span
 										class="social-used fa fa-vk"></span>Olia Gozha</a>
-									<p class="comment__date">22.10.2013 | 14:40</p>
-									<p class="comment__message">Lorem ipsum dolor sit amet,
-										consectetur adipiscing elit. Ut vitae enim sollicitudin,
-										euismod erat id, fringilla lacus. Cras ut rutrum lectus. Etiam
-										ante justo, volutpat at viverra a, mattis in velit. Morbi
-										molestie rhoncus enim, vitae sagittis dolor tristique et.</p>
+
+
+									<p class="comment__date" th:text="${#dates.format(review.rvRgstrDate,'yyyy-MM-dd HH:mm')}"></p>
+
+
+									<p class="comment__message" th:text = "${review.rvRvwCntnt}"></p>
 									<a href='#' class="comment__reply">답글</a>
 								</div>
-							</div>
+						<!-- 		
+								<td th:if="${list.mbgender != null}"
+													th:text="${@codeService.selectOneCachedCode(list.mbgender)}"></td>
+												<td th:unless="${list.mbgender != null}"></td> -->
+								
+								<th:block th:if="${review.rpWriter != null}">
+								<div class="comment comment--answer">
+									<div class="comment__images">
+										<img alt='' src="usr/images/comment/avatar-dmitriy.jpg">
+									</div>
 
-							<div class="comment-more">
-								<a href="#" class="watchlist">전체열기</a>
-							</div>
+									<a href='#' class="comment__author" th:text = "${review.rpWriter}"
+									
+									><span
+										class="social-used fa fa-vk"></span>Dmitriy Pustovalov</a>
+										
+									<p class="comment__date" th:text="${#dates.format(review.rpRgstrDate,'yyyy-MM-dd HH:mm')}">today | 10:19</p>
+									
+									<p class="comment__message" th:text = "${review.rpRvwCntnt}">ssdsdsd</p>
+								</div> 
+								</th:block>
+									
+									
+								<!-- <div class="comment comment--answer">
+									<div class="comment__images">
+										<img alt='' src="images/comment/avatar-dmitriy.jpg">
+									</div>
 
+									<a href='#' class="comment__author" 
+									th:if="${review.rpWriter != null}"
+									th:text = "${review.rpWriter}"
+									><span
+										class="social-used fa fa-vk"></span>Dmitriy Pustovalov</a>
+										
+									<p class="comment__date" 
+									th:if="${review.rpRgstrDate, != null}"
+									th:text="${#dates.format(review.rpRgstrDate,'yyyy-MM-dd HH:mm')}"
+									>today | 10:19</p>
+									
+									<p class="comment__message" 
+									th:if="${review.rpRvwCntnt, != null}"
+									th:text = "${review.rpRvwCntnt}"
+									>ssdsdsd</p>
+								</div>  -->	
+									
+								<!-- <div class="comment comment--answer"
+								th:if="${!#lists.isEmpty(reply)}"
+								th:each="reply : ${reply}">
+									<div class="comment__images">
+										<img alt='' src="images/comment/avatar-dmitriy.jpg">
+									</div>
+
+									<a href='#' class="comment__author" th:text = "${reply.rpWriter}"><span
+										class="social-used fa fa-vk"></span>Dmitriy Pustovalov</a>
+										
+									<p class="comment__date" th:text="${#dates.format(reply.rpRgstrDate,'yyyy-MM-dd HH:mm')}">today | 10:19</p>
+									
+									<p class="comment__message" th:text = "${reply.rpRvwCntnt}">ssdsdsd</p>
+								</div> -->
+
+
+
+
+								<!-- <div class="comment-more">
+									<a href="#" class="watchlist">전체열기</a>
+								</div> -->
+							</div>
 						</div>
 					</div>
 				</div>
@@ -567,11 +550,11 @@
 	<!--*** Google map  ***-->
 	<!-- <script src="usr/https://maps.google.com/maps/api/js?sensor=true"></script>
     <script src="usr/js/external/infobox.js"></script> -->
-    
-      <script src="xdm/js/Common.js">
-    let goUrlXdmLogin = "/useIndex";
-    </script>
-    
+
+	<script src="xdm/js/Common.js">
+		let goUrlXdmLogin = "/useIndex";
+	</script>
+
 
 
 

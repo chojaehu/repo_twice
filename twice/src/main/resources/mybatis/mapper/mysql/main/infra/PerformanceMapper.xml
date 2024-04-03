@@ -132,7 +132,6 @@
     
     
     <!-- 결제 완료 리스트 -->
-    
      <select id="usrselectPay" resultMap="resultMapObj">
        select
 		a.pmTicketCode,
@@ -183,6 +182,8 @@
 		ORDER BY a.pmSeq DESC
     </select>
     
+    
+    <!-- 공연 관정보 -->
     <select id = "tabookList" resultMap="resultMapObj">
     	SELECT 
     		a.tatheaterNumber,
@@ -228,6 +229,40 @@
     		d.prSeq = ${prSeq}
 
     
+    </select>
+    
+    
+    <!-- 리뷰 리스트 -->
+    <select id = "reviewList" resultMap="resultMapObj">
+    select
+		a.rvSeq, 
+		a.rvWriter, 
+		a.rvRvwCntnt, 
+		a.rvGpa,
+		a.rvRgstrDate,
+		a.prSeq,
+		b.rpWriter,
+		b.rpRvwCntnt,
+		b.rpRgstrDate
+			from review a
+			Left join reply b
+            on a.rvSeq = b.rvSeq
+		    where a.prSeq = ${prSeq}
+    </select>
+    <!-- 답글 리스트 -->
+    <select id = "replyList" resultMap="resultMapObj">
+    select
+		a.rpSeq, 
+		a.rpWriter, 
+		a.rpRvwCntnt, 
+		a.rpRgstrDate, 
+		a.rvSeq
+		
+			from 
+				reply a
+			join 
+				review b
+			on a.rvSeq = b.rvSeq
     </select>
         
     <select id="count"  resultType="Integer">

@@ -55,6 +55,17 @@ public class PerformanceService {
 		return dao.bookOneList(vo);
 	}
 	
+//	상세페이지 리뷰 리스트
+	public List<PerformanceDto> reviewList(PerformanceVo vo){
+		return dao.reviewList(vo);
+	}
+	
+//	리뷰 답글 리스트
+	public List<PerformanceDto> replyList(PerformanceVo vo)
+	{
+		return dao.replyList(vo);
+	}
+	
 //	리스트 총 갯수
 	public int count(PerformanceVo vo) {
 		return dao.count(vo);

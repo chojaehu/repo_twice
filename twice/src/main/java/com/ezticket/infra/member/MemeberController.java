@@ -209,14 +209,17 @@ public class MemeberController {
 	@RequestMapping(value = "/useModify")
 	public String useModify(MemeberVo vo, Model model, HttpSession httpSession, MemberDto dto) throws Exception {
 		
-		vo.setMbSeq((String)httpSession.getAttribute("sessSeqXdm"));
+		//vo.setMbSeq((String)httpSession.getAttribute("sessSeqXdm"));
+		dto.setMbSeq((String)httpSession.getAttribute("sessSeqXdm"));
 		model.addAttribute("item", service.selectOne(dto));
 		return str2 + "/useModify";
 	}
 
 	// 비밀번호 변경
 	@RequestMapping(value = "/usePwModifying")
-	public String usePwModifying() throws Exception {
+	public String usePwModifying(Model model, MemberDto dto,MemeberVo vo) throws Exception {
+		
+		
 		return str2 + "/usePwModifying";
 	}
 
