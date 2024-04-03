@@ -61,19 +61,19 @@
     <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
 
     <!-- Mobile menu -->
-    <link href="css/gozha-nav.css" rel="stylesheet" />
+    <link href="usr/css/gozha-nav.css" rel="stylesheet" />
 
     <!-- Select -->
-    <link href="css/external/jquery.selectbox.css" rel="stylesheet" />
+    <link href="usr/css/external/jquery.selectbox.css" rel="stylesheet" />
 
     <!-- Swiper slider -->
-    <link href="css/external/idangerous.swiper.css" rel="stylesheet" />
+    <link href="usr/css/external/idangerous.swiper.css" rel="stylesheet" />
 
     <!-- Custom -->
-    <link href="css/style.css?v=1" rel="stylesheet" />
+    <link href="usr/css/style.css?v=1" rel="stylesheet" />
 
     <!-- Modernizr -->
-    <script src="js/external/modernizr.custom.js"></script>
+    <script src="usr/js/external/modernizr.custom.js"></script>
 
 
 
@@ -84,9 +84,8 @@
 <body>
     <div class="wrapper">
         <!-- Banner -->
-        <div class="banner-top">
-            <img alt='top banner' src="ticketimg/title.jpg">
-        </div>
+        <div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
+		</div>
 
         <!-- Header section -->
         <header class="header-wrapper">
@@ -96,7 +95,7 @@
         </header>
 
         <!-- Search bar -->
-        <!-- <div class="search-wrapper">
+        <!--  <div class="search-wrapper">
             <div class="container container--add">
                 <form id='search-form' method='get' class="search">
                     <input type="text" class="search__field" placeholder="Search">
@@ -110,31 +109,16 @@
                     <button type='submit' class="btn btn-md btn--danger search__button">search a movie</button>
                 </form>
             </div>
-        </div> -->
+        </div>  -->
 
         <!-- Main content -->
+        <form name="formList" id="formList" method="get" autocomplete="off">
         <section class="container">
             <div class="col-sm-12">
                 <h2 class="page-heading">예매 확인/취소</h2>
 
                 <div class="row">
-                    <div class="col-md-3">
-                        <div class="category">
-                            <h3 class="category__title">예매관리</h3>
-                            <!-- <br><span class="title-edition">popular posts</span> -->
-                            <ul>
-                                <li><a href="information.html" class="category__item">예매 확인/취소</a></li>
-                                <!-- <li><a href="#" class="category__item"></a></li> -->
-                            </ul>
-
-                            <h3 class="category__title">회원정보관리</h3>
-                            <ul>
-                                <li><a href="modify.html" class="category__item">회원정보/수정</a></li>
-                                <li><a href="pwModifying.html" class="category__item">비밀번호 수정</a></li>
-                                <li><a href="withdrawal.html" class="category__item">회원탈퇴</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    <div class="container" th:replace="~{usr/block/usenav :: modifynav}"></div>
 
                     <div class="col-md-9">
                         <div class="row">
@@ -146,7 +130,7 @@
                                 </div>
                             </div>
                         </div>
-                        <form id='contact-form' class="form row" method='post' novalidate="" >
+                        <div class="form row">
                             <div class="row" style="margin-top: 50px;">
                                 <div class="col-md-3">
                                     <div class="rightalignment">
@@ -168,25 +152,46 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
 
                         <div class="row">
-                            <div class="movie movie--preview movie--full comments">
+                            <div class="movie movie--preview movie--full comments"
+                            th:if="${!#lists.isEmpty(list)}"
+							th:each="list : ${list}">
                                 <div class=" col-md-2 ">
                                     <div class="movie__images">
-                                        <img alt='' src="images/movie/movie-sample2.jpg">
+                                        <img alt='' src="usr/images/movie/movie-sample2.jpg">
                                     </div>
                                 </div>
 
                                 <div class=" col-md-7 movie__about">
-                                    <p class="movie__option"><strong>제목 : </strong>범죄 도시</p>
-                                    <p class="movie__option"><strong>관람일 : </strong>2024-06-22</p>
-                                    <p class="movie__option"><strong>예매일 : </strong>2024-06-22</p>
+                                	 <p class="movie__option"><strong>예매 코드 : </strong>
+                                	 <span th:text = "${list.pmTicketCode}"></span>
+                                	 </p>
+                                    <p class="movie__option"><strong>제목 : </strong>
+                                    <span th:text = "${list.prTitle}"></span>
+                                    </p>
+                                    <p class="movie__option"><strong>공영장소 : </strong>
+                                    <span th:text = "${list.plplace}"></span>
+                                    </p>
+                                    <p class="movie__option"><strong>공영관 : </strong>
+                                    <span th:text = "${list.tatheaterNumber}"></span>
+                                    </p>
+                                    <p class="movie__option"><strong>관람일시 : </strong>
+                                    <span th:text = "${list.pdselectionDate}"></span>
+                                    <span th:text = "${list.pdselectionTime}"></span>
+                                    </p>
+                                   <!--  <p class="movie__option"><strong>예매일 : </strong>2024-06-22</p> -->
+                                   <p class="movie__option"><strong>좌석 : </strong>
+                                   <span th:text = "${list.stSeatCode}">A</span>
+                                   <span th:text = "${list.stSeatNumber}">1</span>
+                                   </p>
                                     <p class="movie__option"><strong>취소가능일 : </strong>2024-06-15</p>
-                                    <p class="movie__option"><strong>매수 : </strong>1</p>
+                                    <!-- <p class="movie__option"><strong>매수 : </strong>1</p> -->
+                                    
                                 </div>
-                                <div class="col-md-2 checkone">
-                                    <div class="login__control">
+                                <div class="col-md-2">
+                                    <div class="">
                                         <button type='submit' class="btn btn-md btn--warning btn--wider">취소하기</button>
                                     </div>
                                 </div>
@@ -219,6 +224,7 @@
                 </div>
             </div>
         </section>
+        </form>
 
         <div class="clearfix"></div>
 
@@ -312,34 +318,37 @@
 
     <script>window.jQuery || document.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')</script>
     <!-- Migrate -->
-    <script src="js/external/jquery-migrate-1.2.1.min.js"></script>
+    <script src="usr/js/external/jquery-migrate-1.2.1.min.js"></script>
     <!-- jQuery UI -->
     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <!-- Bootstrap 3-->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
     <!-- Mobile menu -->
-    <script src="js/jquery.mobile.menu.js"></script>
+    <script src="usr/js/jquery.mobile.menu.js"></script>
     <!-- Select -->
-    <script src="js/external/jquery.selectbox-0.2.min.js"></script>
+    <script src="usr/js/external/jquery.selectbox-0.2.min.js"></script>
     <!-- Swiper slider -->
-    <script src="js/external/idangerous.swiper.min.js"></script>
+    <script src="usr/js/external/idangerous.swiper.min.js"></script>
 
     <!-- Stars rate -->
-    <script src="js/external/jquery.raty.js"></script>
+    <script src="usr/js/external/jquery.raty.js"></script>
     <!-- Form element -->
-    <script src="js/external/form-element.js"></script>
+    <script src="usr/js/external/form-element.js"></script>
     <!-- Form validation -->
-    <script src="js/form.js"></script>
+    <script src="usr/js/form.js"></script>
 
     <!-- Custom -->
-    <script src="js/custom.js"></script>
+    <script src="usr/js/custom.js"></script>
+    <script src="xdm/js/Common.js">
+    let goUrlXdmLogin = "/useIndex";
+    </script>
 
-    <script type="text/javascript">
+   <!--  <script type="text/javascript">
         $(document).ready(function () {
             init_BookingOne();
         });
-    </script>
+    </script> -->
 
 
     <!-- JavaScript-->

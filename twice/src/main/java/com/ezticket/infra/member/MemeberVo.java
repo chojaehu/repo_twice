@@ -4,15 +4,16 @@ import com.ezticket.infra.Base.BaseVo;
 
 public class MemeberVo extends BaseVo{
 	
-	private int mbSeq;
+	private String mbSeq;
 
-	public int getMbSeq() {
+	public String getMbSeq() {
 		return mbSeq;
 	}
 
-	public void setMbSeq(int mbSeq) {
+	public void setMbSeq(String mbSeq) {
 		this.mbSeq = mbSeq;
 	}
+	
 	
 
 }

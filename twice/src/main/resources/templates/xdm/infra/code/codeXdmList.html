@@ -266,31 +266,9 @@
 
 
 	<script type="text/javascript">
-		window.addEventListener('load', function() {
-			$("#shDateStart, #shDateEnd").datetimepicker({
-				timepicker : false,
-				format : 'Y-m-d'
-			});
-			let form = document.querySelector("form[name=formList]");
-			let goUrlXdmForm = "/xdm/infra/index/codeGroupXdmFrom";
-			let goUrlXdmList = "/codeXdmList";
-			goList = function (thisPage) {
-			    document.querySelector("input[name=thisPage]").value = thisPage;
-			    form.action = goUrlXdmList;
-			    form.submit();
-			} 
-			goForm = function(keyValue) {
-				seq.value = keyValue;
-				form.action = goUrlXdmForm;
-				form.submit();
-			}
-
-			document.getElementById("btnSearch").onclick = function() {
-				form.action = goUrlXdmList;
-				form.submit();
-			};
-
-		});
+	let form = document.querySelector("form[name=formList]");
+	let goUrlXdmForm = "/xdm/infra/index/codeGroupXdmFrom";
+	let goUrlXdmList = "/codeXdmList";
 	</script>
 
 

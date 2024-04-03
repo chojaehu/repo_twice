@@ -136,7 +136,7 @@
 
 							<div class=" col-md-9  movie__about">
 								<a href='movie-page-full.html' class="movie__title link--huge"
-									th:href="@{/performanceXdmForm(prSeq=${list.prSeq})}"
+									th:href="@{/usePerformancepage(prSeq=${list.prSeq})}"
 									th:text="${list.prTitle}"></a>
 
 								<p class="movie__time" th:text="${list.prViewingTime}">105
@@ -164,12 +164,12 @@
 								</p>
 
 
-								<p class="movie__option">
+								<!-- <p class="movie__option">
 									<strong>출연진: </strong><a href="#">황정민</a>, <a href="#">정우성</a>,
 									<a href="#">이성민</a>, <a href="#">박해준</a>, <a href="#">김성균</a>,
 									<a href="#">이모개</a>, <a href="#">은희상</a>, <a href="#">박준용</a>,
 									<a href="#">장근영</a> <a href="#">...</a>
-								</p>
+								</p> -->
 
 
 								<p class="movie__option">
@@ -184,7 +184,7 @@
 								</p>
 
 								<div class="movie__btns">
-									<a href="movie-page-full.html" class="btn btn-md btn--warning">예매
+									<a th:href="@{/usePerformancepage(prSeq=${list.prSeq})}" class="btn btn-md btn--warning">예매
 										하기 </a>
 								</div>
 
@@ -378,6 +378,11 @@
 
 	<!-- Custom -->
 	<script src="usr/js/custom.js"></script>
+	
+	  <script src="xdm/js/Common.js">
+    let goUrlXdmLogin = "/useIndex";
+    </script>
+    
 
 
 

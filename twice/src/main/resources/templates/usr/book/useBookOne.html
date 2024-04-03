@@ -6,9 +6,8 @@
 <body>
     <div class="wrapper">
         <!-- Banner -->
-        <div class="banner-top">
-            <img alt='top banner' src="ticketimg/title.jpg">
-        </div>
+       <div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
+		</div>
 
         <!-- Header section -->
         <header class="header-wrapper">
@@ -44,8 +43,6 @@
                         <!-- <span class="order__descript">and have fun movieime</span> -->
                     </p>
                     <div class="order__control">
-                        <a href="#" class="order__control-btn active">Purchase</a>
-                        <a href="#" class="order__control-btn">Reserve</a>
                     </div>
                 </div>
             </div>
@@ -77,73 +74,27 @@
                 <h2 class="page-heading">Pick time</h2>
 
                 <div class="time-select time-select--wide">
-                    <div class="time-select__group group--first">
+                    <div class="time-select__group group--first"
+                    th:if="${!#lists.isEmpty(talist)}"
+					th:each="talist : ${talist}">
+					
+					
                         <div class="col-sm-3">
-                            <p class="time-select__place">Cineworld</p>
+                            <p class="time-select__place" th:value = "${talist.taSeq}" th:text = "${talist.tatheaterNumber}"></p>
                         </div>
+                        
+                        
                         <ul class="col-sm-6 items-wrap">
-                            <li class="time-select__item" data-time='09:40'>09:40</li>
-                            <li class="time-select__item" data-time='13:45'>13:45</li>
-                            <li class="time-select__item" data-time='15:45'>15:45</li>
-                            <li class="time-select__item" data-time='19:50'>19:50</li>
-                            <li class="time-select__item" data-time='21:50'>21:50</li>
+                            <li class="time-select__item" 
+                            th:if="${!#lists.isEmpty(list)}"
+							th:each="list : ${list}"
+                            th:value = "${list.pdSeq}"
+                             th:text = "${list.pdselectionTime}"></li>
+ 
                         </ul>
                     </div>
 
-                    <div class="time-select__group">
-                        <div class="col-sm-3">
-                            <p class="time-select__place">Empire</p>
-                        </div>
-                        <ul class="col-sm-6 items-wrap">
-                            <li class="time-select__item" data-time='10:45'>10:45</li>
-                            <li class="time-select__item" data-time='16:00'>16:00</li>
-                            <li class="time-select__item" data-time='19:00'>19:00</li>
-                            <li class="time-select__item" data-time='21:15'>21:15</li>
-                            <li class="time-select__item" data-time='23:00'>23:00</li>
-                        </ul>
-                    </div>
-
-                    <div class="time-select__group">
-                        <div class="col-sm-3">
-                            <p class="time-select__place">Curzon</p>
-                        </div>
-                        <ul class="col-sm-6 items-wrap">
-                            <li class="time-select__item" data-time='09:00'>09:00</li>
-                            <li class="time-select__item" data-time='11:00'>11:00</li>
-                            <li class="time-select__item" data-time='13:00'>13:00</li>
-                            <li class="time-select__item" data-time='15:00'>15:00</li>
-                            <li class="time-select__item" data-time='17:00'>17:00</li>
-                            <li class="time-select__item" data-time='19:00'>19:00</li>
-                            <li class="time-select__item" data-time='21:00'>21:00</li>
-                            <li class="time-select__item" data-time='23:00'>23:00</li>
-                            <li class="time-select__item" data-time='01:00'>01:00</li>
-                        </ul>
-                    </div>
-
-                    <div class="time-select__group">
-                        <div class="col-sm-3">
-                            <p class="time-select__place">Odeon</p>
-                        </div>
-                        <ul class="col-sm-6 items-wrap">
-                            <li class="time-select__item" data-time='10:45'>10:45</li>
-                            <li class="time-select__item" data-time='16:00'>16:00</li>
-                            <li class="time-select__item" data-time='19:00'>19:00</li>
-                            <li class="time-select__item" data-time='21:15'>21:15</li>
-                            <li class="time-select__item" data-time='23:00'>23:00</li>
-                        </ul>
-                    </div>
-
-                    <div class="time-select__group group--last">
-                        <div class="col-sm-3">
-                            <p class="time-select__place">Picturehouse</p>
-                        </div>
-                        <ul class="col-sm-6 items-wrap">
-                            <li class="time-select__item" data-time='17:45'>17:45</li>
-                            <li class="time-select__item" data-time='21:30'>21:30</li>
-                            <li class="time-select__item" data-time='02:20'>02:20</li>
-                        </ul>
-                    </div>
-                </div>
+                </div> 
 
                 <div class="choose-indector choose-indector--time">
                     <strong>Choosen: </strong><span class="choosen-area"></span>
@@ -169,7 +120,7 @@
                     <span class="arrow__text arrow--prev"></span>
                     <span class="arrow__info"></span>
                 </a>
-                <a href="book2.html" class="booking-pagination__next">
+                <a th:href = "@{/useBookTow}"class="booking-pagination__next">
                     <span class="arrow__text arrow--next">다음 단계</span>
                     <!-- <span class="arrow__info">choose a sit</span> -->
                 </a>

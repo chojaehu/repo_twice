@@ -233,25 +233,6 @@
 		<!-- Main container end -->
 
 	</div>
-	<!-- Page wrapper end -->
-
-	<!-- *************
-			************ Required JavaScript Files *************
-		************* -->
-	<!-- 데이트 타입 픽커 -->
-	<!-- <script src="xdm/js/jquery.min.js"></script>
-    	<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
-		<script>
-			window.addEventListener('load', function() {
-				$("#shDateStart, #shDateEnd").datetimepicker({
-					timepicker:false,
-					format: 'Y-m-d'
-				});
-		});
-		</script> -->
-	<!-- 타입 픽커 끝 -->
-	<!-- Required jQuery first, then Bootstrap Bundle JS -->
 
 	<div th:replace="~{xdm/infra/block/jsscr :: scr}"></div> 
 	
@@ -261,50 +242,7 @@
 		let goUrlXdmList = "/codeGroupXdmList";
 		let seq = document.querySelector("input[name=number]");
 
-		window
-				.addEventListener(
-						'load',
-						function() {
-							$("#shDateStart, #shDateEnd").datetimepicker({
-								timepicker : false,
-								format : 'Y-m-d',
 
-							});
-
-							document.getElementById("btnSearch").onclick = function() {
-								form.action = goUrlXdmList;
-								form.submit();
-							};
-
-							// 				document.getElementById("btnReset").onclick = function () {
-							// 				    location.href = goUrlXdmList;
-							// 				}
-
-							// 				document.getElementById("btnForm").onclick = function () {
-							// 				    goForm(0);
-							// 				}
-
-							goForm = function(keyValue) {
-								seq.value = keyValue;
-								form.action = goUrlXdmForm;
-								form.submit();
-							}
-
-							goList = function(thisPage) {
-								document.querySelector("input[name=thisPage]").value = thisPage;
-								form.action = goUrlXdmList;
-								form.submit();
-							}
-
-						});
-
-		function enterkey() {
-
-			if (window.event.keyCode == 13) {
-				form.action = goUrlXdmList;
-				form.submit();
-			}
-		}
 	</script>
 
 </body>

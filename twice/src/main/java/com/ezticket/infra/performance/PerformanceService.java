@@ -36,6 +36,26 @@ public class PerformanceService {
 	{
 		return dao.castMemberList(vo);
 	}
+	
+//	사용자 결제완료 티켓 리스트 
+	public List<PerformanceDto> usrselectPay(PerformanceVo vo)
+	{
+		return dao.usrselectPay(vo);
+	}
+	
+//	공연장소 관에 대한 정보
+	public List<PerformanceDto> tabookList(PerformanceVo vo)
+	{
+		return dao.tabookList(vo);
+	}
+	
+//	공연 날짜 시간 
+	public List<PerformanceDto> bookOneList(PerformanceVo vo)
+	{
+		return dao.bookOneList(vo);
+	}
+	
+//	리스트 총 갯수
 	public int count(PerformanceVo vo) {
 		return dao.count(vo);
 	}

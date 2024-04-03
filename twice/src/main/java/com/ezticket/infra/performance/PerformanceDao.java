@@ -13,6 +13,15 @@ public interface PerformanceDao {
 //	사용자 랭킹 리스트
 	public List<PerformanceDto> usrselectRanking(PerformanceVo vo);
 	
+//	결제 완료 리스트
+	public List<PerformanceDto> usrselectPay(PerformanceVo vo);
+	
+	
+//	공연 몇관에 대한 리스트
+	public List<PerformanceDto> tabookList(PerformanceVo vo);
+	
+//	공연 날짜/시간
+	public List<PerformanceDto> bookOneList(PerformanceVo vo);
 	
 //	배우 리스트
 	public List<PerformanceDto> castMemberList(PerformanceVo vo);

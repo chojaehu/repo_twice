@@ -55,6 +55,7 @@
     </select>
     
     
+    
     <!-- 로그인시 조건에 맞는 데이터 호출 -->
     <select id="selectlogin" resultMap="resultMapObj">
         SELECT

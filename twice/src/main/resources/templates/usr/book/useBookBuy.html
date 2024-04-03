@@ -2,46 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
  <head th:replace="~{usr/block/usehead :: book}">
-<!-- <head>
-    Basic Page Needs
-    <meta charset="utf-8">
-    <title>AMovie - Booking step 3</title>
-    <meta name="description" content="A Template by Gozha.net">
-    <meta name="keywords" content="HTML, CSS, JavaScript">
-    <meta name="author" content="Gozha.net">
-
-    Mobile Specific Metas
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="telephone=no" name="format-detection">
-
-    Fonts
-    Font awesome - icon font
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    Roboto
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
-
-    Stylesheets
-
-    Mobile menu
-    <link href="usr/css/gozha-nav.css" rel="stylesheet" />
-    Select
-    <link href="usr/css/external/jquery.selectbox.css" rel="stylesheet" />
-
-    Custom
-    <link href="usr/css/style.css?v=1" rel="stylesheet" />
-
-    Modernizr
-    <script src="usr/js/external/modernizr.custom.js"></script>
-
-
-</head> -->
 
 <body>
     <div class="wrapper">
         <!-- Banner -->
-        <div class="banner-top">
-            <img alt='top banner' src="ticketimg/title.jpg">
-        </div>
+        <div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
+		</div>
 
         <!-- Header section -->
         <header class="header-wrapper">
@@ -76,8 +42,6 @@
                         <!-- <span class="order__descript">and have fun movieime</span> -->
                     </p>
                     <div class="order__control">
-                        <a href="" class="order__control-btn active">Purchase</a>
-                        <a href="book3-reserve.html" class="order__control-btn">Reserve</a>
                     </div>
                 </div>
             </div>
@@ -186,7 +150,7 @@
                 </div>
 
                 <div class="order">
-                    <a href="book-final.html" class="btn btn-md btn--warning btn--wide">구매</a>
+                    <a th:href = "@{/useBookfinal}" class="btn btn-md btn--warning btn--wide">구매</a>
                 </div>
 
             </div>

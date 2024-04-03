@@ -49,6 +49,8 @@
     WHERE 1=1 AND ifcdSeq = #{ifcdSeq}
     </select>
     
+    
+    
     <insert id="insert">
     insert into code
     (

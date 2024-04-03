@@ -40,14 +40,14 @@
 	                        
 	                        <p class="movie__option"><strong>주최/기획 </strong><a href="#" th:text="${list.prHostedPlanned}"><span>,</span></a></p>
 	                        
-							<strong >출연진 </strong>
+							<!-- <strong >출연진 </strong>
 	                       <p class="movie__option" >
 	                       <span th:if="${!#lists.isEmpty(castlist)}"
 							th:each="castlist : ${castlist}">
 							<a href="#" 
 							 th:text="${castlist.cmName}"></a>,
 							 </span>
-							 </p> 
+							 </p>  -->
 
 	                            
 	                            
@@ -58,7 +58,7 @@
 	                        <p class="movie__option"><strong>관객수: </strong><a href="#" th:text="${list.prAttenDance}"></a></p>
 	
 	                        <div class="movie__btns">
-	                            <a href="movie-page-full.html" class="btn btn-md btn--warning">예매 하기 </a>
+	                            <a th:href="@{/usePerformancepage(prSeq=${list.prSeq})}" class="btn btn-md btn--warning">예매 하기 </a>
 	                        </div>
 	
 	                        <div class="preview-footer">

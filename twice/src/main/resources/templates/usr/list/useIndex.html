@@ -4,575 +4,594 @@
 <!-- <head th:replace="~{usr/block/usehead :: head}"></head> -->
 
 <head>
-    <!-- Basic Page Needs -->
-    <meta charset="utf-8">
-    <title>AMovie</title>
-    <meta name="description" content="A Template by Gozha.net">
-    <meta name="keywords" content="HTML, CSS, JavaScript">
-    <meta name="author" content="Gozha.net">
+<!-- Basic Page Needs -->
+<meta charset="utf-8">
+<title>AMovie</title>
+<meta name="description" content="A Template by Gozha.net">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+<meta name="author" content="Gozha.net">
 
-    <!-- Mobile Specific Metas-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="telephone=no" name="format-detection">
+<!-- Mobile Specific Metas-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="telephone=no" name="format-detection">
 
-    <!-- Fonts -->
-    <!-- Font awesome - icon font -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Roboto -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,700' rel='stylesheet' type='text/css'>
-    <!-- Open Sans -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
+<!-- Fonts -->
+<!-- Font awesome - icon font -->
+<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<!-- Roboto -->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,700'
+	rel='stylesheet' type='text/css'>
+<!-- Open Sans -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:800italic'
+	rel='stylesheet' type='text/css'>
 
-    <!-- Stylesheets -->
+<!-- Stylesheets -->
 
-    <!-- Mobile menu -->
-    <link href="usr/css/gozha-nav.css" rel="stylesheet" />
-    <!-- Select -->
-    <link href="usr/css/external/jquery.selectbox.css" rel="stylesheet" />
+<!-- Mobile menu -->
+<link href="usr/css/gozha-nav.css" rel="stylesheet" />
+<!-- Select -->
+<link href="usr/css/external/jquery.selectbox.css" rel="stylesheet" />
 
-    <!-- Slider Revolution CSS Files -->
-    <link rel="stylesheet" type="text/css" href="usr/revolution/css/settings.css">
-    <link rel="stylesheet" type="text/css" href="usr/revolution/css/layers.css">
-    <link rel="stylesheet" type="text/css" href="usr/revolution/css/navigation.css">
+<!-- Slider Revolution CSS Files -->
+<link rel="stylesheet" type="text/css"
+	href="usr/revolution/css/settings.css">
+<link rel="stylesheet" type="text/css"
+	href="usr/revolution/css/layers.css">
+<link rel="stylesheet" type="text/css"
+	href="usr/revolution/css/navigation.css">
 
-    <!-- Custom -->
-    <link href="usr/css/style.css?v=1" rel="stylesheet" />
+<!-- Custom -->
+<link href="usr/css/style.css?v=1" rel="stylesheet" />
 
 
-    <!-- Modernizr -->
-    <script src="usr/js/external/modernizr.custom.js"></script>
+<!-- Modernizr -->
+<script src="usr/js/external/modernizr.custom.js"></script>
 
 
 </head>
 
 <body>
-    <div class="wrapper">
-        <!-- Banner -->
-        <div class="banner-top">
-            <img alt='top banner' src="ticketimg/title.jpg">
-        </div>
+	<div class="wrapper">
+		<!-- Banner -->
+		<div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
+		</div>
 
-        <!-- Header section -->
-        <header class="header-wrapper header-wrapper--home">
-             <div class="container" th:replace="~{usr/block/usenav :: navtop}">
+		<!-- Header section -->
+		<header class="header-wrapper header-wrapper--home">
+			<div class="container" th:replace="~{usr/block/usenav :: navtop}">
 
 			</div>
-        </header>
-
-        <!-- Slider -->
-        <div class="bannercontainer rev_slider_wrapper">
-
-            <!-- the ID here will be used in the JavaScript below to initialize the slider -->
-            <div id="rev_slider_1" class="banner rev_slider" style="display:none">
-
-                <!-- BEGIN SLIDES LIST -->
-                <ul>
-                    <!-- SLIDE 1 -->
-                    <li data-transition="fade" class="slide" data-title='Rush.'>
-
-                        <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-                        <img class="rev-slidebg" alt='' src="usr/ticketimg/main1.jpg">
-                    </li>
-                    <li data-transition="fade" class="slide" data-title='slide'>
-                        <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-                        <img class="rev-slidebg" alt='' src="usr/ticketimg/main2.jpg">
-                    </li>
-                    <li data-transition="fade" class="slide" data-title='Stop wishing. Start doing.'>
-                        <img class="rev-slidebg" alt='' src="usr/ticketimg/main3.jpg">
-                    </li>
-
-
-                </ul><!-- END SLIDES LIST -->
-
-            </div><!-- END SLIDER CONTAINER -->
-
-        </div><!-- END SLIDER CONTAINER WRAPPER -->
-        <!--end slider -->
-
-
-        <!-- Main content -->
-        <section class="container">
-            <div class="movie-best">
-                <div class="col-sm-10 col-sm-offset-1 movie-best__rating">오늘의 추천</div>
-                <div class="col-sm-12 change--col">
-                    <div class="movie-beta__item ">
-                        <img alt='' src="usr/ticketimg/main1.jpg" class="imgsize2">
-                        <span class="best-rate">5.0</span>
-
-                        <ul class="movie-beta__info">
-                            <li>추천<span class="best-voted"></span></li>
-                            <li>
-                                <p class="movie__time">시간</p>
-                                <p>카테고리 </p>
-                                
-                            </li>
-                            <li class="last-block">
-                                <a href="movie-page-full.html" class="slide__link">more</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="movie-beta__item second--item">
-                        <img alt='' src="usr/ticketimg/main2.jpg" class="imgsize2">
-                        <span class="best-rate">5.0</span>
-
-                        <ul class="movie-beta__info">
-                            <li>추천<span class="best-voted"></span></li>
-                            <li>
-                                <p class="movie__time">시간</p>
-                                <p>카테고리 </p>
-                                
-                            </li>
-                            <li class="last-block">
-                                <a  class="slide__link">more</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="movie-beta__item third--item">
-                        <img alt='' src="usr/ticketimg/main3.jpg" class="imgsize2">
-                        <span class="best-rate">5.0</span>
-
-                        <ul class="movie-beta__info">
-                            <li>추천<span class="best-voted"></span></li>
-                            <li>
-                                <p class="movie__time">시간</p>
-                                <p>카테고리 </p>
-                                
-                            </li>
-                            <li class="last-block">
-                                <a  class="slide__link">more</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="movie-beta__item hidden-xs">
-                        <img alt='' src="usr/ticketimg/main4.jpg" class="imgsize2">
-                        <span class="best-rate">5.0</span>
-
-                        <ul class="movie-beta__info">
-                            <li>추천<span class="best-voted"></span></li>
-                            <li>
-                                <p class="movie__time">시간</p>
-                                <p>카테고리 </p>
-                                
-                            </li>
-                            <li class="last-block">
-                                <a  class="slide__link">more</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="movie-beta__item hidden-xs hidden-sm">
-                        <img alt='' src="usr/ticketimg/main5.jpg" class="imgsize2">
-                        <span class="best-rate">5.0</span>
-
-                        <ul class="movie-beta__info">
-                            <li>추천<span class="best-voted"></span></li>
-                            <li>
-                                <p class="movie__time">시간</p>
-                                <p>카테고리 </p>
-                                
-                            </li>
-                            <li class="last-block">
-                                <a class="slide__link">more</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="movie-beta__item hidden-xs hidden-sm">
-                        <img alt='' src="usr/ticketimg/main6.jpg" class="imgsize2">
-                        <span class="best-rate">5.0</span>
-
-                        <ul class="movie-beta__info">
-                            <li>추천<span class="best-voted"></span></li>
-                            <li>
-                                <p class="movie__time">시간</p>
-                                <p>카테고리 </p>
-                                
-                            </li>
-                            <li class="last-block">
-                                <a class="slide__link">more</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-10 col-sm-offset-1 movie-best__check">check all movies now playing</div>
-            </div>
-
-            <div class="col-sm-12">
-                <div class="mega-select-present mega-select-top mega-select--full">
-                    <div class="mega-select-marker">
-                        <div class="marker-indecator location">
-                            <p class="select-marker"><br>ALL</p>
-                        </div>
-
-                        <div class="marker-indecator cinema">
-                            <p class="select-marker"><br>Musical</p>
-                        </div>
-
-                        <div class="marker-indecator film-category">
-                            <p class="select-marker"><br>theater</p>
-                        </div>
-                    </div>
-
-                    <div class="mega-select pull-right">
-                        <span class="mega-select__point">검색어</span>
-                        <ul class="mega-select__sort">
-                            <li class="filter-wrap"><a href="#" class="mega-select__filter filter--active"
-                                    data-filter='location'>전체</a></li>
-                            <li class="filter-wrap"><a href="#" class="mega-select__filter"
-                                    data-filter='cinema'>뮤지컬</a></li>
-                            <li class="filter-wrap"><a href="#" class="mega-select__filter"
-                                    data-filter='film-category'>연극</a></li>
-                        </ul>
-
-                        <input name="search-input" type='text' class="select__field">
-
-                        <div class="select__btn">
-                            <a href="#" class="btn btn-md btn--danger location"><span class="hidden-exrtasm">전체 검색</span></a>
-                            <a href="#" class="btn btn-md btn--danger cinema"><span class="hidden-exrtasm">뮤지컬 검색</span></a>
-                            <a href="#" class="btn btn-md btn--danger film-category"><span class="hidden-exrtasm">콘서트 검색</span></a>
-                            <a href="#" class="btn btn-md btn--danger actors"><span class="hidden-exrtasm">클래식 검색</span></a>
-                            <a href="#" class="btn btn-md btn--danger director"><span class="hidden-exrtasm">아동/가족 검색</span></a>
-                        </div>
-
-                        <div class="select__dropdowns">
-                            <ul class="select__group location">
-                                <li class="select__variant" data-value='London'>London</li>
-                                <li class="select__variant" data-value='New York'>New York</li>
-                                <li class="select__variant" data-value='Paris'>Paris</li>
-                                <li class="select__variant" data-value='Berlin'>Berlin</li>
-                                <li class="select__variant" data-value='Moscow'>Moscow</li>
-                                <li class="select__variant" data-value='Minsk'>Minsk</li>
-                                <li class="select__variant" data-value='Warsawa'>Warsawa</li>
-                            </ul>
-
-                            <ul class="select__group cinema">
-                                <li class="select__variant" data-value='Cineworld'>Cineworld</li>
-                                <li class="select__variant" data-value='Empire'>Empire</li>
-                                <li class="select__variant" data-value='Everyman'>Everyman</li>
-                                <li class="select__variant" data-value='Odeon'>Odeon</li>
-                                <li class="select__variant" data-value='Picturehouse'>Picturehouse</li>
-                            </ul>
-
-                            <ul class="select__group film-category">
-                                <li class="select__variant" data-value="Children's">Children's</li>
-                                <li class="select__variant" data-value='Comedy'>Comedy</li>
-                                <li class="select__variant" data-value='Drama'>Drama</li>
-                                <li class="select__variant" data-value='Fantasy'>Fantasy</li>
-                                <li class="select__variant" data-value='Horror'>Horror</li>
-                                <li class="select__variant" data-value='Thriller'>Thriller</li>
-                            </ul>
-
-                            <ul class="select__group actors">
-                                <li class="select__variant" data-value='Leonardo DiCaprio'>Leonardo DiCaprio</li>
-                                <li class="select__variant" data-value='Johnny Depp'>Johnny Depp</li>
-                                <li class="select__variant" data-value='Jack Nicholson'>Jack Nicholson</li>
-                                <li class="select__variant" data-value='Robert De Niro'>Robert De Niro</li>
-                                <li class="select__variant" data-value='Morgan Freeman'>Morgan Freeman</li>
-                                <li class="select__variant" data-value='Jim Carrey'>Jim Carrey</li>
-                                <li class="select__variant" data-value='Adam Sandler'>Adam Sandler</li>
-                                <li class="select__variant" data-value='Ben Stiller'>Ben Stiller</li>
-                            </ul>
-
-                            <ul class="select__group director">
-                                <li class="select__variant" data-value='Steven Spielberg'>Steven Spielberg</li>
-                                <li class="select__variant" data-value='Martin Scorsese'>Martin Scorsese</li>
-                                <li class="select__variant" data-value='Guy Ritchie'>Guy Ritchie</li>
-                                <li class="select__variant" data-value='Christopher Nolan'>Christopher Nolan</li>
-                                <li class="select__variant" data-value='Tim Burton'>Tim Burton</li>
-                            </ul>
-
-                            <ul class="select__group country">
-                                <li class="select__variant" data-value='USA'>USA</li>
-                                <li class="select__variant" data-value='Germany'>Germany</li>
-                                <li class="select__variant" data-value='Australia'>Australia</li>
-                                <li class="select__variant" data-value='UK'>UK</li>
-                                <li class="select__variant" data-value='Japan'>Japan</li>
-                                <li class="select__variant" data-value='Serbia'>Serbia</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <h2 id='target' class="page-heading heading--outcontainer">공연</h2>
-
-            <div class="col-sm-12">
-                <div class="row">
-                    <div class="col-sm-8 col-md-12">
-                        <!-- Movie variant with time -->
-                        <div class="movie movie--test movie--test--dark movie--test--left">
-                            <div class="movie__images">
-                                <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="usr/ticketimg/main4.jpg" class="imgsize">
-                                </a>
-                            </div>
-
-                            <div class="movie__info">
-                                <a href='movie-page-left.html' class="movie__title">Gravity (2013) </a>
-
-                                <p class="movie__time">91 분</p>
-
-                                <p class="movie__option"><a href="#">뮤지컬</a></p>
-
-                                <div class="movie__rate">
-                                    <span class="movie__rating">4.1</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Movie variant with time -->
-
-                        <!-- Movie variant with time -->
-                        <div class="movie movie--test movie--test--light movie--test--left">
-                            <div class="movie__images">
-                                <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="usr/ticketimg/main3.jpg" class="imgsize">
-                                </a>
-                            </div>
-
-                            <div class="movie__info">
-                                <a href='movie-page-left.html' class="movie__title">The Hobbit: The Desolation of Smaug
-                                    (2013) </a>
-
-                                <p class="movie__time">169 분</p>
-
-                                <p class="movie__option"><a href="#">뮤지컬</a></p>
-
-                                <div class="movie__rate">
-                                    <span class="movie__rating">5.0</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Movie variant with time -->
-
-                        <!-- Movie variant with time -->
-                        <div class="movie movie--test movie--test--light movie--test--right">
-                            <div class="movie__images">
-                                <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="usr/ticketimg/main2.jpg"  class="imgsize">
-                                </a>
-                            </div>
-
-                            <div class="movie__info">
-                                <a href='movie-page-left.html' class="movie__title">The Hunger Games: Catching Fire
-                                    (2013) </a>
-
-                                <p class="movie__time">146 분</p>
-
-                                <p class="movie__option"><a href="#">콘서트</a></p>
-
-                                <div class="movie__rate">
-                                    <span class="movie__rating">4.9</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Movie variant with time -->
-
-                        <!-- Movie variant with time -->
-                        <div class="movie movie--test movie--test--dark movie--test--right">
-                            <div class="movie__images">
-                                <a href="movie-page-left.html" class="movie-beta__link" >
-                                    <img alt='' src="usr/ticketimg/main1.jpg"  class="imgsize">
-                                </a>
-                            </div>
-
-                            <div class="movie__info">
-                                <a href='movie-page-left.html' class="movie__title">Thor: The Dark World (2013) </a>
-
-                                <p class="movie__time">112 분</p>
-
-                                <p class="movie__option"><a href="#">뮤지컬</a></p>
-
-                                <div class="movie__rate">
-                                    <span class="movie__rating">5.0</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="movie movie--test movie--test--dark movie--test--left">
-                            <div class="movie__images">
-                                <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="usr/ticketimg/main6.jpg" class="imgsize">
-                                </a>
-                            </div>
-
-                            <div class="movie__info">
-                                <a href='movie-page-left.html' class="movie__title">Gravity (2013) </a>
-
-                                <p class="movie__time">91분</p>
-
-                                <p class="movie__option"><a href="#">뮤지컬</a></p>
-
-                                <div class="movie__rate">
-                                    <span class="movie__rating">4.1</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Movie variant with time -->
-
-                        <!-- Movie variant with time -->
-                        <div class="movie movie--test movie--test--light movie--test--left">
-                            <div class="movie__images">
-                                <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="usr/ticketimg/main5.jpg" class="imgsize">
-                                </a>
-                            </div>
-
-                            <div class="movie__info">
-                                <a href='movie-page-left.html' class="movie__title">The Hobbit: The Desolation of Smaug
-                                    (2013) </a>
-
-                                <p class="movie__time">169 분</p>
-
-                                <p class="movie__option"><a href="#">콘서트</a></p>
-
-                                <div class="movie__rate">
-                                    <span class="movie__rating">5.0</span>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-
-
-                </div>
-            </div>
-
-        </section>
-
-        <div class="clearfix"></div>
-
-        <footer class="footer-wrapper">
-            <section class="container">
-                <div class="col-xs-4 col-md-2 footer-nav">
-                    <ul class="nav-link">
-                        <li><a href="#" class="nav-link__item">Cities</a></li>
-                        <li><a href="movie-list-left.html" class="nav-link__item">Movies</a></li>
-                        <li><a href="trailer.html" class="nav-link__item">Trailers</a></li>
-                        <li><a href="rates-left.html" class="nav-link__item">Rates</a></li>
-                    </ul>
-                </div>
-                <div class="col-xs-4 col-md-2 footer-nav">
-                    <ul class="nav-link">
-                        <li><a href="coming-soon.html" class="nav-link__item">Coming soon</a></li>
-                        <li><a href="cinema-list.html" class="nav-link__item">Cinemas</a></li>
-                        <li><a href="offers.html" class="nav-link__item">Best offers</a></li>
-                        <li><a href="news-left.html" class="nav-link__item">News</a></li>
-                    </ul>
-                </div>
-                <div class="col-xs-4 col-md-2 footer-nav">
-                    <ul class="nav-link">
-                        <li><a href="#" class="nav-link__item">Terms of use</a></li>
-                        <li><a href="gallery-four.html" class="nav-link__item">Gallery</a></li>
-                        <li><a href="contact.html" class="nav-link__item">Contacts</a></li>
-                        <li><a href="page-elements.html" class="nav-link__item">Shortcodes</a></li>
-                    </ul>
-                </div>
-                <div class="col-xs-12 col-md-6">
-                    <div class="footer-info">
-                        <p class="heading-special--small">A.Movie<br><span class="title-edition">in the social
-                                media</span></p>
-
-                        <div class="social">
-                            <a href='#' class="social__variant fa fa-facebook"></a>
-                            <a href='#' class="social__variant fa fa-twitter"></a>
-                            <a href='#' class="social__variant fa fa-vk"></a>
-                            <a href='#' class="social__variant fa fa-instagram"></a>
-                            <a href='#' class="social__variant fa fa-tumblr"></a>
-                            <a href='#' class="social__variant fa fa-pinterest"></a>
-                        </div>
-
-                        <div class="clearfix"></div>
-                        <p class="copy">&copy; A.Movie, 2013. All rights reserved. Done by Olia Gozha</p>
-                    </div>
-                </div>
-            </section>
-        </footer>
-    </div>
-
-    <!-- open/close -->
-    <div class="overlay overlay-hugeinc">
-
-        <section class="container">
-
-            <div class="col-sm-4 col-sm-offset-4">
-                <button type="button" class="overlay-close">Close</button>
-                <form id="login-form" class="login" method='get' novalidate=''>
-                    <p class="login__title">sign in <br><span class="login-edition">welcome to A.Movie</span></p>
-
-                    <div class="social social--colored">
-                        <a href='#' class="social__variant fa fa-facebook"></a>
-                        <a href='#' class="social__variant fa fa-twitter"></a>
-                        <a href='#' class="social__variant fa fa-tumblr"></a>
-                    </div>
-
-                    <p class="login__tracker">or</p>
-
-                    <div class="field-wrap">
-                        <input type='email' placeholder='Email' name='user-email' class="login__input">
-                        <input type='password' placeholder='Password' name='user-password' class="login__input">
-
-                        <input type='checkbox' id='#informed' class='login__check styled'>
-                        <label for='#informed' class='login__check-info'>remember me</label>
-                    </div>
-
-                    <div class="login__control">
-                        <button type='submit' class="btn btn-md btn--warning btn--wider">sign in</button>
-                        <a href="#" class="login__tracker form__tracker">Forgot password?</a>
-                    </div>
-                </form>
-            </div>
-
-        </section>
-    </div>
-
-    <!-- JavaScript-->
-    <!-- jQuery 3.1.1-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')</script>
-    <!-- Migrate -->
-    <script src="js/external/jquery-migrate-1.2.1.min.js"></script>
-    <!-- Bootstrap 3-->
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-
-    <!-- Slider Revolution core JavaScript files -->
-    <script type="text/javascript" src="usr/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script type="text/javascript" src="usr/revolution/js/jquery.themepunch.revolution.min.js"></script>
-
-    <!-- Slider Revolution extension scripts. -->
-    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript" src="usr/revolution/js/extensions/revolution.extension.video.min.js"></script>
-
-    <!-- Mobile menu -->
-    <script src="usr/js/jquery.mobile.menu.js"></script>
-    <!-- Select -->
-    <script src="usr/js/external/jquery.selectbox-0.2.min.js"></script>
-    <!-- Stars rate -->
-    <script src="usr/js/external/jquery.raty.js"></script>
-
-    <!-- Form element -->
-    <script src="usr/js/external/form-element.js"></script>
-    <!-- Form validation -->
-    <script src="usr/js/form.js"></script>
-
-    <!-- Twitter feed -->
-    <script src="usr/js/external/twitterfeed.js"></script>
-
-    <!-- Custom -->
-    <script src="usr/js/custom.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            init_Home();
-        });
+		</header>
+
+		<!-- Slider -->
+		<div class="bannercontainer rev_slider_wrapper">
+
+			<!-- the ID here will be used in the JavaScript below to initialize the slider -->
+			<div id="rev_slider_1" class="banner rev_slider"
+				style="display: none">
+
+				<!-- BEGIN SLIDES LIST -->
+				<ul>
+					<!-- SLIDE 1 -->
+					<li data-transition="fade" class="slide" data-title='Rush.'>
+						<!-- SLIDE'S MAIN BACKGROUND IMAGE --> <img class="rev-slidebg"
+						alt='' src="usr/ticketimg/main1.jpg">
+					</li>
+					<li data-transition="fade" class="slide" data-title='slide'>
+						<!-- SLIDE'S MAIN BACKGROUND IMAGE --> <img class="rev-slidebg"
+						alt='' src="usr/ticketimg/main2.jpg">
+					</li>
+					<li data-transition="fade" class="slide"
+						data-title='Stop wishing. Start doing.'><img
+						class="rev-slidebg" alt='' src="usr/ticketimg/main3.jpg"></li>
+
+
+				</ul>
+				<!-- END SLIDES LIST -->
+
+			</div>
+			<!-- END SLIDER CONTAINER -->
+
+		</div>
+		<!-- END SLIDER CONTAINER WRAPPER -->
+		<!--end slider -->
+
+
+		<!-- Main content -->
+		<form name="formList" id="formList" method="get" autocomplete="off">
+			<section class="container">
+				<div class="movie-best">
+					<div class="col-sm-10 col-sm-offset-1 movie-best__rating">오늘의
+						추천</div>
+					<div class="col-sm-12 change--col">
+						<div class="movie-beta__item ">
+							<img alt='' src="usr/ticketimg/main1.jpg" class="imgsize2">
+							<span class="best-rate">5.0</span>
+
+							<ul class="movie-beta__info">
+								<li>추천<span class="best-voted"></span></li>
+								<li>
+									<p class="movie__time">시간</p>
+									<p>카테고리</p>
+
+								</li>
+								<li class="last-block"><a href="movie-page-full.html"
+									class="slide__link">more</a></li>
+							</ul>
+						</div>
+						<div class="movie-beta__item second--item">
+							<img alt='' src="usr/ticketimg/main2.jpg" class="imgsize2">
+							<span class="best-rate">5.0</span>
+
+							<ul class="movie-beta__info">
+								<li>추천<span class="best-voted"></span></li>
+								<li>
+									<p class="movie__time">시간</p>
+									<p>카테고리</p>
+
+								</li>
+								<li class="last-block"><a class="slide__link">more</a></li>
+							</ul>
+						</div>
+						<div class="movie-beta__item third--item">
+							<img alt='' src="usr/ticketimg/main3.jpg" class="imgsize2">
+							<span class="best-rate">5.0</span>
+
+							<ul class="movie-beta__info">
+								<li>추천<span class="best-voted"></span></li>
+								<li>
+									<p class="movie__time">시간</p>
+									<p>카테고리</p>
+
+								</li>
+								<li class="last-block"><a class="slide__link">more</a></li>
+							</ul>
+						</div>
+						<div class="movie-beta__item hidden-xs">
+							<img alt='' src="usr/ticketimg/main4.jpg" class="imgsize2">
+							<span class="best-rate">5.0</span>
+
+							<ul class="movie-beta__info">
+								<li>추천<span class="best-voted"></span></li>
+								<li>
+									<p class="movie__time">시간</p>
+									<p>카테고리</p>
+
+								</li>
+								<li class="last-block"><a class="slide__link">more</a></li>
+							</ul>
+						</div>
+						<div class="movie-beta__item hidden-xs hidden-sm">
+							<img alt='' src="usr/ticketimg/main5.jpg" class="imgsize2">
+							<span class="best-rate">5.0</span>
+
+							<ul class="movie-beta__info">
+								<li>추천<span class="best-voted"></span></li>
+								<li>
+									<p class="movie__time">시간</p>
+									<p>카테고리</p>
+
+								</li>
+								<li class="last-block"><a class="slide__link">more</a></li>
+							</ul>
+						</div>
+						<div class="movie-beta__item hidden-xs hidden-sm">
+							<img alt='' src="usr/ticketimg/main6.jpg" class="imgsize2">
+							<span class="best-rate">5.0</span>
+
+							<ul class="movie-beta__info">
+								<li>추천<span class="best-voted"></span></li>
+								<li>
+									<p class="movie__time">시간</p>
+									<p>카테고리</p>
+
+								</li>
+								<li class="last-block"><a class="slide__link">more</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-10 col-sm-offset-1 movie-best__check">check
+						all movies now playing</div>
+				</div>
+
+				<div class="col-sm-12">
+					<div class="mega-select-present mega-select-top mega-select--full">
+						<div class="mega-select-marker">
+							<div class="marker-indecator location">
+								<p class="select-marker">
+									<br>ALL
+								</p>
+							</div>
+
+							<div class="marker-indecator cinema">
+								<p class="select-marker">
+									<br>Musical
+								</p>
+							</div>
+
+							<div class="marker-indecator film-category">
+								<p class="select-marker">
+									<br>theater
+								</p>
+							</div>
+						</div>
+
+						<div class="mega-select pull-right">
+							<span class="mega-select__point">검색어</span>
+							<ul class="mega-select__sort">
+								<li class="filter-wrap"><a href="#"
+									class="mega-select__filter filter--active"
+									data-filter='location'>전체</a></li>
+								<li class="filter-wrap"><a href="#"
+									class="mega-select__filter" data-filter='cinema'>뮤지컬</a></li>
+								<li class="filter-wrap"><a href="#"
+									class="mega-select__filter" data-filter='film-category'>연극</a></li>
+							</ul>
+
+							<input name="search-input" type='text' class="select__field">
+
+							<div class="select__btn">
+								<a href="#" class="btn btn-md btn--danger location"><span
+									class="hidden-exrtasm">전체 검색</span></a> <a href="#"
+									class="btn btn-md btn--danger cinema"><span
+									class="hidden-exrtasm">뮤지컬 검색</span></a> <a href="#"
+									class="btn btn-md btn--danger film-category"><span
+									class="hidden-exrtasm">콘서트 검색</span></a> <a href="#"
+									class="btn btn-md btn--danger actors"><span
+									class="hidden-exrtasm">클래식 검색</span></a> <a href="#"
+									class="btn btn-md btn--danger director"><span
+									class="hidden-exrtasm">아동/가족 검색</span></a>
+							</div>
+
+							<div class="select__dropdowns"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="clearfix"></div>
+
+				<h2 id='target' class="page-heading heading--outcontainer">공연</h2>
+
+				<div class="col-sm-12">
+					<div class="row">
+						<div class="col-sm-8 col-md-12" >
+							<!-- Movie variant with time -->
+							<div
+								class="movie movie--test movie--test--dark movie--test--left"
+								th:if="${!#lists.isEmpty(list)}"
+								th:each="list : ${list}">
+								<div class="movie__images">
+									<a  class="movie-beta__link" th:href="@{/usePerformancepage(prSeq=${list.prSeq})}"> 
+									<img src="usr/ticketimg/main3.jpg"
+										 class="imgsize" >
+									</a>
+								</div>
+
+								<div class="movie__info">
+									<a href='movie-page-left.html' class="movie__title" 
+									 th:href="@{/usePerformancepage(prSeq=${list.prSeq})}"
+									th:text = "${list.prTitle}">Gravity
+										(2013) </a>
+
+									<p class="movie__time" th:text = "${list.prViewingTime}">91 분</p>
+
+									<p class="movie__option" >
+										<a href="#" th:text="${@codeService.selectOneCachedCode(list.prperformanceType)}">뮤지컬</a>
+									</p>
+
+									<div class="movie__rate">
+										<span class="movie__rating">4.1</span>
+									</div>
+								</div>
+							</div>
+							<!-- Movie variant with time -->
+
+							<!-- Movie variant with time -->
+							<!-- <div
+								class="movie movie--test movie--test--light movie--test--left">
+								<div class="movie__images">
+									<a href="movie-page-left.html" class="movie-beta__link"> <img
+										alt='' src="usr/ticketimg/main3.jpg" class="imgsize">
+									</a>
+								</div>
+
+								<div class="movie__info">
+									<a href='movie-page-left.html' class="movie__title">The
+										Hobbit: The Desolation of Smaug (2013) </a>
+
+									<p class="movie__time">169 분</p>
+
+									<p class="movie__option">
+										<a href="#">뮤지컬</a>
+									</p>
+
+									<div class="movie__rate">
+										<span class="movie__rating">5.0</span>
+									</div>
+								</div>
+							</div> -->
+							<!-- Movie variant with time -->
+
+							<!-- Movie variant with time -->
+							<!-- <div
+								class="movie movie--test movie--test--light movie--test--right">
+								<div class="movie__images">
+									<a href="movie-page-left.html" class="movie-beta__link"> <img
+										alt='' src="usr/ticketimg/main2.jpg" class="imgsize">
+									</a>
+								</div>
+
+								<div class="movie__info">
+									<a href='movie-page-left.html' class="movie__title">The
+										Hunger Games: Catching Fire (2013) </a>
+
+									<p class="movie__time">146 분</p>
+
+									<p class="movie__option">
+										<a href="#">콘서트</a>
+									</p>
+
+									<div class="movie__rate">
+										<span class="movie__rating">4.9</span>
+									</div>
+								</div>
+							</div> -->
+							<!-- Movie variant with time -->
+
+							<!-- Movie variant with time -->
+							<!-- <div
+								class="movie movie--test movie--test--dark movie--test--right">
+								<div class="movie__images">
+									<a href="movie-page-left.html" class="movie-beta__link"> <img
+										alt='' src="usr/ticketimg/main1.jpg" class="imgsize">
+									</a>
+								</div>
+
+								<div class="movie__info">
+									<a href='movie-page-left.html' class="movie__title">Thor:
+										The Dark World (2013) </a>
+
+									<p class="movie__time">112 분</p>
+
+									<p class="movie__option">
+										<a href="#">뮤지컬</a>
+									</p>
+
+									<div class="movie__rate">
+										<span class="movie__rating">5.0</span>
+									</div>
+								</div>
+							</div> -->
+							<!-- <div
+								class="movie movie--test movie--test--dark movie--test--left">
+								<div class="movie__images">
+									<a href="movie-page-left.html" class="movie-beta__link"> <img
+										alt='' src="usr/ticketimg/main6.jpg" class="imgsize">
+									</a>
+								</div>
+
+								<div class="movie__info">
+									<a href='movie-page-left.html' class="movie__title">Gravity
+										(2013) </a>
+
+									<p class="movie__time">91분</p>
+
+									<p class="movie__option">
+										<a href="#">뮤지컬</a>
+									</p>
+
+									<div class="movie__rate">
+										<span class="movie__rating">4.1</span>
+									</div>
+								</div>
+							</div> -->
+							<!-- Movie variant with time -->
+
+							<!-- Movie variant with time -->
+							<!-- <div
+								class="movie movie--test movie--test--light movie--test--left">
+								<div class="movie__images">
+									<a href="movie-page-left.html" class="movie-beta__link"> <img
+										alt='' src="usr/ticketimg/main5.jpg" class="imgsize">
+									</a>
+								</div>
+
+								<div class="movie__info">
+									<a href='movie-page-left.html' class="movie__title">The
+										Hobbit: The Desolation of Smaug (2013) </a>
+
+									<p class="movie__time">169 분</p>
+
+									<p class="movie__option">
+										<a href="#">콘서트</a>
+									</p>
+
+									<div class="movie__rate">
+										<span class="movie__rating">5.0</span>
+									</div>
+								</div>
+							</div> -->
+
+
+
+						</div>
+
+
+					</div>
+				</div>
+
+			</section>
+		</form>
+
+		<div class="clearfix"></div>
+
+		<footer class="footer-wrapper">
+			<section class="container">
+				<div class="col-xs-4 col-md-2 footer-nav">
+					<ul class="nav-link">
+						<li><a href="#" class="nav-link__item">Cities</a></li>
+						<li><a href="movie-list-left.html" class="nav-link__item">Movies</a></li>
+						<li><a href="trailer.html" class="nav-link__item">Trailers</a></li>
+						<li><a href="rates-left.html" class="nav-link__item">Rates</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-4 col-md-2 footer-nav">
+					<ul class="nav-link">
+						<li><a href="coming-soon.html" class="nav-link__item">Coming
+								soon</a></li>
+						<li><a href="cinema-list.html" class="nav-link__item">Cinemas</a></li>
+						<li><a href="offers.html" class="nav-link__item">Best
+								offers</a></li>
+						<li><a href="news-left.html" class="nav-link__item">News</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-4 col-md-2 footer-nav">
+					<ul class="nav-link">
+						<li><a href="#" class="nav-link__item">Terms of use</a></li>
+						<li><a href="gallery-four.html" class="nav-link__item">Gallery</a></li>
+						<li><a href="contact.html" class="nav-link__item">Contacts</a></li>
+						<li><a href="page-elements.html" class="nav-link__item">Shortcodes</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<div class="footer-info">
+						<p class="heading-special--small">
+							A.Movie<br>
+							<span class="title-edition">in the social media</span>
+						</p>
+
+						<div class="social">
+							<a href='#' class="social__variant fa fa-facebook"></a> <a
+								href='#' class="social__variant fa fa-twitter"></a> <a href='#'
+								class="social__variant fa fa-vk"></a> <a href='#'
+								class="social__variant fa fa-instagram"></a> <a href='#'
+								class="social__variant fa fa-tumblr"></a> <a href='#'
+								class="social__variant fa fa-pinterest"></a>
+						</div>
+
+						<div class="clearfix"></div>
+						<p class="copy">&copy; A.Movie, 2013. All rights reserved.
+							Done by Olia Gozha</p>
+					</div>
+				</div>
+			</section>
+		</footer>
+	</div>
+
+	<!-- open/close -->
+	<div class="overlay overlay-hugeinc">
+
+		<section class="container">
+
+			<div class="col-sm-4 col-sm-offset-4">
+				<button type="button" class="overlay-close">Close</button>
+				<form id="login-form" class="login" method='get' novalidate=''>
+					<p class="login__title">
+						sign in <br>
+						<span class="login-edition">welcome to A.Movie</span>
+					</p>
+
+					<div class="social social--colored">
+						<a href='#' class="social__variant fa fa-facebook"></a> <a
+							href='#' class="social__variant fa fa-twitter"></a> <a href='#'
+							class="social__variant fa fa-tumblr"></a>
+					</div>
+
+					<p class="login__tracker">or</p>
+
+					<div class="field-wrap">
+						<input type='email' placeholder='Email' name='user-email'
+							class="login__input"> <input type='password'
+							placeholder='Password' name='user-password' class="login__input">
+
+						<input type='checkbox' id='#informed' class='login__check styled'>
+						<label for='#informed' class='login__check-info'>remember
+							me</label>
+					</div>
+
+					<div class="login__control">
+						<button type='submit' class="btn btn-md btn--warning btn--wider">sign
+							in</button>
+						<a href="#" class="login__tracker form__tracker">Forgot
+							password?</a>
+					</div>
+				</form>
+			</div>
+
+		</section>
+	</div>
+
+	<!-- JavaScript-->
+	<!-- jQuery 3.1.1-->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')
+	</script>
+	<!-- Migrate -->
+	<script src="js/external/jquery-migrate-1.2.1.min.js"></script>
+	<!-- Bootstrap 3-->
+	<script
+		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+	<!-- Slider Revolution core JavaScript files -->
+	<script type="text/javascript"
+		src="usr/revolution/js/jquery.themepunch.tools.min.js"></script>
+	<script type="text/javascript"
+		src="usr/revolution/js/jquery.themepunch.revolution.min.js"></script>
+
+	<!-- Slider Revolution extension scripts. -->
+	<script type="text/javascript"
+		src="usr/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+	<script type="text/javascript"
+		src="usr/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+	<script type="text/javascript"
+		src="usr/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script type="text/javascript"
+		src="usr/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script type="text/javascript"
+		src="usr/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+	<script type="text/javascript"
+		src="usr/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script type="text/javascript"
+		src="usr/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+	<script type="text/javascript"
+		src="usr/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript"
+		src="usr/revolution/js/extensions/revolution.extension.video.min.js"></script>
+
+	<!-- Mobile menu -->
+	<script src="usr/js/jquery.mobile.menu.js"></script>
+	<!-- Select -->
+	<script src="usr/js/external/jquery.selectbox-0.2.min.js"></script>
+	<!-- Stars rate -->
+	<script src="usr/js/external/jquery.raty.js"></script>
+
+	<!-- Form element -->
+	<script src="usr/js/external/form-element.js"></script>
+	<!-- Form validation -->
+	<script src="usr/js/form.js"></script>
+
+	<!-- Twitter feed -->
+	<script src="usr/js/external/twitterfeed.js"></script>
+
+	<!-- Custom -->
+	<script src="usr/js/custom.js"></script>
+	
+	  <script src="xdm/js/Common.js">
+    let goUrlXdmLogin = "/useIndex";
     </script>
+    
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			init_Home();
+		});
+	</script>
 
 </body>
 

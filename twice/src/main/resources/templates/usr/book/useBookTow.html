@@ -1,46 +1,12 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
  <head th:replace="~{usr/block/usehead :: book}">
-<!-- <head>
-    Basic Page Needs
-    <meta charset="utf-8">
-    <title>AMovie - Booking step 2</title>
-    <meta name="description" content="A Template by Gozha.net">
-    <meta name="keywords" content="HTML, CSS, JavaScript">
-    <meta name="author" content="Gozha.net">
-
-    Mobile Specific Metas
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="telephone=no" name="format-detection">
-
-    Fonts
-    Font awesome - icon font
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    Roboto
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
-
-    Stylesheets
-
-    Mobile menu
-    <link href="css/gozha-nav.css" rel="stylesheet" />
-    Select
-    <link href="css/external/jquery.selectbox.css" rel="stylesheet" />
-
-    Custom
-    <link href="css/style.css?v=1" rel="stylesheet" />
-
-    Modernizr
-    <script src="js/external/modernizr.custom.js"></script>
-
-
-</head> -->
 
 <body>
     <div class="wrapper place-wrapper">
         <!-- Banner -->
-        <div class="banner-top">
-            <img alt='top banner' src="ticketimg/title.jpg">
-        </div>
+        <div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
+		</div>
 
         <!-- Header section -->
         <header class="header-wrapper">
@@ -76,8 +42,6 @@
                             <!-- <span class="order__descript">and have fun movieime</span> -->
                         </p>
                         <div class="order__control">
-                            <a href="#" class="order__control-btn active">Purchase</a>
-                            <a href="#" class="order__control-btn">Reserve</a>
                         </div>
                     </div>
                 </div>
@@ -599,11 +563,11 @@
 
         <div class="booking-pagination booking-pagination--margin">
             <a href="book1.html" class="booking-pagination__prev">
-                <span class="arrow__text arrow--prev">이전 단계</span>
+                <span class="arrow__text arrow--prev" >이전 단계</span>
                 <!-- <span class="arrow__info">what&amp;where&amp;when</span> -->
             </a>
-            <a href="book3-buy.html" class="booking-pagination__next">
-                <span class="arrow__text arrow--next">다음 단계</span>
+            <a th:href = "@{/useBookBuy}" class="booking-pagination__next">
+                <span class="arrow__text arrow--next" >다음 단계</span>
                 <!-- <span class="arrow__info">checkout</span> -->
             </a>
         </div>
@@ -700,22 +664,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')</script>
     <!-- Migrate -->
-    <script src="js/external/jquery-migrate-1.2.1.min.js"></script>
+    <script src="usr/js/external/jquery-migrate-1.2.1.min.js"></script>
     <!-- Bootstrap 3-->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
     <!-- Mobile menu -->
-    <script src="js/jquery.mobile.menu.js"></script>
+    <script src="usr/js/jquery.mobile.menu.js"></script>
     <!-- Select -->
-    <script src="js/external/jquery.selectbox-0.2.min.js"></script>
+    <script src="usr/js/external/jquery.selectbox-0.2.min.js"></script>
 
     <!-- Form element -->
-    <script src="js/external/form-element.js"></script>
+    <script src="usr/js/external/form-element.js"></script>
     <!-- Form validation -->
-    <script src="js/form.js"></script>
+    <script src="usr/js/form.js"></script>
 
     <!-- Custom -->
-    <script src="js/custom.js"></script>
+    <script src="usr/js/custom.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {

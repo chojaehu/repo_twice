@@ -23,11 +23,16 @@
         	a.prModifiedDate,
         	a.prdeleteNY
         	
-        	FROM performanceList a
-        	join placemapping b
-        	on a.prSeq = b.prSeq
-        	join place d
-        	on d.plSeq = b.plSeq
+        	FROM 
+        		performanceList a
+        	join 
+        		placemapping b
+        	on 
+        		a.prSeq = b.prSeq
+        	join 
+        		place d
+        	on 
+        		d.plSeq = b.plSeq
         	WHERE 1=1
         	 <include refid="selectCommon" />   
          ORDER BY prSeq DESC
@@ -53,14 +58,19 @@
         	a.prModifiedDate,
         	a.prdeleteNY
         	
-        	FROM performanceList a
-        	join placemapping b
-        	on a.prSeq = b.prSeq
-        	join place d
-        	on d.plSeq = b.plSeq
+        	FROM 
+        		performanceList a
+        	join 
+        		placemapping b
+        	on 
+        		a.prSeq = b.prSeq
+        	join 
+        		place d
+        	on 
+        		d.plSeq = b.plSeq
         	WHERE 1=1 
         	
-        	<if test="shperformance != null and !shperformance.equals('')">AND a.prperformanceType = #{shperformance}</if>   
+        	<if test="shperformance != 0 and !shperformance.equals('')">AND a.prperformanceType = #{shperformance}</if>   
          ORDER BY prSeq DESC
     </select>
     
@@ -82,11 +92,16 @@
         	a.prModifiedDate,
         	a.prdeleteNY
         	
-        	FROM performanceList a
-        	join placemapping b
-        	on a.prSeq = b.prSeq
-        	join place d
-        	on d.plSeq = b.plSeq
+        	FROM 
+        		performanceList a
+        	join 
+        		placemapping b
+        	on 
+        		a.prSeq = b.prSeq
+        	join 
+        		place d
+        	on 
+        		d.plSeq = b.plSeq
         	WHERE 1=1
          ORDER BY a.prAttenDance DESC
     </select>
@@ -100,14 +115,121 @@
 			d.cmName,
 			b.cpSeq,
 			b.cpRole
-			from performancelist a
-			join castmembermapping b
-			on a.prSeq = b.prSeq 
-			join castmember d
-			on d.cmseq = b.cmseq
-			where b.prSeq = #{prSeq}
+			
+			from 
+				performancelist a
+			join 
+				castmembermapping b
+			on 
+				a.prSeq = b.prSeq 
+			join 
+				castmember d
+			on 
+				d.cmseq = b.cmseq
+			where 
+				b.prSeq = #{prSeq}
     </select>
     
+    
+    <!-- 결제 완료 리스트 -->
+    
+     <select id="usrselectPay" resultMap="resultMapObj">
+       select
+		a.pmTicketCode,
+		b.prTitle,
+		c.plplace,
+		d.tatheaterNumber,
+		e.pdselectionDate,
+		e.pdselectionTime,
+		f.stSeatCode,
+		f.stSeatNumber,
+		g.mbName
+		
+		From 
+			payment a
+		join 
+			performancelist b
+		on 
+			a.prSeq = b.prSeq
+			
+		join 
+			place c
+		on 
+			a.plSeq = c.plSeq
+			
+		join 
+			theater d
+		on 
+			a.taSeq = d.taSeq
+			
+		join 
+			performancedate e
+		on 
+			a.pdSeq = e.pdSeq
+			
+		join 
+			seat f
+		on 
+			a.stSeq = f.stSeq
+			
+		join 
+			members g
+		on 
+			a.mbSeq = g.mbSeq
+			
+		where 
+			g.mbSeq = #{prSeq}
+			
+		ORDER BY a.pmSeq DESC
+    </select>
+    
+    <select id = "tabookList" resultMap="resultMapObj">
+    	SELECT 
+    		a.tatheaterNumber,
+    		a.taSeq
+	    	from
+	    		theater a
+	    	join 
+	    		place b 
+	    	on 
+				a.plSeq = b.plSeq AND b.plSeq = 2
+			join 
+				performancelist c 
+			on 
+				c.prSeq = 2
+            ;
+    		
+    </select>
+    
+    
+    
+    <!-- 티켓 화면 첫번째 날짜/시간 정보  -->
+    <select id = "bookOneList" resultMap="resultMapObj">
+    select 
+    	a.pdSeq,
+	    a.pdselectionDate,
+	    a.pdselectionTime,
+	    b.tatheaterNumber,
+	    d.prTitle
+	    
+    	from 
+    		performancedate a
+    	join
+    		theater b
+    	on
+    		a.taSeq = b.taSeq
+    	join 
+    		place c 
+    	on 
+    		a.plSeq = c.plSeq AND c.plSeq = ${plSeq}
+    	join 
+    		performancelist d
+    	on
+    		d.prSeq = ${prSeq}
+
+    
+    </select>
+        
     <select id="count"  resultType="Integer">
         SELECT
             COUNT(*)
@@ -124,7 +246,6 @@
         	a.prTitle,
         	a.prperformanceType,
         	a.prViewingTime,
-        	d.plplace,
         	a.prStartDate,
         	a.prEndDate,
         	a.prHostedPlanned,
@@ -133,14 +254,22 @@
         	a.prDetails,
         	a.prRgstrDate,
         	a.prModifiedDate,
-        	a.prdeleteNY
+        	a.prdeleteNY,
+        	d.plplace,
+        	d.plSeq
         	
-        	FROM performanceList a
-        	join placemapping b
-        	on a.prSeq = b.prSeq
-        	join place d
-        	on d.plSeq = b.plSeq 
-    WHERE 1=1 AND a.prSeq = #{prSeq}
+        	FROM 
+        		performanceList a
+        	join 
+        		placemapping b
+        	on 
+        		a.prSeq = b.prSeq
+        	join 
+        		place d
+        	on 
+        		d.plSeq = b.plSeq 
+    		WHERE 
+    			1=1 AND a.prSeq = #{prSeq}
     </select>
     
     <update id="update">
@@ -160,21 +289,21 @@
     
     INSERT INTO performanceList
     (
-    prTitle,
-    prdeleteNY,
-    prHostedPlanned,
-    prAgeLimit,
-    prStartDate,
-    prEndDate
+	    prTitle,
+	    prdeleteNY,
+	    prHostedPlanned,
+	    prAgeLimit,
+	    prStartDate,
+	    prEndDate
     )
     VALUES
     (
-    #{prTitle}
-    ,#{prdeleteNY}
-    ,#{prHostedPlanned}
-    ,#{prAgeLimit}
-    ,#{prStartDate}
-    ,#{prEndDate}
+	    #{prTitle}
+	    ,#{prdeleteNY}
+	    ,#{prHostedPlanned}
+	    ,#{prAgeLimit}
+	    ,#{prStartDate}
+	    ,#{prEndDate}
     )
     
     </insert>
