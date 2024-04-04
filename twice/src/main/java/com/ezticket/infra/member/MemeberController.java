@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezticket.common.constants.Constants;
 import com.ezticket.common.util.UtilDateTime;
+import com.mysql.cj.x.protobuf.Mysqlx.Error.Severity;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -201,15 +202,17 @@ public class MemeberController {
 	
 	//	로그인 페이지
 	@RequestMapping(value = "/useLogin")
-	public String useLogin() throws Exception {
+	public String useLogin(@ModelAttribute("vo")MemeberVo vo) throws Exception {
+		setSearch(vo);
 		return str + "/useLogin";
 	}
 	
 	//	회원 정보
 	@RequestMapping(value = "/useModify")
-	public String useModify(MemeberVo vo, Model model, HttpSession httpSession, MemberDto dto) throws Exception {
+	public String useModify(@ModelAttribute("vo")MemeberVo vo, Model model, HttpSession httpSession, MemberDto dto) throws Exception {
 		
-		//vo.setMbSeq((String)httpSession.getAttribute("sessSeqXdm"));
+		
+		setSearch(vo);
 		dto.setMbSeq((String)httpSession.getAttribute("sessSeqXdm"));
 		model.addAttribute("item", service.selectOne(dto));
 		return str2 + "/useModify";
@@ -217,21 +220,37 @@ public class MemeberController {
 
 	// 비밀번호 변경
 	@RequestMapping(value = "/usePwModifying")
-	public String usePwModifying(Model model, MemberDto dto,MemeberVo vo) throws Exception {
+	public String usePwModifying(@ModelAttribute("vo")MemeberVo vo,Model model, MemberDto dto) throws Exception {
 		
-		
+		setSearch(vo);
 		return str2 + "/usePwModifying";
 	}
 
 	// 유저정보 업데이트
 	@RequestMapping(value = "/useModifyUpdt")
-	public String useModifyUpdt() throws Exception {
+	public String useModifyUpdt(@ModelAttribute("vo")MemeberVo vo,MemberDto dto, Model model) throws Exception {
+		
+		setSearch(vo);
+		model.addAttribute("item", service.selectOne(dto));
 		return str2 + "/useModifyUpdt";
 	}
 	
 	@RequestMapping(value = "/useWithdrawal")
-	public String useWithdrawal() throws Exception {
+	public String useWithdrawal(@ModelAttribute("vo")MemeberVo vo) throws Exception {
+		setSearch(vo);
 		return str2 + "/useWithdrawal";
+	}
+	
+	// 유저 업데이트
+	@RequestMapping(value = "/usrUpdate")
+	public String usrUpdate(@ModelAttribute("vo")MemeberVo vo,MemberDto dto,HttpSession httpSession) throws Exception
+	{
+		
+		setSearch(vo);
+		dto.setMbSeq((String)httpSession.getAttribute("sessSeqXdm"));
+		
+		service.usrUpdate(dto);
+		return "redirect:/useModify";
 	}
 	
 	

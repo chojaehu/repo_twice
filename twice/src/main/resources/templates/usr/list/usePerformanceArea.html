@@ -38,6 +38,7 @@
 </head>
  -->
 <body>
+<form id='formList' name='formList' method='get' class="search"> 
     <div class="wrapper">
         <!-- Banner -->
         <div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
@@ -53,22 +54,16 @@
         <!-- Search bar -->
         <div class="search-wrapper">
             <div class="container container--add">
-                <form id='search-form' method='get' class="search">
-                    <input type="text" class="search__field" placeholder="Search">
-                    <select name="sorting_item" id="search-sort" class="search__sort" tabindex="0">
-                        <option value="1" selected='selected'>By title</option>
-                        <option value="2">By year</option>
-                        <option value="3">By producer</option>
-                        <option value="4">By title</option>
-                        <option value="5">By year</option>
-                    </select>
-                    <button type='submit' class="btn btn-md btn--danger search__button">search a movie</button>
-                </form>
+
+                    <div class="search" th:replace="~{usr/block/usebody :: search}">
+	                </div>
+	                
+
             </div>
         </div>
 
         <!-- Main content -->
-         <form name="formList" id="formList" method="get" autocomplete="off">
+
         <section class="container">
             <div class="col-sm-12">
                 <h2 class="page-heading">지역</h2>
@@ -126,7 +121,6 @@
             </div>
 
         </section>
-        </form>
 
         <div class="clearfix"></div>
 
@@ -177,6 +171,7 @@
             </section>
         </footer>
     </div>
+    </form>
 
     <!-- open/close -->
     <div class="overlay overlay-hugeinc">
@@ -185,7 +180,6 @@
 
             <div class="col-sm-4 col-sm-offset-4">
                 <button type="button" class="overlay-close">Close</button>
-                <form id="login-form" class="login" method='get' novalidate=''>
                     <p class="login__title">sign in <br><span class="login-edition">welcome to A.Movie</span></p>
 
                     <div class="social social--colored">
@@ -208,7 +202,6 @@
                         <button type='submit' class="btn btn-md btn--warning btn--wider">sign in</button>
                         <a href="#" class="login__tracker form__tracker">Forgot password?</a>
                     </div>
-                </form>
             </div>
 
         </section>
@@ -240,10 +233,43 @@
 
     <!-- Custom -->
     <script src="usr/js/custom.js"></script>
+    <script src="usr/js/usrCommon.js"></script>
+
     
-    <script src="xdm/js/Common.js">
-    let goUrlXdmLogin = "/useIndex";
-    </script>
+		<!-- <script type="text/javascript">
+		let goUrlXdmLogin = "/useIndex";
+        let form = document.querySelector("form[name=formList]");
+        let goUrlXdmList = "/usePerformanceArea";
+
+		window
+				.addEventListener(
+						'load',
+						function() {
+
+							document.getElementById("btnSearch").onclick = function() {
+								form.action = goUrlXdmList;
+								form.submit();
+							};
+
+							goForm = function(keyValue) {
+								seq.value = keyValue;
+								form.action = goUrlXdmForm;
+								form.submit();
+							}
+							goList = function(thisPage) {
+								document.querySelector("input[name=thisPage]").value = thisPage;
+								form.action = goUrlXdmList;
+								form.submit();
+							}
+						});
+		function enterkey() {
+
+			if (window.event.keyCode == 13) {
+				form.action = goUrlXdmList;
+				form.submit();
+			}
+		} 
+	</script> -->
     
 
     <script type="text/javascript">
@@ -251,6 +277,8 @@
             init_MovieList();
         });
     </script>
+    
+
 
 </body>
 

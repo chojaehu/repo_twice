@@ -43,5 +43,12 @@ public class MemeberService {
 	{
 		return dao.updatedelete(dto);
 	}
+	
+	
+	//유저 업데이트
+	public int usrUpdate(MemberDto dto)
+	{
+		return dao.usrUpdate(dto);
+	}
 
 }

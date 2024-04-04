@@ -75,4 +75,21 @@
 	
 	                </div>
 	           </div>
+	           
+	           
+	           
+	           
+	           
+	           <div class="search" th:fragment="search">
+	                    <input type="text" id="shValue" name= 'shValue' class="search__field" placeholder="Search" >
+	                    
+	                    <select name="shOption" id="shOption" class="search__sort" tabindex="0">
+	                        <option value="1" th:selected="${vo.shOption == 1}">제목</option>
+	
+	                    </select>
+	                    <button type='button' id="btnSearch" name="btnSearch" class="btn btn-md btn--danger search__button">search a movie</button>
+	                </div>
+	                
+	                
+	                
 </html>

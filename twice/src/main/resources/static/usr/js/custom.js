@@ -46,7 +46,7 @@
 
     //3. Search bar dropdown
     //search bar
-    $("#search-sort").selectbox({
+    $("#shOption").selectbox({
             onChange: function (val, inst) {
 
                 $(inst.input[0]).children().each(function(item){
@@ -99,7 +99,10 @@ function init_Elements () {
     $( ".datepicker__input" ).datepicker({
         showOtherMonths: true,
         selectOtherMonths: true,
-        showAnim:"fade"
+        showAnim:"fade",
+       /*  minDate: new Date('2024-04-01'),
+  maxDate: new Date('2024-04-15')*/
+        
     });
 
     $(document).click(function(e) { 
@@ -447,6 +450,9 @@ function init_BookingOne() {
     
     //5. Datepicker init
                 $( ".datepicker__input" ).datepicker({
+                  dateFormat: 'yy-mm-dd',
+                  minDate: new Date(std),
+  				  maxDate: new Date(end),
                   showOtherMonths: true,
                   selectOtherMonths: true,
                   showAnim:"fade"

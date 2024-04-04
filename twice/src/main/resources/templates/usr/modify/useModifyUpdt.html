@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <style>
 table {
 	width: 100%;
@@ -22,43 +22,66 @@ th, td {
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="author" content="Gozha.net">
 
-   <!--  Mobile Specific Metas -->
+    <!-- Mobile Specific Metas-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="telephone=no" name="format-detection">
 
+
+    <!-- 데이트 타입 픽커 -->
+    <!-- <script src="/HTML/js/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    <script>
+        window.addEventListener('load', function () {
+            $("#mbDateBirth").datetimepicker({
+                timepicker: false,
+                format: 'Y/m/d'
+            });
+        });
+    </script>
+    <script></script>
+
+
+   
+
+
+    
     <!-- Fonts -->
     <!-- Font awesome - icon font -->
-   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- Roboto -->
-   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> 
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
 
     <!-- Stylesheets -->
-
-
     <!-- jQuery UI -->
-   <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet"> 
+    <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
 
     <!-- Mobile menu -->
-     <link href="usr/css/gozha-nav.css" rel="stylesheet" /> 
+    <link href="usr/css/gozha-nav.css" rel="stylesheet" />
+
     <!-- Select -->
-   <link href="usr/css/external/jquery.selectbox.css" rel="stylesheet" /> 
-    <!-- Magnific-popup -->
-    <link href="usr/css/external/magnific-popup.css" rel="stylesheet" />
+    <link href="usr/css/external/jquery.selectbox.css" rel="stylesheet" />
+
+    <!-- Swiper slider -->
+    <link href="usr/css/external/idangerous.swiper.css" rel="stylesheet" />
 
     <!-- Custom -->
     <link href="usr/css/style.css?v=1" rel="stylesheet" />
 
     <!-- Modernizr -->
-    <script src="usr/js/external/modernizr.custom.js"></script> 
+    <script src="usr/js/external/modernizr.custom.js"></script>
 
-  <!--   Swiper slider -->
-    <link href="usr/css/external/idangerous.swiper.css" rel="stylesheet" />
+
 
 
 
 </head>
 
 <body>
+<form id='formList' name ='formList' method='get' class="search">
 	<div class="wrapper">
 		<!-- Banner -->
 		<div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
@@ -71,22 +94,12 @@ th, td {
 			</div>
 		</header>
 
-		<!-- Search bar -->
-		<!-- <div class="search-wrapper">
-            <div class="container container--add">
-                <form id='search-form' method='get' class="search">
-                    <input type="text" class="search__field" placeholder="Search">
-                    <select name="sorting_item" id="search-sort" class="search__sort" tabindex="0">
-                        <option value="1" selected='selected'>By title</option>
-                        <option value="2">By year</option>
-                        <option value="3">By producer</option>
-                        <option value="4">By title</option>
-                        <option value="5">By year</option>
-                    </select>
-                    <button type='submit' class="btn btn-md btn--danger search__button">search a movie</button>
-                </form>
-            </div>
-        </div> -->
+		 <div class="search-wrapper">
+				<div class="container container--add">
+					<div class="search" th:replace="~{usr/block/usebody :: search}">
+					</div> 
+				</div>
+			</div>
 
 		<!-- Main content -->
 		<section class="container">
@@ -117,35 +130,45 @@ th, td {
 						</div>
 						<br>
 						<br>
-						<br>
-						<form id="login-form" class="form row" method='get' novalidate=''>
 							<div class="row ">
 								<div class="col-md-12">
 									<table class="table">
 										<tr>
+										
 											<th>이메일</th>
 											<td><input type='text' placeholder='이메일'
-												name='user-email' class="form__name"></td>
+												id ="mbEmail"  name ="mbEmail" th:value = "${item.mbEmail}" 
+												 class="form__name"></td>
+										</tr>
+										<tr>
+											<th>이름</th>
+											<td><input type='text' 
+												 id ="mbName"  name ="mbName" th:value = "${item.mbName}" 
+												 class="form__name"></td>
+										</tr>
+										
+										<tr>
+											<th>성별</th>
+											<td><select class="form__name"
+												aria-label="Default select example"
+												id = "mbgender" name = "mbgender"
+												th:value = "${item.mbPhone}">
+													<option>선택하세요</option>
+													<option th:each="list : ${@codeService.selectListCachedCode(3)}" th:value="${list.ifcdSeq}" th:text="${list.ifcdName}" th:selected="${list.ifcdSeq} == ${item?.mbgender}"></option>
+											</select></td>
 										</tr>
 										<tr>
 											<th>전화번호</th>
 											<td><input type='text' placeholder='전화번호'
-												name='user-email' class="form__name"></td>
+												id="mbPhone"  name ="mbPhone"  th:value = "${item.mbPhone}" 
+												class="form__name"></td>
 										</tr>
 										<tr>
-											<th>이름</th>
-											<td><input type='text' placeholder='이름'
-												name='user-email' class="form__name"></td>
-										</tr>
-										<tr>
-											<th>성별</th>
-											<td><select class="form__name"
-												aria-label="Default select example">
-													<option selected>성별</option>
-													<option>남</option>
-													<option>여</option>
-											</select></td>
-										</tr>
+											<th>생년월일</th>
+											<td><input type='text' class="form__name" id="mbDateBirth" name="mbDateBirth" 
+											th:value = "${#dates.format(item.mbDateBirth,'yyyy/MM/dd')}"
+											autocomplete="off"></td>
+										</tr> 
 										<tr>
 											<th>주소</th>
 											<td>
@@ -187,7 +210,7 @@ th, td {
 									<div class="login__control center">
 										<button type='submit'
 											class="btn btn-md btn--warning btn--wider"
-											onClick="location.href='modify.html'">회원정보 변경</button>
+											onclick="javascript: form.action='usrUpdate';">회원정보 변경</button>
 									</div>
 
 								</div>
@@ -201,7 +224,6 @@ th, td {
 							<!-- <div class="btn-demo center">
                                 <a href="modify.html" class="btn btn-md btn--warning">회원정보 저장</a>
                             </div> -->
-						</form>
 					</div>
 
 
@@ -268,6 +290,7 @@ th, td {
 			</section>
 		</footer>
 	</div>
+	</form>
 
 	<!-- open/close -->
 	<div class="overlay overlay-hugeinc">
@@ -318,46 +341,39 @@ th, td {
 
 	<!-- JavaScript-->
 	<!-- jQuery 3.1.1-->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script>
-		window.jQuery
-				|| document
-						.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')
-	</script>
-	<!-- Migrate -->
-	<script src="js/external/jquery-migrate-1.2.1.min.js"></script>
-	<!-- jQuery UI -->
-	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	<!-- Bootstrap 3-->
-	<script
-		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')</script>
+    <!-- Migrate -->
+    <script src="usr/js/external/jquery-migrate-1.2.1.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <!-- Bootstrap 3-->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
-	<!-- Mobile menu -->
-	<script src="js/jquery.mobile.menu.js"></script>
-	<!-- Select -->
-	<script src="js/external/jquery.selectbox-0.2.min.js"></script>
-	<!-- Swiper slider -->
-	<script src="js/external/idangerous.swiper.min.js"></script>
+    <!-- Mobile menu -->
+    <script src="usr/js/jquery.mobile.menu.js"></script>
+    <!-- Select -->
+    <script src="usr/js/external/jquery.selectbox-0.2.min.js"></script>
+    <!-- Swiper slider -->
+    <script src="usr/js/external/idangerous.swiper.min.js"></script>
 
-	<!-- Form element -->
-	<script src="js/external/form-element.js"></script>
-	<!-- Form validation -->
-	<script src="js/form.js"></script>
+    <!-- Stars rate -->
+    <script src="usr/js/external/jquery.raty.js"></script>
+    <!-- Form element -->
+    <script src="usr/js/external/form-element.js"></script>
+    <!-- Form validation -->
+    <script src="usr/js/form.js"></script>
 
-	<!-- Custom -->
-	<script src="js/custom.js"></script>
+    <!-- Custom -->
+    <script src="usr/js/custom.js"></script>
 
-	<script src="xdm/js/Common.js">
-		let goUrlXdmLogin = "/useIndex";
-	</script>
+	<script src="usr/js/usrCommon.js"></script>
 
 
-	<script type="text/javascript">
+<!-- 	<script type="text/javascript">
 		$(document).ready(function() {
 			init_BookingOne();
 		});
-	</script>
+	</script> -->
 
 
 	<!-- JavaScript-->

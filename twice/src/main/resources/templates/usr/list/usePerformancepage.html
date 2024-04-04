@@ -50,40 +50,29 @@
 </head>
 
 <body>
-	<div class="wrapper">
-		<!-- Banner -->
-		<div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
-		</div>
-
-		<!-- Header section -->
-		<header class="header-wrapper">
-			<div class="container" th:replace="~{usr/block/usenav :: navtop}">
-
+	<form name="formList" id="formList" method="get" class="comment-form"
+		autocomplete="off">
+		<div class="wrapper">
+			<!-- Banner -->
+			<div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
 			</div>
-		</header>
 
-		<!-- Search bar -->
-		<div class="search-wrapper">
-			<div class="container container--add">
-				<form id='search-form' method='get' class="search">
-					<input type="text" class="search__field" placeholder="Search">
-					<select name="sorting_item" id="search-sort" class="search__sort"
-						tabindex="0">
-						<option value="1" selected='selected'>By title</option>
-						<option value="2">By year</option>
-						<option value="3">By producer</option>
-						<option value="4">By title</option>
-						<option value="5">By year</option>
-					</select>
-					<button type='submit' class="btn btn-md btn--danger search__button">search
-						a movie</button>
-				</form>
+			<!-- Header section -->
+			<header class="header-wrapper">
+				<div class="container" th:replace="~{usr/block/usenav :: navtop}">
+
+				</div>
+			</header>
+
+			<!-- Search bar -->
+			<div class="search-wrapper">
+				<div class="container container--add">
+					<div class="search" th:replace="~{usr/block/usebody :: search}">
+					</div> 
+				</div>
 			</div>
-		</div>
 
-		<!-- Main content -->
-		<form name="formList" id="formList" method="get" class="comment-form"
-			autocomplete="off">
+			<!-- Main content -->
 			<section class="container">
 				<div class="col-sm-12">
 					<div class="movie">
@@ -291,30 +280,49 @@
 
 						<div class="comment-sets">
 
-							<div
-							th:if="${!#lists.isEmpty(review)}"
-							th:each="review : ${review}">
+
+
+
+							<div th:if="${!#lists.isEmpty(review)}"
+								th:each="review : ${review}">
 								<div class="comment">
 									<div class="comment__images">
 										<img alt='' src="usr/images/comment/avatar-olia.jpg">
 									</div>
 
-									<a href='#' class="comment__author" th:text = "${review.rvWriter}"><span
+									<a href='#' class="comment__author"
+										th:text="${review.rvWriter}"><span
 										class="social-used fa fa-vk"></span>Olia Gozha</a>
 
 
-									<p class="comment__date" th:text="${#dates.format(review.rvRgstrDate,'yyyy-MM-dd HH:mm')}"></p>
+									<p class="comment__date"
+										th:text="${#dates.format(review.rvRgstrDate,'yyyy-MM-dd HH:mm')}"></p>
 
 
-									<p class="comment__message" th:text = "${review.rvRvwCntnt}"></p>
+									<p class="comment__message" th:text="${review.rvRvwCntnt}"></p>
 									<a href='#' class="comment__reply">답글</a>
 								</div>
-						<!-- 		
-								<td th:if="${list.mbgender != null}"
-													th:text="${@codeService.selectOneCachedCode(list.mbgender)}"></td>
-												<td th:unless="${list.mbgender != null}"></td> -->
-								
-								<th:block th:if="${review.rpWriter != null}">
+
+
+
+								<div class="comment comment--answer"
+									th:if="${!#lists.isEmpty(reply)}" th:each="reply : ${reply}">
+
+									<div class="comment__images">
+										<img alt='' src="images/comment/avatar-dmitriy.jpg">
+									</div>
+
+									<a href='#' class="comment__author" th:text="${reply.rpWriter}"><span
+										class="social-used fa fa-vk"></span>Dmitriy Pustovalov</a>
+
+									<p class="comment__date"
+										th:text="${#dates.format(reply.rpRgstrDate,'yyyy-MM-dd HH:mm')}">today
+										| 10:19</p>
+
+									<p class="comment__message" th:text="${reply.rpRvwCntnt}">ssdsdsd</p>
+								</div>
+
+								<!-- <th:block th:if="${review.rpWriter != null}">
 								<div class="comment comment--answer">
 									<div class="comment__images">
 										<img alt='' src="usr/images/comment/avatar-dmitriy.jpg">
@@ -329,9 +337,9 @@
 									
 									<p class="comment__message" th:text = "${review.rpRvwCntnt}">ssdsdsd</p>
 								</div> 
-								</th:block>
-									
-									
+								</th:block> -->
+
+
 								<!-- <div class="comment comment--answer">
 									<div class="comment__images">
 										<img alt='' src="images/comment/avatar-dmitriy.jpg">
@@ -352,22 +360,9 @@
 									th:if="${review.rpRvwCntnt, != null}"
 									th:text = "${review.rpRvwCntnt}"
 									>ssdsdsd</p>
-								</div>  -->	
-									
-								<!-- <div class="comment comment--answer"
-								th:if="${!#lists.isEmpty(reply)}"
-								th:each="reply : ${reply}">
-									<div class="comment__images">
-										<img alt='' src="images/comment/avatar-dmitriy.jpg">
-									</div>
+								</div>  -->
 
-									<a href='#' class="comment__author" th:text = "${reply.rpWriter}"><span
-										class="social-used fa fa-vk"></span>Dmitriy Pustovalov</a>
-										
-									<p class="comment__date" th:text="${#dates.format(reply.rpRgstrDate,'yyyy-MM-dd HH:mm')}">today | 10:19</p>
-									
-									<p class="comment__message" th:text = "${reply.rpRvwCntnt}">ssdsdsd</p>
-								</div> -->
+
 
 
 
@@ -380,8 +375,8 @@
 					</div>
 				</div>
 			</section>
-		</form>
-	</div>
+		</div>
+	</form>
 
 
 
@@ -551,12 +546,11 @@
 	<!-- <script src="usr/https://maps.google.com/maps/api/js?sensor=true"></script>
     <script src="usr/js/external/infobox.js"></script> -->
 
-	<script src="xdm/js/Common.js">
+	<!-- <script src="xdm/js/Common.js">
 		let goUrlXdmLogin = "/useIndex";
-	</script>
-
-
-
+	</script> -->
+	
+	<script src="usr/js/usrCommon.js"></script>
 
 	<script src="usr/js/custom.js"></script>
 

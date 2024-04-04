@@ -62,6 +62,7 @@
 </head>
 
 <body>
+<form id='formList' name ='formList' method='get' class="search">
     <div class="wrapper">
         <!-- Banner -->
         <div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
@@ -74,22 +75,12 @@
 			</div>
         </header>
 
-        <!-- Search bar -->
-        <!-- <div class="search-wrapper">
-            <div class="container container--add">
-                <form id='search-form' method='get' class="search">
-                    <input type="text" class="search__field" placeholder="Search">
-                    <select name="sorting_item" id="search-sort" class="search__sort" tabindex="0">
-                        <option value="1" selected='selected'>By title</option>
-                        <option value="2">By year</option>
-                        <option value="3">By producer</option>
-                        <option value="4">By title</option>
-                        <option value="5">By year</option>
-                    </select>
-                    <button type='submit' class="btn btn-md btn--danger search__button">search a movie</button>
-                </form>
-            </div>
-        </div> -->
+        <div class="search-wrapper">
+				<div class="container container--add">
+					<div class="search" th:replace="~{usr/block/usebody :: search}">
+					</div> 
+				</div>
+			</div>
 
         <!-- Main content -->
         <section class="container">
@@ -134,18 +125,9 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>비밀번호</th>
-                                        <td>
-                                            <span>********</span>
-                                        </td>
-                                        <td>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
                                         <th>이름</th>
                                         <td>
-                                            <span th:text="${item.mbName}">조재훈</span>
+                                            <span th:text="${item.mbName}"></span>
                                         </td>
                                         <td>
 
@@ -163,7 +145,16 @@
                                     <tr>
                                         <th>전화번호</th>
                                         <td>
-                                            <span th:text="${item.mbPhone}">010-4809-5741</span>
+                                            <span th:text="${item.mbPhone}"></span>
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>생년월일</th>
+                                        <td>
+                                            <span th:text="${#dates.format(item.mbDateBirth,'yyyy-MM-dd')}"></span>
                                         </td>
                                         <td>
 
@@ -188,7 +179,8 @@
                             
                         </div>
                         <div class="btn-demo center" >
-                            <a href="modify2.html" class="btn btn-md btn--warning"  rel="noopener noreferrer">회원정보 수정</a>
+                            <a  class="btn btn-md btn--warning" 
+                            th:href="@{/useModifyUpdt(mbSeq=${item.mbSeq})}">회원정보 수정</a>
                         </div>
                     </div>
                     
@@ -251,6 +243,7 @@
             </section>
         </footer>
     </div>
+    </form>
 
     <!-- open/close -->
     <div class="overlay overlay-hugeinc">
@@ -294,37 +287,35 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')</script>
     <!-- Migrate -->
-    <script src="js/external/jquery-migrate-1.2.1.min.js"></script>
+    <script src="usr/js/external/jquery-migrate-1.2.1.min.js"></script>
     <!-- jQuery UI -->
     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <!-- Bootstrap 3-->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
     <!-- Mobile menu -->
-    <script src="js/jquery.mobile.menu.js"></script>
+    <script src="usr/js/jquery.mobile.menu.js"></script>
     <!-- Select -->
-    <script src="js/external/jquery.selectbox-0.2.min.js"></script>
+    <script src="usr/js/external/jquery.selectbox-0.2.min.js"></script>
     <!-- Swiper slider -->
-    <script src="js/external/idangerous.swiper.min.js"></script>
-
+    <!-- <script src="js/external/idangerous.swiper.min.js"></script> -->
+	
+	
     <!-- Form element -->
-    <script src="js/external/form-element.js"></script>
+    <script src="usr/js/external/form-element.js"></script>
     <!-- Form validation -->
-    <script src="js/form.js"></script>
+    <script src="usr/js/form.js"></script>
 
     <!-- Custom -->
-    <script src="js/custom.js"></script>
-    
-      <script src="xdm/js/Common.js">
-    let goUrlXdmLogin = "/useIndex";
-    </script>
+    <script src="usr/js/custom.js"></script>
+    <script src="usr/js/usrCommon.js"></script>
     
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         $(document).ready(function () {
             init_BookingOne();
         });
-    </script>
+    </script> -->
 
 
     <!-- JavaScript-->

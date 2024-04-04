@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{usr/block/usehead :: head}"></head>
+<head th:replace="~{usr/block/usehead :: head}"></head> 
 
 <body>
+<form id='formList' name ='formList' method='get' class="search">
     <div class="wrapper">
         <!-- Banner -->
         <div class="banner-top">
@@ -16,6 +17,13 @@
 
 			</div>
         </header>
+        
+        <div class="search-wrapper">
+				<div class="container container--add">
+					<div class="search" th:replace="~{usr/block/usebody :: search}">
+					</div> 
+				</div>
+			</div>
 
 
         <!-- Main content -->
@@ -99,6 +107,7 @@
             </section>
         </footer>
     </div>
+    </form>
 
     <!-- open/close -->
     <div class="overlay overlay-hugeinc">
@@ -107,7 +116,6 @@
 
             <div class="col-sm-4 col-sm-offset-4">
                 <button type="button" class="overlay-close">Close</button>
-                <form id="login-form" class="login" method='get' novalidate=''>
                     <p class="login__title">sign in <br><span class="login-edition">welcome to A.Movie</span></p>
 
                     <div class="social social--colored">
@@ -130,7 +138,6 @@
                         <button type='submit' class="btn btn-md btn--warning btn--wider">sign in</button>
                         <a href="#" class="login__tracker form__tracker">Forgot password?</a>
                     </div>
-                </form>
             </div>
 
         </section>
@@ -142,29 +149,27 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')</script>
     <!-- Migrate -->
-    <script src="js/external/jquery-migrate-1.2.1.min.js"></script>
+    <script src="usr/js/external/jquery-migrate-1.2.1.min.js"></script>
     <!-- jQuery UI -->
     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <!-- Bootstrap 3-->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
     <!-- Mobile menu -->
-    <script src="js/jquery.mobile.menu.js"></script>
+    <script src="usr/js/jquery.mobile.menu.js"></script>
     <!-- Select -->
-    <script src="js/external/jquery.selectbox-0.2.min.js"></script>
+    <script src="usr/js/external/jquery.selectbox-0.2.min.js"></script>
     <!-- Swiper slider -->
-    <script src="js/external/idangerous.swiper.min.js"></script>
+    <script src="usr/js/external/idangerous.swiper.min.js"></script>
 
     <!-- Form element -->
-    <script src="js/external/form-element.js"></script>
+    <script src="usr/js/external/form-element.js"></script>
     <!-- Form validation -->
-    <script src="js/form.js"></script>
+    <script src="usr/js/form.js"></script>
 
     <!-- Custom -->
-    <script src="js/custom.js"></script>
-      <script src="xdm/js/Common.js">
-    let goUrlXdmLogin = "/useIndex";
-    </script>
+    <script src="usr/js/custom.js"></script>
+    <script src="usr/js/usrCommon.js"></script>
     
 
     <script type="text/javascript">

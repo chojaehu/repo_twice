@@ -78,6 +78,18 @@
         ;
     </select>
     
+    <!-- 유저 정보 업데이트 -->
+    <update id="usrUpdate">
+    update members
+    SET
+    mbName = #{mbName}
+	,mbEmail = #{mbEmail} 
+    ,mbgender =#{mbgender}
+    ,mbPhone =#{mbPhone}
+ 	,mbDateBirth = #{mbDateBirth}  
+    where mbSeq = #{mbSeq}
+    </update>
+    
     
     <!-- 등록 -->
     <insert id="insert">

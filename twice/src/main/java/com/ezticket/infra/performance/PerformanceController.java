@@ -1,5 +1,8 @@
 package com.ezticket.infra.performance;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -122,14 +125,17 @@ public class PerformanceController {
 	
 	
 	
+	
+	
+	
 //	사용자 화면
 	private String str2 = "/usr/list";
 	
 	
 	//메인회면
 	@RequestMapping(value = "/useIndex")
-	public String useIndex(PerformanceVo vo,Model model) {
-		
+	public String useIndex(@ModelAttribute("vo")PerformanceVo vo,Model model) throws Exception {
+		setSearch(vo);
 		model.addAttribute("list", service.usrselectList(vo));
 		/* model.addAttribute("list", service.usrselectList(vo)); */
 		return str2 + "/useIndex";
@@ -137,98 +143,65 @@ public class PerformanceController {
 	
 	// 공연 리스트 
 	@RequestMapping(value = "/usePerformanceList")
-	public String usePerformanceList(PerformanceVo vo,Model model) throws Exception{
+	public String usePerformanceList(@ModelAttribute("vo")PerformanceVo vo,Model model) throws Exception{
 		
-		model.addAttribute("castlist", service.castMemberList(vo));
+		
+		setSearch(vo);
+		//model.addAttribute("castlist", service.castMemberList(vo));
 		model.addAttribute("list", service.usrselectList(vo));
-		
-		
+
 		return str2 + "/usePerformanceList";
 	}
 	
 	//지역별 공연 리스트
 	@RequestMapping(value = "/usePerformanceArea")
-	public String usePerformanceArea(PerformanceVo vo,Model model) {
+	public String usePerformanceArea(@ModelAttribute("vo")PerformanceVo vo,Model model) throws Exception {
 		
-		
+		setSearch(vo);
 		model.addAttribute("list", service.usrselectList(vo));
 		return str2 + "/usePerformanceArea";
 	}
 	
 	// 랭킹 공연 리스트
 	@RequestMapping(value = "/usePerformanceRanking")
-	public String usePerformanceRanking(PerformanceVo vo,Model model) {
+	public String usePerformanceRanking(@ModelAttribute("vo")PerformanceVo vo,Model model) throws Exception {
 		
-		
+		setSearch(vo);
 		model.addAttribute("list", service.usrselectRanking(vo));
 		return str2 + "/usePerformanceRanking";
 	}
 	
 	// 공연 페이지
 	@RequestMapping(value = "/usePerformancepage")
-	public String usePerformancepage(PerformanceVo vo,PerformanceDto dto,Model model) {
-
+	public String usePerformancepage(@ModelAttribute("vo")PerformanceVo vo,PerformanceDto dto,Model model) throws Exception {
+		
+		 //List<PerformanceDto> rv = service.reviewList(vo);
+		setSearch(vo);
 		model.addAttribute("castlist", service.castMemberList(vo));
 		model.addAttribute("item", service.selectOne(dto));
 		model.addAttribute("review", service.reviewList(vo));
-		//model.addAttribute("reply", service.replyList(vo));
+		model.addAttribute("reply", service.replyList(vo));
 		
 		return str2 + "/usePerformancepage";
 	}
 	
+	
+	
 	// 결제 정보 보기
-	@RequestMapping(value = "/useInformation")
-	public String useModify(PerformanceVo vo, Model model, HttpSession httpSession) throws Exception
-	{
-		vo.setPrSeq((String)httpSession.getAttribute("sessSeqXdm"));
-		model.addAttribute("list", service.usrselectPay(vo));
-		
-		return str2 + "/useInformation";
-	}
+	/*
+	 @RequestMapping(value = "/useInformation") public String
+	 useModify(PerformanceVo vo, Model model, HttpSession httpSession) throws
+	 Exception { vo.setPrSeq((String)httpSession.getAttribute("sessSeqXdm"));
+	 model.addAttribute("list", service.usrselectPay(vo));
+	 
+	 return str2 + "/useInformation"; }
+	 */
 	
 	
 
 	
 	
 //	티켓 예매 페이지
-	private String str3 = "/usr/book";
-	
-	// 예매 첫번째 페이지
-	@RequestMapping(value = "/useBookOne")
-	public String useBookOne(PerformanceVo vo , Model model) throws Exception
-	{
-		// 공연관
-		model.addAttribute("talist", service.tabookList(vo));
-		
-		// 공연 날짜 시간
-		model.addAttribute("list", service.bookOneList(vo));
-		
-		return str3 + "/useBookOne";
-	}
-	
-	// 예매 두번째 페이지 좌석 선택
-	@RequestMapping(value = "/useBookTow")
-	public String useBookTow() throws Exception
-	{
-		
-		return str3 + "/useBookTow";
-	}
-	
-	// 예매 3번째 페이지 결제
-	@RequestMapping(value = "/useBookBuy")
-	public String useBookBuy() throws Exception
-	{
-		
-		return str3 + "/useBookBuy";
-	}
-	
-	// 예매 최종 티켓 발행
-	@RequestMapping(value = "/useBookfinal")
-	public String useBookfinal() throws Exception
-	{
-		
-		return str3 + "/useBookfinal";
-	}
 	
 	
 	

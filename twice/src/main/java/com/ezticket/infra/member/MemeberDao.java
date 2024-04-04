@@ -15,5 +15,9 @@ public interface MemeberDao {
 	public int insert(MemberDto dto);
 	public int delete(MemberDto dto);
 	public int updatedelete(MemberDto dto);
+	
+	
+	//유저
+	public int usrUpdate(MemberDto dto);
 
 }
