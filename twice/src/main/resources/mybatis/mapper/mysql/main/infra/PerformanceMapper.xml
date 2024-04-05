@@ -43,33 +43,33 @@
 
 	<!-- 유저 리스트 -->
 	<select id="usrselectList" resultMap="resultMapObj">
-		SELECT
-		a.prSeq,
-		a.prTitle,
-		a.prperformanceType,
-		a.prViewingTime,
-		d.plplace,
-		a.prStartDate,
-		a.prEndDate,
-		a.prHostedPlanned,
-		a.prAgeLimit,
-		a.prAttenDance,
-		a.prDetails,
-		a.prRgstrDate,
-		a.prModifiedDate,
-		a.prdeleteNY
-
-		FROM
-		performanceList a
-		join
-		placemapping b
-		on
-		a.prSeq = b.prSeq
-		join
-		place d
-		on
-		d.plSeq = b.plSeq
-		WHERE 1=1
+			SELECT
+			a.prSeq,
+			a.prTitle,
+			a.prperformanceType,
+			a.prViewingTime,
+			d.plplace,
+			a.prStartDate,
+			a.prEndDate,
+			a.prHostedPlanned,
+			a.prAgeLimit,
+			a.prAttenDance,
+			a.prDetails,
+			a.prRgstrDate,
+			a.prModifiedDate,
+			a.prdeleteNY
+	
+			FROM
+				performanceList a
+			join
+				placemapping b
+			on
+				a.prSeq = b.prSeq
+			join
+				place d
+			on
+				d.plSeq = b.plSeq
+			WHERE 1=1
 
 		<include refid="selectCommonusr"/>
 		ORDER BY prSeq DESC
@@ -78,33 +78,33 @@
 	<!-- 유저 리스트 랭킹 -->
 	<select id="usrselectRanking" resultMap="resultMapObj">
 		SELECT
-		a.prSeq,
-		a.prTitle,
-		a.prperformanceType,
-		a.prViewingTime,
-		d.plplace,
-		a.prStartDate,
-		a.prEndDate,
-		a.prHostedPlanned,
-		a.prAgeLimit,
-		a.prAttenDance,
-		a.prDetails,
-		a.prRgstrDate,
-		a.prModifiedDate,
-		a.prdeleteNY
+			a.prSeq,
+			a.prTitle,
+			a.prperformanceType,
+			a.prViewingTime,
+			d.plplace,
+			a.prStartDate,
+			a.prEndDate,
+			a.prHostedPlanned,
+			a.prAgeLimit,
+			a.prAttenDance,
+			a.prDetails,
+			a.prRgstrDate,
+			a.prModifiedDate,
+			a.prdeleteNY
 
 		FROM
-		performanceList a
+			performanceList a
 		join
-		placemapping b
+			placemapping b
 		on
-		a.prSeq = b.prSeq
+			a.prSeq = b.prSeq
 		join
-		place d
+			place d
 		on
-		d.plSeq = b.plSeq
+			d.plSeq = b.plSeq
 		WHERE 1=1
-		ORDER BY a.prAttenDance DESC
+			ORDER BY a.prAttenDance DESC
 	</select>
 
 
@@ -182,32 +182,87 @@
 
 		ORDER BY a.pmSeq DESC
 	</select>
+	
+	
+	<select id="bookdate" resultMap="resultMapObj">
+			SELECT
+				a.prStartDate,
+				a.prEndDate,
+				a.prSeq,
+				b.plSeq
+				
+				from
+					performancelist a
+				join 
+					place b
+				on 
+					b.plSeq = ${plSeq}
+				where 
+					prSeq = ${prSeq}
 
+	</select>
+	
+	
+	
+	
 
 	<!-- 공연 관정보 -->
 	<select id="tabookList" resultMap="resultMapObj">
 		SELECT
-		a.tatheaterNumber,
-		a.taSeq,
-		c.prStartDate,
-		c.prEndDate
-		from
-		theater a
-		join
-		place b
-		on
-		a.plSeq = b.plSeq AND b.plSeq = 2
-		join
-		performancelist c
-		on
-		c.prSeq = 2
-		;
+			a.tatheaterNumber,
+			a.taSeq,
+			c.prStartDate,
+			c.prEndDate,
+			d.pdselectionDate
+			
+			from
+				theater a
+			join
+				place b
+			on
+				a.plSeq = b.plSeq AND b.plSeq = ${plSeq}
+			join
+				performancelist c
+			on
+			c.prSeq = ${plSeq}
+			join 
+				performancedate d 
+			on
+				d.pdSeq = a.taSeq
+		<if test="shprDate != null and !shprDate.equals('')">AND d.pdselectionDate = #{shprDate}</if>  
 
 	</select>
 
 
 
 	<!-- 티켓 화면 첫번째 날짜/시간 정보 -->
+	<!-- <select id="bookOneList" resultMap="resultMapObj">
+		select
+		a.pdSeq,
+		a.pdselectionDate,
+		a.pdselectionTime,
+		b.tatheaterNumber,
+		d.prTitle
+
+		from
+			performancedate a
+		join
+			theater b
+		on
+			a.taSeq = b.taSeq
+		join
+			place c
+		on
+			a.plSeq = c.plSeq AND c.plSeq = ${plSeq}
+		join
+			performancelist d
+		on
+			d.prSeq = ${prSeq}
+		 <if test="shprDate != '' and !shprDate.equals('')">AND a.pdselectionDate = #{shprDate}</if>   
+
+	</select> -->
+	
+	
 	<select id="bookOneList" resultMap="resultMapObj">
 		select
 		a.pdSeq,
@@ -230,7 +285,7 @@
 			performancelist d
 		on
 			d.prSeq = ${prSeq}
-
+		 <if test="shprDate != '' and !shprDate.equals('')">AND a.pdselectionDate = #{shprDate}</if>   
 
 	</select>
 

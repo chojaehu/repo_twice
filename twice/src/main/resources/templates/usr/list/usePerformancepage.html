@@ -104,8 +104,8 @@
 								</p>
 								<p class="movie__option">
 									<strong>기간: </strong> <span
-										th:text="${#dates.format(item.prStartDate,'yyyy/MM/dd')}"></span>~
-									<span th:text="${#dates.format(item.prEndDate,'yyyy/MM/dd')}">2024.05.19</span>
+										th:text="${item.prStartDate}"></span>~
+									<span th:text="${item.prEndDate}">2024.05.19</span>
 								</p>
 								<p class="movie__option">
 									<strong>주최/기획 </strong> <span th:text="${item.prHostedPlanned}"></span>

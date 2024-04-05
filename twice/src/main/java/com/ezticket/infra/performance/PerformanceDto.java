@@ -8,8 +8,8 @@ public class PerformanceDto {
 	private String prTitle;
 	private String prperformanceType;
 	private String prViewingTime;
-	private Date prStartDate;
-	private Date prEndDate;
+	private String prStartDate;
+	private String prEndDate;
 	
 	private String prHostedPlanned;
 	private Integer prAgeLimit;
@@ -58,8 +58,6 @@ public class PerformanceDto {
 	private String rpWriter;
 	private String rpRvwCntnt;
 	private Date rpRgstrDate;
-	
-	
 	public Integer getPrSeq() {
 		return prSeq;
 	}
@@ -84,16 +82,16 @@ public class PerformanceDto {
 	public void setPrViewingTime(String prViewingTime) {
 		this.prViewingTime = prViewingTime;
 	}
-	public Date getPrStartDate() {
+	public String getPrStartDate() {
 		return prStartDate;
 	}
-	public void setPrStartDate(Date prStartDate) {
+	public void setPrStartDate(String prStartDate) {
 		this.prStartDate = prStartDate;
 	}
-	public Date getPrEndDate() {
+	public String getPrEndDate() {
 		return prEndDate;
 	}
-	public void setPrEndDate(Date prEndDate) {
+	public void setPrEndDate(String prEndDate) {
 		this.prEndDate = prEndDate;
 	}
 	public String getPrHostedPlanned() {
@@ -270,5 +268,6 @@ public class PerformanceDto {
 	public void setRpRgstrDate(Date rpRgstrDate) {
 		this.rpRgstrDate = rpRgstrDate;
 	}
+	
 	
 }

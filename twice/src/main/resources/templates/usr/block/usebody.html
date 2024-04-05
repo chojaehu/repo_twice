@@ -34,8 +34,8 @@
 	                        <p class="movie__option"><strong>장르: </strong><a href="#" th:text="${@codeService.selectOneCachedCode(list.prperformanceType)}"></a></p>
 	                        
 	                        <p class="movie__option"><strong>기간: </strong>
-	                        <span th:text="${#dates.format(list.prStartDate,'yyyy/MM/dd')}"></span>~
-	                        <span th:text="${#dates.format(list.prEndDate,'yyyy/MM/dd')}"></span></p>
+	                        <span th:text="${list.prStartDate}"></span>~
+	                        <span  th:text="${list.prEndDate}"></span></p>
 	                        
 	                        
 	                        <p class="movie__option"><strong>주최/기획 </strong><a href="#" th:text="${list.prHostedPlanned}"><span>,</span></a></p>

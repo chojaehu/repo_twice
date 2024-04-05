@@ -152,6 +152,7 @@
 				,data : { "mbEmail" : $("#mbEmail").val(), "mbPassword" : $("#mbPassword").val()}
 				,success: function(response) {
 					if(response.rt == "success") {
+						
 						valLogin();
 					} else if(response.rt == "email") {
 				 		alert("없는 이메일 입니다")

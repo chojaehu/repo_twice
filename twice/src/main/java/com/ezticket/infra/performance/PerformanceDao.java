@@ -33,7 +33,11 @@ public interface PerformanceDao {
 //	배우 리스트
 	public List<PerformanceDto> castMemberList(PerformanceVo vo);
 	public int count(PerformanceVo vo);
+	
+	
 	public PerformanceDto selectOne(PerformanceDto dto);
+	
+	public PerformanceDto bookdate(PerformanceDto dto);
 	
 	
 	public int update(PerformanceDto dto);

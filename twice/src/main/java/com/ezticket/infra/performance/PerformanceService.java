@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ezticket.infra.code.CodeDto;
 
 @Service
 public class PerformanceService {
@@ -73,6 +72,10 @@ public class PerformanceService {
 	public PerformanceDto selectOne(PerformanceDto dto)
 	{
 		return dao.selectOne(dto);
+	}
+	public PerformanceDto bookdate(PerformanceDto dto)
+	{
+		return dao.bookdate(dto);
 	}
 	
 	

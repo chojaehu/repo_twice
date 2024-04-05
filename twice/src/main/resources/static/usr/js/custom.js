@@ -3,11 +3,11 @@
     //General function for all pages
 
     //Modernizr touch detect
-    Modernizr.load({
+/*    Modernizr.load({
             test: Modernizr.touch,
             yep :['css/touch.css?v=1'],
             nope: [] 
-    });
+    });*/
 
 	//1. Scroll to top arrow
 	// Scroll to top
@@ -99,9 +99,8 @@ function init_Elements () {
     $( ".datepicker__input" ).datepicker({
         showOtherMonths: true,
         selectOtherMonths: true,
-        showAnim:"fade",
-       /*  minDate: new Date('2024-04-01'),
-  maxDate: new Date('2024-04-15')*/
+        showAnim:"fade"
+
         
     });
 
@@ -1015,7 +1014,7 @@ function init_MovieList () {
 
     
     //2. Datepicker init
-                $( ".datepicker__input" ).datepicker({
+              /* $( ".datepicker__input" ).datepicker({
                   showOtherMonths: true,
                   selectOtherMonths: true,
                   showAnim:"fade"
@@ -1025,7 +1024,7 @@ function init_MovieList () {
                     if (!ele.hasClass("datepicker__input") && !ele.hasClass("ui-datepicker") && !ele.hasClass("ui-icon") && !$(ele).parent().parents(".ui-datepicker").length){
                        $(".datepicker__input").datepicker("hide");
                      }
-                });
+                });*/
                 
 
     //3. Rating scrore init
@@ -1262,7 +1261,7 @@ function init_MoviePage () {
 
     
     //5. Datepicker init
-                $( ".datepicker__input" ).datepicker({
+               /* $( ".datepicker__input" ).datepicker({
                   showOtherMonths: true,
                   selectOtherMonths: true,
                   showAnim:"fade"
@@ -1273,7 +1272,7 @@ function init_MoviePage () {
                     if (!ele.hasClass("datepicker__input") && !ele.hasClass("ui-datepicker") && !ele.hasClass("ui-icon") && !$(ele).parent().parents(".ui-datepicker").length){
                        $(".datepicker__input").datepicker("hide");
                      }
-                });
+                });*/
 
     //6. Reply comment form
     			// button more comments

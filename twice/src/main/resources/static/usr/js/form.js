@@ -3,7 +3,7 @@
 //Plaeholder handler
 $(function() {
 	
-if(!Modernizr.input.placeholder){             //placeholder for old brousers and IE
+/*if(!Modernizr.input.placeholder){             //placeholder for old brousers and IE
  
   $('[placeholder]').focus(function() {
    var input = $(this);
@@ -26,7 +26,7 @@ if(!Modernizr.input.placeholder){             //placeholder for old brousers and
     }
    })
   });
- }
+ }*/
   
 $('#contact-form').submit(function(e) {
       
