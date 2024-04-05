@@ -98,6 +98,7 @@ public class BookController {
 		
 		if(da != null )
 		{
+			
 			vo.setShpreDate(da);
 			model.addAttribute("talist",service.tabookList(vo));
 			model.addAttribute("list", service.bookOneList(vo));
