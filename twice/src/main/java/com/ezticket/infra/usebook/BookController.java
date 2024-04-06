@@ -1,11 +1,14 @@
 package com.ezticket.infra.usebook;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -91,28 +94,32 @@ public class BookController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/bookDate")
-	public Map<String, Object> bookDate(@RequestParam("shprDate") String da, PerformanceDto dto, HttpSession httpSession, PerformanceVo vo, Model model) throws Exception {
+	public Map<String, Object> bookDate(@RequestParam("shprDate") String da, PerformanceVo vo, Model model, PerformanceDto dto) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		//vo.setShpreDate(da);
+		PerformanceDto dto2 = service.taselectOne(dto);
 		
-		if(da != null )
+		System.out.println("asasasasasas"+dto2.getPdselectionDate());
+		if(da.equals(dto2.getPdselectionDate()))
 		{
-			
 			vo.setShpreDate(da);
-			model.addAttribute("talist",service.tabookList(vo));
-			model.addAttribute("list", service.bookOneList(vo));
+			returnMap.put("talist", service.tabookList(vo));
+			returnMap.put("list", service.bookOneList(vo));
 			returnMap.put("rt", "success");
 		}
-		
-		/*
-		 * service.tabookList(vo); service.bookOneList(vo);
-		 */
+		else
+		{
+			returnMap.put("rt", "false");
+		}
 	
-
 		return returnMap;
 	}
 
+	
+	public String encodeBcrypt(String planeText, int strength) {
+		return new BCryptPasswordEncoder(strength).encode(planeText);
+	}
+	
 	public void setSearch(PerformanceVo vo) throws Exception {
 
 		

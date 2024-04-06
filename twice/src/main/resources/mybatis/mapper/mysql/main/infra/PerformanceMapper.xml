@@ -229,7 +229,6 @@
 				performancedate d 
 			on
 				d.pdSeq = a.taSeq
-		<if test="shprDate != null and !shprDate.equals('')">AND d.pdselectionDate = #{shprDate}</if>  
 
 	</select>
 
@@ -328,6 +327,31 @@
 
 		where 1=1
 		<include refid="selectCommon" />
+	</select>
+	
+	<select id="taselectOne" resultMap="resultMapObj">
+		SELECT
+			a.tatheaterNumber,
+			a.taSeq,
+			c.prStartDate,
+			c.prEndDate,
+			d.pdselectionDate
+			
+			from
+				theater a
+			join
+				place b
+			on
+				a.plSeq = b.plSeq AND b.plSeq = ${plSeq}
+			join
+				performancelist c
+			on
+			c.prSeq = ${plSeq}
+			join 
+				performancedate d 
+			on
+				d.pdSeq = a.taSeq
+
 	</select>
 
 	<select id="selectOne">

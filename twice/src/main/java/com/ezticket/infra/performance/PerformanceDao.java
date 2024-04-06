@@ -37,6 +37,8 @@ public interface PerformanceDao {
 	
 	public PerformanceDto selectOne(PerformanceDto dto);
 	
+	public PerformanceDto taselectOne(PerformanceDto dto);
+	
 	public PerformanceDto bookdate(PerformanceDto dto);
 	
 	

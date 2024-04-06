@@ -84,14 +84,15 @@
 				<input type="hidden" id = "prSeq" name= "prSeq" th:value = "${item.prSeq}">
 				<input type="hidden" id = "plSeq" name= "plSeq" th:value = "${item.plSeq}">
 
-                <div class="time-select time-select--wide">
+                <!-- <div class="time-select time-select--wide" id = "list">
                     <div class="time-select__group group--first"
                     th:if="${!#lists.isEmpty(talist)}"
 					th:each="talist : ${talist}">
 
 					
                         <div class="col-sm-3">
-                            <p class="time-select__place" th:value = "${talist.taSeq}" th:text = "${talist.tatheaterNumber}"></p>
+                            <p class="time-select__place" th:value = "${talist.taSeq}" th:text = "${talist.tatheaterNumber}"
+                            id= "tanumber" name = "tanumber"></p>
                         </div>
                         
                         
@@ -101,6 +102,23 @@
 							th:each="list : ${list}"
                             th:value = "${list.pdSeq}"
                              th:text = "${list.pdselectionTime}" ></li>
+ 
+                        </ul>
+                    </div>
+
+                </div>  -->
+                <div class="time-select time-select--wide" id = "list">
+                    <div class="time-select__group group--first" id ="number" name = "number">
+
+					
+                        <div class="col-sm-3">
+                            <p class="time-select__place" 
+                            id= "tanumber" name = "tanumber"></p>
+                        </div>
+                        
+                        
+                        <ul class="col-sm-6 items-wrap">
+                            <li class="time-select__item"  id ="time" name = "time"></li>
  
                         </ul>
                     </div>
@@ -278,11 +296,20 @@
 				,url: "/bookDate"
 				,data : { "shprDate" : $("#shprDate").val(),"prSeq" : $("#prSeq").val(), "plSeq": $("#plSeq").val()}
 				,success: function(response) {
+					
+					
 					if(response.rt == "success") {
-						alert(response.rt);
+						alert(response.list[0].pdselectionTime)
+						 	$('#tanumber').text(response.talist[0].tatheaterNumber); 
+						 	$('#time').text(response.list[0].pdselectionTime); 
+						 	/*for(let i = 0 ; i <= 1 ; i ++)
+						 		{
+						 		$('#time').text(response.talist[i].pdselectionTime); 
+						 		}*/
+
 					}
 					else{
-						alert("비밀번호가 일치하지않습니다.")
+						alert("이날은 공연이 없습니다.")
 					}
 					
 				}

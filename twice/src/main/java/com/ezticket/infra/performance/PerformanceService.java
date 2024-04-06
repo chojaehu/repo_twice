@@ -69,6 +69,12 @@ public class PerformanceService {
 	public int count(PerformanceVo vo) {
 		return dao.count(vo);
 	}
+	
+	
+	public PerformanceDto taselectOne(PerformanceDto dto)
+	{
+		return dao.taselectOne(dto);
+	}
 	public PerformanceDto selectOne(PerformanceDto dto)
 	{
 		return dao.selectOne(dto);
