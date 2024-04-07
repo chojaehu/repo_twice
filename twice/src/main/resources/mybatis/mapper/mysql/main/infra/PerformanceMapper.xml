@@ -49,6 +49,7 @@
 			a.prperformanceType,
 			a.prViewingTime,
 			d.plplace,
+			a.prArea,
 			a.prStartDate,
 			a.prEndDate,
 			a.prHostedPlanned,
@@ -324,6 +325,8 @@
 		<include refid="selectCommon" />
 	</select>
 	
+	
+	<!-- 날짜 확인 -->
 	<select id="taselectOne" resultMap="resultMapObj">
 		SELECT
 			a.tatheaterNumber,
@@ -453,6 +456,7 @@
 	<!-- 유저 검색 -->
 	<sql id="selectCommonusr">
 	<if test="shperformance != 0 and !shperformance.equals('')">AND a.prperformanceType = #{shperformance}</if>
+	<if test="shArea != 0 and !shArea.equals('')">AND a.prArea = #{shArea}</if>
 		
 		<choose>
 			<when test="shOption == 1">AND prTitle LIKE CONCAT('%',#{shValue},'%')</when>

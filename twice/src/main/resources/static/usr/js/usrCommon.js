@@ -4,7 +4,7 @@
 
 
 
-
+		//로그 아웃 
 		document.getElementById("Logout").onclick = function() {
 			$.ajax({
 				async: true 
@@ -27,6 +27,8 @@
 		function valLogin(){
 			location.href = goUrlXdmLogin;
 		}
+		
+		// 검색
 		window
 				.addEventListener(
 						'load',
@@ -37,21 +39,24 @@
 								form.submit();
 							};
 
-							goForm = function(keyValue) {
-								seq.value = keyValue;
-								form.action = goUrlXdmForm;
-								form.submit();
-							}
 							goList = function(thisPage) {
 								document.querySelector("input[name=thisPage]").value = thisPage;
 								form.action = goUrlXdmList;
 								form.submit();
 							}
 						});
-		/*function enterkey() {
+		function enterkey() {
 
 			if (window.event.keyCode == 13) {
 				form.action = goUrlXdmList;
 				form.submit();
 			}
-		} */
+		} 
+		
+		
+		// 엔터키 막기
+		document.addEventListener("keydown", function(event) {
+		  if (event.key === "Enter") {
+		    event.preventDefault();
+		  }
+		});

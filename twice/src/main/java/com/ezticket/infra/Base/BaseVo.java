@@ -26,9 +26,12 @@ public class BaseVo {
 	
 	private int startRnumForMysql = 0;
 	
+	//뮤지컬 연극 구분 
 	private int shperformance;
 	private int shRanking;
 	
+	//
+	private int shArea;
 	
 	
 	
@@ -85,7 +88,14 @@ public void setParamsPaging(int totalRows) {
 		
 	}
 
+	public int getShArea() {
+		return shArea;
+	}
 	
+	
+	public void setShArea(int shArea) {
+		this.shArea = shArea;
+	}
 	public int getShperformance() {
 		return shperformance;
 	}

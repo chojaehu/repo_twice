@@ -104,7 +104,7 @@
 				<h2 id='target' class="page-heading heading--outcontainer">랭킹</h2>
 				<div class="tags-area">
 
-					<div class="tags tags--unmarked">
+					<!-- <div class="tags tags--unmarked">
 						<ul>
 							<li class="item-wrap"><a href="#"
 								class="tags__item item-active" data-filter='all'>전체</a></li>
@@ -113,7 +113,7 @@
 							<li class="item-wrap"><a href="#" class="tags__item"
 								data-filter='release'>콘서트</a></li>
 						</ul>
-					</div>
+					</div> -->
 				</div>
 
 				<div class="col-sm-12">
@@ -125,7 +125,7 @@
 							</div>
 							<div class=" col-md-2 ">
 								<div class="movie__images">
-									<img alt='' src="ticketimg/main1.jpg">
+									<img alt='' src="usr/ticketimg/main1.jpg">
 								</div>
 								<div class="movie__feature">
 									<a href="#" class="movie__feature-item movie__feature--comment">123</a>
@@ -152,9 +152,9 @@
 								</p>
 
 								<p class="movie__option">
-									<strong>기간: </strong> <span
-										th:text="${#dates.format(list.prStartDate,'yyyy/MM/dd')}"></span>~
-									<span th:text="${#dates.format(list.prEndDate,'yyyy/MM/dd')}"></span>
+									<strong>기간: </strong> 
+									<span th:text="${list.prStartDate}" ></span>~
+									<span th:text="${list.prEndDate}"  ></span>
 								</p>
 
 

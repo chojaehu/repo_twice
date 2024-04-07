@@ -35,7 +35,7 @@
 
         <!-- Main content -->
        <!--  onclick="myFunction()"   -->
-		<button id='btn'>Click me</button>
+		<!-- <button id='btn'>Click me</button> -->
         <section class="container">
             <div class="order-container">
                 <div class="order">
@@ -320,7 +320,8 @@
 									 		});
 									 		
 									        let child = $('<p>', {
-									            id: 'child',
+									            id: 'tanumber',
+									            name : 'tanumber',
 									            text : response.talist[0].tatheaterNumber,
 									            class : 'time-select__place'
 									        });
@@ -329,14 +330,13 @@
 							        			class : 'col-sm-6 items-wrap'
 							        		});
 									 		
-							        		let li = $('<li>',{
-									        			class : 'time-select__item',
-									        			text : response.list[i].pdselectionTime
-									        });
 									        	 for(let j = 0 ; j < response.list.length; j++)
 									        		 {
 									        		 	let li = $('<li>',{
 										        			class : 'time-select__item',
+										        			id : 'pdTime' + response.list[j].pdSeq,
+										        			name : 'pdTime'+ response.list[j].pdSeq,
+										        			value : response.list[j].pdSeq,
 										        			text : response.list[j].pdselectionTime
 									       				 })
 										        		ulupdate.append(li);

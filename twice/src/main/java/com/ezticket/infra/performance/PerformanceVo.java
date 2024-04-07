@@ -1,6 +1,5 @@
 package com.ezticket.infra.performance;
 
-import java.util.Date;
 
 import com.ezticket.infra.Base.BaseVo;
 
