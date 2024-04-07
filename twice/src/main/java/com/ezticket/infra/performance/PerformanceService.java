@@ -70,11 +70,15 @@ public class PerformanceService {
 		return dao.count(vo);
 	}
 	
-	
-	public PerformanceDto taselectOne(PerformanceDto dto)
+	public List<PerformanceDto> taselectOne(PerformanceVo vo)
 	{
-		return dao.taselectOne(dto);
+		return dao.taselectOne(vo);
 	}
+	
+	/*public PerformanceDto taselectOne(PerformanceVo vo)
+	{
+		return dao.taselectOne(vo);
+	}*/
 	public PerformanceDto selectOne(PerformanceDto dto)
 	{
 		return dao.selectOne(dto);

@@ -34,10 +34,12 @@ public interface PerformanceDao {
 	public List<PerformanceDto> castMemberList(PerformanceVo vo);
 	public int count(PerformanceVo vo);
 	
+	public List<PerformanceDto> taselectOne(PerformanceVo vo);
+	
 	
 	public PerformanceDto selectOne(PerformanceDto dto);
 	
-	public PerformanceDto taselectOne(PerformanceDto dto);
+	/* public PerformanceDto taselectOne(PerformanceVo vo); */
 	
 	public PerformanceDto bookdate(PerformanceDto dto);
 	

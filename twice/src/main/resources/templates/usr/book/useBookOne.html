@@ -308,16 +308,8 @@
 				,data : { "shprDate" : $("#shprDate").val(),"prSeq" : $("#prSeq").val(), "plSeq": $("#plSeq").val()}
 				,success: function(response) {
 					
-					
-					if(response.rt == "success") {
-								/* alert(response.list[0].pdselectionTime)
-								alert(response.talist[0].tatheaterNumber) */
-						 	/* $('#tanumber').text(response.talist[0].tatheaterNumber); 
-						 	$('#time').text(response.list[0].pdselectionTime);  */
-						 	/*for(let i = 0 ; i <= 1 ; i ++)
-						 		{
-						 		$('#time').text(response.talist[i].pdselectionTime); 
-						 		}*/	 	
+					console.log(response);
+					if(response.rt == "success") {	
 						 		 $('#list').empty();
 						 		for(let i = 0 ; i < response.talist.length ; i ++)
 						 			{
@@ -357,7 +349,6 @@
 							 		
 							 		tatime.append(ulupdate);
 							 		
-							 		//ulupdate.append(li);
 							 		
 							        col.append(child);
 							        
@@ -385,36 +376,13 @@
 
 					}
 					else{
-						alert("이날은 공연이 없습니다.")
+						alert("이날은 공연이 없습니다.");
+						$('#list').empty();
 					}
 					
 				}
 			});
-			/* <div class="time-select time-select--wide" id = "list">
-			
-			
-            <div class="time-select__group group--first"
-            th:if="${!#lists.isEmpty(talist)}"
-			th:each="talist : ${talist}">
 
-			
-                <div class="col-sm-3">
-                    <p class="time-select__place" th:value = "${talist.taSeq}" th:text = "${talist.tatheaterNumber}"
-                    id= "tanumber" name = "tanumber"></p>
-                </div>
-                
-                
-                <ul class="col-sm-6 items-wrap">
-                    <li class="time-select__item" 
-                    th:if="${!#lists.isEmpty(list)}"
-					th:each="list : ${list}"
-                    th:value = "${list.pdSeq}"
-                     th:text = "${list.pdselectionTime}" ></li>
-
-                </ul>
-            </div>
-
-        </div> */
 		}	
 		 function valbook(){
 			location.href = goUrlbook ;

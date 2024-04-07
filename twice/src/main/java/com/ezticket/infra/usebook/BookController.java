@@ -10,6 +10,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -96,21 +97,39 @@ public class BookController {
 	@RequestMapping(value = "/bookDate")
 	public Map<String, Object> bookDate(@RequestParam("shprDate") String da, PerformanceVo vo, Model model, PerformanceDto dto) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
+		vo.setShpreDate(da);
 		
-		PerformanceDto dto2 = service.taselectOne(dto);
+		//PerformanceDto dto2 = service.taselectOne(vo);
 		
-		System.out.println("asasasasasas"+dto2.getPdselectionDate());
-		if(da.equals(dto2.getPdselectionDate()))
+		List<PerformanceDto> dto2 = new ArrayList<>();
+		dto2 = service.taselectOne(vo);
+
+		
+		//System.out.println("asasasasasas"+dto2.getPdselectionDate());
+		if(dto2 != null)
 		{
-			vo.setShpreDate(da);
-			returnMap.put("talist", service.tabookList(vo));
-			returnMap.put("list", service.bookOneList(vo));
-			returnMap.put("rt", "success");
+					
+				 returnMap.put("talist", service.tabookList(vo)); 
+				 returnMap.put("list",service.bookOneList(vo)); 
+				 returnMap.put("rt", "success"); 
+
 		}
 		else
 		{
-			returnMap.put("rt", "false");
+			returnMap.put("rt", "false"); 
 		}
+		
+		
+		 /*if(da.equals(dto2.getPdselectionDate())) 
+		 { 
+			 returnMap.put("talist", service.tabookList(vo)); 
+			 returnMap.put("list",service.bookOneList(vo)); 
+			 returnMap.put("rt", "success"); 
+		 } 
+		 else {
+		 returnMap.put("rt", "false"); 
+		 }
+		 */
 	
 		return returnMap;
 	}

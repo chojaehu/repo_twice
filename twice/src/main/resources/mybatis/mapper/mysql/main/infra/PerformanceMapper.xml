@@ -224,11 +224,12 @@
 			join
 				performancelist c
 			on
-			c.prSeq = ${plSeq}
+			c.prSeq = ${prSeq}
 			join 
 				performancedate d 
 			on
-				d.pdSeq = a.taSeq
+				d.taSeq = a.taSeq
+			<if test="shprDate != null and !shprDate.equals('')">AND d.pdselectionDate = #{shprDate}</if>   
 
 	</select>
 
@@ -346,11 +347,12 @@
 			join
 				performancelist c
 			on
-			c.prSeq = ${plSeq}
+			c.prSeq = ${prSeq}
 			join 
 				performancedate d 
 			on
-				d.pdSeq = a.taSeq
+				d.taSeq = a.taSeq And d.pdselectionDate = #{shprDate}
+			<!-- <if test="shprDate != '' and !shprDate.equals('')">AND d.pdselectionDate = #{shprDate}</if>  -->  	
 
 	</select>
 
