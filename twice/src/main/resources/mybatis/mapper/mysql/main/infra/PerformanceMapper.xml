@@ -212,8 +212,7 @@
 			a.tatheaterNumber,
 			a.taSeq,
 			c.prStartDate,
-			c.prEndDate,
-			d.pdselectionDate
+			c.prEndDate
 			
 			from
 				theater a
@@ -225,11 +224,6 @@
 				performancelist c
 			on
 			c.prSeq = ${prSeq}
-			join 
-				performancedate d 
-			on
-				d.taSeq = a.taSeq
-			<if test="shprDate != null and !shprDate.equals('')">AND d.pdselectionDate = #{shprDate}</if>   
 
 	</select>
 

@@ -106,17 +106,15 @@ public class BookController {
 
 		
 		//System.out.println("asasasasasas"+dto2.getPdselectionDate());
-		if(dto2 != null)
+		if(dto2.isEmpty())
 		{
-					
-				 returnMap.put("talist", service.tabookList(vo)); 
-				 returnMap.put("list",service.bookOneList(vo)); 
-				 returnMap.put("rt", "success"); 
-
+			returnMap.put("rt", "false"); 
 		}
 		else
 		{
-			returnMap.put("rt", "false"); 
+			returnMap.put("talist", service.tabookList(vo)); 
+			returnMap.put("list",service.bookOneList(vo)); 
+			returnMap.put("rt", "success"); 
 		}
 		
 		

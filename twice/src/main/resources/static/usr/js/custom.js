@@ -96,10 +96,13 @@ function init_Elements () {
             
 
     //3. Datapicker init
-    $( ".datepicker__input" ).datepicker({
+  /*  $( ".datepicker__input" ).datepicker({
         showOtherMonths: true,
         selectOtherMonths: true,
-        showAnim:"fade"
+        showAnim:"fade",
+        onSelect: function(dateString) {
+  			
+		}
 
         
     });
@@ -110,7 +113,7 @@ function init_Elements () {
              $(".datepicker__input").datepicker("hide");
 
         }
-   });
+   });*/
 
    //4. Tabs
    //Init 2 type tabs
@@ -448,14 +451,14 @@ function init_BookingOne() {
 
     
     //5. Datepicker init
-                $( ".datepicker__input" ).datepicker({
+               /* $( ".datepicker__input" ).datepicker({
                   dateFormat: 'yy-mm-dd',
                   minDate: new Date(std),
   				  maxDate: new Date(end),
                   showOtherMonths: true,
                   selectOtherMonths: true,
-                  showAnim:"fade"
-                });
+                  showAnim:"fade",
+                });*/
 
                 $(document).click(function(e) { 
                     var ele = $(e.target); 
@@ -1809,7 +1812,7 @@ function init_Cinema () {
 
 	//2. Datepicker
 				//datepicker
-                $( ".datepicker__input" ).datepicker({
+               /* $( ".datepicker__input" ).datepicker({
                   showOtherMonths: true,
                   selectOtherMonths: true,
                   showAnim:"fade"
@@ -1822,7 +1825,7 @@ function init_Cinema () {
 
                      }
 
-                });
+                });*/
 
     //3. Comment area control
     			// button more comments

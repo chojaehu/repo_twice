@@ -289,14 +289,87 @@
 	 var aa = $('input[name=prSeq]').val(); 
 	 var ab = $('input[name=plSeq]').val(); 
 	 
-	 
-	/*  function myFunction() {
-			alert(aa);
-		} */
+	 $( ".datepicker__input" ).datepicker({
+         dateFormat: 'yy-mm-dd',
+         minDate: new Date(std),
+			  maxDate: new Date(end),
+         showOtherMonths: true,
+         selectOtherMonths: true,
+         showAnim:"fade",
+         onSelect: function(dateString) {
+			        $.ajax({
+						async: true 
+						,cache: false
+						,type: "POST"
+						,url: "/bookDate"
+						,data : { "shprDate" : $("#shprDate").val(),"prSeq" : $("#prSeq").val(), "plSeq": $("#plSeq").val()}
+						,success: function(response) {
+							
+							//console.log(response);
+							if(response.rt == "success") {	
+								 		 $('#list').empty();
+								 		for(let i = 0 ; i < response.talist.length ; i ++)
+								 			{
+								 			let parent = $('#list');
+									 		let tatime = $('<div>',{
+									 			class :'time-select__group group--first'
+									 		});
+									 		
+									 		let col =$('<div>',{
+									 			class : 'col-sm-3'
+									 		});
+									 		
+									        let child = $('<p>', {
+									            id: 'child',
+									            text : response.talist[0].tatheaterNumber,
+									            class : 'time-select__place'
+									        });
+									        
+									 		let ulupdate = $('<ul>',{
+							        			class : 'col-sm-6 items-wrap'
+							        		});
+									 		
+							        		let li = $('<li>',{
+									        			class : 'time-select__item',
+									        			text : response.list[i].pdselectionTime
+									        });
+									        	 for(let j = 0 ; j < response.list.length; j++)
+									        		 {
+									        		 	let li = $('<li>',{
+										        			class : 'time-select__item',
+										        			text : response.list[j].pdselectionTime
+									       				 })
+										        		ulupdate.append(li);
+									        		 }
+									        
+									        tatime.append(col);
+									 		
+									 		tatime.append(ulupdate);
+									 		
+									 		
+									        col.append(child);
+									        
+									        parent.append(tatime);
+									        
+									        
+								 			}
+		
+							}
+							else{
+								alert("이날은 공연이 없습니다.");
+								$('#list').empty();
+							}
+							
+						}
+					});
+			    }
 
+       });
+	 
+	 
 	 var goUrlbook = '/useBookOne'
 	 	
-		 document.getElementById("btn").onclick = function() {
+		/*  document.getElementById("btn").onclick = function() {
 			
 			//if(vallupdt() == false) return false;
 		
@@ -308,7 +381,7 @@
 				,data : { "shprDate" : $("#shprDate").val(),"prSeq" : $("#prSeq").val(), "plSeq": $("#plSeq").val()}
 				,success: function(response) {
 					
-					console.log(response);
+					//console.log(response);
 					if(response.rt == "success") {	
 						 		 $('#list').empty();
 						 		for(let i = 0 ; i < response.talist.length ; i ++)
@@ -356,23 +429,6 @@
 							        
 							        
 						 			}
-								/* let parent = $('#list');
-						 		let tatime = $('<div>',{
-						 			class :'time-select__group group--first'
-						 		});
-						 		let col =$('<div>',{
-						 			class : 'col-sm-3'
-						 		})
-						        let child = $('<p>', {
-						            id: 'child',
-						            text : response.talist[0].tatheaterNumber,
-						            class : 'time-select__place'
-						        });
-						        tatime.append(col);
-						        col.append(child);
-						        parent.append(tatime); */
-						        
-
 
 					}
 					else{
@@ -383,7 +439,7 @@
 				}
 			});
 
-		}	
+		}	 */
 		 function valbook(){
 			location.href = goUrlbook ;
 		}    
