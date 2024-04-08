@@ -91,11 +91,11 @@
 												</div> 
 												<div class="col-md-6">
 													<input type="text" id="prStartDate" name="prStartDate" placeholder="시작일"  class="form-control form-control-sm" autocomplete="off"
-													 th:value = "${#dates.format(item.prStartDate,'yyyy/MM/dd')}" readonly>
+													th:value ="${item.prStartDate}" readonly>
 												</div>
 												<div class="col-md-6">
 													<input type="text" id="prEndDate" name="prEndDate" placeholder="종료일"  class="form-control form-control-sm" autocomplete="off" 
-													 th:value = "${#dates.format(item.prEndDate,'yyyy/MM/dd')}" readonly>
+													 th:value ="${item.prEndDate}" readonly>
 												</div> 
 												<div class="col-6">
 													<a th:href ="@{/performanceXdmList}">

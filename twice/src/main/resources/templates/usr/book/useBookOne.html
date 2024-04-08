@@ -85,13 +85,26 @@
 				<input type="hidden" id = "plSeq" name= "plSeq" th:value = "${item.plSeq}">
 				
 				<div class="time-select time-select--wide" id = "list">
-					<!-- <div class="time-select__group group--first">
-						<div class="col-sm-3" id ="taList" name = "talist">
-						
-						</div>
-						 <ul class="col-sm-6 items-wrap">
-						 </ul>
-					</div> -->
+					<div class="time-select__group group--first"
+                    th:if="${!#lists.isEmpty(talist)}"
+					th:each="talist : ${talist}">
+
+					
+                        <div class="col-sm-3">
+                            <p class="time-select__place" th:value = "${talist.taSeq}" th:text = "${talist.tatheaterNumber}"
+                            id= "tanumber" name = "tanumber"></p>
+                        </div>
+                        
+                        
+                        <ul class="col-sm-6 items-wrap">
+                            <li class="time-select__item" 
+                            th:if="${!#lists.isEmpty(list)}"
+							th:each="list : ${list}"
+                            th:value = "${list.pdSeq}"
+                             th:text = "${list.pdselectionTime}" ></li>
+ 
+                        </ul>
+                    </div>
 				</div>
                 <!-- <div class="time-select time-select--wide" id = "list">
                     <div class="time-select__group group--first"
@@ -116,23 +129,6 @@
                     </div>
 
                 </div>  -->
-                <div class="time-select time-select--wide" id = "list">
-                    <div class="time-select__group group--first" id ="number" name = "number">
-
-					
-                        <div class="col-sm-3" id="aatanumber" name ="aatanumber">
-                            <!-- <p class="time-select__place" 
-                            id= "tanumber" name = "tanumber"></p> -->
-                        </div>
-                        
-                        
-                       <!--  <ul class="col-sm-6 items-wrap">
-                            <li class="time-select__item"  id ="time" name = "time"></li>
- 
-                        </ul> -->
-                    </div>
-
-                </div> 
 
                 <div class="choose-indector choose-indector--time">
                     <strong>Choosen: </strong><span class="choosen-area"></span>
@@ -158,10 +154,11 @@
                     <span class="arrow__text arrow--prev"></span>
                     <span class="arrow__info"></span>
                 </a>
-                <a th:href = "@{/useBookTow}"class="booking-pagination__next">
+                <a class="booking-pagination__next" id="next" >
                     <span class="arrow__text arrow--next">다음 단계</span>
                     <!-- <span class="arrow__info">choose a sit</span> -->
                 </a>
+               <!--  th:href = "@{/useBookTow}" -->
             </div>
 
         </form>
@@ -251,7 +248,7 @@
 
         </section>
     </div>
-    <div id ="sdsdsd">sdsdsdsd
+    <div id ="sdsdsd" >sdsdsdsd
     </div>
 
     <!-- JavaScript-->
@@ -280,19 +277,25 @@
     <!-- Custom -->
     <script src="usr/js/custom.js"></script>
     <script src="usr/js/usrCommon.js"></script> 
-	
+    
+	 <script type="text/javascript">	    
+        $(document).ready(function () {
+            init_BookingOne();
+        });     
+    </script> 
 	
 	<script th:inline="javascript">
-	 var std = $('input[name=stDate]').val(); 
-	 var end = $('input[name=endDate]').val(); 
+	 let std = $('input[name=stDate]').val(); 
+	 let end = $('input[name=endDate]').val(); 
 	 
-	 var aa = $('input[name=prSeq]').val(); 
-	 var ab = $('input[name=plSeq]').val(); 
+	 let prSeq = $('input[name=prSeq]').val(); 
+	 let plSeq = $('input[name=plSeq]').val(); 
+	 
 	 
 	 $( ".datepicker__input" ).datepicker({
          dateFormat: 'yy-mm-dd',
          minDate: new Date(std),
-			  maxDate: new Date(end),
+		 maxDate: new Date(end),
          showOtherMonths: true,
          selectOtherMonths: true,
          showAnim:"fade",
@@ -307,10 +310,14 @@
 							
 							//console.log(response);
 							if(response.rt == "success") {	
+										 $(document).ready(function () {
+									            init_BookingOne();
+									       });
 								 		 $('#list').empty();
 								 		for(let i = 0 ; i < response.talist.length ; i ++)
 								 			{
 								 			let parent = $('#list');
+								 			//
 									 		let tatime = $('<div>',{
 									 			class :'time-select__group group--first'
 									 		});
@@ -322,12 +329,14 @@
 									        let child = $('<p>', {
 									            id: 'tanumber',
 									            name : 'tanumber',
+									            value : response.talist[0].taSeq,
 									            text : response.talist[0].tatheaterNumber,
 									            class : 'time-select__place'
 									        });
 									        
 									 		let ulupdate = $('<ul>',{
-							        			class : 'col-sm-6 items-wrap'
+							        			class : 'col-sm-6 items-wrap',
+							        			id : 'timelist'
 							        		});
 									 		
 									        	 for(let j = 0 ; j < response.list.length; j++)
@@ -338,7 +347,7 @@
 										        			name : 'pdTime'+ response.list[j].pdSeq,
 										        			value : response.list[j].pdSeq,
 										        			text : response.list[j].pdselectionTime
-									       				 })
+									       				 });
 										        		ulupdate.append(li);
 									        		 }
 									        
@@ -366,95 +375,75 @@
 
        });
 	 
-	 
-	 var goUrlbook = '/useBookOne'
-	 	
-		/*  document.getElementById("btn").onclick = function() {
-			
-			//if(vallupdt() == false) return false;
-		
-			$.ajax({
-				async: true 
-				,cache: false
-				,type: "POST"
-				,url: "/bookDate"
-				,data : { "shprDate" : $("#shprDate").val(),"prSeq" : $("#prSeq").val(), "plSeq": $("#plSeq").val()}
-				,success: function(response) {
-					
-					//console.log(response);
-					if(response.rt == "success") {	
-						 		 $('#list').empty();
-						 		for(let i = 0 ; i < response.talist.length ; i ++)
-						 			{
-						 			let parent = $('#list');
-							 		let tatime = $('<div>',{
-							 			class :'time-select__group group--first'
-							 		});
-							 		
-							 		let col =$('<div>',{
-							 			class : 'col-sm-3'
-							 		});
-							 		
-							        let child = $('<p>', {
-							            id: 'child',
-							            text : response.talist[0].tatheaterNumber,
-							            class : 'time-select__place'
-							        });
-							        
-							 		let ulupdate = $('<ul>',{
-					        			class : 'col-sm-6 items-wrap'
-					        		});
-							 		
-					        		let li = $('<li>',{
-							        			class : 'time-select__item',
-							        			text : response.list[i].pdselectionTime
-							        });
-							        	 for(let j = 0 ; j < response.list.length; j++)
-							        		 {
-							        		 	let li = $('<li>',{
-								        			class : 'time-select__item',
-								        			text : response.list[j].pdselectionTime
-							       				 })
-								        		ulupdate.append(li);
-							        		 }
-							        
-							        tatime.append(col);
-							 		
-							 		tatime.append(ulupdate);
-							 		
-							 		
-							        col.append(child);
-							        
-							        parent.append(tatime);
-							        
-							        
-						 			}
+	
 
-					}
-					else{
-						alert("이날은 공연이 없습니다.");
-						$('#list').empty();
-					}
-					
+	
+	</script>
+	
+	<script type="text/javascript">
+	// 감지할 타겟
+	/*  let target = document.getElementById('timelist')
+
+	 // 변경을 감지했을 때 실행할 부분
+	 let observer = new MutationObserver(mutations => {
+	   mutations.forEach(mutation => {
+		   let pdSeq = document.getElementsByClassName('active');
+		   alert(pdSeq);
+	   });
+	 });
+	 // 감지 설정
+	 let config = {
+	   attributes: true,	// 타켓의 속성 변경를 감지
+	   characterData: false	// 타겟의 데이터 변경 감지
+
+	 };
+	 observer.observe(target , config);
+	  */
+	 /*  let target = document.getElementsByClassName('timelist');
+	  let callback = (mutationList, observer) =>{
+		  alert('감지')
+	  }
+	  let doserver = new MutationObserver(callback)
+	  
+	  
+	  
+	  let config ={ 
+			    attributes: true, // 속성 변화 할때 감지
+			    childList: true, // 자식노드 추가/제거 감지
+			    characterData: true // 데이터 변경전 내용 기록
+			};
+	  observer.observe(target, config); */
+	 
+		document.getElementById("next").onclick =  function()
+		{
+			//alert(pdSeq);
+			if(pdSeq = "undefined")
+				{
+					alert('시간을 선택 하세요');
 				}
-			});
+			else
+				{
+					location.href = "/useBookTow"+"?prSeq=" + prSeq + "?plSeq=" + plSeq + "?pdSeq=" + pdSeq;
+				}
+			/* $.ajax({
+				 async: true 
+					,cache: false
+					,type: "GET"
+					,url : ""
+					,data :{"prSeq" : $("#prSeq").val(), "plSeq": $("#plSeq").val(),"pdSeq" : $(".active").val()}
+			 		,succes : function(respone){
+			 			
+			 		}
+			 }) */
+		}
+	
 
-		}	 */
-		 function valbook(){
-			location.href = goUrlbook ;
-		}    
-	 
 	</script>
 	
 	
 	
 	
-    <script type="text/javascript">
-        $(document).ready(function () {
-            init_BookingOne();
-        });
-
-    </script> 
+   
 
 </body>
 

@@ -97,9 +97,8 @@ public class BookController {
 	@RequestMapping(value = "/bookDate")
 	public Map<String, Object> bookDate(@RequestParam("shprDate") String da, PerformanceVo vo, Model model, PerformanceDto dto) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		vo.setShpreDate(da);
 		
-		//PerformanceDto dto2 = service.taselectOne(vo);
+		vo.setShpreDate(da);
 		
 		List<PerformanceDto> dto2 = new ArrayList<>();
 		dto2 = service.taselectOne(vo);
@@ -116,26 +115,27 @@ public class BookController {
 			returnMap.put("list",service.bookOneList(vo)); 
 			returnMap.put("rt", "success"); 
 		}
-		
-		
-		 /*if(da.equals(dto2.getPdselectionDate())) 
-		 { 
-			 returnMap.put("talist", service.tabookList(vo)); 
-			 returnMap.put("list",service.bookOneList(vo)); 
-			 returnMap.put("rt", "success"); 
-		 } 
-		 else {
-		 returnMap.put("rt", "false"); 
-		 }
-		 */
 	
 		return returnMap;
 	}
 
+
 	
-	public String encodeBcrypt(String planeText, int strength) {
-		return new BCryptPasswordEncoder(strength).encode(planeText);
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public void setSearch(PerformanceVo vo) throws Exception {
 
