@@ -146,7 +146,6 @@
 		f.stSeatCode,
 		f.stSeatNumber,
 		g.mbName
-
 		From
 		payment a
 		join
