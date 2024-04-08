@@ -144,6 +144,9 @@ public class PerformanceController {
 		
 		
 		setSearch(vo);
+		vo.setParamsPaging(service.count(vo));
+		
+		
 		//model.addAttribute("castlist", service.castMemberList(vo));
 		model.addAttribute("list", service.usrselectList(vo));
 

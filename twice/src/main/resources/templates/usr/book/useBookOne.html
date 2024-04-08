@@ -329,8 +329,8 @@
 									        let child = $('<p>', {
 									            id: 'tanumber',
 									            name : 'tanumber',
-									            value : response.talist[0].taSeq,
-									            text : response.talist[0].tatheaterNumber,
+									            value : response.talist[i].taSeq,
+									            text : response.talist[i].tatheaterNumber,
 									            class : 'time-select__place'
 									        });
 									        
@@ -374,56 +374,23 @@
 			    }
 
        });
-	 
-	
 
-	
 	</script>
 	
 	<script type="text/javascript">
-	// 감지할 타겟
-	/*  let target = document.getElementById('timelist')
-
-	 // 변경을 감지했을 때 실행할 부분
-	 let observer = new MutationObserver(mutations => {
-	   mutations.forEach(mutation => {
-		   let pdSeq = document.getElementsByClassName('active');
-		   alert(pdSeq);
-	   });
-	 });
-	 // 감지 설정
-	 let config = {
-	   attributes: true,	// 타켓의 속성 변경를 감지
-	   characterData: false	// 타겟의 데이터 변경 감지
-
-	 };
-	 observer.observe(target , config);
-	  */
-	 /*  let target = document.getElementsByClassName('timelist');
-	  let callback = (mutationList, observer) =>{
-		  alert('감지')
-	  }
-	  let doserver = new MutationObserver(callback)
-	  
-	  
-	  
-	  let config ={ 
-			    attributes: true, // 속성 변화 할때 감지
-			    childList: true, // 자식노드 추가/제거 감지
-			    characterData: true // 데이터 변경전 내용 기록
-			};
-	  observer.observe(target, config); */
 	 
 		document.getElementById("next").onclick =  function()
 		{
-			//alert(pdSeq);
-			if(pdSeq = "undefined")
+		  let pdSeq =$('.active').val();
+		  let taSeq =$('#tanumber').val();
+			alert(pdSeq);
+			if(pdSeq == "undefined")
 				{
-					alert('시간을 선택 하세요');
+					alert('시간 선택')
 				}
 			else
 				{
-					location.href = "/useBookTow"+"?prSeq=" + prSeq + "?plSeq=" + plSeq + "?pdSeq=" + pdSeq;
+					location.href = "/useBookTow"+"?prSeq=" + prSeq + "&plSeq=" + plSeq + "&taSeq=" + taSeq + "&pdSeq=" + pdSeq;
 				}
 			/* $.ajax({
 				 async: true 
