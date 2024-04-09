@@ -23,6 +23,8 @@ public class MyPageController {
 		
 		
 		vo.setPrSeq((String) httpSession.getAttribute("sessSeqXdm"));
+																					
+		
 		model.addAttribute("list", service.usrselectPay(vo));
 
 		return str2 + "/useInformation";

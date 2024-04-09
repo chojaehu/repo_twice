@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class PerformanceDto {
 	
+	
+	// 공연 정보
 	private Integer prSeq;
 	private String prTitle;
 	private String prperformanceType;
@@ -19,6 +21,9 @@ public class PerformanceDto {
 	private Date prModifiedDate;
 	private Integer prdeleteNY;
 	
+	//출연진 정보
+	private String cmName;
+	
 	// 공연장소 
 	private String plplace;
 	private Integer plSeq;
@@ -32,17 +37,19 @@ public class PerformanceDto {
 	private String pdselectionDate;
 	private String pdselectionTime;
 	
+	
 	//좌석정보
 	private Integer stSeq;
+	private String stRating;
 	private String stSeatCode;
 	private String stSeatNumber;
+	private String stPrise;
+	private String stReservation;
 
 	//티켓정보
 	private Integer pmSeq;
 	private String pmTicketCode;
 	
-	//출연진 정보
-	private String cmName;
 	
 	
 	//댓글 정보
@@ -58,6 +65,8 @@ public class PerformanceDto {
 	private String rpWriter;
 	private String rpRvwCntnt;
 	private Date rpRgstrDate;
+	
+	
 	public Integer getPrSeq() {
 		return prSeq;
 	}
@@ -184,6 +193,12 @@ public class PerformanceDto {
 	public void setStSeq(Integer stSeq) {
 		this.stSeq = stSeq;
 	}
+	public String getStRating() {
+		return stRating;
+	}
+	public void setStRating(String stRating) {
+		this.stRating = stRating;
+	}
 	public String getStSeatCode() {
 		return stSeatCode;
 	}
@@ -195,6 +210,18 @@ public class PerformanceDto {
 	}
 	public void setStSeatNumber(String stSeatNumber) {
 		this.stSeatNumber = stSeatNumber;
+	}
+	public String getStPrise() {
+		return stPrise;
+	}
+	public void setStPrise(String stPrise) {
+		this.stPrise = stPrise;
+	}
+	public String getStReservation() {
+		return stReservation;
+	}
+	public void setStReservation(String stReservation) {
+		this.stReservation = stReservation;
 	}
 	public Integer getPmSeq() {
 		return pmSeq;
@@ -267,7 +294,5 @@ public class PerformanceDto {
 	}
 	public void setRpRgstrDate(Date rpRgstrDate) {
 		this.rpRgstrDate = rpRgstrDate;
-	}
-	
-	
+	}	
 }

@@ -36,6 +36,29 @@ public class PerformanceService {
 		return dao.castMemberList(vo);
 	}
 	
+//	상세페이지
+	public PerformanceDto selectOne(PerformanceDto dto)
+	{
+		return dao.selectOne(dto);
+	}
+	
+//	상세페이지 리뷰 리스트
+	public List<PerformanceDto> reviewList(PerformanceVo vo){
+		return dao.reviewList(vo);
+	}
+	
+	
+//	리뷰 답글 리스트
+	public List<PerformanceDto> replyList(PerformanceVo vo)
+	{
+		return dao.replyList(vo);
+	}
+	
+//	리스트 총 갯수
+	public int count(PerformanceVo vo) {
+		return dao.count(vo);
+	}
+	
 //	사용자 결제완료 티켓 리스트 
 	public List<PerformanceDto> usrselectPay(PerformanceVo vo)
 	{
@@ -54,39 +77,23 @@ public class PerformanceService {
 		return dao.bookOneList(vo);
 	}
 	
-//	상세페이지 리뷰 리스트
-	public List<PerformanceDto> reviewList(PerformanceVo vo){
-		return dao.reviewList(vo);
-	}
-	
-//	리뷰 답글 리스트
-	public List<PerformanceDto> replyList(PerformanceVo vo)
-	{
-		return dao.replyList(vo);
-	}
-	
-//	리스트 총 갯수
-	public int count(PerformanceVo vo) {
-		return dao.count(vo);
-	}
-	
 	public List<PerformanceDto> taselectOne(PerformanceVo vo)
 	{
 		return dao.taselectOne(vo);
-	}
-	
-	/*public PerformanceDto taselectOne(PerformanceVo vo)
-	{
-		return dao.taselectOne(vo);
-	}*/
-	public PerformanceDto selectOne(PerformanceDto dto)
-	{
-		return dao.selectOne(dto);
 	}
 	public PerformanceDto bookdate(PerformanceDto dto)
 	{
 		return dao.bookdate(dto);
 	}
+	
+	
+//	좌서리스트
+	public List<PerformanceDto> bookseatList(PerformanceDto dto)
+	{
+		return dao.bookseatList(dto);
+	}
+	
+	
 	
 	
 	public int update(PerformanceDto dto)

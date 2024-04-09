@@ -36,6 +36,8 @@ public class BookController {
 	
 	private String str3 = "/usr/book";
 	
+	
+	
 	// 예매 첫번째 페이지
 	@RequestMapping(value = "/useBookOne")
 	public String useBookOne(@ModelAttribute("vo")PerformanceVo vo , Model model,PerformanceDto dto) throws Exception
@@ -55,7 +57,7 @@ public class BookController {
 		
 		model.addAttribute("item", service.bookdate(dto));
 		
-		System.out.println("vo.getShprDate()"+vo.getShprDate());
+		//System.out.println("vo.getShprDate()"+vo.getShprDate());
 		
 		// 공연관
 		model.addAttribute("talist", service.tabookList(vo));
@@ -70,9 +72,10 @@ public class BookController {
 	
 	// 예매 두번째 페이지 좌석 선택
 	@RequestMapping(value = "/useBookTow")
-	public String useBookTow() throws Exception
+	public String useBookTow(PerformanceDto dto,Model model) throws Exception
 	{
 		
+		model.addAttribute("seatlist", service.bookseatList(dto));
 		return str3 + "/useBookTow";
 	}
 	
