@@ -39,6 +39,8 @@
  -->
 <body>
 <form id='formList' name='formList' method='get' class="search"> 
+	<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
+  <input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
     <div class="wrapper">
         <!-- Banner -->
         <div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
@@ -102,22 +104,26 @@
 
                 
                 <!-- end movie preview item -->
-                <div class="page_wrap">
-                    <div class="page_nation">
-                        <a class="arrow prev" href="#"> << </a>
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">6</a>
-                        <a href="#">7</a>
-                        <a href="#">8</a>
-                        <a href="#">9</a>
-                        <a href="#">10</a>
-                        <a class="arrow next" href="#"> >> </a>
-                    </div>
-                </div>
+				<div class="page_wrap">
+		                 <div class="page_nation">
+									<a th:if="${vo.startPage gt vo.pageNumToShow}" 
+									style="cursor: pointer;"
+									
+									href="javascript:goList(${vo.startPage - 1})"
+									th:attr="onclick=|goList('${vo.startPage - 1}')|">이전</a>
+
+									<a
+									th:each="num: ${#numbers.sequence(vo.startPage, vo.endPage)}"
+									th:classappend="${num eq vo.thisPage} ? active : ''"
+									 style="cursor: pointer;"
+									th:attr="onclick=|goList('${num}')|"
+									th:text="${num}"></a>
+
+									<a th:if="${vo.endPage ne vo.totalPages}" 
+									style="cursor: pointer;"
+									th:attr="onclick=|goList('${vo.endPage + 1}')|">다음</a>
+		                 </div>
+	           </div>
             </div>
 
         </section>
@@ -233,8 +239,14 @@
 
     <!-- Custom -->
     <script src="usr/js/custom.js"></script>
-    <script src="usr/js/usrCommon.js">
     
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init_MovieList();
+        });
+        let goUrlXdmList = "/usePerformanceArea";
+    </script>
+    <script src="usr/js/usrCommon.js">
     </script>
 
     
@@ -274,11 +286,7 @@
 	</script> -->
     
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            init_MovieList();
-        });
-    </script>
+   
     
 
 

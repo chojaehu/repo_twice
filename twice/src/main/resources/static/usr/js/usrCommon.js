@@ -1,6 +1,6 @@
 		let goUrlXdmLogin = "/useIndex";
         let form = document.querySelector("form[name=formList]");
-        let goUrlXdmList = "/usePerformanceList";
+        //let goUrlXdmList = "/usePerformanceList";
 
 
 

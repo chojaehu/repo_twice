@@ -107,6 +107,7 @@
 			d.plSeq = b.plSeq
 		WHERE 1=1
 			ORDER BY a.prAttenDance DESC
+			limit 10
 	</select>
 
 

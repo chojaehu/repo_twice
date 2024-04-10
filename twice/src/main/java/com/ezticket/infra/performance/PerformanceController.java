@@ -158,6 +158,7 @@ public class PerformanceController {
 	public String usePerformanceArea(@ModelAttribute("vo")PerformanceVo vo,Model model) throws Exception {
 		
 		setSearch(vo);
+		vo.setParamsPaging(service.count(vo));
 		model.addAttribute("list", service.usrselectList(vo));
 		return str2 + "/usePerformanceArea";
 	}
