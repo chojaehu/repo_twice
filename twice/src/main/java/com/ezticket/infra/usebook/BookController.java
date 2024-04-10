@@ -75,7 +75,7 @@ public class BookController {
 	public String useBookTow(PerformanceDto dto,Model model) throws Exception
 	{
 		
-		model.addAttribute("seatlist", service.bookseatList(dto));
+		model.addAttribute("list", service.bookseatList(dto));
 		return str3 + "/useBookTow";
 	}
 	

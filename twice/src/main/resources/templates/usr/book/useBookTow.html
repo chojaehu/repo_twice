@@ -84,20 +84,54 @@
                                     <span class="sits__indecator additional-margin" >E</span>
                                 </aside>
 
-                                <div class="sits__row">
-                                    <span class="sits__place sits-price--cheap" data-place='A1'
-                                        data-price='10'>A1</span>
-                                    <span class="sits__place sits-price--cheap" data-place='A2'
-                                        data-price='10'>A2</span>
-                                    <span class="sits__place sits-price--cheap" data-place='A3'
-                                        data-price='10'>A3</span>
-                                    <span class="sits__place sits-price--cheap" data-place='A4'
-                                        data-price='10'>A4</span>
-                                    <span class="sits__place sits-price--cheap" data-place='A5'
-                                        data-price='10'>A5</span>
+                                <div class="sits__row">                           
+	                                    <span class="sits__place sits-price--cheap" 
+	                                    th:if="${!#lists.isEmpty(list)} and ${list.stSeatCode eq 'A'}"
+										th:each="list : ${list}"
+	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
+	                                    th:data-price = "${list.stPrise}"
+	                                    th:value = "${list.stSeq}"
+	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
                                 </div>
+                                <div class="sits__row">                           
+	                                    <span class="sits__place sits-price--cheap" 
+	                                    th:if="${!#lists.isEmpty(list)} and ${list.stSeatCode eq 'B'}"
+										th:each="list : ${list}"
+	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
+	                                    th:data-price = "${list.stPrise}"
+	                                    th:value = "${list.stSeq}"
+	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
+                                </div>
+                                <div class="sits__row">                           
+	                                    <span class="sits__place sits-price--middle" 
+	                                    th:if="${!#lists.isEmpty(list)} and ${list.stSeatCode eq 'C'}"
+										th:each="list : ${list}"
+	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
+	                                    th:data-price = "${list.stPrise}"
+	                                    th:value = "${list.stSeq}"
+	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
+                                </div>
+                                <div class="sits__row">                           
+	                                    <span class="sits__place sits-price--middle" 
+	                                    th:if="${!#lists.isEmpty(list)} and ${list.stSeatCode eq 'D'}"
+										th:each="list : ${list}"
+	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
+	                                    th:data-price = "${list.stPrise}"
+	                                    th:value = "${list.stSeq}"
+	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
+                                </div>
+                                <div class="sits__row additional-margin">                           
+	                                    <span class="sits__place sits-price--expensive" 
+	                                    th:if="${!#lists.isEmpty(list)} and ${list.stSeatCode eq 'E'}"
+										th:each="list : ${list}"
+	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
+	                                    th:data-price = "${list.stPrise}"
+	                                    th:value = "${list.stSeq}"
+	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
+                                </div>
+                                
 
-                                <div class="sits__row">
+                                <!-- <div class="sits__row">
                                     <span class="sits__place sits-price--cheap" data-place='B1'
                                         data-price='10'>B1</span>
                                     <span class="sits__place sits-price--cheap" data-place='B2'
@@ -147,7 +181,7 @@
                                         data-price='30'>E4</span>
                                     <span class="sits__place sits-price--expensive" data-place='E5'
                                         data-price='30'>E5</span>
-                                </div>
+                                </div> -->
 
 
 
@@ -157,7 +191,7 @@
 
                                     </div>
                                     <div class="checked-result">
-                                        $0
+                                        0
                                     </div>
                                 </aside>
                                 <footer class="sits__number">

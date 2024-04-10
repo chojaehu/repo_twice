@@ -7271,8 +7271,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
   top: 20px;
   left: 18px;
 }
-.sits .sits__checked:after {
-  content: "=";
+.sits .sits__checked:after {	
   font: 13px;
   color: #ffffff;
   position: absolute;
