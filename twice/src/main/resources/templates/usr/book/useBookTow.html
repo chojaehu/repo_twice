@@ -133,6 +133,7 @@
 	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
 	                                    th:data-price = "${list.stPrise}"
 	                                    th:value = "${list.stSeq}"
+	                                    th:id = "${list.stSeq}"
 	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
                                 </div>
                                 <div class="sits__row">                           
@@ -142,6 +143,7 @@
 	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
 	                                    th:data-price = "${list.stPrise}"
 	                                    th:value = "${list.stSeq}"
+	                                    th:id = "${list.stSeq}"
 	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
                                 </div>
                                 <div class="sits__row">                           
@@ -151,6 +153,7 @@
 	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
 	                                    th:data-price = "${list.stPrise}"
 	                                    th:value = "${list.stSeq}"
+	                                    th:id = "${list.stSeq}"
 	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
                                 </div>
                                 <div class="sits__row additional-margin">                           
@@ -160,6 +163,7 @@
 	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
 	                                    th:data-price = "${list.stPrise}"
 	                                    th:value = "${list.stSeq}"
+	                                    th:id = "${list.stSeq}"
 	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
                                 </div>
                                 <aside class="sits__checked">
@@ -170,12 +174,62 @@
                                         0
                                     </div>
                                 </aside>
+                                <footer class="sits__number">
+                                    <span class="sits__indecator">1</span>
+                                    <span class="sits__indecator">2</span>
+                                    <span class="sits__indecator">3</span>
+                                    <span class="sits__indecator">4</span>
+                                    <span class="sits__indecator">5</span>
+                                </footer>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-sm-12 visible-xs">
                         <div class="sits-area--mobile">
+                            <!-- <div class="sits-area--mobile-wrap">
+                                <div class="sits-select">
+                                    <select name="sorting_item" class="sits__sort sit-row" tabindex="0">
+                                        <option value="1" selected='selected'>A</option>
+                                        <option value="2">B</option>
+                                        <option value="3">C</option>
+                                        <option value="4">D</option>
+                                        <option value="5">E</option>
+                                        <option value="6">F</option>
+                                        <option value="7">G</option>
+                                        <option value="8">I</option>
+                                        <option value="9">J</option>
+                                        <option value="10">K</option>
+                                        <option value="11">L</option>
+                                    </select>
+
+                                    <select name="sorting_item" class="sits__sort sit-number" tabindex="1">
+                                        <option value="1" selected='selected'>1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                    </select>
+
+                                    <a href="#" class="btn btn-md btn--warning toogle-sits">Choose sit</a>
+                                </div>
+                            </div> -->
+
+                          <!--   <a href="#" class="watchlist add-sits-line">Add new sit</a> -->
+
                             <aside class="sits__checked">
                                 <div class="checked-place">
                                     <span class="choosen-place"></span>
@@ -190,8 +244,10 @@
                     </div> 
 
                 </div>
-			</section>
+
+		</section>
         </div>
+    </div>
 
 
 
@@ -302,12 +358,11 @@
 
         </section>
     </div>
-    </div>
 
     <!-- JavaScript-->
     <!-- jQuery 3.1.1-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="usr/js/external/jquery-3.1.1.min.js"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')</script>
     <!-- Migrate -->
     <script src="usr/js/external/jquery-migrate-1.2.1.min.js"></script>
     <!-- Bootstrap 3-->
@@ -333,7 +388,31 @@
         
         
         
-        
+        document.getElementById("aa").onclick =  function()
+        {
+        	
+        	//let seat = $('.sits-state--your').attr('value');
+        	/* let seatval = [];
+        	let seat = $('.sits-state--your').attr('value');
+        	$(".sits-state--your").each(function(index, item)
+        			{
+        				seatval.push($('.sits-state--your').attr('value'));
+        			});	  */
+        			//let seat = document.querySelectorAll(".sits-state--your");
+        			
+        			let seatone = $(".sits-state--your")
+        			let seatarray = Array.prototype.slice.call(seatone);
+        			let seat = []
+	        			for(let i = 0 ; i < seatarray.length ; i++)
+	        				{
+	        					
+	        					seat[i] = seatarray[i].id;
+	        					console.log(seat[i]);
+	        					
+	        				}  
+        			console.log(seat);
+        	//console.log(seat2);
+        }
     </script>
 
 </body>

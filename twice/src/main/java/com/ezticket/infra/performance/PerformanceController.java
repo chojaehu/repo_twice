@@ -28,7 +28,7 @@ public class PerformanceController {
 		setSearch(vo);
 		vo.setParamsPaging(service.count(vo));
 		
-		model.addAttribute("count", service.count(vo));
+		//model.addAttribute("count", service.count(vo));
 		
 		if(vo.getTotalRows() > 0)
 		{
