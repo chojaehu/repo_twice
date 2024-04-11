@@ -267,7 +267,7 @@
                 <span class="arrow__text arrow--prev" >이전 단계</span>
                 <!-- <span class="arrow__info">what&amp;where&amp;when</span> -->
             </a>
-            <a th:href = "@{/useBookBuy}" class="booking-pagination__next">
+            <a id="next"  class="booking-pagination__next">
                 <span class="arrow__text arrow--next" >다음 단계</span>
                 <!-- <span class="arrow__info">checkout</span> -->
             </a>
@@ -407,10 +407,11 @@
 	        				{
 	        					
 	        					seat[i] = seatarray[i].id;
-	        					console.log(seat[i]);
+	        					//console.log(seat[i]);
 	        					
 	        				}  
         			console.log(seat);
+        			location.href = "/useBookBuy"+"?prSeq=" + prSeq + "&plSeq=" + plSeq + "&taSeq=" + taSeq + "&pdSeq=" + pdSeq;
         	//console.log(seat2);
         }
     </script>
