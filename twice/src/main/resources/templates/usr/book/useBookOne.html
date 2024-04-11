@@ -86,12 +86,15 @@
 				
 				<div class="time-select time-select--wide" id = "list">
 					<div class="time-select__group group--first"
-                    th:if="${!#lists.isEmpty(talist)}"
-					th:each="talist : ${talist}">
+                    >
 
 					
-                        <div class="col-sm-3">
-                            <p id="tanumber" name="tanumber" th:value="${talist.taSeq}"  class="time-select__place" 
+                        <div class="col-sm-3"
+                        >
+                            <p id="tanumber" name="tanumber"
+                            th:if="${!#lists.isEmpty(talist)}"
+					th:each="talist : ${talist}"
+                             th:value="${talist.taSeq}"  class="time-select__place" 
                             th:text = "${talist.tatheaterNumber}"></p>
                         </div>
                         
@@ -379,7 +382,7 @@
 	 
 		document.getElementById("next").onclick =  function()
 		{
-			let taSeq =$('#tanumber').val();
+			let taSeq =$('#tanumber').attr('value');
 		    let pdSeq =$('.active').val();
 			alert(taSeq);
 			alert(pdSeq);

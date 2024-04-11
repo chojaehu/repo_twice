@@ -1,6 +1,7 @@
 package com.ezticket.infra.performance;
 
 import java.util.Date;
+import java.util.List;
 
 public class PerformanceDto {
 	
@@ -45,6 +46,8 @@ public class PerformanceDto {
 	private String stSeatNumber;
 	private String stPrise;
 	private String stReservation;
+	
+	private List<String> seat;
 
 	//티켓정보
 	private Integer pmSeq;
@@ -65,7 +68,6 @@ public class PerformanceDto {
 	private String rpWriter;
 	private String rpRvwCntnt;
 	private Date rpRgstrDate;
-	
 	
 	public Integer getPrSeq() {
 		return prSeq;
@@ -145,6 +147,12 @@ public class PerformanceDto {
 	public void setPrdeleteNY(Integer prdeleteNY) {
 		this.prdeleteNY = prdeleteNY;
 	}
+	public String getCmName() {
+		return cmName;
+	}
+	public void setCmName(String cmName) {
+		this.cmName = cmName;
+	}
 	public String getPlplace() {
 		return plplace;
 	}
@@ -223,6 +231,12 @@ public class PerformanceDto {
 	public void setStReservation(String stReservation) {
 		this.stReservation = stReservation;
 	}
+	public List<String> getSeat() {
+		return seat;
+	}
+	public void setSeat(List<String> seat) {
+		this.seat = seat;
+	}
 	public Integer getPmSeq() {
 		return pmSeq;
 	}
@@ -234,12 +248,6 @@ public class PerformanceDto {
 	}
 	public void setPmTicketCode(String pmTicketCode) {
 		this.pmTicketCode = pmTicketCode;
-	}
-	public String getCmName() {
-		return cmName;
-	}
-	public void setCmName(String cmName) {
-		this.cmName = cmName;
 	}
 	public String getRvSeq() {
 		return rvSeq;
@@ -294,5 +302,8 @@ public class PerformanceDto {
 	}
 	public void setRpRgstrDate(Date rpRgstrDate) {
 		this.rpRgstrDate = rpRgstrDate;
-	}	
+	}
+	
+	
+	
 }

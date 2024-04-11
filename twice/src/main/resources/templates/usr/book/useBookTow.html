@@ -1,7 +1,39 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
- <head th:replace="~{usr/block/usehead :: book}">
+<!--  <head th:replace="~{usr/block/usehead :: book}"> -->
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <title>AMovie - Booking step 2</title>
+    <meta name="description" content="A Template by Gozha.net">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="Gozha.net">
 
+    <!-- Mobile Specific Metas-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="telephone=no" name="format-detection">
+
+    <!-- Fonts -->
+    <!-- Font awesome - icon font -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Roboto -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Stylesheets -->
+
+    <!-- Mobile menu -->
+    <link href="usr/css/gozha-nav.css" rel="stylesheet" />
+    <!-- Select -->
+    <link href="usr/css/external/jquery.selectbox.css" rel="stylesheet" />
+
+    <!-- Custom -->
+    <link href="usr/css/style.css?v=1" rel="stylesheet" />
+
+    <!-- Modernizr -->
+    <script src="usr/js/external/modernizr.custom.js"></script>
+
+
+</head>
 <body>
     <div class="wrapper place-wrapper">
         <!-- Banner -->
@@ -63,7 +95,7 @@
                     <div class="choose-sits__info">
                         <ul>
                             <li class="sits-state sits-state--not">예약 완료</li>
-                            <li class="sits-state sits-state--your">선택</li>
+                            <li class="sits-state ">선택</li>
                         </ul>
                     </div>
 
@@ -91,6 +123,7 @@
 	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
 	                                    th:data-price = "${list.stPrise}"
 	                                    th:value = "${list.stSeq}"
+	                                    th:id = "${list.stSeq}"
 	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
                                 </div>
                                 <div class="sits__row">                           
@@ -129,127 +162,20 @@
 	                                    th:value = "${list.stSeq}"
 	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
                                 </div>
-                                
-
-                                <!-- <div class="sits__row">
-                                    <span class="sits__place sits-price--cheap" data-place='B1'
-                                        data-price='10'>B1</span>
-                                    <span class="sits__place sits-price--cheap" data-place='B2'
-                                        data-price='10'>B2</span>
-                                    <span class="sits__place sits-price--cheap" data-place='B3'
-                                        data-price='10'>B3</span>
-                                    <span class="sits__place sits-price--cheap" data-place='B4'
-                                        data-price='10'>B4</span>
-                                    <span class="sits__place sits-price--cheap" data-place='B5'
-                                        data-price='10'>B5</span>
-                                </div>
-
-                                <div class="sits__row">
-                                    <span class="sits__place sits-price--middle" data-place='C1'
-                                        data-price='20'>C1</span>
-                                    <span class="sits__place sits-price--middle" data-place='C2'
-                                        data-price='20'>C2</span>
-                                    <span class="sits__place sits-price--middle" data-place='C3'
-                                        data-price='20'>C3</span>
-                                    <span class="sits__place sits-price--middle" data-place='C4'
-                                        data-price='20'>C4</span>
-                                    <span class="sits__place sits-price--middle" data-place='C5'
-                                        data-price='20'>C5</span>
-                                </div>
-
-                                <div class="sits__row">
-                                    <span class="sits__place sits-price--middle" data-place='D1'
-                                        data-price='20'>D1</span>
-                                    <span class="sits__place sits-price--middle" data-place='D2'
-                                        data-price='20'>D2</span>
-                                    <span class="sits__place sits-price--middle" data-place='D3'
-                                        data-price='20'>D3</span>
-                                    <span class="sits__place sits-price--middle" data-place='D4'
-                                        data-price='20'>D4</span>
-                                    <span class="sits__place sits-price--middle" data-place='D5'
-                                        data-price='20'>D5</span>
-                                </div>
-
-                                <div class="sits__row additional-margin">
-                                    <span class="sits__place sits-price--expensive" data-place='E1'
-                                        data-price='30'>E1</span>
-                                    <span class="sits__place sits-price--expensive" data-place='E2'
-                                        data-price='30'>E2</span>
-                                    <span class="sits__place sits-price--expensive" data-place='E3'
-                                        data-price='30'>E3</span>
-                                    <span class="sits__place sits-price--expensive" data-place='E4'
-                                        data-price='30'>E4</span>
-                                    <span class="sits__place sits-price--expensive" data-place='E5'
-                                        data-price='30'>E5</span>
-                                </div> -->
-
-
-
-
                                 <aside class="sits__checked">
                                     <div class="checked-place">
 
                                     </div>
-                                    <div class="checked-result">
+                                    <div class="checked-result" value= "0">
                                         0
                                     </div>
                                 </aside>
-                                <footer class="sits__number">
-                                    <span class="sits__indecator">1</span>
-                                    <span class="sits__indecator">2</span>
-                                    <span class="sits__indecator">3</span>
-                                    <span class="sits__indecator">4</span>
-                                    <span class="sits__indecator">5</span>
-                                </footer>
                             </div>
                         </div>
                     </div>
 
-                    <!-- <div class="col-sm-12 visible-xs">
+                    <div class="col-sm-12 visible-xs">
                         <div class="sits-area--mobile">
-                            <div class="sits-area--mobile-wrap">
-                                <div class="sits-select">
-                                    <select name="sorting_item" class="sits__sort sit-row" tabindex="0">
-                                        <option value="1" selected='selected'>A</option>
-                                        <option value="2">B</option>
-                                        <option value="3">C</option>
-                                        <option value="4">D</option>
-                                        <option value="5">E</option>
-                                        <option value="6">F</option>
-                                        <option value="7">G</option>
-                                        <option value="8">I</option>
-                                        <option value="9">J</option>
-                                        <option value="10">K</option>
-                                        <option value="11">L</option>
-                                    </select>
-
-                                    <select name="sorting_item" class="sits__sort sit-number" tabindex="1">
-                                        <option value="1" selected='selected'>1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                    </select>
-
-                                    <a href="#" class="btn btn-md btn--warning toogle-sits">Choose sit</a>
-                                </div>
-                            </div>
-
-                            <a href="#" class="watchlist add-sits-line">Add new sit</a>
-
                             <aside class="sits__checked">
                                 <div class="checked-place">
                                     <span class="choosen-place"></span>
@@ -261,13 +187,11 @@
 
                             <img alt="" src="images/components/sits_mobile.png">
                         </div>
-                    </div> -->
+                    </div> 
 
                 </div>
-
-		</section>
+			</section>
         </div>
-    </div>
 
 
 
@@ -281,7 +205,7 @@
         <input type='text' name='choosen-cost' class="choosen-cost">
         <input type='text' name='choosen-sits' class="choosen-sits">
 
-
+		<button type="button" id = "aa">실험버튼</button>
         <div class="booking-pagination booking-pagination--margin">
             <a href="book1.html" class="booking-pagination__prev">
                 <span class="arrow__text arrow--prev" >이전 단계</span>
@@ -378,11 +302,12 @@
 
         </section>
     </div>
+    </div>
 
     <!-- JavaScript-->
     <!-- jQuery 3.1.1-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="usr/js/external/jquery-3.1.1.min.js"><\/script>')</script>
     <!-- Migrate -->
     <script src="usr/js/external/jquery-migrate-1.2.1.min.js"></script>
     <!-- Bootstrap 3-->
@@ -405,6 +330,10 @@
         $(document).ready(function () {
             init_BookingTwo();
         });
+        
+        
+        
+        
     </script>
 
 </body>

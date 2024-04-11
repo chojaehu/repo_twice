@@ -601,7 +601,7 @@ function init_BookingTwo () {
                                   middle += 1;
                                   limit += 1;
                                   break;
-                                case '30000':
+                                case '30000.0':
                                   sum += 30000.0;
                                   expansive += 1;
                                   limit += 1;
