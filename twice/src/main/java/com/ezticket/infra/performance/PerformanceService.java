@@ -94,6 +94,11 @@ public class PerformanceService {
 	}
 	
 	
+//	결제창
+	public List<PerformanceDto> Paymentlist(PerformanceDto dto){
+		return dao.Paymentlist(dto);
+	}
+	
 	
 	
 	public int update(PerformanceDto dto)

@@ -48,6 +48,7 @@ public class PerformanceDto {
 	private String stReservation;
 	
 	private List<String> seat;
+	private String totalprice;
 
 	//티켓정보
 	private Integer pmSeq;
@@ -68,6 +69,7 @@ public class PerformanceDto {
 	private String rpWriter;
 	private String rpRvwCntnt;
 	private Date rpRgstrDate;
+	
 	
 	public Integer getPrSeq() {
 		return prSeq;
@@ -237,6 +239,12 @@ public class PerformanceDto {
 	public void setSeat(List<String> seat) {
 		this.seat = seat;
 	}
+	public String getTotalprice() {
+		return totalprice;
+	}
+	public void setTotalprice(String totalprice) {
+		this.totalprice = totalprice;
+	}
 	public Integer getPmSeq() {
 		return pmSeq;
 	}
@@ -303,7 +311,4 @@ public class PerformanceDto {
 	public void setRpRgstrDate(Date rpRgstrDate) {
 		this.rpRgstrDate = rpRgstrDate;
 	}
-	
-	
-	
 }

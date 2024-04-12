@@ -48,6 +48,11 @@ public interface PerformanceDao {
 	
 	
 	
+//	결제 
+	public List<PerformanceDto> Paymentlist(PerformanceDto dto);
+	
+	
+	
 	public int update(PerformanceDto dto);
 	public int insert(PerformanceDto dto);
 	public int delete(PerformanceDto dto);

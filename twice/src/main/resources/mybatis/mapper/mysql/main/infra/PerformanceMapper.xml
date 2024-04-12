@@ -280,7 +280,27 @@
 		 <if test="shprDate != '' and !shprDate.equals('')">AND a.pdselectionDate = #{shprDate}</if>   
 
 	</select>
-
+	
+	
+	
+	<!-- 결제셀렉트  -->
+	 <select id = "Paymentlist" resultMap="resultMapObj">
+		select 
+		stSeq,
+		stRating,
+		stSeatCode,
+		stSeatNumber,
+		stPrise
+	
+		from seat
+		where 
+		<if test="seat != null and seat.length != 0">
+	          stSeq IN
+	          <foreach collection="seat" item="brand" open="(" close=")" separator=",">
+		           #{seat}
+			  </foreach> 		              
+	  </if>
+	</select> 
 
 
 

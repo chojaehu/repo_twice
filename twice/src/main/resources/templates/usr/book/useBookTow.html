@@ -65,6 +65,7 @@
         </div>
 
         <!-- Main content -->
+        <form id='formnext' name ='formnext' method='get' class="search">
         <div class="place-form-area">
             <section class="container">
                 <div class="order-container">
@@ -123,7 +124,7 @@
 	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
 	                                    th:data-price = "${list.stPrise}"
 	                                    th:value = "${list.stSeq}"
-	                                    th:id = "${list.stSeq}"
+	                                    th:id ="${list.stSeq}"
 	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
                                 </div>
                                 <div class="sits__row">                           
@@ -133,7 +134,7 @@
 	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
 	                                    th:data-price = "${list.stPrise}"
 	                                    th:value = "${list.stSeq}"
-	                                    th:id = "${list.stSeq}"
+	                                    th:id ="${list.stSeq}"
 	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
                                 </div>
                                 <div class="sits__row">                           
@@ -143,7 +144,7 @@
 	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
 	                                    th:data-price = "${list.stPrise}"
 	                                    th:value = "${list.stSeq}"
-	                                    th:id = "${list.stSeq}"
+	                                    th:id ="${list.stSeq}"
 	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
                                 </div>
                                 <div class="sits__row">                           
@@ -153,7 +154,7 @@
 	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
 	                                    th:data-price = "${list.stPrise}"
 	                                    th:value = "${list.stSeq}"
-	                                    th:id = "${list.stSeq}"
+	                                    th:id ="${list.stSeq}"
 	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
                                 </div>
                                 <div class="sits__row additional-margin">                           
@@ -163,7 +164,7 @@
 	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
 	                                    th:data-price = "${list.stPrise}"
 	                                    th:value = "${list.stSeq}"
-	                                    th:id = "${list.stSeq}"
+	                                    th:id ="${list.stSeq}"
 	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
                                 </div>
                                 <aside class="sits__checked">
@@ -247,21 +248,17 @@
 
 		</section>
         </div>
+        <input type="hidden" id= 'seat' name= 'seat'>
+        <button type="button" id = "aa">실험버튼</button>
+        </form>
     </div>
 
 
 
     <div class="clearfix"></div>
-    <form id='film-and-time' class="booking-form" method='get' action='book3-buy.html'>
+    <form id='film-and-time' class="booking-form" method='get' >
 
-        <input type='text' name='choosen-number' class="choosen-number">
-        <input type='text' name='choosen-number--cheap' class="choosen-number--cheap">
-        <input type='text' name='choosen-number--middle' class="choosen-number--middle">
-        <input type='text' name='choosen-number--expansive' class="choosen-number--expansive">
-        <input type='text' name='choosen-cost' class="choosen-cost">
-        <input type='text' name='choosen-sits' class="choosen-sits">
-
-		<button type="button" id = "aa">실험버튼</button>
+		<!-- <button type="button" id = "aa">실험버튼</button> -->
         <div class="booking-pagination booking-pagination--margin">
             <a href="book1.html" class="booking-pagination__prev">
                 <span class="arrow__text arrow--prev" >이전 단계</span>
@@ -388,9 +385,9 @@
         
         
         
-        document.getElementById("aa").onclick =  function()
+        document.getElementById("next").onclick =  function()
         {
-        	
+        	let form = document.getElementById('formnext')
         	//let seat = $('.sits-state--your').attr('value');
         	/* let seatval = [];
         	let seat = $('.sits-state--your').attr('value');
@@ -410,8 +407,15 @@
 	        					//console.log(seat[i]);
 	        					
 	        				}  
-        			console.log(seat);
-        			location.href = "/useBookBuy"+"?prSeq=" + prSeq + "&plSeq=" + plSeq + "&taSeq=" + taSeq + "&pdSeq=" + pdSeq;
+        			//console.log(seats);
+        			const queryString = seat.map(item => `seat=${encodeURIComponent(item)}`).join('&');
+        			
+        			
+        			const currentURL = window.location.href;
+        			const path = currentURL.split('?').pop();
+        			alert(path)
+        			form.submit();
+        			location.href = "/useBookBuy" + "?" + path + "&" + queryString
         	//console.log(seat2);
         }
     </script>
