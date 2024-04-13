@@ -62,7 +62,7 @@
                                  th:if="${!#lists.isEmpty(list)}"
 								 th:each="list : ${list}"
 								 th:text = "${list.stSeatCode} + ${list.stSeatNumber}"		>$20</span></li>
-                        <li class="book-result__item">총합 : <span class="book-result__count booking-cost" th:value = "${paysum}" th:text = "${paysum}"></span>
+                        <li class="book-result__item">총합 : <span class="book-result__count booking-cost" th:value = "${paysum}" th:text = "${paysum} + '원'"></span>
                         </li>
                     </ul>
                     <h2 class="page-heading">카드정보</h2>
