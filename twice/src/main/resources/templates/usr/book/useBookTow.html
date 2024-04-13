@@ -118,54 +118,94 @@
                                 </aside>
 
                                 <div class="sits__row">                           
-	                                    <span class="sits__place sits-price--cheap" 
-	                                    th:if="${!#lists.isEmpty(list)} and ${list.stSeatCode eq 'A'}"
-										th:each="list : ${list}"
-	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
-	                                    th:data-price = "${list.stPrise}"
-	                                    th:value = "${list.stSeq}"
-	                                    th:id ="${list.stSeq}"
-	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
+	                                     <th:block th:if="${!#lists.isEmpty(list)} and ${list.stSeatCode eq 'A'} "
+												th:each="list : ${list}">     
+												                        
+		                                    <span class="sits__place sits-price--cheap" 
+		                                    th:if="${list.stReservation eq '0'}"
+		                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
+		                                    th:data-price = "${list.stPrise}"
+		                                    th:value = "${list.stSeq}"
+		                                    th:id ="${list.stSeq}"
+		                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
+		                                    
+		                                    <span th:unless="${list.stReservation eq '0' }"
+											class="sits__place sits-price--cheap sits-state--not"></span>   
+		                                    
+	                                    </th:block>
                                 </div>
                                 <div class="sits__row">                           
-	                                    <span class="sits__place sits-price--cheap" 
-	                                    th:if="${!#lists.isEmpty(list)} and ${list.stSeatCode eq 'B'}"
-										th:each="list : ${list}"
-	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
-	                                    th:data-price = "${list.stPrise}"
-	                                    th:value = "${list.stSeq}"
-	                                    th:id ="${list.stSeq}"
-	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
+
+	                                    <th:block th:if="${!#lists.isEmpty(list)} and ${list.stSeatCode eq 'B'} "
+												th:each="list : ${list}">     
+												                        
+		                                    <span class="sits__place sits-price--cheap" 
+		                                    th:if="${list.stReservation eq '0'}"
+		                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
+		                                    th:data-price = "${list.stPrise}"
+		                                    th:value = "${list.stSeq}"
+		                                    th:id ="${list.stSeq}"
+		                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
+		                                    
+		                                    <span th:unless="${list.stReservation eq '0' }"
+											class="sits__place sits-price--cheap sits-state--not"></span>   
+		                                    
+	                                    </th:block>
                                 </div>
                                 <div class="sits__row">                           
-	                                    <span class="sits__place sits-price--middle" 
-	                                    th:if="${!#lists.isEmpty(list)} and ${list.stSeatCode eq 'C'}"
-										th:each="list : ${list}"
-	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
-	                                    th:data-price = "${list.stPrise}"
-	                                    th:value = "${list.stSeq}"
-	                                    th:id ="${list.stSeq}"
-	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
+	                                    <th:block th:if="${!#lists.isEmpty(list)} and ${list.stSeatCode eq 'C'} "
+												th:each="list : ${list}">     
+												                        
+		                                    <span class="sits__place sits-price--middle" 
+		                                    th:if="${list.stReservation eq '0'}"
+		                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
+		                                    th:data-price = "${list.stPrise}"
+		                                    th:value = "${list.stSeq}"
+		                                    th:id ="${list.stSeq}"
+		                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
+		                                    
+		                                    <span th:unless="${list.stReservation eq '0' }"
+											class="sits__place sits-price--middle sits-state--not"></span>   
+		                                    
+	                                    </th:block>
                                 </div>
-                                <div class="sits__row">                           
-	                                    <span class="sits__place sits-price--middle" 
-	                                    th:if="${!#lists.isEmpty(list)} and ${list.stSeatCode eq 'D'}"
-										th:each="list : ${list}"
-	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
-	                                    th:data-price = "${list.stPrise}"
-	                                    th:value = "${list.stSeq}"
-	                                    th:id ="${list.stSeq}"
-	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
+                                <div class="sits__row">   
+                                
+                                		<th:block th:if="${!#lists.isEmpty(list)} and ${list.stSeatCode eq 'D'} "
+												th:each="list : ${list}">     
+												                        
+		                                    <span class="sits__place sits-price--middle" 
+		                                    th:if="${list.stReservation eq '0'}"
+		                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
+		                                    th:data-price = "${list.stPrise}"
+		                                    th:value = "${list.stSeq}"
+		                                    th:id ="${list.stSeq}"
+		                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
+		                                    
+		                                    <span th:unless="${list.stReservation eq '0' }"
+											class="sits__place sits-price--middle sits-state--not"></span>   
+		                                    
+	                                    </th:block>
                                 </div>
-                                <div class="sits__row additional-margin">                           
-	                                    <span class="sits__place sits-price--expensive" 
-	                                    th:if="${!#lists.isEmpty(list)} and ${list.stSeatCode eq 'E'}"
-										th:each="list : ${list}"
-	                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
-	                                    th:data-price = "${list.stPrise}"
-	                                    th:value = "${list.stSeq}"
-	                                    th:id ="${list.stSeq}"
-	                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
+                                
+                                
+                                <div class="sits__row"> 
+                                
+										<th:block th:if="${!#lists.isEmpty(list)} and ${list.stSeatCode eq 'E'} "
+												th:each="list : ${list}">                          
+		                                    <span class="sits__place sits-price--expensive" 
+		                                    
+		                                    th:if="${list.stReservation eq '0'}"
+		                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
+		                                    th:data-price = "${list.stPrise}"
+		                                    th:value = "${list.stSeq}"
+		                                    th:id ="${list.stSeq}"
+		                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
+		                                    
+	  									    <span th:unless="${list.stReservation eq '0' }"
+											class="sits__place sits-price--expensive sits-state--not"></span>   
+										</th:block>
+										
                                 </div>
                                 <aside class="sits__checked">
                                     <div class="checked-place">

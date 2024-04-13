@@ -83,9 +83,19 @@ public class BookController {
 	@RequestMapping(value = "/useBookBuy")
 	public String useBookBuy(PerformanceDto dto, Model model) throws Exception
 	{
+		
 		System.out.println(dto.getSeat());
-
-		model.addAttribute("pay", service.Paymentlist(dto));
+		List<String> list = new ArrayList<>();
+		list.addAll(dto.getSeat());	
+		
+		
+		model.addAttribute("paycount", service.Paymentcount(dto));
+		model.addAttribute("paysum", service.Paymentsum(dto));
+		model.addAttribute("list", service.Paymentlist(dto));
+		
+		System.out.println(dto.getSeatcount());
+		
+		
 		
 		return str3 + "/useBookBuy";
 	}

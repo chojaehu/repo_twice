@@ -51,6 +51,11 @@ public interface PerformanceDao {
 //	결제 
 	public List<PerformanceDto> Paymentlist(PerformanceDto dto);
 	
+//	결제 카운트
+	public int Paymentcount(PerformanceDto dto);
+//	결제 총 가격 
+	public Double Paymentsum(PerformanceDto dto);
+	
 	
 	
 	public int update(PerformanceDto dto);

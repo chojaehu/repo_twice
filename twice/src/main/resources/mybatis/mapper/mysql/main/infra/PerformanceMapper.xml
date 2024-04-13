@@ -286,6 +286,7 @@
 	<!-- 결제셀렉트  -->
 	 <select id = "Paymentlist" resultMap="resultMapObj">
 		select 
+
 		stSeq,
 		stRating,
 		stSeatCode,
@@ -294,10 +295,40 @@
 	
 		from seat
 		where 
-		<if test="seat != null and seat.length != 0">
-	          stSeq IN
-	          <foreach collection="seat" item="brand" open="(" close=")" separator=",">
-		           #{seat}
+		<if test="seat != null and seat.size != 0">
+		stSeq IN
+	          <foreach collection="seat" item="item" open="(" close=")" separator=",">
+		           #{item}
+			  </foreach> 		              
+	  </if>
+	</select> 
+	
+	<select id = "Paymentcount" resultType="Integer">
+		select 
+
+		count(*)
+	
+		from seat
+		where 
+		<if test="seat != null and seat.size != 0">
+		stSeq IN
+	          <foreach collection="seat" item="item" open="(" close=")" separator=",">
+		           #{item}
+			  </foreach> 		              
+	  </if>
+	</select> 
+	<!-- 가격 합산 -->
+	<select id = "Paymentsum" resultType="Double">
+		select 
+
+		sum(stPrise)
+	
+		from seat
+		where 
+		<if test="seat != null and seat.size != 0">
+		stSeq IN
+	          <foreach collection="seat" item="item" open="(" close=")" separator=",">
+		           #{item}
 			  </foreach> 		              
 	  </if>
 	</select> 

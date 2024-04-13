@@ -48,6 +48,7 @@ public class PerformanceDto {
 	private String stReservation;
 	
 	private List<String> seat;
+	private Integer seatcount;
 	private String totalprice;
 
 	//티켓정보
@@ -71,6 +72,15 @@ public class PerformanceDto {
 	private Date rpRgstrDate;
 	
 	
+	
+	
+
+	public Integer getSeatcount() {
+		return seatcount;
+	}
+	public void setSeatcount(Integer seatcount) {
+		this.seatcount = seatcount;
+	}
 	public Integer getPrSeq() {
 		return prSeq;
 	}

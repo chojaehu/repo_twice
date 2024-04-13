@@ -99,6 +99,16 @@ public class PerformanceService {
 		return dao.Paymentlist(dto);
 	}
 	
+//	결제 카운트
+	public int Paymentcount(PerformanceDto dto)
+	{
+		return dao.Paymentcount(dto);
+	}
+//	결제 총가격
+	public Double Paymentsum(PerformanceDto dto)
+	{
+		return dao.Paymentsum(dto);
+	}
 	
 	
 	public int update(PerformanceDto dto)
