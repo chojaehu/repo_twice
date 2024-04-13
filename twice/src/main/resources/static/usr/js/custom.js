@@ -585,34 +585,34 @@ function init_BookingTwo () {
 
                     if(! $(e.target).hasClass('sits-state--your')){
 
-                        if (! $(this).hasClass('sits-state--not') && limit <= 2) {
-                            $(this).addClass('sits-state--your');
-
-                            $('.checked-place').prepend('<span class="choosen-place '+place+'">'+ place +'</span>');
-                            switch(ticketPrice)
-                                {
-                                case '10000.0':
-                                  sum += 10000.0;
-                                  cheap += 1;
-                                  limit += 1;
-                                  break;
-                                case '20000.0':
-                                  sum += 20000.0;
-                                  middle += 1;
-                                  limit += 1;
-                                  break;
-                                case '30000.0':
-                                  sum += 30000.0;
-                                  expansive += 1;
-                                  limit += 1;
-                                  break;
-                            }
-
-                            $('.checked-result').text(sum);
-                            $('.checked-result').val(sum);
-                        }
-                        else{
-							alert('최대 3좌석만 가능합니다.')
+                        if (! $(this).hasClass('sits-state--not') ) {
+							if( limit <= 2){
+	                            $(this).addClass('sits-state--your');
+	                            $('.checked-place').prepend('<span class="choosen-place '+place+'">'+ place +'</span>');
+	                            switch(ticketPrice)
+	                                {
+	                                case '10000.0':
+	                                  sum += 10000.0;
+	                                  cheap += 1;
+	                                  limit += 1;
+	                                  break;
+	                                case '20000.0':
+	                                  sum += 20000.0;
+	                                  middle += 1;
+	                                  limit += 1;
+	                                  break;
+	                                case '30000.0':
+	                                  sum += 30000.0;
+	                                  expansive += 1;
+	                                  limit += 1;
+	                                  break;
+	                            }
+	
+	                            $('.checked-result').text(sum);
+	                        }
+	                        else{
+								alert('최대 3좌석만 가능합니다.')
+							}
 						}
                     }
 
@@ -641,7 +641,6 @@ function init_BookingTwo () {
                             }
 
                         $('.checked-result').text(sum);
-                        $('.checked-result').val(sum);
                     }
 
                     //data element init
