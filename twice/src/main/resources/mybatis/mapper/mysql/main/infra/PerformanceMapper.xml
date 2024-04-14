@@ -41,7 +41,7 @@
 	</select>
 
 
-	<!-- 유저 리스트 -->
+	<!-- 유저 공연페이지 리스트 -->
 	<select id="usrselectList" resultMap="resultMapObj">
 			SELECT
 			a.prSeq,
@@ -210,9 +210,20 @@
 
 		where
 		g.mbSeq = #{prSeq}
-
+		<include refid="selectCommonusr"/>
 		ORDER BY a.pmSeq DESC
+		limit #{rowNumToShow} offset #{startRnumForMysql}
 	</select>
+	<!-- 결제 완료 페이징 카운트 -->
+	<select id="usescount" resultType="Integer">
+		SELECT
+		COUNT(*)
+		FROM
+		payment
+
+		where 1=1
+	</select>
+	
 	
 	<!-- 시작날짜 종료 날짜 가져오기 -->
 	<select id="bookdate" resultMap="resultMapObj">
@@ -332,9 +343,50 @@
 			  </foreach> 		              
 	  </if>
 	</select> 
+	
+	<!-- 결제후 좌석 업데이트 -->
+	<update id = "payseatupdate">
+
+		update seat
+		set
+		stReservation = 1
+		where
+		<if test="seat != null and seat.size != 0">
+		stSeq IN
+	          <foreach collection="seat" item="item" open="(" close=")" separator=",">
+		           #{item}
+			  </foreach> 		              
+	  </if>
+
+	</update>
+	
+	<!-- 결제후 티켓정보 등록 -->
+	<insert id ="payinsert">
+		insert into payment
+		(
+		prSeq
+		,mbSeq 
+		,stSeq 
+		,pdSeq
+		,taSeq
+		,plSeq
+		)
+		values
+	<foreach collection="seat" item="item" separator=",">
+		   (
+		   ${prSeq},
+		   ${mbSeq},
+		   ${item},
+		   ${pdSeq},
+		   ${taSeq},
+		   ${plSeq}
+		   )
+	</foreach> 	
+	
+	</insert>
 
 
-
+	
 
 	<select id="count" resultType="Integer">
 		SELECT

@@ -50,6 +50,7 @@ public class PerformanceDto {
 	private List<String> seat;
 	private Integer seatcount;
 	private String totalprice;
+	private String mbSeq;
 
 	//티켓정보
 	private Integer pmSeq;
@@ -74,7 +75,15 @@ public class PerformanceDto {
 	
 	
 	
+	
+	
 
+	public String getMbSeq() {
+		return mbSeq;
+	}
+	public void setMbSeq(String mbSeq) {
+		this.mbSeq = mbSeq;
+	}
 	public Integer getSeatcount() {
 		return seatcount;
 	}

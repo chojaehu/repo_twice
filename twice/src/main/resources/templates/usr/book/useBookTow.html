@@ -119,8 +119,7 @@
 
                                 <div class="sits__row">                           
 	                                     <th:block th:if="${!#lists.isEmpty(list)} and ${list.stSeatCode eq 'A'} "
-												th:each="list : ${list}">     
-												                        
+											th:each="list : ${list}">                    
 		                                    <span class="sits__place sits-price--cheap" 
 		                                    th:if="${list.stReservation eq '0'}"
 		                                    th:data-place ="${list.stSeatCode} + ${list.stSeatNumber}" 
@@ -130,7 +129,8 @@
 		                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
 		                                    
 		                                    <span th:unless="${list.stReservation eq '0' }"
-											class="sits__place sits-price--cheap sits-state--not"></span>   
+											class="sits__place sits-price--cheap sits-state--not"
+											th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>   
 		                                    
 	                                    </th:block>
                                 </div>
@@ -148,7 +148,8 @@
 		                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
 		                                    
 		                                    <span th:unless="${list.stReservation eq '0' }"
-											class="sits__place sits-price--cheap sits-state--not"></span>   
+											class="sits__place sits-price--cheap sits-state--not"
+											th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>   
 		                                    
 	                                    </th:block>
                                 </div>
@@ -165,7 +166,8 @@
 		                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
 		                                    
 		                                    <span th:unless="${list.stReservation eq '0' }"
-											class="sits__place sits-price--middle sits-state--not"></span>   
+											class="sits__place sits-price--middle sits-state--not"
+											th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>   
 		                                    
 	                                    </th:block>
                                 </div>
@@ -183,7 +185,8 @@
 		                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
 		                                    
 		                                    <span th:unless="${list.stReservation eq '0' }"
-											class="sits__place sits-price--middle sits-state--not"></span>   
+											class="sits__place sits-price--middle sits-state--not"
+											th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>   
 		                                    
 	                                    </th:block>
                                 </div>
@@ -203,7 +206,8 @@
 		                                    th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>
 		                                    
 	  									    <span th:unless="${list.stReservation eq '0' }"
-											class="sits__place sits-price--expensive sits-state--not"></span>   
+											class="sits__place sits-price--expensive sits-state--not"
+											th:text = "${list.stSeatCode} + ${list.stSeatNumber}"></span>   
 										</th:block>
 										
                                 </div>
@@ -300,7 +304,7 @@
 
 		<!-- <button type="button" id = "aa">실험버튼</button> -->
         <div class="booking-pagination booking-pagination--margin">
-            <a href="book1.html" class="booking-pagination__prev">
+            <a id ="back" class="booking-pagination__prev">
                 <span class="arrow__text arrow--prev" >이전 단계</span>
                 <!-- <span class="arrow__info">what&amp;where&amp;when</span> -->
             </a>
@@ -423,19 +427,14 @@
             init_BookingTwo();
         });
         
-        
+        document.getElementById("back").onclick = function(){
+        	window.history.back();
+        }
         
         document.getElementById("next").onclick =  function()
         {
         	let form = document.getElementById('formnext')
-        	//let seat = $('.sits-state--your').attr('value');
-        	/* let seatval = [];
-        	let seat = $('.sits-state--your').attr('value');
-        	$(".sits-state--your").each(function(index, item)
-        			{
-        				seatval.push($('.sits-state--your').attr('value'));
-        			});	  */
-        			//let seat = document.querySelectorAll(".sits-state--your");
+
         			
         			let seatone = $(".sits-state--your")
         			let seatarray = Array.prototype.slice.call(seatone);
@@ -444,15 +443,13 @@
 	        				{
 	        					
 	        					seat[i] = seatarray[i].id;
-	        					//console.log(seat[i]);
 	        					
 	        				}  
-        			//console.log(seats);
-        			const queryString = seat.map(item => `seat=${encodeURIComponent(item)}`).join('&');
+        			let queryString = seat.map(item => `seat=${encodeURIComponent(item)}`).join('&');
         			
         			
-        			const currentURL = window.location.href;
-        			const path = currentURL.split('?').pop();
+        			let currentURL = window.location.href;
+        			let path = currentURL.split('?').pop();
         			alert(path)
         			form.submit();
         			location.href = "/useBookBuy" + "?" + path + "&" + queryString

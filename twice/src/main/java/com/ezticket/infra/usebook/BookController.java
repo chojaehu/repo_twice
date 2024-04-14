@@ -85,8 +85,9 @@ public class BookController {
 	{
 		
 		System.out.println(dto.getSeat());
-		List<String> list = new ArrayList<>();
-		list.addAll(dto.getSeat());	
+		/*
+		 * List<String> list = new ArrayList<>(); list.addAll(dto.getSeat());
+		 */
 		
 		
 		model.addAttribute("paycount", service.Paymentcount(dto));
@@ -134,25 +135,20 @@ public class BookController {
 	
 		return returnMap;
 	}
+	
+	@RequestMapping(value = "/payseatupdate")
+	public String payseatupdate(PerformanceDto dto,HttpSession httpSession) throws Exception
+	{
+		dto.setMbSeq((String)httpSession.getAttribute("sessSeqXdm"));
+		System.out.println(dto.getMbSeq());
+		System.out.println(dto.getSeat());
+		service.payinsert(dto);
+		service.payseatupdate(dto);
+		return "redirect:/useBookfinal";
+	}
 
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	public void setSearch(PerformanceVo vo) throws Exception {
 
 		

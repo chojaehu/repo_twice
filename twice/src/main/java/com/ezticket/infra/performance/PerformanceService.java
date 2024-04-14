@@ -64,6 +64,11 @@ public class PerformanceService {
 	{
 		return dao.usrselectPay(vo);
 	}
+//	결제완료 카운트
+	public int usescount(PerformanceVo vo)
+	{
+		return dao.usescount(vo);
+	}
 	
 //	공연장소 관에 대한 정보
 	public List<PerformanceDto> tabookList(PerformanceVo vo)
@@ -109,6 +114,18 @@ public class PerformanceService {
 	{
 		return dao.Paymentsum(dto);
 	}
+	
+//	결제후 선택시트 1로 변경
+	public int payseatupdate(PerformanceDto dto)
+	{
+		return dao.payseatupdate(dto);
+	}
+//	결제 후 인설트 
+	public int payinsert(PerformanceDto dto)
+	{
+		return dao.payinsert(dto);
+	}
+	
 	
 	
 	public int update(PerformanceDto dto)

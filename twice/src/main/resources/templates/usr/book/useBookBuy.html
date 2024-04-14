@@ -34,143 +34,140 @@
         </div>
 
         <!-- Main content -->
-        <section class="container">
-            <div class="order-container">
-                <div class="order">
-                    <img class="order__images" alt='' src="images/tickets.png">
-                    <p class="order__title">티켓 예매<br>
-                        <!-- <span class="order__descript">and have fun movieime</span> -->
-                    </p>
-                    <div class="order__control">
-                    </div>
-                </div>
-            </div>
-            <div class="order-step-area">
-                <div class="order-step first--step order-step--disable ">1. 날짜 &amp; 시간 선택</div>
-                <div class="order-step second--step order-step--disable">2. 좌석 선택</div>
-                <div class="order-step third--step">3. 결제</div>
-            </div>
-
-            <div class="col-sm-12">
-                <div class="checkout-wrapper">
-                    <h2 class="page-heading">가격</h2>
-                    <ul class="book-result">
-                        <li class="book-result__item">매수 : <span class="book-result__count booking-ticket" th:value = "${paycount}" th:text="${paycount}"></span>
-                        </li>
-                        <li class="book-result__item">선택 좌석 : <span
-                                class="book-result__count booking-price"
-                                 th:if="${!#lists.isEmpty(list)}"
-								 th:each="list : ${list}"
-								 th:text = "${list.stSeatCode} + ${list.stSeatNumber}"		>$20</span></li>
-                        <li class="book-result__item">총합 : <span class="book-result__count booking-cost" th:value = "${paysum}" th:text = "${paysum} + '원'"></span>
-                        </li>
-                    </ul>
-                    <h2 class="page-heading">카드정보</h2>
-                    <div class = "row">
-                        
-                        <div class="col-md-8">
-                            <form id='contact-form' class="form row" method='post' novalidate="" >
-                                <div class="col-sm-6">
-                                    <select  class="form__name" aria-label="Default select example"  >
-                                        <option selected>카드사</option>
-                                        <option >02</option>
-                                        <option >03</option>
-                                        <option >04</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-6">
-                                    <select  class="form__name" aria-label="Default select example" >
-                                        <option selected >카드종류</option>
-                                        <option >마스터</option>
-                                        <option >03</option>
-                                        <option >04</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-2">
-                                    <input type='text' placeholder='카드번호' name='user-name' class="form__name">
-                                </div>
-                                <div class="col-sm-2">
-                                    <input type='text' placeholder='카드번호' name='user-name' class="form__name">
-                                </div>
-                                <div class="col-sm-2">
-                                    <input type='text' placeholder='카드번호' name='user-name' class="form__name">
-                                </div>
-                                <div class="col-sm-2">
-                                    <input type='text' placeholder='카드번호' name='user-name' class="form__name">
-                                </div>
-                                <div class="col-sm-4">
-                                    <input type='text' placeholder='소유주 이름' name='user-email' class="form__name">
-                                </div>
-                                <div class="col-sm-4">
-                                    <input type='text' placeholder='유효기간 mm' name='user-name' class="form__name">
-                                </div>
-                                <div class="col-sm-4">
-                                    <input type='text' placeholder='유효기간 yy' name='user-name' class="form__name">
-                                </div>
-                                <div class="col-sm-4">
-                                    <input type='text' placeholder='cvc번호' name='user-email' class="form__name">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <h2 class="page-heading">다른 결제 수단</h2>
-                    <div class="payment">
-                        <a href="#" class="payment__item">
-                            <img alt='' src="images/payment/pay1.png">
-                        </a>
-                        <a href="#" class="payment__item">
-                            <img alt='' src="images/payment/pay2.png">
-                        </a>
-                        <a href="#" class="payment__item">
-                            <img alt='' src="images/payment/pay3.png">
-                        </a>
-                        <a href="#" class="payment__item">
-                            <img alt='' src="images/payment/pay4.png">
-                        </a>
-                        <a href="#" class="payment__item">
-                            <img alt='' src="images/payment/pay5.png">
-                        </a>
-                        <a href="#" class="payment__item">
-                            <img alt='' src="images/payment/pay6.png">
-                        </a>
-                        <a href="#" class="payment__item">
-                            <img alt='' src="images/payment/pay7.png">
-                        </a>
-                    </div>
-
-                    <h2 class="page-heading">연락처 정보</h2>
-
-                    <form id='contact-info' method='post' novalidate="" class="form contact-info">
-                        <div class="contact-info__field contact-info__field-mail">
-                            <input type='email' name='user-mail' placeholder='Your email' class="form__mail">
-                        </div>
-                        <div class="contact-info__field contact-info__field-tel">
-                            <input type='tel' name='user-tel' placeholder='Phone number' class="form__mail">
-                        </div>
-                    </form>
-
-
-                </div>
-
-                <div class="order">
-                    <a th:href = "@{/useBookfinal}" class="btn btn-md btn--warning btn--wide">구매</a>
-                </div>
-
-            </div>
-
-        </section>
+        <form id='formnext' name ='formnext' method='get' class="search">
+	        <section class="container">
+	            <div class="order-container">
+	                <div class="order">
+	                    <img class="order__images" alt='' src="images/tickets.png">
+	                    <p class="order__title">티켓 예매<br>
+	                        <!-- <span class="order__descript">and have fun movieime</span> -->
+	                    </p>
+	                    <div class="order__control">
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="order-step-area">
+	                <div class="order-step first--step order-step--disable ">1. 날짜 &amp; 시간 선택</div>
+	                <div class="order-step second--step order-step--disable">2. 좌석 선택</div>
+	                <div class="order-step third--step">3. 결제</div>
+	            </div>
+				
+	            <div class="col-sm-12">
+	                <div class="checkout-wrapper">
+	                    <h2 class="page-heading">가격</h2>
+	                    <ul class="book-result">
+	                        <li class="book-result__item">매수 : <span class="book-result__count booking-ticket" th:value = "${paycount}" th:text="${paycount}"></span>
+	                        </li>
+	                        <li class="book-result__item">선택 좌석 : <span
+	                                class="book-result__count booking-price"
+	                                 th:if="${!#lists.isEmpty(list)}"
+									 th:each="list : ${list}"
+									 th:text = "${list.stSeatCode} + ${list.stSeatNumber}"		>$20</span></li>
+	                        <li class="book-result__item">총합 : <span class="book-result__count booking-cost" th:value = "${paysum}" th:text = "${paysum} + '원'"></span>
+	                        </li>
+	                    </ul>
+	                    <h2 class="page-heading">카드정보</h2>
+	                    <div class = "row">
+	                        
+	                        <div class="col-md-8">
+	                            <div  class="form row" >
+	                                <div class="col-sm-6">
+	                                    <select  class="form__name" aria-label="Default select example" id="cardselect" name="cardselect">
+	                                        <option selected>카드사</option>
+	                                        <option th:each="list : ${@codeService.selectListCachedCode(1)}" th:value="${list.ifcdSeq}" th:text="${list.ifcdName}"></option>
+	                                    </select>
+	                                </div>
+	                                
+	                                <div class="col-sm-6">
+	                                    <select  class="form__name" aria-label="Default select example" >
+	                                        <option selected >카드종류</option>
+	                                        <option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.ifcdSeq}" th:text="${list.ifcdName}"></option>
+	
+	                                    </select>
+	                                </div>
+	                                
+	                                <div class="col-sm-2">
+	                                    <input type='text' id = "cardone" name="cardone" placeholder='카드번호'  class="form__name">
+	                                    <div class="invalid-feedback" id="cardoneFeedback" name="cardoneFeedback"></div>
+	                                </div>
+	                                <div class="col-sm-2">
+	                                    <input type='text' placeholder='카드번호'class="form__name">
+	                                </div>
+	                                <div class="col-sm-2">
+	                                    <input type='text' placeholder='카드번호'class="form__name">
+	                                </div>
+	                                <div class="col-sm-2">
+	                                    <input type='text' placeholder='카드번호' class="form__name">
+	                                </div>
+	                                <div class="col-sm-4">
+	                                    <input type='text' placeholder='소유주 이름' name='user-email' class="form__name">
+	                                </div>
+	                                <div class="col-sm-4">
+	                                    <input type='text' placeholder='유효기간 mm' name='user-name' class="form__name">
+	                                </div>
+	                                <div class="col-sm-4">
+	                                    <input type='text' placeholder='유효기간 yy' name='user-name' class="form__name">
+	                                </div>
+	                                <div class="col-sm-4">
+	                                    <input type='text' placeholder='cvc번호' name='user-email' class="form__name">
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <h2 class="page-heading">다른 결제 수단</h2>
+	                    <div class="payment">
+	                        <a href="#" class="payment__item">
+	                            <img alt='' src="usr/images/payment/pay1.png">
+	                        </a>
+	                        <a href="#" class="payment__item">
+	                            <img alt='' src="usr/images/payment/pay2.png">
+	                        </a>
+	                        <a href="#" class="payment__item">
+	                            <img alt='' src="usr/images/payment/pay3.png">
+	                        </a>
+	                        <a href="#" class="payment__item">
+	                            <img alt='' src="usr/images/payment/pay4.png">
+	                        </a>
+	                        <a href="#" class="payment__item">
+	                            <img alt='' src="usr/images/payment/pay5.png">
+	                        </a>
+	                        <a href="#" class="payment__item">
+	                            <img alt='' src="usr/images/payment/pay6.png">
+	                        </a>
+	                        <a href="#" class="payment__item">
+	                            <img alt='' src="usr/images/payment/pay7.png">
+	                        </a>
+	                    </div>
+	
+	                    <h2 class="page-heading">연락처 정보</h2>
+	
+	                    <div  class="form contact-info">
+	                        <div class="contact-info__field contact-info__field-mail">
+	                            <input type='email' name='user-mail' placeholder='Your email' class="form__mail">
+	                        </div>
+	                        <div class="contact-info__field contact-info__field-tel">
+	                            <input type='tel' name='user-tel' placeholder='Phone number' class="form__mail">
+	                        </div>
+	                    </div>
+	
+	
+	                </div>
+	
+	                <div class="order">
+	                    <a id="final" class="btn btn-md btn--warning btn--wide">구매</a>
+	                </div>
+	
+	            </div>
+	
+	        </section>
+        </form>
 
 
         <div class="clearfix"></div>
 
         <div class="booking-pagination">
-            <a href="book2.html" class="booking-pagination__prev">
-                <p class="arrow__text arrow--prev">prev step</p>
-                <span class="arrow__info">choose a sit</span>
-            </a>
-            <a href="#" class="booking-pagination__next hide--arrow">
-                <p class="arrow__text arrow--next">next step</p>
-                <span class="arrow__info"></span>
+            <a id="back" class="booking-pagination__prev">
+                <p class="arrow__text arrow--prev">이전단계</p>
             </a>
         </div>
 
@@ -281,6 +278,33 @@
 
     <!-- Custom -->
     <script src="js/custom.js"></script>
+    <script src="xdm/js/validationXdm.js" ></script>
+    
+    
+    <script>
+    
+    document.getElementById("back").onclick = function(){
+    	window.history.back();
+    }
+    document.getElementById("final").onclick =  function()
+    {
+    	//if(vallupdt() == false) return false;
+    	let form = document.getElementById('formnext')
+    	
+				let currentURL = window.location.href;
+        		let path = currentURL.split('?').pop();
+    			form.submit();
+    			location.href = "/payseatupdate" + "?" + path
+    	//console.log(seat2);
+    }
+    
+    function vallupdt()
+	{
+
+		if(!checkPassword('cardone',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false}
+
+	}
+    </script>
 
 </body>
 
