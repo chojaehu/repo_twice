@@ -42,7 +42,6 @@
             });
         });
     </script>
-    <script></script>
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -102,123 +101,101 @@
 
         <!-- Main content -->
         <form name="formList" id="formList" method="get" autocomplete="off" onsubmit="return false">
-	        <input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
-	  		<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
-	        <section class="container">
-	            <div class="col-sm-12">
-	                <h2 class="page-heading">예매 확인/취소</h2>
-	
-	                <div class="row">
-	                    <div class="container" th:replace="~{usr/block/usenav :: modifynav}"></div>
-	
-	                    <div class="col-md-9">
-	                        <div class="row">
-	                            <div class="col-sm-12">
-	                                <div class="promo promo--short">
-	                                    <img class="promo__images" alt='' src="images/tickets.png">
-	                                    <div class="promo__head">예매 관리/취소</div>
-	                                    <div class="promo__content"></div>
-	                                </div>
-	                            </div>
-	                        </div>
-	                        <div class="form row">
-	                            <div class="row" style="margin-top: 50px;">
-	                                <div class="col-md-3">
-	                                    <div class="rightalignment">
-	                                        <select  class="form__name" aria-label="Default select example">
-	                                            <option selected >예매일</option>
-	                                            <option value="1">관람일</option>
-	                                        </select>
-	                                    </div>
-	                                </div>
-	                                <div class="col-md-3">
-	                                    <input type='text' class="form__name" id="shDateEnd" name="shDateEnd" placeholder="시작일"  autocomplete="off">
-	                                </div>
-	                                <div class="col-md-3">
-	                                    <input type='text' class="form__name" id="shDateEnd" name="shDateEnd" placeholder="종료일"  autocomplete="off">
-	                                </div>
-	                                <div class="col-md-3">
-	                                    <div class="login__control">
-	                                        <button type='submit' class="btn btn-md btn--warning btn--wider">검색</button>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </div>
-	
-	                        <div class="row">
-	                            <div class="movie movie--preview movie--full comments"
-	                            th:if="${!#lists.isEmpty(list)}"
-								th:each="list : ${list}">
-	                                <div class=" col-md-2 ">
-	                                    <div class="movie__images">
-	                                        <img alt='' src="usr/images/movie/movie-sample2.jpg">
-	                                    </div>
-	                                </div>
-	
-	                                <div class=" col-md-7 movie__about">
-	                                	 <p class="movie__option"><strong>예매 코드 : </strong>
-	                                	 <span th:text = "${list.pmTicketCode}"></span>
-	                                	 </p>
-	                                    <p class="movie__option"><strong>제목 : </strong>
-	                                    <span th:text = "${list.prTitle}"></span>
-	                                    </p>
-	                                    <p class="movie__option"><strong>공영장소 : </strong>
-	                                    <span th:text = "${list.plplace}"></span>
-	                                    </p>
-	                                    <p class="movie__option"><strong>공영관 : </strong>
-	                                    <span th:text = "${list.tatheaterNumber}"></span>
-	                                    </p>
-	                                    <p class="movie__option"><strong>관람일시 : </strong>
-	                                    <span th:text = "${list.pdselectionDate}"></span>
-	                                    <span th:text = "${list.pdselectionTime}"></span>
-	                                    </p>
-	                                   <!--  <p class="movie__option"><strong>예매일 : </strong>2024-06-22</p> -->
-	                                   <p class="movie__option"><strong>좌석 : </strong>
-	                                   <span th:text = "${list.stSeatCode}">A</span>
-	                                   <span th:text = "${list.stSeatNumber}">1</span>
-	                                   </p>
-	                                    <p class="movie__option"><strong>취소가능일 : </strong>2024-06-15</p>
-	                                    <!-- <p class="movie__option"><strong>매수 : </strong>1</p> -->
-	                                    
-	                                </div>
-	                                <div class="col-md-2">
-	                                    <div class="">
-	                                        <button type='submit' class="btn btn-md btn--warning btn--wider">취소하기</button>
-	                                    </div>
-	                                </div>
-	
-	                                <div class="clearfix"></div>
-	
-	                                <!-- Time table (choose film start time)-->
-	
-	                                <!-- end time table-->
-	                            </div>
-	                        </div>
-	
-		                       <div class="page_wrap">
-				                 <div class="page_nation">
-											<a th:if="${vo.startPage gt vo.pageNumToShow}" 
-											style="cursor: pointer;"
-											
-											href="javascript:goList(${vo.startPage - 1})"
-											th:attr="onclick=|goList('${vo.startPage - 1}')|">이전</a>
-		
-											<a
-											th:each="num: ${#numbers.sequence(vo.startPage, vo.endPage)}"
-											th:classappend="${num eq vo.thisPage} ? active : ''"
-											 style="cursor: pointer;"
-											th:attr="onclick=|goList('${num}')|"
-											th:text="${num}"></a>
-		
-											<a th:if="${vo.endPage ne vo.totalPages}" 
-											style="cursor: pointer;"
-											th:attr="onclick=|goList('${vo.endPage + 1}')|">다음</a>
-				                 </div>
-			                 </div>
-	                    </div>
-	                </div>
-	            </div>
-	        </section>
+
+        <section class="container">
+            <div class="col-sm-12">
+                <h2 class="page-heading">예매 확인/취소</h2>
+
+                <div class="row">
+                    <div class="container" th:replace="~{usr/block/usenav :: modifynav}"></div>
+
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="promo promo--short">
+                                    <img class="promo__images" alt='' src="images/tickets.png">
+                                    <div class="promo__head">예매 관리/취소</div>
+                                    <div class="promo__content"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form row">
+                            <div class="row" style="margin-top: 50px;">
+                                <div class="col-md-3">
+                                    <div class="rightalignment">
+                                        <select  class="form__name" aria-label="Default select example">
+                                            <option selected >예매일</option>
+                                            <option value="1">관람일</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type='text' class="form__name" id="shDateEnd" name="shDateEnd" placeholder="시작일"  autocomplete="off">
+                                </div>
+                                <div class="col-md-3">
+                                    <input type='text' class="form__name" id="shDateEnd" name="shDateEnd" placeholder="종료일"  autocomplete="off">
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="login__control">
+                                        <button type='submit' class="btn btn-md btn--warning btn--wider">검색</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="movie movie--preview movie--full comments"
+                            th:if="${!#lists.isEmpty(list)}"
+							th:each="list : ${list}">
+                                <div class=" col-md-2 ">
+                                    <div class="movie__images">
+                                        <img alt='' src="usr/images/movie/movie-sample2.jpg">
+                                    </div>
+                                </div>
+
+                                <div class=" col-md-7 movie__about">
+                                	 <p class="movie__option"><strong>예매 코드 : </strong>
+                                	 <span th:text = "${list.pmTicketCode}"></span>
+                                	 </p>
+                                    <p class="movie__option"><strong>제목 : </strong>
+                                    <span th:text = "${list.prTitle}"></span>
+                                    </p>
+                                    <p class="movie__option"><strong>공영장소 : </strong>
+                                    <span th:text = "${list.plplace}"></span>
+                                    </p>
+                                    <p class="movie__option"><strong>공영관 : </strong>
+                                    <span th:text = "${list.tatheaterNumber}"></span>
+                                    </p>
+                                    <p class="movie__option"><strong>관람일시 : </strong>
+                                    <span th:text = "${list.pdselectionDate}"></span>
+                                    <span th:text = "${list.pdselectionTime}"></span>
+                                    </p>
+                                   <!--  <p class="movie__option"><strong>예매일 : </strong>2024-06-22</p> -->
+                                   <p class="movie__option"><strong>좌석 : </strong>
+                                   <span th:text = "${list.stSeatCode}">A</span>
+                                   <span th:text = "${list.stSeatNumber}">1</span>
+                                   </p>
+                                    <p class="movie__option"><strong>취소가능일 : </strong>2024-06-15</p>
+                                    <!-- <p class="movie__option"><strong>매수 : </strong>1</p> -->
+                                    
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="">
+                                        <button type='submit' class="btn btn-md btn--warning btn--wider">취소하기</button>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+
+                                <!-- Time table (choose film start time)-->
+
+                                <!-- end time table-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         </form>
 
         <div class="clearfix"></div>
@@ -337,54 +314,22 @@
     <script src="usr/js/custom.js"></script>
      <script type="text/javascript">
         let goUrlXdmList = "/useInformation";
+        let form = document.querySelector("form[name=formList]");
+        window
+		.addEventListener(
+				'load',
+				function() {
+
+
+					goList = function(thisPage) {
+						document.querySelector("input[name=thisPage]").value = thisPage;
+						form.action = goUrlXdmList;
+						form.submit();
+					}
+				});
     </script>
-    <script src="usr/js/usrCommon.js"></script>
-   <!--  <script type="text/javascript">
-        $(document).ready(function () {
-            init_BookingOne();
-        });
-    </script> -->
-
-
-    <!-- JavaScript-->
-    <!-- jQuery 3.1.1-->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')</script> -->
-    <!-- Migrate -->
-    <!-- <script src="js/external/jquery-migrate-1.2.1.min.js"></script> -->
-
-    <!-- jQuery UI -->
-    <!-- <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> -->
-
-    <!-- Bootstrap 3-->
-    <!-- <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script> -->
-
-    <!-- Magnific-popup -->
-    <!-- <script src="js/external/jquery.magnific-popup.min.js"></script> -->
-
-    <!-- Mobile menu -->
-    <!-- <script src="js/jquery.mobile.menu.js"></script> -->
-    <!-- Select -->
-    <!-- <script src="js/external/jquery.selectbox-0.2.min.js"></script> -->
-
-    <!-- Form element -->
-    <!-- <script src="js/external/form-element.js"></script> -->
-    <!-- Form validation -->
-    <!-- <script src="js/form.js"></script> -->
-
-    <!-- Custom -->
-    <!-- <script src="js/custom.js"></script> -->
-
-
-
-
-
-    <!-- <script type="text/javascript">
-        $(document).ready(function () {
-            init_Gallery();
-        });
-    </script> -->
-
+   <!--  <script src="usr/js/usrCommon.js"></script> -->
+  
 </body>
 
 </html>
