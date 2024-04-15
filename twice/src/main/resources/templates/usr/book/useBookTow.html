@@ -447,12 +447,19 @@
 	        				}  
         			let queryString = seat.map(item => `seat=${encodeURIComponent(item)}`).join('&');
         			
-        			
-        			let currentURL = window.location.href;
-        			let path = currentURL.split('?').pop();
-        			alert(path)
-        			form.submit();
-        			location.href = "/useBookBuy" + "?" + path + "&" + queryString
+        			if(seat.length === 0){
+        				alert("좌석을 선택하세요")
+        				
+        			}
+        			else
+        			{
+        				let currentURL = window.location.href;
+            			let path = currentURL.split('?').pop();
+            			//alert(path)
+            			form.submit();
+            			location.href = "/useBookBuy" + "?" + path + "&" + queryString 
+        				
+        			}
         	//console.log(seat2);
         }
     </script>

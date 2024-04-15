@@ -81,7 +81,7 @@ public class BookController {
 	
 	// 예매 3번째 페이지 결제
 	@RequestMapping(value = "/useBookBuy")
-	public String useBookBuy(PerformanceDto dto, Model model) throws Exception
+	public String useBookBuy(PerformanceDto dto, Model model,PerformanceVo vo) throws Exception
 	{
 		
 		System.out.println(dto.getSeat());

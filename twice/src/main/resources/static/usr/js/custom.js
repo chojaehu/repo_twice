@@ -586,7 +586,7 @@ function init_BookingTwo () {
                     if(! $(e.target).hasClass('sits-state--your')){
 
                         if (! $(this).hasClass('sits-state--not') ) {
-							if( limit <= 2){
+							if( limit <= 1){
 	                            $(this).addClass('sits-state--your');
 	                            $('.checked-place').prepend('<span class="choosen-place '+place+'">'+ place +'</span>');
 	                            switch(ticketPrice)
@@ -611,7 +611,7 @@ function init_BookingTwo () {
 	                            $('.checked-result').text(sum);
 	                        }
 	                        else{
-								alert('최대 3좌석만 가능합니다.')
+								alert('최대 2좌석만 가능합니다.')
 							}
 						}
                     }
