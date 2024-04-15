@@ -60,9 +60,10 @@ public interface PerformanceDao {
 	
 //	결제 후 선택시트 1로 변경
 	public int payseatupdate(PerformanceDto dto);
-//	결제 후 인설트
+//	결제 후 공연정보 인설트
 	public int payinsert(PerformanceDto dto);
-	
+//	결제 후 공연좌석정보 인설트
+	public int payseatinsert(PerformanceDto dto);
 	
 	public int update(PerformanceDto dto);
 	public int insert(PerformanceDto dto);

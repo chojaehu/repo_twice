@@ -120,10 +120,15 @@ public class PerformanceService {
 	{
 		return dao.payseatupdate(dto);
 	}
-//	결제 후 인설트 
+//	결제 후 공연 정보 인설트 
 	public int payinsert(PerformanceDto dto)
 	{
 		return dao.payinsert(dto);
+	}
+//	결제 후 공연좌석 정보 인설트
+	public int payseatinsert(PerformanceDto dto)
+	{
+		return dao.payseatinsert(dto);
 	}
 	
 	

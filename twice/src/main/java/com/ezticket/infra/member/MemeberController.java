@@ -133,7 +133,7 @@ public class MemeberController {
 			String id = dto.getMbEmail();
 			String pw = dto.getMbPassword();
 
-			//dDto.setMbPassword(encodeBcrypt(dDto.getMbPassword(), 10));
+			dDto.setMbPassword(encodeBcrypt(dDto.getMbPassword(), 10));
 
 			System.out.println("dDto.getMbEmail() : " + id);
 			System.out.println("dDto.getMbPassword() : " + pw);

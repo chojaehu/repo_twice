@@ -56,7 +56,8 @@ public class PerformanceDto {
 	private Integer pmSeq;
 	private String pmTicketCode;
 	
-	
+	//예약 좌석 테이블 
+	private String sltSeq;
 	
 	//댓글 정보
 	private String rvSeq;
@@ -72,12 +73,16 @@ public class PerformanceDto {
 	private String rpRvwCntnt;
 	private Date rpRgstrDate;
 	
-	
-	
-	
+
 	
 	
 
+	public String getSltSeq() {
+		return sltSeq;
+	}
+	public void setSltSeq(String sltSeq) {
+		this.sltSeq = sltSeq;
+	}
 	public String getMbSeq() {
 		return mbSeq;
 	}

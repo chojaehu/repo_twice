@@ -143,6 +143,7 @@ public class BookController {
 		System.out.println(dto.getMbSeq());
 		System.out.println(dto.getSeat());
 		service.payinsert(dto);
+		service.payseatinsert(dto);	
 		service.payseatupdate(dto);
 		return "redirect:/useBookfinal";
 	}

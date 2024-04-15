@@ -173,8 +173,6 @@
 		d.tatheaterNumber,
 		e.pdselectionDate,
 		e.pdselectionTime,
-		f.stSeatCode,
-		f.stSeatNumber,
 		g.mbName
 		From
 		payment a
@@ -197,12 +195,6 @@
 		performancedate e
 		on
 		a.pdSeq = e.pdSeq
-
-		join
-		seat f
-		on
-		a.stSeq = f.stSeq
-
 		join
 		members g
 		on
@@ -361,28 +353,44 @@
 	</update>
 	
 	<!-- 결제후 티켓정보 등록 -->
-	<insert id ="payinsert">
+	<insert id ="payinsert"  
+	parameterType = "com.ezticket.infra.performance.PerformanceDto" >
+		<selectKey resultType ="Integer" keyProperty="pmSeq" order="AFTER">
+		SELECT LAST_INSERT_ID()
+		</selectKey>
 		insert into payment
 		(
-		prSeq
-		,mbSeq 
-		,stSeq 
-		,pdSeq
-		,taSeq
-		,plSeq
+			prSeq
+			,mbSeq 
+			,pdSeq
+			,taSeq
+			,plSeq
 		)
 		values
-	<foreach collection="seat" item="item" separator=",">
 		   (
 		   ${prSeq},
 		   ${mbSeq},
-		   ${item},
 		   ${pdSeq},
 		   ${taSeq},
 		   ${plSeq}
 		   )
-	</foreach> 	
 	
+	</insert>
+	
+	<!-- 결제시 공연 선택시트정보 -->
+	<insert id = "payseatinsert">
+	insert into selectseat
+	(
+	stSeq, 
+	pmSeq
+	)
+	values
+	<foreach collection="seat" item="item" separator=",">
+		   (
+		   	${item},
+		   	#{pmSeq}
+		   )
+	</foreach> 
 	</insert>
 
 
