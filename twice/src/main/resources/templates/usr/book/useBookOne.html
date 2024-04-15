@@ -314,7 +314,7 @@
 										 $(document).ready(function () {
 									            init_BookingOne();
 									       });
-								 		 $('#list').empty();
+								 		// $('#list').empty();
 								 		for(let i = 0 ; i < response.talist.length ; i ++)
 								 			{
 								 			let parent = $('#list');
@@ -359,11 +359,8 @@
 									 		
 									        col.append(child);
 									        
-									        parent.append(tatime);
-									        
-									        
+									        parent.append(tatime);      
 								 			}
-		
 							}
 							else{
 								alert("이날은 공연이 없습니다.");
