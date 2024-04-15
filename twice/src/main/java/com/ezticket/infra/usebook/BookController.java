@@ -89,7 +89,7 @@ public class BookController {
 		 * List<String> list = new ArrayList<>(); list.addAll(dto.getSeat());
 		 */
 		
-		
+		//vo.setParamsPaging(service.Paymentcount(dto));
 		model.addAttribute("paycount", service.Paymentcount(dto));
 		model.addAttribute("paysum", service.Paymentsum(dto));
 		model.addAttribute("list", service.Paymentlist(dto));
