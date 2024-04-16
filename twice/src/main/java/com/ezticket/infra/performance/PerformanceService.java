@@ -147,6 +147,17 @@ public class PerformanceService {
 		return dao.ticketfianlseat(dto);
 	}
 	
+//	결제 취소 시 좌석정보 조회
+	public List<PerformanceDto> ticketseatList(PerformanceDto dto)
+	{
+		return dao.ticketseatList(dto);
+	}
+//	결제 취소 시 좌석정보 활성화
+	public int ticketseatupt(PerformanceDto dto)
+	{
+		return dao.ticketseatupt(dto);
+	}
+	
 	public int update(PerformanceDto dto)
 	{
 		return dao.update(dto);

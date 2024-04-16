@@ -1,5 +1,8 @@
 package com.ezticket.infra.usemypage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ezticket.common.constants.Constants;
 import com.ezticket.common.util.UtilDateTime;
+import com.ezticket.infra.performance.PerformanceDto;
 import com.ezticket.infra.performance.PerformanceService;
 import com.ezticket.infra.performance.PerformanceVo;
 
@@ -35,10 +39,16 @@ public class MyPageController {
 	}
 	
 	@RequestMapping(value = "/ticketdelete")
-	public String ticketdelete(PerformanceVo vo) throws Exception
+	public String ticketdelete(PerformanceVo vo,PerformanceDto dto) throws Exception
 	{
-		service.selectList(vo);
-		return "redirect:/usePerformanceList";
+
+		
+		
+		service.ticketseatList(dto);
+		System.out.println(dto.getStSeq()+"------------------------");
+		service.ticketseatupt(dto);
+		
+		return "redirect:/useInformation";
 	}
 	
 	

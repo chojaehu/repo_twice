@@ -478,6 +478,31 @@
 		   )
 	</foreach> 
 	</insert>
+	
+	<!-- 공연 취소 좌석 정보 셀렉트 -->
+	<select id="ticketseatList" resultMap="resultMapObj">
+	select 
+		stSeq
+		from
+			selectseat
+		where 
+			pmSeq = #{pmSeq}
+	</select>
+	<!-- 취소한 좌석 다시 업데이트 -->
+	<update id = "ticketseatupt">
+
+		update seat
+		set
+		stReservation = 1
+		where
+		<if test="seat != null and seat.size != 0">
+		stSeq IN
+	          <foreach collection="delseat" item="item" open="(" close=")" separator=",">
+		           #{item}
+			  </foreach> 		              
+	 	 </if>
+
+	</update>
 
 
 	
