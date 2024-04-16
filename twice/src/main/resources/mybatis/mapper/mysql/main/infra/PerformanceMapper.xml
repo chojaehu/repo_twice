@@ -167,6 +167,7 @@
 	<!-- 결제 완료 리스트 -->
 	<select id="usrselectPay" resultMap="resultMapObj">
 		select
+		a.pmSeq,
 		a.pmTicketCode,
 		b.prTitle,
 		c.plplace,
@@ -206,6 +207,27 @@
 		ORDER BY a.pmSeq DESC
 		limit #{rowNumToShow} offset #{startRnumForMysql}
 	</select>
+	<!-- 결제 시트 좌석 -->
+	<select id = "usrseatPay" resultMap="resultMapObj">
+		select 
+			a.mbSeq
+			,a.pmSeq
+			,b.stSeq
+            ,c.stSeatCode
+            ,c.stSeatNumber
+			from 
+				payment a
+				join 
+					selectseat b
+				on
+					a.pmSeq = b.pmSeq and a.mbSeq = #{prSeq}
+				join 
+					seat c
+				on 
+					c.stSeq = b.stSeq
+				ORDER BY a.pmSeq DESC
+	</select>
+	
 	<!-- 결제 완료 페이징 카운트 -->
 	<select id="usescount" resultType="Integer">
 		SELECT
@@ -335,6 +357,70 @@
 			  </foreach> 		              
 	  </if>
 	</select> 
+	
+	<!-- 결제 최종 티켓 발행 -->
+	<select id ="ticketfianl" resultMap="resultMapObj">
+	select
+		a.pmSeq,
+		a.pmTicketCode,
+		b.prTitle,
+		(select sum(bb.stPrise)
+        from 
+			selectseat aa
+		join
+			seat bb
+		on aa.stSeq = bb.stSeq and aa.pmSeq = #{pmSeq}
+        ) as totalprice,
+		c.plplace,
+		d.tatheaterNumber,
+		e.pdselectionDate,
+		e.pdselectionTime,
+		g.mbName
+			From
+				payment a
+					join
+						performancelist b
+					on
+						a.prSeq = b.prSeq
+			
+					join
+						place c
+					on
+						a.plSeq = c.plSeq
+			
+					join
+						theater d
+					on
+						a.taSeq = d.taSeq
+				
+					join
+						performancedate e
+					on
+						a.pdSeq = e.pdSeq
+					join
+						members g
+					on
+						a.mbSeq = g.mbSeq
+			
+					where
+						a.pmSeq = #{pmSeq}
+	
+	</select>
+	
+	<!-- 결제 후 티켓 발행 좌석 -->
+	<select id ="ticketfianlseat" resultMap="resultMapObj">
+	select  
+		b.stSeatCode
+        ,b.stSeatNumber
+			from 
+				selectseat a
+			join 
+				seat b
+			on 
+				a.stSeq = b.stSeq
+			where 
+				a.pmSeq = #{pmSeq}
+	</select>
 	
 	<!-- 결제후 좌석 업데이트 -->
 	<update id = "payseatupdate">

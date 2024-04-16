@@ -88,9 +88,9 @@
 
         <!-- Header section -->
         <header class="header-wrapper">
-             <div class="container" th:replace="~{usr/block/usenav :: navtop}">
-
-			</div>
+            <div class="container" th:replace="~{usr/block/usenav :: navtop}">
+                
+            </div>
         </header>
         
 
@@ -100,8 +100,9 @@
 	    
 
         <!-- Main content -->
-        <form name="formList" id="formList" method="get" autocomplete="off" onsubmit="return false">
-
+        <form name="formpage" id="formpage" method="get" autocomplete="off" onsubmit="return false">
+		 <input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
+  		<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
         <section class="container">
             <div class="col-sm-12">
                 <h2 class="page-heading">예매 확인/취소</h2>
@@ -130,7 +131,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type='text' class="form__name" id="shDateEnd" name="shDateEnd" placeholder="시작일"  autocomplete="off">
+                                    <input type='text' class="form__name" id="shDateStart" name="shDateStart" placeholder="시작일"  autocomplete="off">
                                 </div>
                                 <div class="col-md-3">
                                     <input type='text' class="form__name" id="shDateEnd" name="shDateEnd" placeholder="종료일"  autocomplete="off">
@@ -149,16 +150,20 @@
 							th:each="list : ${list}">
                                 <div class=" col-md-2 ">
                                     <div class="movie__images">
+                                    	<a th:href="@{/useBookfinal(pmSeq=${list.pmSeq})}">
                                         <img alt='' src="usr/images/movie/movie-sample2.jpg">
+                                        </a>
                                     </div>
                                 </div>
 
                                 <div class=" col-md-7 movie__about">
                                 	 <p class="movie__option"><strong>예매 코드 : </strong>
-                                	 <span th:text = "${list.pmTicketCode}"></span>
+                                	 <span th:text = "${list.pmSeq}"></span>
                                 	 </p>
                                     <p class="movie__option"><strong>제목 : </strong>
+                                  	<a th:href="@{/useBookfinal(pmSeq=${list.pmSeq})}">
                                     <span th:text = "${list.prTitle}"></span>
+                                    </a>
                                     </p>
                                     <p class="movie__option"><strong>공영장소 : </strong>
                                     <span th:text = "${list.plplace}"></span>
@@ -171,25 +176,53 @@
                                     <span th:text = "${list.pdselectionTime}"></span>
                                     </p>
                                    <!--  <p class="movie__option"><strong>예매일 : </strong>2024-06-22</p> -->
-                                   <p class="movie__option"><strong>좌석 : </strong>
+                                   <p class="movie__option">
+                                   <strong>좌석 : 
+	                                    <span
+	                                     th:if="${!#lists.isEmpty(seat)} and ${seat.pmSeq} == ${list.pmSeq}"
+										th:each="seat : ${seat}" 
+	                                    
+	                                    th:text = "${seat.stSeatCode} + ${seat.stSeatNumber}">
+	                                    </span>
+                                    </strong>
                                    </p>
                            <!--          <p class="movie__option"><strong>취소가능일 : </strong>2024-06-15</p> -->
                                     <!-- <p class="movie__option"><strong>매수 : </strong>1</p> -->
                                     
                                 </div>
                                 <div class="col-md-2">
-                                    <div class="">
-                                        <button type='submit' class="btn btn-md btn--warning btn--wider">취소하기</button>
-                                    </div>
+                                    <div class="movie__btns">
+										<a th:href="@{/usePerformanceList(pmSeq=${list.pmSeq})}" class="btn btn-md btn--warning">취소하기 </a>
+									</div>
                                 </div>
 
                                 <div class="clearfix"></div>
 
                                 <!-- Time table (choose film start time)-->
-
+								
                                 <!-- end time table-->
                             </div>
                         </div>
+                        <div class="page_wrap">
+		                 <div class="page_nation">
+									<a th:if="${vo.startPage gt vo.pageNumToShow}" 
+									style="cursor: pointer;"
+									
+									href="javascript:goList(${vo.startPage - 1})"
+									th:attr="onclick=|goList('${vo.startPage - 1}')|">이전</a>
+
+									<a
+									th:each="num: ${#numbers.sequence(vo.startPage, vo.endPage)}"
+									th:classappend="${num eq vo.thisPage} ? active : ''"
+									 style="cursor: pointer;"
+									th:attr="onclick=|goList('${num}')|"
+									th:text="${num}"></a>
+
+									<a th:if="${vo.endPage ne vo.totalPages}" 
+									style="cursor: pointer;"
+									th:attr="onclick=|goList('${vo.endPage + 1}')|">다음</a>
+		                 </div>
+	                 </div>
                     </div>
                 </div>
             </div>
@@ -312,12 +345,11 @@
     <script src="usr/js/custom.js"></script>
      <script type="text/javascript">
         let goUrlXdmList = "/useInformation";
-        let form = document.querySelector("form[name=formList]");
+        let form = document.querySelector("form[name=formpage]");
         window
 		.addEventListener(
 				'load',
 				function() {
-
 
 					goList = function(thisPage) {
 						document.querySelector("input[name=thisPage]").value = thisPage;
@@ -326,6 +358,7 @@
 					}
 				});
     </script>
+     <script src="usr/js/usrCommon.js"></script>
    <!--  <script src="usr/js/usrCommon.js"></script> -->
   
 </body>

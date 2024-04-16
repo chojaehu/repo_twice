@@ -64,6 +64,11 @@ public class PerformanceService {
 	{
 		return dao.usrselectPay(vo);
 	}
+//	결제완료 좌석 리스트
+	public List<PerformanceDto> usrseatPay(PerformanceVo vo)
+	{
+		return dao.usrseatPay(vo);
+	}
 //	결제완료 카운트
 	public int usescount(PerformanceVo vo)
 	{
@@ -131,7 +136,16 @@ public class PerformanceService {
 		return dao.payseatinsert(dto);
 	}
 	
-	
+//	결제 후 티켓 발행
+	public PerformanceDto ticketfianl(PerformanceDto dto)
+	{
+		return dao.ticketfianl(dto);
+	}
+//	결제 후 티켓 발행 좌석
+	public List<PerformanceDto> ticketfianlseat(PerformanceDto dto)
+	{
+		return dao.ticketfianlseat(dto);
+	}
 	
 	public int update(PerformanceDto dto)
 	{

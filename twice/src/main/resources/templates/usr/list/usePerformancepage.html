@@ -301,6 +301,26 @@
 
 									<p class="comment__message" th:text="${review.rvRvwCntnt}"></p>
 									<a href='#' class="comment__reply">답글</a>
+									
+									
+									
+								</div>
+								<div class="comment comment--answer"
+									th:if="${!#lists.isEmpty(reply)} and ${review.rvSeq} == ${reply.rvSeq}" 
+									th:each="reply : ${reply}">
+
+									<div class="comment__images">
+										<img alt='' src="usr/images/comment/avatar-dmitriy.jpg">
+									</div>
+
+									<a href='#' class="comment__author" th:text="${reply.rpWriter}"><span
+										class="social-used fa fa-vk"></span>Dmitriy Pustovalov</a>
+
+									<p class="comment__date"
+										th:text="${#dates.format(reply.rpRgstrDate,'yyyy-MM-dd HH:mm')}">today
+										| 10:19</p>
+
+									<p class="comment__message" th:text="${reply.rpRvwCntnt}">ssdsdsd</p>
 								</div>
 
 

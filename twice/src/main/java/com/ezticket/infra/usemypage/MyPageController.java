@@ -29,8 +29,16 @@ public class MyPageController {
 																					
 		vo.setParamsPaging(service.usescount(vo));
 		model.addAttribute("list", service.usrselectPay(vo));
+		model.addAttribute("seat", service.usrseatPay(vo));
 
 		return str2 + "/useInformation";
+	}
+	
+	@RequestMapping(value = "/ticketdelete")
+	public String ticketdelete(PerformanceVo vo) throws Exception
+	{
+		service.selectList(vo);
+		return "redirect:/usePerformanceList";
 	}
 	
 	

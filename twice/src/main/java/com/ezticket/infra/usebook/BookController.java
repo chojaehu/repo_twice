@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezticket.common.constants.Constants;
 import com.ezticket.common.util.UtilDateTime;
@@ -103,9 +104,11 @@ public class BookController {
 	
 	// 예매 최종 티켓 발행
 	@RequestMapping(value = "/useBookfinal")
-	public String useBookfinal() throws Exception
+	public String useBookfinal(@RequestParam("pmSeq") int aa, Model model,PerformanceDto dto) throws Exception
 	{
-		
+		System.out.println(aa + "--------------------------");
+		model.addAttribute("item", service.ticketfianl(dto));
+		model.addAttribute("list", service.ticketfianlseat(dto));
 		return str3 + "/useBookfinal";
 	}
 	
@@ -137,7 +140,7 @@ public class BookController {
 	}
 	
 	@RequestMapping(value = "/payseatupdate")
-	public String payseatupdate(PerformanceDto dto,HttpSession httpSession) throws Exception
+	public String payseatupdate(PerformanceDto dto,HttpSession httpSession,RedirectAttributes redirectAttributes) throws Exception
 	{
 		dto.setMbSeq((String)httpSession.getAttribute("sessSeqXdm"));
 		System.out.println(dto.getMbSeq());
@@ -145,14 +148,14 @@ public class BookController {
 		service.payinsert(dto);
 		service.payseatinsert(dto);	
 		service.payseatupdate(dto);
+		redirectAttributes.addAttribute("pmSeq", dto.getPmSeq());
 		return "redirect:/useBookfinal";
 	}
+	
 
 
 
 	public void setSearch(PerformanceVo vo) throws Exception {
-
-		
 		/* 초기값 세팅이 있는 경우 사용 */
 		vo.setShDateStart(vo.getShDateStart() == null
 		    ? UtilDateTime.calculateDayReplace00TimeString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL)

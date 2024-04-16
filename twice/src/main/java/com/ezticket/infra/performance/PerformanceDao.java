@@ -19,6 +19,8 @@ public interface PerformanceDao {
 	
 //	결제 완료 리스트
 	public List<PerformanceDto> usrselectPay(PerformanceVo vo);
+//	결제 완료 좌석 리스트 
+	public List<PerformanceDto> usrseatPay(PerformanceVo vo);
 //	결제 완료 카운트
 	public int usescount(PerformanceVo vo);
 	
@@ -64,6 +66,12 @@ public interface PerformanceDao {
 	public int payinsert(PerformanceDto dto);
 //	결제 후 공연좌석정보 인설트
 	public int payseatinsert(PerformanceDto dto);
+	
+//	결제 후 티켓 발행
+	public PerformanceDto ticketfianl(PerformanceDto dto);
+//	졀제후 티켓 발행 좌석
+	public List<PerformanceDto> ticketfianlseat(PerformanceDto dto);
+	
 	
 	public int update(PerformanceDto dto);
 	public int insert(PerformanceDto dto);

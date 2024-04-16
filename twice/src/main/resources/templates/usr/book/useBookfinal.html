@@ -50,21 +50,37 @@
                         <div class="ticket__inner">
 
                             <div class="ticket-secondary">
-                                <span class="ticket__item">Ticket number <strong
-                                        class="ticket__number">a126bym4</strong></span>
-                                <span class="ticket__item ticket__date">25/10/2013</span>
-                                <span class="ticket__item ticket__time">17:45</span>
-                                <span class="ticket__item">Cinema: <span class="ticket__cinema">Cineworld</span></span>
-                                <span class="ticket__item">Hall: <span class="ticket__hall">Visconti</span></span>
-                                <span class="ticket__item ticket__price">price: <strong
-                                        class="ticket__cost">$60</strong></span>
+                                <span class="ticket__item">Ticket number 
+                                	<strong class="ticket__number" th:text = "${item.pmSeq}"></strong>
+                                </span>
+                                <span class="ticket__item ticket__date" th:text = "${item.pdselectionDate}"></span>
+                                <span class="ticket__item ticket__time" th:text = "${item.pdselectionTime}"></span>
+                                
+                                <span class="ticket__item">공연장소: 
+                                	<span class="ticket__cinema" th:text = "${item.plplace}"></span>
+                                </span>
+                                
+                                <span class="ticket__item">공연관: 
+                                	<span class="ticket__hall" th:text = "${item.tatheaterNumber}"></span>
+                                </span>
+                                
+                                <span class="ticket__item ticket__price">가격: 
+                                	<!-- <strong class="ticket__cost" th:text="${item.totalprice}">$60</strong> -->
+                                	<strong class="ticket__cost" th:text="${#numbers.formatInteger(item.totalprice, 3, 'COMMA') + '원'}"></strong>
+                                </span>
                             </div>
 
                             <div class="ticket-primery">
-                                <span class="ticket__item ticket__item--primery ticket__film">Film<br><strong
-                                        class="ticket__movie">The Fifth Estate (2013)</strong></span>
-                                <span class="ticket__item ticket__item--primery">Sits: <span class="ticket__place">11F,
-                                        12F, 13F</span></span>
+                                <span class="ticket__item ticket__item--primery ticket__film">제목<br><strong
+                                        class="ticket__movie" th:text = "${item.prTitle}"></strong></span>
+                                <span class="ticket__item ticket__item--primery">Sits: 
+                                	<span   class="ticket__place" 
+		                                	th:if="${!#lists.isEmpty(list)}"
+											th:each="list : ${list}"
+											th:text= "${list.stSeatCode}+ ${list.stSeatNumber}">
+											
+									</span>
+                                </span>
                             </div>
 
 
