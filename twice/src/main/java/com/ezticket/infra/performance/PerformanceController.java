@@ -201,7 +201,6 @@ public class PerformanceController {
 		System.out.println(dto.getRvRvwCntnt());
 		dto.setMbSeq((String)httpSession.getAttribute("sessSeqXdm"));
 		String str = dto.getMbSeq();
-		System.out.println(str + "----------------------------------");
 		if(str != null)
 		{
 			returnMap.put("rt", "success");
