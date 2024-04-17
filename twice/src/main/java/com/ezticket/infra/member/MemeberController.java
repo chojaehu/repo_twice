@@ -133,7 +133,7 @@ public class MemeberController {
 			String id = dto.getMbEmail();
 			String pw = dto.getMbPassword();
 
-			dDto.setMbPassword(encodeBcrypt(dDto.getMbPassword(), 10));
+			//dDto.setMbPassword(encodeBcrypt(dDto.getMbPassword(), 10));
 
 			System.out.println("dDto.getMbEmail() : " + id);
 			System.out.println("dDto.getMbPassword() : " + pw);
@@ -253,6 +253,40 @@ public class MemeberController {
 		return "redirect:/useModify";
 	}
 	
+//	비밀번호 변경
+	@ResponseBody
+	@RequestMapping(value = "/newPassword")
+	public Map<String, Object> newPassword(@ModelAttribute("dto") MemberDto dto , HttpSession httpSession) {
+		
+		dto.setMbSeq((String)httpSession.getAttribute("sessSeqXdm"));
+		
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		MemberDto dtoPw = service.newPassword(dto); 
+		System.out.println(dtoPw.getMbPassword()+"---------------------------");
+		
+		System.out.println(dto.getMbnewPassword()+"-----------------");
+		System.out.println(dto.getMbPasswordCheck()+"--------------------------");
+		if(matchesBcrypt(dto.getMbPassword(), dtoPw.getMbPassword(), 10))
+		{
+			if(dto.getMbnewPassword().equals(dto.getMbPasswordCheck()))
+			{
+				dto.setMbnewPassword(encodeBcrypt(dto.getMbnewPassword(), 10));
+				service.newpwupdate(dto);
+				returnMap.put("rt", "success");
+			}
+			else
+			{
+				returnMap.put("rt", "no");
+			}
+		}
+		else
+		{
+			returnMap.put("rt", "existingPassword");
+		}
+
+	    return returnMap;
+	}
 	
 	
 	

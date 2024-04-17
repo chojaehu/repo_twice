@@ -101,14 +101,15 @@
 								<div class="col-md-3"></div>
 								<div class="col-md-5">
 
-										<input type='password' placeholder='현재 비밀번호' name='user-email'
-											class="form__name"> <input type='password'
-											placeholder='변경 비밀번호' name='user-email' class="form__name">
-										<input type='password' placeholder='변경 비밀번호확인'
-											name='user-email' class="form__name">
+										<input type='password' placeholder='현재 비밀번호' id="mbPassword" name="mbPassword"											class="form__name"> 
+										<input type='password' id="mbnewPassword" name="mbnewPassword"
+											placeholder='변경 비밀번호'class="form__name">
+										<input type='password' placeholder='변경 비밀번호확인' id="mbPasswordCheck" name="mbPasswordCheck"
+											class="form__name">
 									<div class="btn-demo center">
-										<a href="" class="btn btn-md btn--warning"
-											rel="noopener noreferrer">비밀번호 변경</a>
+										<!-- <a href="" class="btn btn-md btn--warning"
+											rel="noopener noreferrer">비밀번호 변경</a> -->
+											<button type="button" id="newPassword" name="newPassword" class="btn btn-md btn--warning">비밀번호 변경</button>
 									</div>
 								</div>
 								<!-- <div class="pagination paginatioon--full">
@@ -260,8 +261,39 @@
 
 	<!-- Custom -->
 	<script src="usr/js/custom.js"></script>
+	<script>
+	document.getElementById("newPassword").onclick = function () {
+		   // if (validationUpdt() == false) return false;
+		    $.ajax({
+		        async: true,
+		        cache: false,
+		        type: "POST",
+		        url: "/newPassword",
+		        data : {
+		            "mbPassword" : $("#mbPassword").val(),
+		            "mbnewPassword" : $("#mbnewPassword").val(),
+		            "mbPasswordCheck" : $("#mbPasswordCheck").val()
+		        },
+		        success: function(response) {
+		            if (response.rt == "success") {
+		                alert("비밀번호 변경에 성공하였습니다.")
+		                location.href="/useLogin"
+		            } else if (response.rt == "existingPassword") {
+		                alert("기존 비밀번호가 일치하지 않습니다.");
+		            } else if (response.rt == "no") {
+		                alert("새 비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+		            } else {
+		                alert("비밀번호 업데이트에 실패했습니다.");
+		            }
+		        },
+		        error : function(jqXHR, textStatus, errorThrown){
+		            alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		        }
+		    });
+		}
+	</script>
 
-	<script src="usr/js/usrCommon.js"></script>
+	<!-- <script src="usr/js/usrCommon.js"></script> -->
 
 	<!-- <script type="text/javascript">
 		$(document).ready(function() {

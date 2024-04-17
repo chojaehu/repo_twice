@@ -16,8 +16,14 @@ public interface MemeberDao {
 	public int delete(MemberDto dto);
 	public int updatedelete(MemberDto dto);
 	
+//	비밀번호 변경 정 확인
+	public MemberDto newPassword(MemberDto dto);
 	
-	//유저
+	//비밀번호 변경
+	public int newpwupdate(MemberDto dto);
+	
+	
+	//유저 정보 변경
 	public int usrUpdate(MemberDto dto);
 
 }

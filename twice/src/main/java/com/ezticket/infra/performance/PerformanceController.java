@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ezticket.common.constants.Constants;
 import com.ezticket.common.util.UtilDateTime;
 
+import jakarta.servlet.http.HttpSession;
+
 
 
 @Controller
@@ -193,11 +195,23 @@ public class PerformanceController {
 	// 공연페이지 리뷰(댓글)
 	@ResponseBody
 	@RequestMapping(value = "/reviewinsert")
-	public Map<String, Object> bookDate(Model model, PerformanceDto dto) throws Exception {
+	public Map<String, Object> bookDate(Model model, PerformanceDto dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		System.out.println(dto.getRvRvwCntnt());
-		returnMap.put("rt", "success");
+		dto.setMbSeq((String)httpSession.getAttribute("sessSeqXdm"));
+		String str = dto.getMbSeq();
+		System.out.println(str + "----------------------------------");
+		if(str != null)
+		{
+			returnMap.put("rt", "success");
+			service.reviewinsert(dto);
+		}
+		else
+		{
+			returnMap.put("rt", "false");
+		}
+		
 	
 		return returnMap;
 	}

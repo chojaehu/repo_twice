@@ -27,6 +27,8 @@ public interface PerformanceDao {
 	
 //	리뷰 리스트
 	public List<PerformanceDto> reviewList(PerformanceVo vo);
+//	리뷰 달기
+	public int reviewinsert(PerformanceDto dto);
 	
 	
 //	리뷰 답글 리스트

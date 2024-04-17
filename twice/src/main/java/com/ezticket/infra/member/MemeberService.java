@@ -44,6 +44,16 @@ public class MemeberService {
 		return dao.updatedelete(dto);
 	}
 	
+//	비밀번호 변경 전 확인
+	public MemberDto newPassword(MemberDto dto)
+	{
+		return dao.newPassword(dto);
+	}
+	// 비밀번호 변경
+	public int newpwupdate(MemberDto dto)
+	{
+		return dao.newpwupdate(dto);
+	}
 	
 	//유저 업데이트
 	public int usrUpdate(MemberDto dto)

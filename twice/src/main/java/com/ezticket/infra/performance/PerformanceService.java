@@ -53,6 +53,11 @@ public class PerformanceService {
 	{
 		return dao.replyList(vo);
 	}
+//	리뷰 달기
+	public int reviewinsert(PerformanceDto dto)
+	{
+		return dao.reviewinsert(dto);
+	}
 	
 //	리스트 총 갯수
 	public int count(PerformanceVo vo) {

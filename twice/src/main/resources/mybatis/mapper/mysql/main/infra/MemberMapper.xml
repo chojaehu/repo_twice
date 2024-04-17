@@ -90,6 +90,25 @@
     where mbSeq = #{mbSeq}
     </update>
     
+    <!-- 유저 비밀번호 확인 -->
+    <select id="newPassword" resultMap="resultMapObj">
+    	SELECT
+    		mbPassword
+    	FROM members
+        WHERE 1=1 
+        	AND mbSeq = #{mbSeq}
+    </select>
+    
+    
+    <!-- 유저비밀번호 변경 -->
+    <update id="newpwupdate">
+		UPDATE members
+		SET
+			mbPassword = #{mbnewPassword}
+		WHERE 1=1
+			AND mbSeq = #{mbSeq}
+	</update>
+    
     
     <!-- 등록 -->
     <insert id="insert">

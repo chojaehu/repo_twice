@@ -77,6 +77,7 @@
 				<div class="col-sm-12">
 					<div class="movie">
 						<h2 class="page-heading" th:text="${item.prTitle}"></h2>
+						<input type="hidden"  id="prSeq" name="prSeq" th:value = "${item.prSeq}">
 
 						<div class="movie__info">
 							<div class="col-sm-4 col-md-3 movie-mobile">
@@ -526,11 +527,17 @@
 				,cache: false
 				,type: "post"
 				,url: "/reviewinsert"
-				,data : {"rvRvwCntnt" : $("#rvRvwCntnt").val()}
+				,data : {"rvRvwCntnt" : $("#rvRvwCntnt").val(), "prSeq" : $("#prSeq").val()}
 				,success: function(response) {
 					if(response.rt == "success")
 						{
+						 alert("있음")
 						 self.location.reload();
+						
+						}
+					else
+						{
+							alert("로그인하고 달아주세요")
 						}
 
 				}
@@ -540,6 +547,7 @@
 			});
 			
 		}
+		
 	</script>
 
 </body>

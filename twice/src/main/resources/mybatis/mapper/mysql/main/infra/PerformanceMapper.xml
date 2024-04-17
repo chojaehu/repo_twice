@@ -145,7 +145,23 @@
 		a.prSeq
 		from review a
 		where a.prSeq = ${prSeq}
+		ORDER BY rvSeq DESC
 	</select>
+	<insert id= "reviewinsert">
+	insert into review
+	(
+	rvWriter,
+	rvRvwCntnt,
+	prSeq
+	)
+	values
+	(
+	#{mbSeq},
+	#{rvRvwCntnt},
+	#{prSeq}
+	)
+	
+	</insert>
 
 
 	<!-- 답글 리스트 -->
@@ -161,6 +177,7 @@
 		join
 		review b
 		on a.rvSeq = b.rvSeq
+		ORDER BY rpSeq DESC
 	</select>
 
 
@@ -235,7 +252,7 @@
 		FROM
 		payment
 
-		where 1=1 and mbSeq = #{prSeq}
+		where 1=1 and mbSeq = #{prSeq} and pmdeleteNY = 0
 	</select>
 	
 	

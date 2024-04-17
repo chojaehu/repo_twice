@@ -10,7 +10,9 @@ public class MemberDto {
 	private String mbEmail;
 	
 	private String mbPassword;
+	private String mbnewPassword;
 	private String mbPasswordCheck;
+	
 	private String mbgender;
 	private String mbPhone;
 	private Date mbDateBirth;
@@ -18,6 +20,14 @@ public class MemberDto {
 	private Date mbModifiedDate;
 	private Integer mbdelectNY;
 	
+	
+	
+	public String getMbnewPassword() {
+		return mbnewPassword;
+	}
+	public void setMbnewPassword(String mbnewPassword) {
+		this.mbnewPassword = mbnewPassword;
+	}
 	public String getMbSeq() {
 		return mbSeq;
 	}
