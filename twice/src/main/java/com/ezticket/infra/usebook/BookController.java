@@ -145,6 +145,9 @@ public class BookController {
 		dto.setMbSeq((String)httpSession.getAttribute("sessSeqXdm"));
 		System.out.println(dto.getMbSeq());
 		System.out.println(dto.getSeat());
+		
+		
+		
 		service.payinsert(dto);
 		service.payseatinsert(dto);	
 		service.payseatupdate(dto);

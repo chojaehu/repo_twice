@@ -134,7 +134,7 @@
 		b.prSeq = #{prSeq}
 	</select>
 	
-		<!-- 리뷰 리스트 -->
+	<!-- 리뷰 리스트 -->
 	<select id="reviewList" resultMap="resultMapObj">
 		select
 		a.rvSeq,
@@ -202,7 +202,7 @@
 		a.mbSeq = g.mbSeq
 
 		where
-		g.mbSeq = #{prSeq}
+		g.mbSeq = #{prSeq} and a.pmdeleteNY = 0
 
 		ORDER BY a.pmSeq DESC
 		limit #{rowNumToShow} offset #{startRnumForMysql}
@@ -327,7 +327,7 @@
 			  </foreach> 		              
 	  </if>
 	</select> 
-	
+	<!-- 좌석 예매 수 -->
 	<select id = "Paymentcount" resultType="Integer">
 		select 
 
@@ -480,7 +480,7 @@
 	</insert>
 	
 	<!-- 공연 취소 좌석 정보 셀렉트 -->
-	<select id="ticketseatList" resultMap="resultMapObj">
+	<select id="ticketseatList" resultType="String">
 	select 
 		stSeq
 		from
@@ -493,15 +493,33 @@
 
 		update seat
 		set
-		stReservation = 1
+		stReservation = 0
 		where
 		<if test="seat != null and seat.size != 0">
 		stSeq IN
-	          <foreach collection="delseat" item="item" open="(" close=")" separator=",">
+	          <foreach collection="seat" item="item" open="(" close=")" separator=",">
 		           #{item}
 			  </foreach> 		              
 	 	 </if>
 
+	</update>
+	<!-- 티켓정보 ny변경 -->
+	<update id = "ticketuptdel">
+		update payment
+		set 
+		pmdeleteNY = 1
+		where
+		 pmSeq = #{pmSeq}
+		
+	</update>
+	<!-- 티켓 시트 ny 변경 -->
+	<update id = "tickerseatuptdel">
+		update selectseat
+		set
+		sltdeleteNY = 1
+		where
+		 pmSeq = #{pmSeq}
+	
 	</update>
 
 

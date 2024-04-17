@@ -1,12 +1,19 @@
 package com.ezticket.infra.performance;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezticket.common.constants.Constants;
 import com.ezticket.common.util.UtilDateTime;
@@ -183,7 +190,17 @@ public class PerformanceController {
 		
 		return str2 + "/usePerformancepage";
 	}
+	// 공연페이지 리뷰(댓글)
+	@ResponseBody
+	@RequestMapping(value = "/reviewinsert")
+	public Map<String, Object> bookDate(Model model, PerformanceDto dto) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		System.out.println(dto.getRvRvwCntnt());
+		returnMap.put("rt", "success");
 	
+		return returnMap;
+	}
 	
 	
 	// 결제 정보 보기

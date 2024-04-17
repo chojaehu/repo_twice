@@ -148,7 +148,7 @@ public class PerformanceService {
 	}
 	
 //	결제 취소 시 좌석정보 조회
-	public List<PerformanceDto> ticketseatList(PerformanceDto dto)
+	public List<String> ticketseatList(PerformanceDto dto)
 	{
 		return dao.ticketseatList(dto);
 	}
@@ -157,7 +157,16 @@ public class PerformanceService {
 	{
 		return dao.ticketseatupt(dto);
 	}
-	
+//	결제 취소 티켓태이블 ny변경
+	public int ticketuptdel(PerformanceDto dto)
+	{
+		return dao.ticketuptdel(dto);
+	}
+//	결제 취소 좌석 정보 ny변경
+	public int tickerseatuptdel(PerformanceDto dto)
+	{
+		return dao.tickerseatuptdel(dto);
+	}
 	public int update(PerformanceDto dto)
 	{
 		return dao.update(dto);

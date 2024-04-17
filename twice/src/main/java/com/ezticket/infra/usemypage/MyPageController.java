@@ -39,14 +39,13 @@ public class MyPageController {
 	}
 	
 	@RequestMapping(value = "/ticketdelete")
-	public String ticketdelete(PerformanceVo vo,PerformanceDto dto) throws Exception
+	public String ticketdelete(PerformanceDto dto) throws Exception
 	{
-
-		
-		
-		service.ticketseatList(dto);
-		System.out.println(dto.getStSeq()+"------------------------");
+		dto.setSeat(service.ticketseatList(dto));
+		System.out.println(dto.getSeat()+"------------------------");
 		service.ticketseatupt(dto);
+		service.ticketuptdel(dto);
+		service.tickerseatuptdel(dto);
 		
 		return "redirect:/useInformation";
 	}

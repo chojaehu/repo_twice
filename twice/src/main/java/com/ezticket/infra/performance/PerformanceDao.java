@@ -73,9 +73,13 @@ public interface PerformanceDao {
 	public List<PerformanceDto> ticketfianlseat(PerformanceDto dto);
 	
 //	결제 취소 좌석 정보 리스트
-	public List<PerformanceDto> ticketseatList(PerformanceDto dto);
+	public List<String> ticketseatList(PerformanceDto dto);
 //	결제 취소 좌석 활성화
 	public int ticketseatupt(PerformanceDto dto);
+//	결제 취소 결제테이블 ny 변경
+	public int ticketuptdel(PerformanceDto dto);
+//	결제 취소 결제 된 좌석 ny 변경
+	public int tickerseatuptdel(PerformanceDto dto);
 	
 	
 	public int update(PerformanceDto dto);

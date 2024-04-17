@@ -272,11 +272,15 @@
 					<div class="comment-wrapper">
 						<div id='score' class="score"></div>
 
-						<textarea class="comment-form__text"
-							placeholder='Add you comment here'></textarea>
-						<label class="comment-form__info">250 characters left</label>
-						<button type='submit'
-							class="btn btn-md btn--danger comment-form__btn">댓글 달기</button>
+						<textarea class="comment-form__text" id ="rvRvwCntnt" name = "rvRvwCntnt"
+							placeholder='Add you comment here'>
+						</textarea>
+						
+						<label class="comment-form__info">250 characters left
+						</label>
+						<button type="button" id ="reviewbtn" name = "reviewbtn"
+							class="btn btn-md btn--danger comment-form__btn">댓글 달기
+						</button>
 
 						<div class="comment-sets">
 
@@ -292,7 +296,7 @@
 
 									<a href='#' class="comment__author"
 										th:text="${review.rvWriter}"><span
-										class="social-used fa fa-vk"></span>Olia Gozha</a>
+										class="social-used fa fa-vk"></span></a>
 
 
 									<p class="comment__date"
@@ -314,78 +318,13 @@
 									</div>
 
 									<a href='#' class="comment__author" th:text="${reply.rpWriter}"><span
-										class="social-used fa fa-vk"></span>Dmitriy Pustovalov</a>
+										class="social-used fa fa-vk"></span></a>
 
 									<p class="comment__date"
-										th:text="${#dates.format(reply.rpRgstrDate,'yyyy-MM-dd HH:mm')}">today
-										| 10:19</p>
+										th:text="${#dates.format(reply.rpRgstrDate,'yyyy-MM-dd HH:mm')}"></p>
 
-									<p class="comment__message" th:text="${reply.rpRvwCntnt}">ssdsdsd</p>
+									<p class="comment__message" th:text="${reply.rpRvwCntnt}"></p>
 								</div>
-
-
-
-								<!-- <div class="comment comment--answer"
-									th:if="${!#lists.isEmpty(reply)}" th:each="reply : ${reply}">
-
-									<div class="comment__images">
-										<img alt='' src="images/comment/avatar-dmitriy.jpg">
-									</div>
-
-									<a href='#' class="comment__author" th:text="${reply.rpWriter}"><span
-										class="social-used fa fa-vk"></span>Dmitriy Pustovalov</a>
-
-									<p class="comment__date"
-										th:text="${#dates.format(reply.rpRgstrDate,'yyyy-MM-dd HH:mm')}">today
-										| 10:19</p>
-
-									<p class="comment__message" th:text="${reply.rpRvwCntnt}">ssdsdsd</p>
-								</div> -->
-
-								<!-- <th:block th:if="${review.rpWriter != null}">
-								<div class="comment comment--answer">
-									<div class="comment__images">
-										<img alt='' src="usr/images/comment/avatar-dmitriy.jpg">
-									</div>
-
-									<a href='#' class="comment__author" th:text = "${review.rpWriter}"
-									
-									><span
-										class="social-used fa fa-vk"></span>Dmitriy Pustovalov</a>
-										
-									<p class="comment__date" th:text="${#dates.format(review.rpRgstrDate,'yyyy-MM-dd HH:mm')}">today | 10:19</p>
-									
-									<p class="comment__message" th:text = "${review.rpRvwCntnt}">ssdsdsd</p>
-								</div> 
-								</th:block> -->
-
-
-								<!-- <div class="comment comment--answer">
-									<div class="comment__images">
-										<img alt='' src="images/comment/avatar-dmitriy.jpg">
-									</div>
-
-									<a href='#' class="comment__author" 
-									th:if="${review.rpWriter != null}"
-									th:text = "${review.rpWriter}"
-									><span
-										class="social-used fa fa-vk"></span>Dmitriy Pustovalov</a>
-										
-									<p class="comment__date" 
-									th:if="${review.rpRgstrDate, != null}"
-									th:text="${#dates.format(review.rpRgstrDate,'yyyy-MM-dd HH:mm')}"
-									>today | 10:19</p>
-									
-									<p class="comment__message" 
-									th:if="${review.rpRvwCntnt, != null}"
-									th:text = "${review.rpRvwCntnt}"
-									>ssdsdsd</p>
-								</div>  -->
-
-
-
-
-
 
 								<!-- <div class="comment-more">
 									<a href="#" class="watchlist">전체열기</a>
@@ -575,21 +514,32 @@
 	<script src="usr/js/custom.js"></script>
 
 
-
-
-	<!--  <script type="text/javascript">
-        $(document).ready(function () {
-        	 init_MovieList();
-        	init_MoviePage();
-            init_MoviePageFull(); 
-        });
-    </script> -->
-
 	<script type="text/javascript">
 		$(document).ready(function() {
 			init_MoviePage();
 			init_MoviePageFull();
 		});
+		document.getElementById("reviewbtn").onclick = function(){
+			
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/reviewinsert"
+				,data : {"rvRvwCntnt" : $("#rvRvwCntnt").val()}
+				,success: function(response) {
+					if(response.rt == "success")
+						{
+						 self.location.reload();
+						}
+
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+			
+		}
 	</script>
 
 </body>
