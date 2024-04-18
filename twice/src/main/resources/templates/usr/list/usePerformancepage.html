@@ -82,13 +82,13 @@
 						<div class="movie__info">
 							<div class="col-sm-4 col-md-3 movie-mobile">
 								<div class="movie__images">
-									<span class="movie__rating">5.0</span> <img alt=''
+									<span class="movie__rating" th:text ="${#numbers.formatDecimal(item.grade,1,1)}">5.0</span> <img alt=''
 										src="usr/ticketimg/main1.jpg">
 								</div>
-								<div class="movie__rate">
+								<!-- <div class="movie__rate">
 									Your vote:
 									<div id='score' class="score"></div>
-								</div>
+								</div> -->
 							</div>
 
 							<div class="col-sm-8 col-md-9">
@@ -271,11 +271,10 @@
 					<h2 class="page-heading">관람 후기</h2>
 
 					<div class="comment-wrapper">
-						<div id='score' class="score"></div>
+						<div id='score2' class="score"></div>
 
 						<textarea class="comment-form__text" id ="rvRvwCntnt" name = "rvRvwCntnt"
-							placeholder='Add you comment here'>
-						</textarea>
+							placeholder='Add you comment here'></textarea>
 						
 						<label class="comment-form__info">250 characters left
 						</label>
@@ -290,7 +289,7 @@
 
 							<div th:if="${!#lists.isEmpty(review)}"
 								th:each="review : ${review}">
-								<div class="comment">
+								<div class="comment" >
 									<div class="comment__images">
 										<img alt='' src="usr/images/comment/avatar-olia.jpg">
 									</div>
@@ -305,7 +304,7 @@
 
 
 									<p class="comment__message" th:text="${review.rvRvwCntnt}"></p>
-									<a href='#' class="comment__reply">답글</a>
+									<a href='#'  th:id="${review.rvSeq}" th:value="${review.rvSeq}" class="comment__reply">답글</a>
 									
 									
 									
@@ -521,13 +520,15 @@
 			init_MoviePageFull();
 		});
 		document.getElementById("reviewbtn").onclick = function(){
+			let aa = document.getElementById("score").value;
+			alert(aa);
 			
 			$.ajax({
 				async: true 
 				,cache: false
 				,type: "post"
 				,url: "/reviewinsert"
-				,data : {"rvRvwCntnt" : $("#rvRvwCntnt").val(), "prSeq" : $("#prSeq").val()}
+				,data : {"rvRvwCntnt" : $("#rvRvwCntnt").val(), "prSeq" : $("#prSeq").val(), "score" : $("#score").val() }
 				,success: function(response) {
 					if(response.rt == "success")
 						{
@@ -547,6 +548,67 @@
 			});
 			
 		}
+		$(document).on("click","#replybtn", function(){
+			let cc = $("#comment-form").attr("value");
+			let aa =$("#reply"+cc).val();
+			let bb =$("#comment-form").attr("value")
+			alert(bb)
+			alert(cc)
+			alert(aa);
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/replyinsert"
+				,data : {"rpRvwCntnt" : aa, "rvSeq" : $("#comment-form").attr("value")}
+				,success: function(response) {
+					if(response.rt == "success")
+						{
+						 alert("있음")
+						 self.location.reload();
+						
+						}
+					else
+						{
+							alert("로그인하고 달아주세요")
+						}
+
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			}); 
+		});
+		 
+		/* document.getElementById("replybtn").onclick = function(){
+			let bb= document.getElementById('comment-form').value;
+			alert(bb);
+			.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/reviewinsert"
+				,data : {"rpRvwCntnt" : $("#rpRvwCntnt").val(), "rvSeq" : $("#comment-form").val()}
+				,success: function(response) {
+					if(response.rt == "success")
+						{
+						 alert("있음")
+						 self.location.reload();
+						
+						}
+					else
+						{
+							alert("로그인하고 달아주세요")
+						}
+
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			}); 
+			
+			
+		} */
 		
 	</script>
 

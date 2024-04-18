@@ -1300,14 +1300,39 @@ function init_MoviePage () {
                   //reply comment function
                   $('.comment__reply').click( function (e) {
                         e.preventDefault();
-
-                        $('.comment').find('.comment-form').remove();
-                        $(this).parent().append("<form id='comment-form' class='comment-form' method='post'>\
-                            <textarea class='comment-form__text' placeholder='Add you comment here'></textarea>\
+						let aa = $(this).attr('id')
+						 alert(aa);
+                       /* $('.comment').find('.comment-form').remove();
+                        
+                        let div = $('<div>',{
+								id : 'comment-form',
+								class :'comment-form',
+								value : aa
+						});
+						let textarea = $('<textarea>',{
+							calss : 'comment-form__text',
+							placeholder :'Add you comment here'
+						});
+						let lavel = $('<label>',{
+							class : 'comment-form__info',
+							text : '250 characters left'
+						});
+						let button = $('<button>',{
+							calss :'btn btn-md btn--danger comment-form__btn',
+							type : 'button',
+							text : '답글달기'
+						});
+						div.append(textarea);
+						div.append(lavel);
+						div.append(button);
+						$(this).parent().append(div);*/
+                      $(this).parent().append("<div id='comment-form' class='comment-form' value= '"+aa+"'>\
+                            <textarea id= 'reply"+aa+"' name = id= 'reply"+aa+"' class='comment-form__text' placeholder='Add you comment here'></textarea>\
                             <label class='comment-form__info'>250 characters left</label>\
-                            <button type='submit' class='btn btn-md btn--danger comment-form__btn'>add comment</button>\
-                        </form>");
+                            <button id='replybtn' type='button' class='btn btn-md btn--danger comment-form__btn'>답글 달기</button>\
+                        </div>");
                   });
+                  
 
     //7. Timetable active element
     			$('.time-select__item').click(function (){

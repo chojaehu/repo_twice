@@ -284,7 +284,7 @@
     },
 
     _buildScoreField: function() {
-      return $('<input />', { name: this.opt.scoreName, type: 'hidden' }).appendTo(this);
+      return $('<input />', {id: this.opt.scoreName, name: this.opt.scoreName, type: 'hidden' }).appendTo(this);
     },
 
     _createCancel: function() {

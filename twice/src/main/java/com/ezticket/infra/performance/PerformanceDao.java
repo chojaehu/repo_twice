@@ -33,6 +33,8 @@ public interface PerformanceDao {
 	
 //	리뷰 답글 리스트
 	public List<PerformanceDto> replyList(PerformanceVo vo);
+//	리뷰 답글 달기
+	public int replyinsert(PerformanceDto dto);
 	
 	
 //	공연 몇관에 대한 리스트

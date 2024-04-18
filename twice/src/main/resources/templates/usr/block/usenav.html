@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">	
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">	
 
 
 		<!-- 페이지 상당 내비바 -->
@@ -62,10 +63,10 @@
                     </ul>
                 </nav>
                 </form>
-                <div class="control-panel">
+                <div class="control-panel" >
                 <span class="user-name d-none d-md-block" style="color: white;">[[${session.sessNameXdm}]]</span>
-                    <a th:href = "@{/useLogin}" class="btn btn--sign">Sign in</a>
-                    <a  class="btn btn--sign" id = "Logout" name= "Logout">out</a>
+                    <a th:href = "@{/useLogin}" class="btn btn--sign" sec:authorize="isAuthenticated()">Sign in</a>
+                    <a  class="btn btn--sign"  id = "Logout" name= "Logout">out</a>
                 </div>
 
             </div>

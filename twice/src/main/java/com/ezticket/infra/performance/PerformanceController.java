@@ -195,7 +195,7 @@ public class PerformanceController {
 	// 공연페이지 리뷰(댓글)
 	@ResponseBody
 	@RequestMapping(value = "/reviewinsert")
-	public Map<String, Object> bookDate(Model model, PerformanceDto dto, HttpSession httpSession) throws Exception {
+	public Map<String, Object> reviewinsert(Model model, PerformanceDto dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		System.out.println(dto.getRvRvwCntnt());
@@ -214,6 +214,28 @@ public class PerformanceController {
 	
 		return returnMap;
 	}
+	// 공연페이지 리뷰(댓글)
+		@ResponseBody
+		@RequestMapping(value = "/replyinsert")
+		public Map<String, Object> replyinsert(Model model, PerformanceDto dto, HttpSession httpSession) throws Exception {
+			Map<String, Object> returnMap = new HashMap<String, Object>();
+			
+			System.out.println(dto.getRvRvwCntnt());
+			dto.setMbSeq((String)httpSession.getAttribute("sessSeqXdm"));
+			String str = dto.getMbSeq();
+			if(str != null)
+			{
+				returnMap.put("rt", "success");
+				service.replyinsert(dto);
+			}
+			else
+			{
+				returnMap.put("rt", "false");
+			}
+			
+		
+			return returnMap;
+		}
 	
 	
 	// 결제 정보 보기

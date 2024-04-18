@@ -22,6 +22,10 @@ public class PerformanceDto {
 	private Date prModifiedDate;
 	private Integer prdeleteNY;
 	
+	
+	//공연 평점
+	private Double grade;
+	
 	//출연진 정보
 	private String cmName;
 	
@@ -64,7 +68,10 @@ public class PerformanceDto {
 	private String rvWriter;
 	private String rvRvwCntnt;
 	private String rvGpa;
+	private Integer score;
 	private Date rvRgstrDate;
+	
+	
 	
 	
 	// 답글 정보
@@ -73,10 +80,22 @@ public class PerformanceDto {
 	private String rpRvwCntnt;
 	private Date rpRgstrDate;
 	
-
 	
 	
+	
 
+	public Double getGrade() {
+		return grade;
+	}
+	public void setGrade(Double grade) {
+		this.grade = grade;
+	}
+	public Integer getScore() {
+		return score;
+	}
+	public void setScore(Integer score) {
+		this.score = score;
+	}
 	public String getSltSeq() {
 		return sltSeq;
 	}
