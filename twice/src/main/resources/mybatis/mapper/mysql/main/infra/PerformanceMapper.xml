@@ -194,7 +194,7 @@
 	values
 	(
 	#{mbSeq},
-	#{rvRvwCntnt},
+	#{rpRvwCntnt},
 	#{rvSeq}
 	)
 	
