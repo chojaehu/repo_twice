@@ -1332,7 +1332,7 @@ function init_MoviePage () {
                             <button id='replybtn' type='button' class='btn btn-md btn--danger comment-form__btn'>답글 달기</button>\
                         </div>");
                   });
-                  
+                  	
 
     //7. Timetable active element
     			$('.time-select__item').click(function (){

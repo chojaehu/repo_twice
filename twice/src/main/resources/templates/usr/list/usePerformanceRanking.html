@@ -119,9 +119,9 @@
 				<div class="col-sm-12">
 					<div class="row ">
 						<div class="movie movie--preview movie--full release"
-							th:if="${!#lists.isEmpty(list)}" th:each="list : ${list}">
+							th:if="${!#lists.isEmpty(list)}" th:each="list, iterStat : ${list}">
 							<div class="col-md-1 ">
-								<p class="gridBox">1</p>
+								<p class="gridBox" th:text="${iterStat.index + 1}"></p>
 							</div>
 							<div class=" col-md-2 ">
 								<div class="movie__images">

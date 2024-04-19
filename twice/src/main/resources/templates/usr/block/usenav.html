@@ -52,22 +52,43 @@
                                 <li class="menu__nav-item"><a th:href="@{/usePerformanceList(shArea=19)}">제주도</a></li>
                             </ul> 
                         </li>
-                        <li>
+                        <!-- <li >
                             <span class="sub-nav-toggle plus"></span>
                             <a th:href = "@{/useInformation}">마이페이지</a>
-                        </li>
+                        </li> -->
                         <li>
                             <span class="sub-nav-toggle plus"></span>
                             <a href="contact.html">문의하기</a>
                         </li>
                     </ul>
                 </nav>
+                <div class="control-panel" th:if="${session.sessSeqXdm != null}">
+	                	<!-- <span class="user-name d-none d-md-block" style="color: white;">[[${session.sessNameXdm}]]</span>
+	                    <a  class="btn btn--sign"  id = "Logout" name= "Logout">out</a> -->
+	                
+	                <div class="auth auth--home">
+	                
+                        <div class="auth__show">
+                            <span class="auth__image">
+                                <img alt="" src="usr/images/client-photo/auth.png">
+                            </span>
+                        </div>
+                        <a href="#" class="btn btn--sign btn--singin">
+                            [[${session.sessNameXdm}]]
+                        </a>
+                        <ul class="auth__function">
+                            <li><a th:href = "@{/useInformation}" class="auth__function-item">마이페이지</a></li>
+							<li><a id = "Logout" name= "Logout" class="auth__function-item">로그아웃</a></li>
+                        </ul>
+
+                    </div>
+	
+	                </div>
+	                <div class="control-panel" th:unless="${session.sessSeqXdm != null}">
+	                	<a th:href = "@{/useLogin}" class="btn btn--sign" sec:authorize="isAuthenticated()" style="margin-right: 180px">로그인</a>
+	                </div>
                 </form>
-                <div class="control-panel" >
-                <span class="user-name d-none d-md-block" style="color: white;">[[${session.sessNameXdm}]]</span>
-                    <a th:href = "@{/useLogin}" class="btn btn--sign" sec:authorize="isAuthenticated()">Sign in</a>
-                    <a  class="btn btn--sign"  id = "Logout" name= "Logout">out</a>
-                </div>
+	                
 
             </div>
         </header>
