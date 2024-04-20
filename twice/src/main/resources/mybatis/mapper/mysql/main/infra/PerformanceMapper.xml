@@ -637,6 +637,8 @@
 		a.prRgstrDate,
 		a.prModifiedDate,
 		a.prdeleteNY,
+		d.pllongitude,
+		d.plhardness,
 		d.plplace,
 		d.plSeq,
 		(select AVG(aa.rvGpa) from  review aa  where aa.prSeq = #{prSeq}) as grade

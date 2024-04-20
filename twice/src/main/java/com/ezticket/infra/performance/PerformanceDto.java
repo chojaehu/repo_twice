@@ -32,6 +32,8 @@ public class PerformanceDto {
 	// 공연장소 
 	private String plplace;
 	private Integer plSeq;
+	private Double pllongitude;
+	private Double plhardness;
 	
 	//공연관 
 	private Integer taSeq;
@@ -79,41 +81,6 @@ public class PerformanceDto {
 	private String rpWriter;
 	private String rpRvwCntnt;
 	private Date rpRgstrDate;
-	
-	
-	
-	
-
-	public Double getGrade() {
-		return grade;
-	}
-	public void setGrade(Double grade) {
-		this.grade = grade;
-	}
-	public Integer getScore() {
-		return score;
-	}
-	public void setScore(Integer score) {
-		this.score = score;
-	}
-	public String getSltSeq() {
-		return sltSeq;
-	}
-	public void setSltSeq(String sltSeq) {
-		this.sltSeq = sltSeq;
-	}
-	public String getMbSeq() {
-		return mbSeq;
-	}
-	public void setMbSeq(String mbSeq) {
-		this.mbSeq = mbSeq;
-	}
-	public Integer getSeatcount() {
-		return seatcount;
-	}
-	public void setSeatcount(Integer seatcount) {
-		this.seatcount = seatcount;
-	}
 	public Integer getPrSeq() {
 		return prSeq;
 	}
@@ -192,6 +159,12 @@ public class PerformanceDto {
 	public void setPrdeleteNY(Integer prdeleteNY) {
 		this.prdeleteNY = prdeleteNY;
 	}
+	public Double getGrade() {
+		return grade;
+	}
+	public void setGrade(Double grade) {
+		this.grade = grade;
+	}
 	public String getCmName() {
 		return cmName;
 	}
@@ -209,6 +182,18 @@ public class PerformanceDto {
 	}
 	public void setPlSeq(Integer plSeq) {
 		this.plSeq = plSeq;
+	}
+	public Double getPllongitude() {
+		return pllongitude;
+	}
+	public void setPllongitude(Double pllongitude) {
+		this.pllongitude = pllongitude;
+	}
+	public Double getPlhardness() {
+		return plhardness;
+	}
+	public void setPlhardness(Double plhardness) {
+		this.plhardness = plhardness;
 	}
 	public Integer getTaSeq() {
 		return taSeq;
@@ -282,11 +267,23 @@ public class PerformanceDto {
 	public void setSeat(List<String> seat) {
 		this.seat = seat;
 	}
+	public Integer getSeatcount() {
+		return seatcount;
+	}
+	public void setSeatcount(Integer seatcount) {
+		this.seatcount = seatcount;
+	}
 	public String getTotalprice() {
 		return totalprice;
 	}
 	public void setTotalprice(String totalprice) {
 		this.totalprice = totalprice;
+	}
+	public String getMbSeq() {
+		return mbSeq;
+	}
+	public void setMbSeq(String mbSeq) {
+		this.mbSeq = mbSeq;
 	}
 	public Integer getPmSeq() {
 		return pmSeq;
@@ -299,6 +296,12 @@ public class PerformanceDto {
 	}
 	public void setPmTicketCode(String pmTicketCode) {
 		this.pmTicketCode = pmTicketCode;
+	}
+	public String getSltSeq() {
+		return sltSeq;
+	}
+	public void setSltSeq(String sltSeq) {
+		this.sltSeq = sltSeq;
 	}
 	public String getRvSeq() {
 		return rvSeq;
@@ -323,6 +326,12 @@ public class PerformanceDto {
 	}
 	public void setRvGpa(String rvGpa) {
 		this.rvGpa = rvGpa;
+	}
+	public Integer getScore() {
+		return score;
+	}
+	public void setScore(Integer score) {
+		this.score = score;
 	}
 	public Date getRvRgstrDate() {
 		return rvRgstrDate;
@@ -354,4 +363,5 @@ public class PerformanceDto {
 	public void setRpRgstrDate(Date rpRgstrDate) {
 		this.rpRgstrDate = rpRgstrDate;
 	}
+
 }

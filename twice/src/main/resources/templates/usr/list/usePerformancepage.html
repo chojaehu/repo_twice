@@ -47,6 +47,7 @@
 <script src="usr/js/external/modernizr.custom.js"></script>
 
 
+
 </head>
 
 <body>
@@ -147,7 +148,12 @@
 						<h2 class="page-heading">상세 정보</h2>
 
 						<p class="movie__describe" th:text="${item.prDetails}"></p>
-
+						
+						<input type="hidden" id="longitude" name="longitude" th:value = "${item.pllongitude}">
+						<input type="hidden" id="hardness" name="hardness" th:value = "${item.plhardness}">
+						<h2 class="page-heading">위치</h2>
+						<div id="map" style="width:1100px;height:500px;"></div>
+						
 						<h2 class="page-heading">사진 &amp; 비디오</h2>
 
 						<div class="movie__media">
@@ -268,7 +274,7 @@
                         <div id='cimenas-map'></div>
                     </div> -->
 
-					<h2 class="page-heading">관람 후기</h2>
+					
 
 					<div class="comment-wrapper">
 						<div id='score2' class="score"></div>
@@ -514,8 +520,40 @@
 	<script src="usr/js/custom.js"></script>
 	<script src="usr/js/usrmymenu.js"></script>
 
-
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=092a7e4df8492ca8b10861c0e49e500f"></script>
 	<script type="text/javascript">
+	
+		let longitude = document.getElementById("longitude").value;
+		let hardness = document.getElementById("hardness").value;
+				
+		var marker = {
+			    position: new kakao.maps.LatLng(longitude, hardness), 
+			    text: '텍스트를 표시할 수 있어요!' 
+			};
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	    mapOption = { 
+	        center: new kakao.maps.LatLng(longitude, hardness), // 지도의 중심좌표
+	        level: 3, // 지도의 확대 레벨
+	        marker: marker
+	    };
+	
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	
+		// 마커가 표시될 위치입니다 
+		var markerPosition  = new kakao.maps.LatLng(longitude, hardness); 
+	
+		// 마커를 생성합니다
+		var marker = new kakao.maps.Marker({
+		    position: markerPosition
+		});
+	
+		// 마커가 지도 위에 표시되도록 설정합니다
+		marker.setMap(map);			
+				
+			
+			
+			
+	
 		$(document).ready(function() {
 			init_MoviePage();
 			init_MoviePageFull();
