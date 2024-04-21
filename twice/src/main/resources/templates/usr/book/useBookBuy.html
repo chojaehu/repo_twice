@@ -281,7 +281,10 @@
 			,data : {"totalprice" : totalprice}
 			,success: function(response) {
 				//alert(response);
-				console.log(response.cid)
+				console.log(response)
+				alert( response.next_redirect_mobile_url);
+				let url = response.next_redirect_mobile_url;
+				window.open(url)
 
 			}
 			,error : function(jqXHR, textStatus, errorThrown){
