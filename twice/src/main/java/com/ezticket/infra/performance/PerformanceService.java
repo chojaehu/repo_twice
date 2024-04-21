@@ -12,6 +12,9 @@ public class PerformanceService {
 	@Autowired
 	PerformanceDao dao;
 	
+	
+	
+	
 //	관리자 리스트
 	public List<PerformanceDto> selectList(PerformanceVo vo)
 	{

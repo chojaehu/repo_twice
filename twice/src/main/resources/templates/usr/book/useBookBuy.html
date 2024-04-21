@@ -56,14 +56,18 @@
 	                <div class="checkout-wrapper">
 	                    <h2 class="page-heading">가격</h2>
 	                    <ul class="book-result">
-	                        <li class="book-result__item">매수 : <span class="book-result__count booking-ticket" th:value = "${paycount}" th:text="${paycount}"></span>
+	                        <li class="book-result__item">매수 : 
+		                        <span class="book-result__count booking-ticket" 
+		                        id="ticketcount" name ="ticketcount"th:value = "${paycount}" th:text="${paycount}"></span>
 	                        </li>
 	                        <li class="book-result__item">선택 좌석 : <span
 	                                class="book-result__count booking-price"
 	                                 th:if="${!#lists.isEmpty(list)}"
 									 th:each="list : ${list}"
 									 th:text = "${list.stSeatCode} + ${list.stSeatNumber}"		>$20</span></li>
-	                        <li class="book-result__item">총합 : <span class="book-result__count booking-cost" th:value = "${paysum}" th:text = "${paysum} + '원'"></span>
+	                        <li class="book-result__item">총합 : 
+		                        <span class="book-result__count booking-cost" 
+		                        id="totalprice" name="totalprice" th:value = "${paysum}" th:text ="${#numbers.formatInteger(paysum, 3, 'COMMA') + '원'}" ></span>
 	                        </li>
 	                    </ul>
 	                    <h2 class="page-heading">카드정보</h2>
@@ -116,9 +120,9 @@
 	                    </div>
 	                    <h2 class="page-heading">다른 결제 수단</h2>
 	                    <div class="payment">
-	                        <a href="#" class="payment__item">
-	                            <img alt='' src="usr/images/payment/kakao.png">
-	                        </a>
+	                    <button type="button" id="kakaopay" name= "kakaopay" style="border: none; background-color: white;">
+	                    	<img alt='' src="usr/images/payment/kakao.png">
+	                    </button>
 	                    </div>
 	
 	                   <!--  <h2 class="page-heading">연락처 정보</h2>
@@ -244,29 +248,47 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')</script>
     <!-- Migrate -->
-    <script src="js/external/jquery-migrate-1.2.1.min.js"></script>
+    <script src="usr/js/external/jquery-migrate-1.2.1.min.js"></script>
     <!-- Bootstrap 3-->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
     <!-- Mobile menu -->
-    <script src="js/jquery.mobile.menu.js"></script>
+    <script src="usr/js/jquery.mobile.menu.js"></script>
     <!-- Select -->
-    <script src="js/external/jquery.selectbox-0.2.min.js"></script>
+    <script src="usr/js/external/jquery.selectbox-0.2.min.js"></script>
 
     <!-- Form element -->
-    <script src="js/external/form-element.js"></script>
+    <script src="usr/js/external/form-element.js"></script>
     <!-- Form validation -->
-    <script src="js/form.js"></script>
+    <script src="usr/js/form.js"></script>
 
     <!-- Custom -->
-    <script src="js/custom.js"></script>
+    <script src="usr/js/custom.js"></script>
     <script src="xdm/js/validationXdm.js" ></script>
     <script src="usr/js/usrCommon.js"></script>
 	<script src="usr/js/usrmymenu.js"></script>
     
     
     <script>
-    
+   document.getElementById("kakaopay").onclick = function(){
+    	let totalprice = $("#totalprice").attr('value');
+    	//alert(totalprice);
+    	$.ajax({
+			async: true 
+			,cache: false
+			,type: "get"
+			,url: "/kakaopay"
+			,data : {"totalprice" : totalprice}
+			,success: function(response) {
+				//alert(response);
+				console.log(response.cid)
+
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+    } 
     document.getElementById("back").onclick = function(){
     	window.history.back();
     }

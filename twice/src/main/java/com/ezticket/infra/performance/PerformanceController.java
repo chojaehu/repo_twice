@@ -1,10 +1,18 @@
 package com.ezticket.infra.performance;
 
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -235,6 +243,50 @@ public class PerformanceController {
 			
 		
 			return returnMap;
+		}
+		
+	
+//		카카오 페이 연동
+		@ResponseBody
+		@RequestMapping(value = "/kakaopay")
+		public String kakaopay() throws Exception{
+			URL url =new URL("https://open-api.kakaopay.com/online/v1/payment/ready");
+			HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
+			httpsURLConnection.setRequestMethod("POST");
+			httpsURLConnection.setRequestProperty("Authorization", "SECRET_KEY 20b0d4eeab076cff4344136c30e210bb");
+			httpsURLConnection.setRequestProperty("Content-Type", "application/json");
+			httpsURLConnection.setDoOutput(true);
+			String parameter = "cid=TC0ONETIME" // 가맹점 코드
+					+ "&partner_order_id=partner_order_id" // 가맹점 주문번호
+					+ "&partner_user_id=partner_user_id" // 가맹점 회원 id
+					+ "&item_name=초코파이" // 상품명
+					+ "&quantity=1" // 상품 수량
+					+ "&total_amount= 2000" // 총 금액
+					+ "&vat_amount=0" // 부가세
+					+ "&tax_free_amount=0" // 상품 비과세 금액
+					+ "&approval_url=http://localhost:8081/payment/success" // 결제 성공 시
+					+ "&fail_url=http://localhost:8081/payment/cancel" // 결제 실패 시
+					+ "&cancel_url=http://localhost:8081/payment/fail"; // 결제 취소 시
+			OutputStream outputStream = httpsURLConnection.getOutputStream();
+			DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
+			dataOutputStream.writeBytes(parameter);
+			dataOutputStream.close();
+			
+			InputStream inputStream;
+			int ok = httpsURLConnection.getResponseCode();
+			if(ok== 200)
+			{
+				inputStream =httpsURLConnection.getInputStream();
+			}
+			else
+			{
+				inputStream = httpsURLConnection.getErrorStream();
+			}
+			InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+			BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+			
+			
+			return bufferedReader.readLine();
 		}
 	
 	

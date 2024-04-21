@@ -65,6 +65,8 @@ public class PerformanceDto {
 	//예약 좌석 테이블 
 	private String sltSeq;
 	
+	
+	
 	//댓글 정보
 	private String rvSeq;
 	private String rvWriter;
@@ -81,6 +83,9 @@ public class PerformanceDto {
 	private String rpWriter;
 	private String rpRvwCntnt;
 	private Date rpRgstrDate;
+	
+	
+	
 	public Integer getPrSeq() {
 		return prSeq;
 	}
