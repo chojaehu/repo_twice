@@ -1052,7 +1052,7 @@ function init_MovieList () {
 
     //4. Sorting by category
     			// sorting function
-                $('.tags__item').click(function (e) {
+               /*	 $('.tags__item').click(function (e) {
                     //prevent the default behaviour of the link
                     e.preventDefault();
 
@@ -1066,14 +1066,14 @@ function init_MovieList () {
                         $(".movie--preview").show();
                         $('.pagination').show();
                             
-                        /*using the :not attribute and the filter class in it we are selecting
-                            only the list items that don't have that class and hide them '*/
+                        using the :not attribute and the filter class in it we are selecting
+                            only the list items that don't have that class and hide them '
                         if ( filter.toLowerCase()!=='all'){
                             $('.movie--preview:not(.' + filter + ')').hide();
                             //Show pagination on filter = all;
                             $('.pagination').hide();
                         }
-                });
+                });*/
 
 	//5. Toggle function for additional content
 				//toggle timetable show

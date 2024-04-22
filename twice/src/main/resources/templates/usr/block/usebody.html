@@ -4,83 +4,96 @@
 	<div class="banner-top" th:fragment="titleimg">
 			<img alt='top banner' src="usr/ticketimg/title.jpg">
 	</div>
-	
-	
-	<div th:fragment="list">
-	<div class="movie movie--preview movie--full release" 
-	                th:if="${!#lists.isEmpty(list)}"
-					th:each="list : ${list}">
-					
-	                    <div class="col-sm-3 col-md-2 col-lg-2">
-	                        <div class="movie__images">
-	                            <img alt='' src="usr/ticketimg/main1.jpg">
-	                        </div>
-	                        <div class="movie__feature">
-	                            <a href="#" class="movie__feature-item movie__feature--comment">123</a>
-	                            <a href="#" class="movie__feature-item movie__feature--video">7</a>
-	                            <a href="#" class="movie__feature-item movie__feature--photo">352</a>
-	                        </div>
-	                    </div>
-						<div id ="prSeq" name = "prSeq" th:value ="${list.prSeq}"></div>
-	                    <div class="col-sm-9 col-md-10 col-lg-10 movie__about">
-	                        <a  class="movie__title link--huge" 
-	                        th:href="@{/usePerformancepage(prSeq=${list.prSeq})}"
-															th:text="${list.prTitle}"></a>
-	
-	                        <p class="movie__time" th:text="${list.prViewingTime}"></p>
-	
-	                        <p class="movie__option"><strong>장소: </strong><a href="#" th:text="${list.plplace}"></a></p>
-	                        
-	                        <p class="movie__option"><strong>장르: </strong><a href="#" th:text="${@codeService.selectOneCachedCode(list.prperformanceType)}"></a></p>
-	                        
-	                        <p class="movie__option"><strong>기간: </strong>
-	                        <span th:text="${list.prStartDate}"></span>~
-	                        <span  th:text="${list.prEndDate}"></span></p>
-	                        
-	                        
-	                        <p class="movie__option"><strong>주최/기획 </strong><a href="#" th:text="${list.prHostedPlanned}"><span>,</span></a></p>
-	                        
-							<!-- <strong >출연진 </strong>
-	                       <p class="movie__option" >
-	                       <span th:if="${!#lists.isEmpty(castlist)}"
-							th:each="castlist : ${castlist}">
-							<a href="#" 
-							 th:text="${castlist.cmName}"></a>,
-							 </span>
-							 </p>  -->
 
-	                            
-	                            
-	                        <p class="movie__option"><strong>연령제한: 
-	                        </strong><a href="#" th:text="${@codeService.selectOneCachedCode(list.prAgeLimit)}"></a></p>
-	                        
-	                        
-	                        <p class="movie__option"><strong>관객수: </strong><a href="#" th:text="${list.prAttenDance}"></a></p>
+
+	<div th:fragment="list">
+		<div class="movie movie--preview movie--full release"
+			th:if="${!#lists.isEmpty(list)}" th:each="list : ${list}">
 	
-		                      <!--   <div class="movie__btns">
-		                            <a th:href="@{/usePerformancepage(prSeq=${list.prSeq})}" class="btn btn-md btn--warning">예매 하기 </a>
-		                        </div> -->
+			<div class="col-sm-3 col-md-2 col-lg-2">
+				<div class="movie__images">
+					<img alt='' src="usr/ticketimg/main1.jpg">
+				</div>
+				<div class="movie__feature">
+					<a href="#" class="movie__feature-item movie__feature--comment">123</a>
+					<a href="#" class="movie__feature-item movie__feature--video">7</a>
+					<a href="#" class="movie__feature-item movie__feature--photo">352</a>
+				</div>
+			</div>
+			<div id="prSeq" name="prSeq" th:value="${list.prSeq}"></div>
+			<div class="col-sm-9 col-md-10 col-lg-10 movie__about">
+				<a class="movie__title link--huge"
+					th:href="@{/usePerformancepage(prSeq=${list.prSeq})}"
+					th:text="${list.prTitle}"></a>
 	
-	                        <div class="preview-footer">
-	                            <div class="movie__rate">
-	                                <div class="score"></div><span class="movie__rate-number">170 votes</span> <span
-	                                    class="movie__rating" th:text ="${#numbers.formatDecimal(list.grade,1,1)}">5.0</span>
-	                            </div>
+				<p class="movie__time" th:text="${list.prViewingTime}"></p>
+	
+				<p class="movie__option">
+					<strong>장소: </strong><a href="#" th:text="${list.plplace}"></a>
+				</p>
+	
+				<p class="movie__option">
+					<strong>장르: </strong><a href="#"
+						th:text="${@codeService.selectOneCachedCode(list.prperformanceType)}"></a>
+				</p>
+	
+				<p class="movie__option">
+					<strong>기간: </strong> <span th:text="${list.prStartDate}"></span>~ <span
+						th:text="${list.prEndDate}"></span>
+				</p>
 	
 	
-	                        </div>
-	                    </div>
+				<p class="movie__option">
+					<strong>주최/기획 </strong><a href="#" th:text="${list.prHostedPlanned}"><span>,</span></a>
+				</p>
 	
-	                    <div class="clearfix"></div>
+				<!-- <strong >출연진 </strong>
+		                       <p class="movie__option" >
+		                       <span th:if="${!#lists.isEmpty(castlist)}"
+								th:each="castlist : ${castlist}">
+								<a href="#" 
+								 th:text="${castlist.cmName}"></a>,
+								 </span>
+								 </p>  -->
 	
-	                </div>
-	           </div>
-	           
-	           
-	           
-	           
-	           
-	           <div class="search" th:fragment="search">
+	
+	
+				<p class="movie__option">
+					<strong>연령제한: </strong><a href="#"
+						th:text="${@codeService.selectOneCachedCode(list.prAgeLimit)}"></a>
+				</p>
+	
+	
+				<p class="movie__option">
+					<strong>관객수: </strong><a href="#" th:text="${list.prAttenDance}"></a>
+				</p>
+	
+				<!--   <div class="movie__btns">
+			                            <a th:href="@{/usePerformancepage(prSeq=${list.prSeq})}" class="btn btn-md btn--warning">예매 하기 </a>
+			                        </div> -->
+	
+				<div class="preview-footer">
+					<div class="movie__rate">
+						 <div class="score"></div>  <!-- hidden으로 같은 아이디 생성으로 잡시 막음 -->
+						<span class="movie__rate-number">170 votes</span> <span
+							class="movie__rating"
+							th:text="${#numbers.formatDecimal(list.grade,1,1)}"></span>
+					</div>
+	
+	
+				</div>
+			</div>
+	
+			<div class="clearfix"></div>
+	
+		</div>
+	</div>
+
+
+
+
+
+<div class="search" th:fragment="search">
 	                    <input type="text" id="shValue" name= 'shValue' class="search__field" onkeyup="enterkey()"  placeholder="Search" >
 	                    
 	                    <select name="shOption" id="shOption" class="search__sort" tabindex="0" >
