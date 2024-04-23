@@ -120,8 +120,8 @@
 	                    </div>
 	                    <h2 class="page-heading">다른 결제 수단</h2>
 	                    <div class="payment">
-	                    <button type="button" id="kakaopay" name= "kakaopay" style="border: none; background-color: white;">
-	                    	<img alt='' src="usr/images/payment/kakao.png">
+	                    <button type="button" id="kakaopay" name= "kakaopay" style="border: none; background-color: white;" >
+	                    	<a th:href="@{/kakaopay}"><img alt='' src="usr/images/payment/kakao.png"></a>
 	                    </button>
 	                    </div>
 	
@@ -270,7 +270,7 @@
     
     
     <script>
-   document.getElementById("kakaopay").onclick = function(){
+   /* document.getElementById("kakaopay").onclick = function(){
     	let totalprice = $("#totalprice").attr('value');
     	//alert(totalprice);
     	$.ajax({
@@ -291,7 +291,7 @@
 				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 			}
 		});
-    } 
+    }  */
     document.getElementById("back").onclick = function(){
     	window.history.back();
     }

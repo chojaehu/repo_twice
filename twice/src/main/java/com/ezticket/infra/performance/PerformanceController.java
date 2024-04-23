@@ -1,18 +1,12 @@
 package com.ezticket.infra.performance;
 
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.URL;
-import java.util.ArrayList;
+
 import java.util.HashMap;
-import java.util.List;
+
 import java.util.Map;
 
-import javax.net.ssl.HttpsURLConnection;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezticket.common.constants.Constants;
@@ -246,31 +239,8 @@ public class PerformanceController {
 		}
 		
 	
-//		카카오 페이 연동
-		@ResponseBody
-		@RequestMapping(value = "/kakaopay")
-		public PerformanceDto kakaopay() throws Exception{	
-			
-			
-			return service.kakaoPayReady();
-		}
-	
-	
-	// 결제 정보 보기
-	/*
-	 @RequestMapping(value = "/useInformation") public String
-	 useModify(PerformanceVo vo, Model model, HttpSession httpSession) throws
-	 Exception { vo.setPrSeq((String)httpSession.getAttribute("sessSeqXdm"));
-	 model.addAttribute("list", service.usrselectPay(vo));
-	 
-	 return str2 + "/useInformation"; }
-	 */
-	
-	
 
-	
-	
-//	티켓 예매 페이지
+		
 	
 	
 	
