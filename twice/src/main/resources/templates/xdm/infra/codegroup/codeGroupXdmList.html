@@ -234,16 +234,18 @@
 
 	</div>
 
-	<div th:replace="~{xdm/infra/block/jsscr :: scr}"></div> 
+	
 	
 	<script type="text/javascript">
 		let form = document.querySelector("form[name=formList]");
 		let goUrlXdmForm = "/xdm/infra/index/codeGroupXdmFrom";
 		let goUrlXdmList = "/codeGroupXdmList";
 		let seq = document.querySelector("input[name=number]");
+		let goUrlXdmLogout = "/login"
 
 
 	</script>
+	<div th:replace="~{xdm/infra/block/jsscr :: scr}"></div> 
 
 </body>
 

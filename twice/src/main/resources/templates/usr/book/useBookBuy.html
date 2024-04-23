@@ -78,7 +78,7 @@
 	                                <div class="col-sm-6">
 	                                    <select  class="form__name" aria-label="Default select example" id="cardselect" name="cardselect">
 	                                        <option selected>카드사</option>
-	                                        <option th:each="list : ${@codeService.selectListCachedCode(1)}" th:value="${list.ifcdSeq}" th:text="${list.ifcdName}"></option>
+	                                        <option th:each="list : ${@codeService.selectListCachedCode(8)}" th:value="${list.ifcdSeq}" th:text="${list.ifcdName}"></option>
 	                                    </select>
 	                                </div>
 	                                

@@ -21,7 +21,7 @@
 			});
 		}
 		function valLogin(){
-			location.href = goUrlXdmLogin;
+			location.href = goUrlXdmLogout;
 		}
 		
 		
