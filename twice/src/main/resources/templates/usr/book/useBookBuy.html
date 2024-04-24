@@ -76,14 +76,14 @@
 	                        <div class="col-md-8">
 	                            <div  class="form row" >
 	                                <div class="col-sm-6">
-	                                    <select  class="form__name" aria-label="Default select example" id="cardselect" name="cardselect">
+	                                    <select  class="form__name" aria-label="Default select example" id="pmcardCompany" name="pmcardCompany">
 	                                        <option selected>카드사</option>
 	                                        <option th:each="list : ${@codeService.selectListCachedCode(8)}" th:value="${list.ifcdSeq}" th:text="${list.ifcdName}"></option>
 	                                    </select>
 	                                </div>
 	                                
 	                                <div class="col-sm-6">
-	                                    <select  class="form__name" aria-label="Default select example" >
+	                                    <select  class="form__name" aria-label="Default select example" id="pmcardType" name="pmcardType">
 	                                        <option selected >카드종류</option>
 	                                        <option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.ifcdSeq}" th:text="${list.ifcdName}"></option>
 	
@@ -91,29 +91,29 @@
 	                                </div>
 	                                
 	                                <div class="col-sm-2">
-	                                    <input type='text' id = "cardone" name="cardone" placeholder='카드번호'  class="form__name">
+	                                    <input type='text' id ="pmcardNumberONe" name="pmcardNumberONe" placeholder='카드번호'  class="form__name">
 	                                    <div class="invalid-feedback" id="cardoneFeedback" name="cardoneFeedback"></div>
 	                                </div>
 	                                <div class="col-sm-2">
-	                                    <input type='text' placeholder='카드번호'class="form__name">
+	                                    <input type='text' id="pmcardNumberTow" name="pmcardNumberTow" placeholder='카드번호'class="form__name">
 	                                </div>
 	                                <div class="col-sm-2">
-	                                    <input type='text' placeholder='카드번호'class="form__name">
+	                                    <input type='text' id="pmcardNumberThree" name="pmcardNumberThree" placeholder='카드번호'class="form__name">
 	                                </div>
 	                                <div class="col-sm-2">
-	                                    <input type='text' placeholder='카드번호' class="form__name">
+	                                    <input type='text' id="pmcardNumberfour" name="pmcardNumberfour" placeholder='카드번호' class="form__name">
 	                                </div>
 	                                <div class="col-sm-4">
-	                                    <input type='text' placeholder='소유주 이름' name='user-email' class="form__name">
+	                                    <input type='text' id="pmcardholder" name="pmcardholder" placeholder='소유주 이름'  class="form__name">
 	                                </div>
 	                                <div class="col-sm-4">
-	                                    <input type='text' placeholder='유효기간 mm' name='user-name' class="form__name">
+	                                    <input type='text' id="pmvalidityMonth" name="pmvalidityMonth" placeholder='유효기간 mm'  class="form__name">
 	                                </div>
 	                                <div class="col-sm-4">
-	                                    <input type='text' placeholder='유효기간 yy' name='user-name' class="form__name">
+	                                    <input type='text' id="pmmonthYear" name="pmmonthYear" placeholder='유효기간 yy' class="form__name">
 	                                </div>
 	                                <div class="col-sm-4">
-	                                    <input type='text' placeholder='cvc번호' name='user-email' class="form__name">
+	                                    <input type='text' id="pmcardCvc" name="pmcardCvc" placeholder='cvc번호'  class="form__name">
 	                                </div>
 	                            </div>
 	                        </div>
@@ -299,11 +299,38 @@
     {
     	//if(vallupdt() == false) return false;
     	let form = document.getElementById('formnext')
+    	let pmcardCompany = document.getElementById("pmcardCompany").value
+    	let pmcardType = document.getElementById("pmcardType").value
+    	let pmcardNumberONe = document.getElementById("pmcardNumberONe").value
+    	let pmcardNumberTow = document.getElementById("pmcardNumberTow").value
+    	let pmcardNumberThree = document.getElementById("pmcardNumberThree").value
+    	let pmcardNumberfour = document.getElementById("pmcardNumberfour").value
+    	let pmcardholder = document.getElementById("pmcardholder").value
+    	let pmvalidityMonth = document.getElementById("pmvalidityMonth").value
+    	let pmmonthYear = document.getElementById("pmmonthYear").value
+    	let pmcardCvc = document.getElementById("pmcardCvc").value
     	
-				let currentURL = window.location.href;
-        		let path = currentURL.split('?').pop();
-    			form.submit();
-    			location.href = "/payseatupdate" + "?" + path
+		let currentURL = window.location.href;
+        let path = currentURL.split('?').pop();
+        
+        
+        
+        path += "&pmcardCompany=" + pmcardCompany;
+        path += "&pmcardType=" + pmcardType;
+        path += "&pmcardNumberONe=" + pmcardNumberONe;
+        path += "&pmcardNumberTow=" + pmcardNumberTow;
+        path += "&pmcardNumberThree=" + pmcardNumberThree;
+        path += "&pmcardNumberfour=" + pmcardNumberfour;
+        path += "&pmcardholder=" + pmcardholder;
+        path += "&pmvalidityMonth=" + pmvalidityMonth;
+        path += "&pmmonthYear=" + pmmonthYear;
+        path += "&pmcardCvc=" + pmcardCvc;
+        
+        		//location.href = "/payseatupdate" + "?" + path
+        window.location.href = "/payseatupdate" + "?" + path
+    	//form.submit();
+    			
+    			
     	//console.log(seat2);
     }
     

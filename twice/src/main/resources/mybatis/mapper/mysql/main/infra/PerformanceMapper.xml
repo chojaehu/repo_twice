@@ -262,7 +262,10 @@
 					seat c
 				on 
 					c.stSeq = b.stSeq
+				where b.sltdeleteNY = 0
 				ORDER BY a.pmSeq DESC
+				
+					
 	</select>
 	
 	<!-- 결제 완료 페이징 카운트 -->
@@ -483,7 +486,17 @@
 		</selectKey>
 		insert into payment
 		(
-			prSeq
+			pmcardCompany
+			,pmcardType
+			,pmcardNumberONe
+			,pmcardNumberTow
+			,pmcardNumberThree
+			,pmcardNumberfour
+			,pmcardholder
+			,pmvalidityMonth
+			,pmmonthYear
+			,pmcardCvc
+			,prSeq
 			,mbSeq 
 			,pdSeq
 			,taSeq
@@ -491,6 +504,16 @@
 		)
 		values
 		   (
+		   ${pmcardCompany},
+		   ${pmcardType},
+		   ${pmcardNumberONe},
+		   ${pmcardNumberTow},
+		   ${pmcardNumberThree},
+		   ${pmcardNumberfour},
+		   '${pmcardholder}',
+		   ${pmvalidityMonth},
+		   ${pmmonthYear},
+		   ${pmcardCvc},
 		   ${prSeq},
 		   ${mbSeq},
 		   ${pdSeq},
@@ -525,6 +548,7 @@
 		where 
 			pmSeq = #{pmSeq}
 	</select>
+	
 	<!-- 취소한 좌석 다시 업데이트 -->
 	<update id = "ticketseatupt">
 

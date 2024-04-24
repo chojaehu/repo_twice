@@ -84,9 +84,32 @@ public class PerformanceDto {
 	private String rpRvwCntnt;
 	private Date rpRgstrDate;
 	
+	//결제 카드 정보
 	
-    
-    
+	private Integer pmpaymentMethod; // 결제방식
+	private Integer pmcardCompany; // zkemtk
+	private Integer pmcardType; //카드 타입
+	private String pmcardNumberONe; //카드번호 첫번째
+	private String pmcardNumberTow;//카드번호 두번째
+	private String pmcardNumberThree;// 카드번호 세번쨰
+	private String pmcardNumberfour;//카드번호 네번째
+	private String pmcardholder;// 카드주인 이름
+	private String pmvalidityMonth; //유효기간 월
+	private String pmmonthYear;// 유효기간 년
+	private String pmcardCvc;// 카드 cvc번호
+	
+	
+//	예매 시트 정보
+	private String sltdeleteNY;
+	
+	
+	
+	public String getSltdeleteNY() {
+		return sltdeleteNY;
+	}
+	public void setSltdeleteNY(String sltdeleteNY) {
+		this.sltdeleteNY = sltdeleteNY;
+	}
 	public Integer getPrSeq() {
 		return prSeq;
 	}
@@ -369,5 +392,72 @@ public class PerformanceDto {
 	public void setRpRgstrDate(Date rpRgstrDate) {
 		this.rpRgstrDate = rpRgstrDate;
 	}
-
+	public Integer getPmpaymentMethod() {
+		return pmpaymentMethod;
+	}
+	public void setPmpaymentMethod(Integer pmpaymentMethod) {
+		this.pmpaymentMethod = pmpaymentMethod;
+	}
+	public Integer getPmcardCompany() {
+		return pmcardCompany;
+	}
+	public void setPmcardCompany(Integer pmcardCompany) {
+		this.pmcardCompany = pmcardCompany;
+	}
+	public Integer getPmcardType() {
+		return pmcardType;
+	}
+	public void setPmcardType(Integer pmcardType) {
+		this.pmcardType = pmcardType;
+	}
+	public String getPmcardNumberONe() {
+		return pmcardNumberONe;
+	}
+	public void setPmcardNumberONe(String pmcardNumberONe) {
+		this.pmcardNumberONe = pmcardNumberONe;
+	}
+	public String getPmcardNumberTow() {
+		return pmcardNumberTow;
+	}
+	public void setPmcardNumberTow(String pmcardNumberTow) {
+		this.pmcardNumberTow = pmcardNumberTow;
+	}
+	public String getPmcardNumberThree() {
+		return pmcardNumberThree;
+	}
+	public void setPmcardNumberThree(String pmcardNumberThree) {
+		this.pmcardNumberThree = pmcardNumberThree;
+	}
+	public String getPmcardNumberfour() {
+		return pmcardNumberfour;
+	}
+	public void setPmcardNumberfour(String pmcardNumberfour) {
+		this.pmcardNumberfour = pmcardNumberfour;
+	}
+	public String getPmcardholder() {
+		return pmcardholder;
+	}
+	public void setPmcardholder(String pmcardholder) {
+		this.pmcardholder = pmcardholder;
+	}
+	public String getPmvalidityMonth() {
+		return pmvalidityMonth;
+	}
+	public void setPmvalidityMonth(String pmvalidityMonth) {
+		this.pmvalidityMonth = pmvalidityMonth;
+	}
+	public String getPmmonthYear() {
+		return pmmonthYear;
+	}
+	public void setPmmonthYear(String pmmonthYear) {
+		this.pmmonthYear = pmmonthYear;
+	}
+	public String getPmcardCvc() {
+		return pmcardCvc;
+	}
+	public void setPmcardCvc(String pmcardCvc) {
+		this.pmcardCvc = pmcardCvc;
+	}
+    
+    
 }

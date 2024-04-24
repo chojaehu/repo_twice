@@ -27,6 +27,12 @@ public class KakaoPayController {
     	System.out.println(".................................................... kakaopay");
         return "redirect:" + kakaoPayService.kakaoPayReady();
 	}
+    //결제 정
+    @RequestMapping(value="/kakaoPaySuccess")
+    public String kakaoPaySuccess(@RequestParam("pg_token")String pg_token, Model model, HttpSession httpSession) {
+    	model.addAttribute("info", kakaoPayService.kakaoPayInfo(pg_token, httpSession));
+    	return "kakaopay/kakaoPaySuccess";
+    }  
 	  
 	/*public String kakaoPaySuccess(@RequestParam("pg_token")String pg_token, Model model,HttpSession httpSession)
 	{

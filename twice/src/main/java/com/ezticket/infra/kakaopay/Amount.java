@@ -6,7 +6,6 @@ public class Amount {
     private int tax; // 부가세 금액
     private int point; // 사용한 포인트
     private int discount; // 할인금액
-    private int green_deposit; // 컵 보증금
 	public int getTotal() {
 		return total;
 	}
@@ -36,12 +35,6 @@ public class Amount {
 	}
 	public void setDiscount(int discount) {
 		this.discount = discount;
-	}
-	public int getGreen_deposit() {
-		return green_deposit;
-	}
-	public void setGreen_deposit(int green_deposit) {
-		this.green_deposit = green_deposit;
 	}
     
     
