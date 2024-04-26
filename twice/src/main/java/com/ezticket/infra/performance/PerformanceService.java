@@ -27,6 +27,10 @@ public class PerformanceService {
 	{
 		return dao.usrselectList(vo);
 	}
+//	사용자 리스트 카운트
+	public int usrcount(PerformanceVo vo) {
+		return dao.usrcount(vo);
+	}
 	
 //	사용자 랭킹 리스트
 	public List<PerformanceDto> usrselectRanking(PerformanceVo vo)

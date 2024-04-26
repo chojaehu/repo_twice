@@ -9,6 +9,8 @@ public interface PerformanceDao {
 	
 //	사용자 리스트
 	public List<PerformanceDto> usrselectList(PerformanceVo vo);
+//	사용자 카운트 
+	public int usrcount(PerformanceVo vo);
 	
 //	사용자 랭킹 리스트
 	public List<PerformanceDto> usrselectRanking(PerformanceVo vo);

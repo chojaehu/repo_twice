@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.ezticket.infra.performance.PerformanceDto;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -22,9 +25,11 @@ public class KakaoPayController {
     }
 
     // 결제요청
+    @ResponseBody 
     @RequestMapping(value="/kakaopay")
-	public String kakaopay() {
+	public String  kakaopay() {
     	System.out.println(".................................................... kakaopay");
+    	
         return "redirect:" + kakaoPayService.kakaoPayReady();
 	}
     //결제 정
@@ -39,5 +44,24 @@ public class KakaoPayController {
 		model.addAttribute("kakao", httpSession)
 		return 
 	}*/
+    //카카오페이 취소
+    @RequestMapping(value="/kakaopayCancel")
+	public String kakaopayCancel(Model model, HttpSession httpSession ) {
+    	System.out.println(".................................................... kakaopayCancel");
+    	String sessTidString = (String) httpSession.getAttribute("sessTid");
+    	if(sessTidString != null) {
+    		model.addAttribute("info", kakaoPayService.kakaoPayCancel(httpSession));
+
+    		// 세션삭제
+        	httpSession.removeAttribute("sessTid");
+        	httpSession.removeAttribute("sessTotal");
+        	httpSession.removeAttribute("sessTaxFree");
+        	httpSession.removeAttribute("sessVat");
+        	
+        	return "kakaopay/kakaopayCancelSuccess"; 
+    	} else {
+    		return "redirect:/kakao"; 
+    	}
+	}
 
 }

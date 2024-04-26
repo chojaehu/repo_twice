@@ -56,10 +56,10 @@
 	                <div class="checkout-wrapper">
 	                    <h2 class="page-heading">가격</h2>
 	                    <ul class="book-result">
-	                        <li class="book-result__item">매수 : 
+	                       <!--  <li class="book-result__item">매수 : 
 		                        <span class="book-result__count booking-ticket" 
 		                        id="ticketcount" name ="ticketcount"th:value = "${paycount}" th:text="${paycount}"></span>
-	                        </li>
+	                        </li> -->
 	                        <li class="book-result__item">선택 좌석 : <span
 	                                class="book-result__count booking-price"
 	                                 th:if="${!#lists.isEmpty(list)}"
@@ -67,8 +67,9 @@
 									 th:text = "${list.stSeatCode} + ${list.stSeatNumber}"		>$20</span></li>
 	                        <li class="book-result__item">총합 : 
 		                        <span class="book-result__count booking-cost" 
-		                        id="totalprice" name="totalprice" th:value = "${paysum}" th:text ="${#numbers.formatInteger(paysum, 3, 'COMMA') + '원'}" ></span>
+		                        id="totalprice2" name="totalprice2" th:value = "${paysum}" th:text ="${#numbers.formatInteger(paysum, 3, 'COMMA') + '원'}" ></span>
 	                        </li>
+	                        <input type="hidden" id="totalprice" name="totalprice" th:value = "${paysum}">
 	                    </ul>
 	                    <h2 class="page-heading">카드정보</h2>
 	                    <div class = "row">
@@ -121,7 +122,8 @@
 	                    <h2 class="page-heading">다른 결제 수단</h2>
 	                    <div class="payment">
 	                    <button type="button" id="kakaopay" name= "kakaopay" style="border: none; background-color: white;" >
-	                    	<a th:href="@{/kakaopay}"><img alt='' src="usr/images/payment/kakao.png"></a>
+	                    	<!-- <img alt='' src="usr/images/payment/kakao.png">  -->
+	                    	<a th:href="@{/kakaopay}"><img alt='' src="usr/images/payment/kakao.png"></a> 
 	                    </button>
 	                    </div>
 	
@@ -270,28 +272,35 @@
     
     
     <script>
-   /* document.getElementById("kakaopay").onclick = function(){
-    	let totalprice = $("#totalprice").attr('value');
-    	//alert(totalprice);
-    	$.ajax({
-			async: true 
-			,cache: false
-			,type: "get"
-			,url: "/kakaopay"
-			,data : {"totalprice" : totalprice}
-			,success: function(response) {
-				//alert(response);
-				console.log(response)
-				alert( response.next_redirect_mobile_url);
-				let url = response.next_redirect_mobile_url;
-				window.open(url)
+//     let from = document.querySelector("form[name=formnext]");
+//     let kakaopayurl = "/kakaopay" 
+    
+//     document.getElementById("kakaopay").onclick = function(){
+//     	from.action = kakaopayurl
+//     	from.submit();
+//     }
+    
+    
+//    document.getElementById("kakaopay").onclick = function(){
+//     	let totalprice = $("#totalprice").attr('value');
+//     	alert(totalprice);
+//     	$.ajax({
+// 			async: true 
+// 			,cache: false
+// 			,type: "get"
+// 			,url: "/kakaopay"
+// 			,data : {"total_amount" : "40000"}
+// 			,success: function(response) {
+//  				alert(response.next_redirect_pc_url);
+//  				location.href = response.next_redirect_pc_url	
 
-			}
-			,error : function(jqXHR, textStatus, errorThrown){
-				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-			}
-		});
-    }  */
+
+// 			}
+// 			,error : function(jqXHR, textStatus, errorThrown){
+// 				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+// 			}
+// 		});
+//     }   
     document.getElementById("back").onclick = function(){
     	window.history.back();
     }

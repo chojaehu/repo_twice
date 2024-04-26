@@ -111,7 +111,7 @@
 	                </div>  -->
 	                
 	                 <div class="page_wrap">
-		                 <div class="page_nation">
+		                <div class="page_nation">
 									<a th:if="${vo.startPage gt vo.pageNumToShow}" 
 									style="cursor: pointer;"
 									
@@ -119,7 +119,7 @@
 									th:attr="onclick=|goList('${vo.startPage - 1}')|">이전</a>
 
 									<a
-									th:each="num: ${#numbers.sequence(vo.startPage, vo.endPage)}"
+									th:each="num: ${#numbers.sequence(vo.startPage, vo.endPage)}" th:if="${vo.totalPages} gt 1"
 									th:classappend="${num eq vo.thisPage} ? active : ''"
 									 style="cursor: pointer;"
 									th:attr="onclick=|goList('${num}')|"

@@ -103,7 +103,20 @@ public class PerformanceDto {
 	private String sltdeleteNY;
 	
 	
+//	결제 전 정보
+	private int paytotalcount;
 	
+	
+	
+	
+	
+
+	public int getPaytotalcount() {
+		return paytotalcount;
+	}
+	public void setPaytotalcount(int paytotalcount) {
+		this.paytotalcount = paytotalcount;
+	}
 	public String getSltdeleteNY() {
 		return sltdeleteNY;
 	}

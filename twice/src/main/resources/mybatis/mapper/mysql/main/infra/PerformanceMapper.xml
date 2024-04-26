@@ -367,12 +367,22 @@
 			  </foreach> 		              
 	  </if>
 	</select> 
-	<!-- 좌석 예매 수 -->
-	<select id = "Paymentcount" resultType="Integer">
+	<!-- <select id = "Paymentcount" resultType="Integer">
 		select 
 
-		count(*)
-	
+		count(*) 
+		
+		,(select sum(aa.stPrise) 
+			from 
+				seat aa
+			where 
+				<if test="seat != null and seat.size != 0">
+					aa.stSeq IN
+	           	 <foreach collection="seat" item="item" open="(" close=")" separator=",">
+		           #{item}
+			     </foreach> 		              
+	 		    </if>
+				) as paytotalcount
 		from seat
 		where 
 		<if test="seat != null and seat.size != 0">
@@ -380,7 +390,22 @@
 	          <foreach collection="seat" item="item" open="(" close=")" separator=",">
 		           #{item}
 			  </foreach> 		              
-	  </if>
+	    </if>
+	</select>  -->
+	<!-- 좌석 예매 수 -->
+	<select id = "Paymentcount" resultType="Integer">
+		select 
+
+		count(*) 
+
+		from seat
+		where 
+		<if test="seat != null and seat.size != 0">
+		stSeq IN
+	          <foreach collection="seat" item="item" open="(" close=")" separator=",">
+		           #{item}
+			  </foreach> 		              
+	    </if>
 	</select> 
 	<!-- 가격 합산 -->
 	<select id = "Paymentsum" resultType="Double">
@@ -585,7 +610,7 @@
 
 
 	
-
+	<!-- 관리자 공연 리스트 카운트 -->
 	<select id="count" resultType="Integer">
 		SELECT
 		COUNT(*)
@@ -731,6 +756,17 @@
 		FROM performanceList
 		WHERE prSeq = #{prSeq}
 	</delete>
+	
+	<!-- 사용자 리스트 카운트 -->
+	<select id="usrcount" resultType="Integer">
+		SELECT
+		COUNT(*)
+		FROM
+		performanceList a
+
+		where 1=1
+		<include refid="selectCommonusr" /> 
+	</select>
 
 	<sql id="selectCommon">
 		<if test="shDelNy != null and !shDelNy.equals('')">AND prdeleteNY = #{shDelNy}</if>

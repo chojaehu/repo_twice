@@ -91,11 +91,13 @@ public class BookController {
 		 */
 		
 		//vo.setParamsPaging(service.Paymentcount(dto));
-		model.addAttribute("paycount", service.Paymentcount(dto));
+		//model.addAttribute("paycount", service.Paymentcount(dto));
 		model.addAttribute("paysum", service.Paymentsum(dto));
 		model.addAttribute("list", service.Paymentlist(dto));
 		
-		System.out.println(dto.getSeatcount());
+		
+		System.out.println(dto.getPaytotalcount());
+		
 		
 		
 		

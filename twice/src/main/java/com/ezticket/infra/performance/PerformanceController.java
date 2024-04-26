@@ -154,7 +154,8 @@ public class PerformanceController {
 		
 		
 		setSearch(vo);
-		vo.setParamsPaging(service.count(vo));
+		vo.setParamsPaging(service.usrcount(vo));
+		System.out.println(vo.getTotalPages()+"----------------------------------------");
 		
 		model.addAttribute("list", service.usrselectList(vo));
 
@@ -166,7 +167,7 @@ public class PerformanceController {
 	public String usePerformanceArea(@ModelAttribute("vo")PerformanceVo vo,Model model) throws Exception {
 		
 		setSearch(vo);
-		vo.setParamsPaging(service.count(vo));
+		vo.setParamsPaging(service.usrcount(vo));
 		model.addAttribute("list", service.usrselectList(vo));
 		return str2 + "/usePerformanceArea";
 	}
