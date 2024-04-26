@@ -106,7 +106,7 @@ public class BookController {
 	
 	// 예매 최종 티켓 발행
 	@RequestMapping(value = "/useBookfinal")
-	public String useBookfinal(@RequestParam("pmSeq") int aa, Model model,PerformanceDto dto) throws Exception
+	public String useBookfinal(@RequestParam("pmSeq") String aa, Model model,PerformanceDto dto) throws Exception
 	{
 		System.out.println(aa + "--------------------------");
 		model.addAttribute("item", service.ticketfianl(dto));

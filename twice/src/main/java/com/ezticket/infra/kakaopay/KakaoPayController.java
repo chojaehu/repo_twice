@@ -1,5 +1,8 @@
 package com.ezticket.infra.kakaopay;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,12 +28,15 @@ public class KakaoPayController {
     }
 
     // 결제요청
-    @ResponseBody 
+    @ResponseBody
     @RequestMapping(value="/kakaopay")
-	public String  kakaopay() {
+	public  Map<String, Object>  kakaopay(KakaoPayDto kakaoPayDto,PerformanceDto dto,HttpSession httpSession ) {
+    	Map<String, Object> returnMap = new HashMap<String, Object>();
+    	dto.setMbSeq((String)httpSession.getAttribute("sessSeqXdm"));
+    	returnMap.put("rt", kakaoPayService.kakaoPayReady(dto));
     	System.out.println(".................................................... kakaopay");
     	
-        return "redirect:" + kakaoPayService.kakaoPayReady();
+        return returnMap;
 	}
     //결제 정
     @RequestMapping(value="/kakaoPaySuccess")

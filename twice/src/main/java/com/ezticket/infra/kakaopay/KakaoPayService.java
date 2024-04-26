@@ -22,8 +22,6 @@ import jakarta.servlet.http.HttpSession;
 @Service
 public class KakaoPayService {
 	
-
-	PerformanceDto dto;
 	
 	private static final String Host = "https://kapi.kakao.com";
 
@@ -35,7 +33,7 @@ public class KakaoPayService {
     private CancelDto kakaoPayCancelDto;
 
  // 결제요청
-    public String kakaoPayReady() {
+    public String kakaoPayReady(PerformanceDto dto) {
         RestTemplate restTemplate = new RestTemplate();
         //restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory()); // 정확한 에러 파악을 위해 생성
         // Server Request Header : 서버 요청 헤더
@@ -46,13 +44,12 @@ public class KakaoPayService {
         
         // Server Request Body : 서버 요청 본문
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
-
         params.add("cid", "TC0ONETIME"); // 가맹점 코드 - 테스트용
         params.add("partner_order_id", "1001"); // 주문 번호
-        params.add("partner_user_id", "goguma"); // 회원 아이디
-        params.add("item_name", "비둘기"); // 상품 명
+        params.add("partner_user_id", dto.getMbSeq()); // 회원 아이디
+        params.add("item_name", dto.getPrTitle()); // 상품 명
         params.add("quantity", "1"); // 상품 수량
-        params.add("total_amount", "10"); // 상품 가격
+        params.add("total_amount",dto.getTotalprice()); // 상품 가격
         params.add("tax_free_amount", "0"); // 상품 비과세 금액
         params.add("approval_url", "http://localhost:8081/payseatupdate"); // 성공시 url
         params.add("cancel_url", "http://localhost:8081/usePerformanceList"); // 실패시 url

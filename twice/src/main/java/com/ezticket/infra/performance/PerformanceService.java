@@ -133,7 +133,7 @@ public class PerformanceService {
 		return dao.Paymentcount(dto);
 	}
 //	결제 총가격
-	public Double Paymentsum(PerformanceDto dto)
+	public PerformanceDto Paymentsum(PerformanceDto dto)
 	{
 		return dao.Paymentsum(dto);
 	}
@@ -201,6 +201,7 @@ public class PerformanceService {
 	{
 		return dao.updatedelete(dto);
 	}
+	
 	
 
     

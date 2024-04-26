@@ -25,6 +25,7 @@ public interface PerformanceDao {
 	public List<PerformanceDto> usrseatPay(PerformanceVo vo);
 //	결제 완료 카운트
 	public int usescount(PerformanceVo vo);
+//	결제페이지 
 	
 	
 //	리뷰 리스트
@@ -64,7 +65,7 @@ public interface PerformanceDao {
 //	결제 카운트
 	public int Paymentcount(PerformanceDto dto);
 //	결제 총 가격 
-	public Double Paymentsum(PerformanceDto dto);
+	public PerformanceDto Paymentsum(PerformanceDto dto);
 	
 //	결제 후 선택시트 1로 변경
 	public int payseatupdate(PerformanceDto dto);

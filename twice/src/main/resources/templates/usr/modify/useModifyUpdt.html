@@ -38,7 +38,7 @@ th, td {
         window.addEventListener('load', function () {
             $("#mbDateBirth").datetimepicker({
                 timepicker: false,
-                format: 'Y/m/d'
+                format: 'Y-m-d'
             });
         });
     </script>
@@ -164,9 +164,10 @@ th, td {
 												class="form__name"></td>
 										</tr>
 										<tr>
+										t<!-- h:value = "${#dates.format(item.mbDateBirth,'yyyy/MM/dd')}" -->
 											<th>생년월일</th>
 											<td><input type='text' class="form__name" id="mbDateBirth" name="mbDateBirth" 
-											th:value = "${#dates.format(item.mbDateBirth,'yyyy/MM/dd')}"
+											th:value = "${item.mbDateBirth}"
 											autocomplete="off"></td>
 										</tr> 
 										<tr>

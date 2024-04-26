@@ -408,7 +408,7 @@
 	    </if>
 	</select> 
 	<!-- 가격 합산 -->
-	<select id = "Paymentsum" resultType="Double">
+	<!-- <select id = "Paymentsum" resultType="Double">
 		select 
 
 		sum(stPrise)
@@ -421,7 +421,25 @@
 		           #{item}
 			  </foreach> 		              
 	  </if>
-	</select> 
+	</select> --> 
+	<select id="Paymentsum" resultMap="resultMapObj">
+	    SELECT 
+	        prTitle,
+	        (
+	            SELECT SUM(stPrise) 
+	            FROM seat aa 
+	            WHERE aa.stSeq IN (
+	                <foreach collection="seat" item="item" open="(" close=")" separator=",">
+	                    #{item}
+	                </foreach>
+	            )
+	        ) AS totalprice
+	    FROM 
+	        performancelist
+	    WHERE 
+	        prSeq = #{prSeq}
+	</select>
+
 	
 	<!-- 결제 최종 티켓 발행 -->
 	<select id ="ticketfianl" resultMap="resultMapObj">
@@ -506,7 +524,7 @@
 	<!-- 결제후 티켓정보 등록 -->
 	<insert id ="payinsert"  
 	parameterType = "com.ezticket.infra.performance.PerformanceDto" >
-		<selectKey resultType ="Integer" keyProperty="pmSeq" order="AFTER">
+		<selectKey resultType ="String" keyProperty="pmSeq" order="AFTER">
 		SELECT LAST_INSERT_ID()
 		</selectKey>
 		insert into payment

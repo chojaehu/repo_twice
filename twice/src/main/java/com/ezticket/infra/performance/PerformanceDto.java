@@ -59,7 +59,7 @@ public class PerformanceDto {
 	private String mbSeq;
 
 	//티켓정보
-	private Integer pmSeq;
+	private String pmSeq;
 	private String pmTicketCode;
 	
 	//예약 좌석 테이블 
@@ -105,6 +105,11 @@ public class PerformanceDto {
 	
 //	결제 전 정보
 	private int paytotalcount;
+	
+	
+	
+	
+	
 	
 	
 	
@@ -327,10 +332,10 @@ public class PerformanceDto {
 	public void setMbSeq(String mbSeq) {
 		this.mbSeq = mbSeq;
 	}
-	public Integer getPmSeq() {
+	public String getPmSeq() {
 		return pmSeq;
 	}
-	public void setPmSeq(Integer pmSeq) {
+	public void setPmSeq(String pmSeq) {
 		this.pmSeq = pmSeq;
 	}
 	public String getPmTicketCode() {

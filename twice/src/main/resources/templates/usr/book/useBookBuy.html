@@ -64,12 +64,13 @@
 	                                class="book-result__count booking-price"
 	                                 th:if="${!#lists.isEmpty(list)}"
 									 th:each="list : ${list}"
-									 th:text = "${list.stSeatCode} + ${list.stSeatNumber}"		>$20</span></li>
+									 th:text = "${list.stSeatCode} + ${list.stSeatNumber}"		></span></li>
 	                        <li class="book-result__item">총합 : 
 		                        <span class="book-result__count booking-cost" 
-		                        id="totalprice2" name="totalprice2" th:value = "${paysum}" th:text ="${#numbers.formatInteger(paysum, 3, 'COMMA') + '원'}" ></span>
+		                        id="totalprice2" name="totalprice2" th:value = "${paysum.totalprice}" th:text ="${#numbers.formatInteger(paysum.totalprice, 3, 'COMMA') + '원'}" ></span>
 	                        </li>
-	                        <input type="hidden" id="totalprice" name="totalprice" th:value = "${paysum}">
+	                       <input type="hidden" id="totalprice" name="totalprice" th:value = "${paysum.totalprice}"> 
+	                       <input type="hidden" id="prTitle" name= "prTitle" th:value="${paysum.prTitle}"> 
 	                    </ul>
 	                    <h2 class="page-heading">카드정보</h2>
 	                    <div class = "row">
@@ -122,8 +123,8 @@
 	                    <h2 class="page-heading">다른 결제 수단</h2>
 	                    <div class="payment">
 	                    <button type="button" id="kakaopay" name= "kakaopay" style="border: none; background-color: white;" >
-	                    	<!-- <img alt='' src="usr/images/payment/kakao.png">  -->
-	                    	<a th:href="@{/kakaopay}"><img alt='' src="usr/images/payment/kakao.png"></a> 
+	                    	<img alt='' src="usr/images/payment/kakao.png"> 
+	                    	<!-- <a th:href="@{/kakaopay}"><img alt='' src="usr/images/payment/kakao.png"></a>  -->
 	                    </button>
 	                    </div>
 	
@@ -269,38 +270,10 @@
     <script src="xdm/js/validationXdm.js" ></script>
     <script src="usr/js/usrCommon.js"></script>
 	<script src="usr/js/usrmymenu.js"></script>
-    
-    
-    <script>
-//     let from = document.querySelector("form[name=formnext]");
-//     let kakaopayurl = "/kakaopay" 
-    
-//     document.getElementById("kakaopay").onclick = function(){
-//     	from.action = kakaopayurl
-//     	from.submit();
-//     }
-    
-    
-//    document.getElementById("kakaopay").onclick = function(){
-//     	let totalprice = $("#totalprice").attr('value');
-//     	alert(totalprice);
-//     	$.ajax({
-// 			async: true 
-// 			,cache: false
-// 			,type: "get"
-// 			,url: "/kakaopay"
-// 			,data : {"total_amount" : "40000"}
-// 			,success: function(response) {
-//  				alert(response.next_redirect_pc_url);
-//  				location.href = response.next_redirect_pc_url	
-
-
-// 			}
-// 			,error : function(jqXHR, textStatus, errorThrown){
-// 				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-// 			}
-// 		});
-//     }   
+	
+	
+	
+    <script type="text/javascript"> 
     document.getElementById("back").onclick = function(){
     	window.history.back();
     }
@@ -349,6 +322,74 @@
 		if(!checkPassword('cardone',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false}
 
 	}
+    </script>
+    
+    
+    <script type="text/javascript">
+	//  let from = document.querySelector("form[name=formnext]");
+	//  let kakaopayurl = "/kakaopay" 
+	 
+	//  document.getElementById("kakaopay").onclick = function(){
+	//  	from.action = kakaopayurl
+	//  	from.submit();
+	//  }
+	 document.getElementById("kakaopay").onclick = function(){
+		 let currentURL = window.location.href;
+		 let url = new URL(currentURL);
+		 let kakaoParm = url.searchParams;
+		 
+		 let prSeq = kakaoParm.get("prSeq");
+		 let plSeq = kakaoParm.get("plSeq");
+		 let taSeq = kakaoParm.get("taSeq");
+		 let seat = kakaoParm.getAll("seat");
+		 let pricenum = document.getElementById("totalprice").value;
+		 let price  = Math.floor(pricenum);
+		 alert(price);
+		 
+		 console.log(prSeq);
+		 console.log(plSeq);
+		 console.log(taSeq);
+		 console.log(seat);
+		 $.ajax({
+				async: true 
+				,cache: false
+				,type: "get"
+				,url: "/kakaopay"
+				,data : {"prTitle" : $("#prTitle").val(),"totalprice" : price, "prSeq" : prSeq, "plSeq" : plSeq, "taSeq" : taSeq,"seat" : seat }
+				,success: function(response) {
+					alert(response.rt);
+					console.log(response.rt);
+					location.href = response.rt
+	
+	
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+	 }
+		 
+	 
+	/* document.getElementById("kakaopay").onclick = function(){
+	 	let totalprice = $("#totalprice").attr('value');
+	 	alert(totalprice);
+	 	$.ajax({
+				async: true 
+				,cache: false
+				,type: "get"
+				,url: "/kakaopay"
+				,data : {"total_amount" : "40000"}
+				,success: function(response) {
+					alert(response.next_redirect_pc_url);
+					location.href = response.next_redirect_pc_url	
+	
+	
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+	 }   */
     </script>
 
 </body>
