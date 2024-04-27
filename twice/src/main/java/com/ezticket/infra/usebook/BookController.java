@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezticket.common.constants.Constants;
 import com.ezticket.common.util.UtilDateTime;
+import com.ezticket.infra.kakaopay.KakaoPayService;
 import com.ezticket.infra.member.MemberDto;
 import com.ezticket.infra.performance.PerformanceDto;
 import com.ezticket.infra.performance.PerformanceService;
@@ -34,6 +35,9 @@ public class BookController {
 	
 	@Autowired
 	PerformanceService service;
+	
+	@Autowired
+	KakaoPayService kakaoPayService;
 	
 	private String str3 = "/usr/book";
 	
@@ -106,9 +110,10 @@ public class BookController {
 	
 	// 예매 최종 티켓 발행
 	@RequestMapping(value = "/useBookfinal")
-	public String useBookfinal(@RequestParam("pmSeq") String aa, Model model,PerformanceDto dto) throws Exception
+	public String useBookfinal(@RequestParam("pg_token")String pg_token,@RequestParam("pmSeq") String aa, HttpSession httpSession, Model model,PerformanceDto dto) throws Exception
 	{
-		System.out.println(aa + "--------------------------");
+		System.out.println(pg_token + "--------------------------");
+		model.addAttribute("info", pg_token);
 		model.addAttribute("item", service.ticketfianl(dto));
 		model.addAttribute("list", service.ticketfianlseat(dto));
 		return str3 + "/useBookfinal";

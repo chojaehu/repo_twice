@@ -341,21 +341,20 @@
 		 let prSeq = kakaoParm.get("prSeq");
 		 let plSeq = kakaoParm.get("plSeq");
 		 let taSeq = kakaoParm.get("taSeq");
+		 let pdSeq = kakaoParm.get("pdSeq");
 		 let seat = kakaoParm.getAll("seat");
 		 let pricenum = document.getElementById("totalprice").value;
 		 let price  = Math.floor(pricenum);
 		 alert(price);
-		 
-		 console.log(prSeq);
-		 console.log(plSeq);
-		 console.log(taSeq);
-		 console.log(seat);
+		/*  data : {"prTitle" : $("#prTitle").val(),"totalprice" : price, "prSeq" : prSeq, "plSeq" : plSeq, "taSeq" : taSeq,"pdSeq" : pdSeq,"seat" : seat } */
+		
+		let ticketurl = currentURL.split('?').pop();
 		 $.ajax({
 				async: true 
 				,cache: false
 				,type: "get"
 				,url: "/kakaopay"
-				,data : {"prTitle" : $("#prTitle").val(),"totalprice" : price, "prSeq" : prSeq, "plSeq" : plSeq, "taSeq" : taSeq,"seat" : seat }
+				,data : {"prTitle" : $("#prTitle").val(),"totalprice" : price,"ticketurl" : ticketurl}
 				,success: function(response) {
 					alert(response.rt);
 					console.log(response.rt);

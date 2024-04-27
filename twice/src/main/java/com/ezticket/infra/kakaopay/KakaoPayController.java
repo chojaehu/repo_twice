@@ -9,8 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezticket.infra.performance.PerformanceDto;
+import com.ezticket.infra.performance.PerformanceService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -19,6 +21,9 @@ public class KakaoPayController {
 	
 	@Autowired
 	KakaoPayService kakaoPayService;
+	
+	@Autowired
+	PerformanceService service;
 	
 	
 	// 결제화면
@@ -30,19 +35,37 @@ public class KakaoPayController {
     // 결제요청
     @ResponseBody
     @RequestMapping(value="/kakaopay")
-	public  Map<String, Object>  kakaopay(KakaoPayDto kakaoPayDto,PerformanceDto dto,HttpSession httpSession ) {
+	public  Map<String, Object>  kakaopay(KakaoPayDto kakaoPayDto,PerformanceDto dto,HttpSession httpSession,RedirectAttributes redirectAttributes ) {
     	Map<String, Object> returnMap = new HashMap<String, Object>();
     	dto.setMbSeq((String)httpSession.getAttribute("sessSeqXdm"));
     	returnMap.put("rt", kakaoPayService.kakaoPayReady(dto));
     	System.out.println(".................................................... kakaopay");
     	
+    	
+    	
         return returnMap;
 	}
     //결제 정
     @RequestMapping(value="/kakaoPaySuccess")
-    public String kakaoPaySuccess(@RequestParam("pg_token")String pg_token, Model model, HttpSession httpSession) {
-    	model.addAttribute("info", kakaoPayService.kakaoPayInfo(pg_token, httpSession));
-    	return "kakaopay/kakaoPaySuccess";
+    public String kakaoPaySuccess(@RequestParam("pg_token")String pg_token, Model model, HttpSession httpSession,RedirectAttributes redirectAttributes,PerformanceDto dto) {
+    	
+    	
+    	
+    	dto.setMbSeq((String)httpSession.getAttribute("sessSeqXdm"));
+		System.out.println(dto.getMbSeq());
+		System.out.println(dto.getSeat());
+		
+		
+		
+		service.payinsert(dto);
+		service.payseatinsert(dto);	
+		service.payseatupdate(dto);
+		
+		System.out.println(pg_token +"-----------------------------------------------------------------");
+		redirectAttributes.addAttribute("pmSeq", dto.getPmSeq());
+		redirectAttributes.addFlashAttribute("pg_token", kakaoPayService.kakaoPayInfo(pg_token, httpSession));
+    	
+    	return "redirect:/useBookfinal";
     }  
 	  
 	/*public String kakaoPaySuccess(@RequestParam("pg_token")String pg_token, Model model,HttpSession httpSession)

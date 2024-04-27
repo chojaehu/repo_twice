@@ -428,17 +428,24 @@
 	        (
 	            SELECT SUM(stPrise) 
 	            FROM seat aa 
-	            WHERE aa.stSeq IN (
+	            WHERE aa.stSeq IN 
 	                <foreach collection="seat" item="item" open="(" close=")" separator=",">
 	                    #{item}
 	                </foreach>
-	            )
 	        ) AS totalprice
 	    FROM 
 	        performancelist
 	    WHERE 
 	        prSeq = #{prSeq}
 	</select>
+	<!-- <select id="Paymentsum" resultMap="resultMapObj">
+	    SELECT 
+	        prTitle
+	    FROM 
+	        performancelist
+	    WHERE 
+	        prSeq = #{prSeq}
+	</select> -->
 
 	
 	<!-- 결제 최종 티켓 발행 -->
@@ -527,42 +534,72 @@
 		<selectKey resultType ="String" keyProperty="pmSeq" order="AFTER">
 		SELECT LAST_INSERT_ID()
 		</selectKey>
-		insert into payment
+			insert into payment
 		(
-			pmcardCompany
-			,pmcardType
-			,pmcardNumberONe
-			,pmcardNumberTow
-			,pmcardNumberThree
-			,pmcardNumberfour
-			,pmcardholder
-			,pmvalidityMonth
-			,pmmonthYear
-			,pmcardCvc
-			,prSeq
-			,mbSeq 
-			,pdSeq
-			,taSeq
-			,plSeq
+			pmcardCompany,
+			pmcardType,
+			pmcardNumberONe,
+			pmcardNumberTow,
+			pmcardNumberThree,
+			pmcardNumberfour,
+			pmcardholder,
+			pmvalidityMonth,
+			pmmonthYear,
+			pmcardCvc,
+			prSeq,
+			mbSeq,
+			pdSeq,
+			taSeq,
+			plSeq
 		)
 		values
-		   (
-		   ${pmcardCompany},
-		   ${pmcardType},
-		   ${pmcardNumberONe},
-		   ${pmcardNumberTow},
-		   ${pmcardNumberThree},
-		   ${pmcardNumberfour},
-		   '${pmcardholder}',
-		   ${pmvalidityMonth},
-		   ${pmmonthYear},
-		   ${pmcardCvc},
-		   ${prSeq},
-		   ${mbSeq},
-		   ${pdSeq},
-		   ${taSeq},
-		   ${plSeq}
-		   )
+		(
+			CASE 
+				WHEN ${pmpaymentMethod} = '1' THEN NULL
+				ELSE NULL
+			END,
+			CASE 
+				WHEN ${pmpaymentMethod} = '1' THEN NULL
+				ELSE NULL
+			END,
+			CASE 
+				WHEN ${pmpaymentMethod} = '1' THEN NULL
+				ELSE NULL
+			END,
+			CASE 
+				WHEN ${pmpaymentMethod} = '1' THEN NULL
+				ELSE NULL
+			END,
+			CASE 
+				WHEN ${pmpaymentMethod} = '1' THEN NULL
+				ELSE NULL
+			END,
+			CASE 
+				WHEN ${pmpaymentMethod} = '1' THEN NULL
+				ELSE NULL
+			END,
+			CASE 
+				WHEN ${pmpaymentMethod} = '1' THEN NULL
+				ELSE NULL
+			END,
+			CASE 
+				WHEN ${pmpaymentMethod} = '1' THEN NULL
+				ELSE NULL
+			END,
+			CASE 
+				WHEN ${pmpaymentMethod} = '1' THEN NULL
+				ELSE NULL
+			END,
+			CASE 
+				WHEN ${pmpaymentMethod} = '1' THEN NULL
+				ELSE NULL
+			END,
+			${prSeq},
+			${mbSeq},
+			${pdSeq},
+			${taSeq},
+			${plSeq}
+		)
 	
 	</insert>
 	

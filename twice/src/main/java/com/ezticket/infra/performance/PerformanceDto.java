@@ -7,7 +7,7 @@ public class PerformanceDto {
 	
 	
 	// 공연 정보
-	private Integer prSeq;
+	private String prSeq;
 	private String prTitle;
 	private String prperformanceType;
 	private String prViewingTime;
@@ -105,33 +105,11 @@ public class PerformanceDto {
 	
 //	결제 전 정보
 	private int paytotalcount;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	public int getPaytotalcount() {
-		return paytotalcount;
-	}
-	public void setPaytotalcount(int paytotalcount) {
-		this.paytotalcount = paytotalcount;
-	}
-	public String getSltdeleteNY() {
-		return sltdeleteNY;
-	}
-	public void setSltdeleteNY(String sltdeleteNY) {
-		this.sltdeleteNY = sltdeleteNY;
-	}
-	public Integer getPrSeq() {
+	private String ticketurl; //결제시 넘여야할 주소값
+	public String getPrSeq() {
 		return prSeq;
 	}
-	public void setPrSeq(Integer prSeq) {
+	public void setPrSeq(String prSeq) {
 		this.prSeq = prSeq;
 	}
 	public String getPrTitle() {
@@ -476,6 +454,23 @@ public class PerformanceDto {
 	public void setPmcardCvc(String pmcardCvc) {
 		this.pmcardCvc = pmcardCvc;
 	}
-    
+	public String getSltdeleteNY() {
+		return sltdeleteNY;
+	}
+	public void setSltdeleteNY(String sltdeleteNY) {
+		this.sltdeleteNY = sltdeleteNY;
+	}
+	public int getPaytotalcount() {
+		return paytotalcount;
+	}
+	public void setPaytotalcount(int paytotalcount) {
+		this.paytotalcount = paytotalcount;
+	}
+	public String getTicketurl() {
+		return ticketurl;
+	}
+	public void setTicketurl(String ticketurl) {
+		this.ticketurl = ticketurl;
+	}
     
 }
