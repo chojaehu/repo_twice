@@ -556,43 +556,43 @@
 		(
 			CASE 
 				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE NULL
+				ELSE ${pmcardCompany}
 			END,
 			CASE 
 				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE NULL
+				ELSE ${pmcardType}
 			END,
 			CASE 
 				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE NULL
+				ELSE ${pmcardNumberONe}
 			END,
 			CASE 
 				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE NULL
+				ELSE ${pmcardNumberTow}
 			END,
 			CASE 
 				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE NULL
+				ELSE ${pmcardNumberThree}
 			END,
 			CASE 
 				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE NULL
+				ELSE ${pmcardNumberfour}
 			END,
 			CASE 
 				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE NULL
+				ELSE ${pmcardholder}
 			END,
 			CASE 
 				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE NULL
+				ELSE ${pmvalidityMonth}
 			END,
 			CASE 
 				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE NULL
+				ELSE ${pmmonthYear}
 			END,
 			CASE 
 				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE NULL
+				ELSE ${pmcardCvc}
 			END,
 			${prSeq},
 			${mbSeq},
