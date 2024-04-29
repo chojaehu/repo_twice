@@ -143,10 +143,15 @@ public class PerformanceService {
 	{
 		return dao.payseatupdate(dto);
 	}
-//	결제 후 공연 정보 인설트 
+//	결제 후 결제 정보 인설트 
 	public int payinsert(PerformanceDto dto)
 	{
 		return dao.payinsert(dto);
+	}
+//	카카오페이 결제 인설트
+	public int kakaopayinsert(PerformanceDto dto)
+	{
+		return dao.kakaopayinsert(dto);
 	}
 //	결제 후 공연좌석 정보 인설트
 	public int payseatinsert(PerformanceDto dto)

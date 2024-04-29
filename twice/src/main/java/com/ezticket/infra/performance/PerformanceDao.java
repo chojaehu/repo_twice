@@ -69,8 +69,10 @@ public interface PerformanceDao {
 	
 //	결제 후 선택시트 1로 변경
 	public int payseatupdate(PerformanceDto dto);
-//	결제 후 공연정보 인설트
+//	결제 후 결제정보 인설트
 	public int payinsert(PerformanceDto dto);
+//	카카오페이 인설트 
+	public int kakaopayinsert(PerformanceDto dto);
 //	결제 후 공연좌석정보 인설트
 	public int payseatinsert(PerformanceDto dto);
 	

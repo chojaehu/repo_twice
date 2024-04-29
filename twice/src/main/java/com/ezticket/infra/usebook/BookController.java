@@ -110,10 +110,10 @@ public class BookController {
 	
 	// 예매 최종 티켓 발행
 	@RequestMapping(value = "/useBookfinal")
-	public String useBookfinal(@RequestParam("pg_token")String pg_token,@RequestParam("pmSeq") String aa, HttpSession httpSession, Model model,PerformanceDto dto) throws Exception
+	public String useBookfinal(@RequestParam("pmSeq") String aa, HttpSession httpSession, Model model,PerformanceDto dto) throws Exception
 	{
-		System.out.println(pg_token + "--------------------------");
-		model.addAttribute("info", pg_token);
+		//System.out.println(pg_token + "--------------------------");
+		//model.addAttribute("info", pg_token);
 		model.addAttribute("item", service.ticketfianl(dto));
 		model.addAttribute("list", service.ticketfianlseat(dto));
 		return str3 + "/useBookfinal";

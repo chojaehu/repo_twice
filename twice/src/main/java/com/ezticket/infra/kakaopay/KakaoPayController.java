@@ -57,7 +57,7 @@ public class KakaoPayController {
 		
 		
 		
-		service.payinsert(dto);
+		service.kakaopayinsert(dto);
 		service.payseatinsert(dto);	
 		service.payseatupdate(dto);
 		

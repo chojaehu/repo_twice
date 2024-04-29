@@ -529,23 +529,13 @@
 	</update>
 	
 	<!-- 결제후 티켓정보 등록 -->
-	<insert id ="payinsert"  
+	<insert id ="kakaopayinsert"  
 	parameterType = "com.ezticket.infra.performance.PerformanceDto" >
 		<selectKey resultType ="String" keyProperty="pmSeq" order="AFTER">
 		SELECT LAST_INSERT_ID()
 		</selectKey>
 			insert into payment
 		(
-			pmcardCompany,
-			pmcardType,
-			pmcardNumberONe,
-			pmcardNumberTow,
-			pmcardNumberThree,
-			pmcardNumberfour,
-			pmcardholder,
-			pmvalidityMonth,
-			pmmonthYear,
-			pmcardCvc,
 			prSeq,
 			mbSeq,
 			pdSeq,
@@ -554,52 +544,56 @@
 		)
 		values
 		(
-			CASE 
-				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE ${pmcardCompany}
-			END,
-			CASE 
-				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE ${pmcardType}
-			END,
-			CASE 
-				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE ${pmcardNumberONe}
-			END,
-			CASE 
-				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE ${pmcardNumberTow}
-			END,
-			CASE 
-				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE ${pmcardNumberThree}
-			END,
-			CASE 
-				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE ${pmcardNumberfour}
-			END,
-			CASE 
-				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE ${pmcardholder}
-			END,
-			CASE 
-				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE ${pmvalidityMonth}
-			END,
-			CASE 
-				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE ${pmmonthYear}
-			END,
-			CASE 
-				WHEN ${pmpaymentMethod} = '1' THEN NULL
-				ELSE ${pmcardCvc}
-			END,
 			${prSeq},
 			${mbSeq},
 			${pdSeq},
 			${taSeq},
 			${plSeq}
 		)
+	
+	</insert>
+	<insert id ="payinsert"  
+	parameterType = "com.ezticket.infra.performance.PerformanceDto" >
+		<selectKey resultType ="String" keyProperty="pmSeq" order="AFTER">
+		SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into payment
+		(
+			pmcardCompany
+			,pmcardType
+			,pmcardNumberONe
+			,pmcardNumberTow
+			,pmcardNumberThree
+			,pmcardNumberfour
+			,pmcardholder
+			,pmvalidityMonth
+			,pmmonthYear
+			,pmcardCvc
+			,prSeq
+			,mbSeq 
+			,pdSeq
+			,taSeq
+			,plSeq
+		)
+		values
+		   (
+		   
+		   ${pmcardCompany},
+		   ${pmcardType},
+		   ${pmcardNumberONe},
+		   ${pmcardNumberTow},
+		   ${pmcardNumberThree},
+		   ${pmcardNumberfour},
+		   '${pmcardholder}',
+		   ${pmvalidityMonth},
+		   ${pmmonthYear},
+		   ${pmcardCvc},
+		   ${prSeq},
+		   ${mbSeq},
+		   ${pdSeq},
+		   ${taSeq},
+		   ${plSeq}
+		   )
 	
 	</insert>
 	
