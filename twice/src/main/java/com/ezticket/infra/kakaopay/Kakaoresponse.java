@@ -10,6 +10,7 @@ public class Kakaoresponse {
     private String partner_user_id; // 가맹점 회원 id
     private String payment_method_type; // 결제 수단
     private Amount amount; // 결제 금액 정보
+    private Integer total_amount;
     private CardDto card_info; //카드 정보
     private String item_name; // 상품명
     private String item_code; // 상품 코드
@@ -20,6 +21,12 @@ public class Kakaoresponse {
     
     
     
+	public Integer getTotal_amount() {
+		return total_amount;
+	}
+	public void setTotal_amount(Integer total_amount) {
+		this.total_amount = total_amount;
+	}
 	public CardDto getCard_info() {
 		return card_info;
 	}

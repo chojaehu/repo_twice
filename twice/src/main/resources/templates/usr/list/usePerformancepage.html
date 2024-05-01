@@ -52,7 +52,7 @@
 
 <body>
 	<form name="formList" id="formList" method="get" class="comment-form"
-		autocomplete="off">
+		autocomplete="off" onsubmit="return false">
 		<div class="wrapper">
 			<!-- Banner -->
 			<div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
@@ -515,14 +515,14 @@
 		let goUrlXdmLogin = "/useIndex";
 	</script> -->
 	
-	<script src="usr/js/usrCommon.js"></script>
+	
 
 	<script src="usr/js/custom.js"></script>
 	<script src="usr/js/usrmymenu.js"></script>
 
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=092a7e4df8492ca8b10861c0e49e500f"></script>
 	<script type="text/javascript">
-	
+		let goUrlXdmList = "/usePerformanceList";
 		let longitude = document.getElementById("longitude").value;
 		let hardness = document.getElementById("hardness").value;
 				
@@ -652,6 +652,7 @@
 		} */
 		
 	</script>
+	<script src="usr/js/usrCommon.js"></script>
 
 </body>
 

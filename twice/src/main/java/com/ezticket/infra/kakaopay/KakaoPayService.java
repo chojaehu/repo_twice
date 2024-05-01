@@ -72,7 +72,7 @@ public class KakaoPayService {
     }
     
  // 결제결과정보
-    public KakaoApproveDto kakaoPayInfo(String pg_token, HttpSession httpSession) {
+    public KakaoApproveDto kakaoPayInfo(String pg_token, HttpSession httpSession,PerformanceDto dto) {
         RestTemplate restTemplate = new RestTemplate();
         //restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory()); // 정확한 에러 파악을 위해 생성
         // Server Request Header : 서버 요청 헤더
@@ -86,9 +86,9 @@ public class KakaoPayService {
         params.add("cid", "TC0ONETIME");// 가맹점 코드 - 테스트용
         params.add("tid", kakaoPayDto.getTid());
         params.add("partner_order_id", "1001");// 주문 번호
-        params.add("partner_user_id", "goguma");// 회원 아이디
+        params.add("partner_user_id", dto.getMbSeq());// 회원 아이디
         params.add("pg_token", pg_token);
-        params.add("total_amount", "1004");  
+        params.add("total_amount", dto.getTotalprice());  
         
         // 헤더와 바디 붙이기
         HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);

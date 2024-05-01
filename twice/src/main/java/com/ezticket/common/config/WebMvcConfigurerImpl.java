@@ -24,6 +24,12 @@ public class WebMvcConfigurerImpl implements WebMvcConfigurer {
 				,"/signup"
 				,"/startindex"
 				,"/loginchek"
+				,"/useLogin"
+				,"/useIndex"
+				,"/usePerformanceList"
+				,"/usePerformanceArea"
+				,"/usePerformanceRanking"
+				,"/usePerformancepage"
 				);
 		//WebMvcConfigurer.super.addInterceptors(registry);
 	}
