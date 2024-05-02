@@ -28,7 +28,7 @@ public class MemeberController {
 	@RequestMapping(value = "/login")
 	public String login() throws Exception {
 
-		return "/xdm/infra/index/login.html";
+		return "/xdm/infra/index/login";
 	}
 
 	// 리스트 페이지
