@@ -86,12 +86,12 @@ public class PerformanceController {
 		
 		model.addAttribute("item", service.selectOne(dto));
 		
-		return "/xdm/infra/performance/performanceXdmForm";
+		return "xdm/infra/performance/performanceXdmForm";
 	}
 	@RequestMapping(value = "/performanceXdmInst")
 	public String performanceXdmInst(PerformanceDto dto) throws Exception
 	{
-		return str + "/performanceXdmInst";
+		return str + "performanceXdmInst";
 	}
 	
 	
