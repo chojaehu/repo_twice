@@ -25,7 +25,7 @@
 		a.prdeleteNY
 
 		FROM
-		performanceList a
+		performancelist a
 		join
 		placemapping b
 		on
@@ -62,7 +62,7 @@
 			(select AVG(aa.rvGpa) from  review aa  where aa.prSeq = a.prSeq) as grade
 	
 			FROM
-				performanceList a
+				performancelist a
 			join
 				placemapping b
 			on
@@ -97,7 +97,7 @@
 			a.prdeleteNY
 
 		FROM
-			performanceList a
+			performancelist a
 		join
 			placemapping b
 		on
@@ -664,7 +664,7 @@
 		SELECT
 		COUNT(*)
 		FROM
-		performanceList a
+		performancelist a
 
 		where 1=1
 		<include refid="selectCommon" /> 
@@ -742,7 +742,7 @@
 		(select AVG(aa.rvGpa) from  review aa  where aa.prSeq = #{prSeq}) as grade
 
 		FROM
-		performanceList a
+		performancelist a
 		join
 		placemapping b
 		on
@@ -757,7 +757,7 @@
 
 	<update id="update">
 
-		UPDATE performanceList
+		UPDATE performancelist
 		SET
 		prTitle = #{prTitle},
 		prHostedPlanned = #{prHostedPlanned},
@@ -770,7 +770,7 @@
 
 	<insert id="insert">
 
-		INSERT INTO performanceList
+		INSERT INTO performancelist
 		(
 		prTitle,
 		prdeleteNY,
@@ -793,7 +793,7 @@
 
 	<update id="updatedelete">
 
-		UPDATE performanceList
+		UPDATE performancelist
 		SET
 		prdeleteNY = 1
 		WHERE prSeq = #{prSeq}
@@ -802,7 +802,7 @@
 
 	<delete id="delete">
 		DELETE
-		FROM performanceList
+		FROM performancelist
 		WHERE prSeq = #{prSeq}
 	</delete>
 	
@@ -811,7 +811,7 @@
 		SELECT
 		COUNT(*)
 		FROM
-		performanceList a
+		performancelist a
 
 		where 1=1
 		<include refid="selectCommonusr" /> 
