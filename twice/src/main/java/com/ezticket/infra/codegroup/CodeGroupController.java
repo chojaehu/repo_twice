@@ -88,7 +88,7 @@ public class CodeGroupController {
 	public String startindex() throws Exception {
 		
 
-		return "/xdm/infra/index/startindex";
+		return "xdm/infra/index/startindex";
 	}
 	@RequestMapping(value = "/indexs")
 	public String indexs() throws Exception {
