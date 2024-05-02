@@ -87,6 +87,13 @@
     ,mbgender =#{mbgender}
     ,mbPhone =#{mbPhone}
  	,mbDateBirth = #{mbDateBirth}  
+ 	,mbpostalCode =#{mbpostalCode}
+ 	,mbrdnmAdres =#{mbrdnmAdres}
+ 	,mbaddress =#{mbaddress}
+ 	,mbdetailAddress = #{mbdetailAddress}
+ 	,mbseeAlso = #{mbseeAlso}
+ 	,mblongitude = #{mblongitude}
+ 	,mblatitude = #{mblatitude}
     where mbSeq = #{mbSeq}
     </update>
     

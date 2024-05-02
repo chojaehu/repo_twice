@@ -19,11 +19,63 @@ public class MemberDto {
 	private Date mbRgstrDate;
 	private Date mbModifiedDate;
 	private Integer mbdelectNY;
+	private String mbpostalCode;
+	private String mbrdnmAdres;
+	private String mbaddress;
+	private String mbdetailAddress;
+	private String mbseeAlso;
+	private String mblongitude;
+	private String mblatitude;
+	
+	
+	//mbpostalCode, mbrdnmAdres, mbaddress, mbdetailAddress, mbseeAlso, mblongitude, mblatitude
 	
 	
 	
 	public String getMbnewPassword() {
 		return mbnewPassword;
+	}
+	public String getMbpostalCode() {
+		return mbpostalCode;
+	}
+	public void setMbpostalCode(String mbpostalCode) {
+		this.mbpostalCode = mbpostalCode;
+	}
+	public String getMbrdnmAdres() {
+		return mbrdnmAdres;
+	}
+	public void setMbrdnmAdres(String mbrdnmAdres) {
+		this.mbrdnmAdres = mbrdnmAdres;
+	}
+	public String getMbaddress() {
+		return mbaddress;
+	}
+	public void setMbaddress(String mbaddress) {
+		this.mbaddress = mbaddress;
+	}
+	public String getMbdetailAddress() {
+		return mbdetailAddress;
+	}
+	public void setMbdetailAddress(String mbdetailAddress) {
+		this.mbdetailAddress = mbdetailAddress;
+	}
+	public String getMbseeAlso() {
+		return mbseeAlso;
+	}
+	public void setMbseeAlso(String mbseeAlso) {
+		this.mbseeAlso = mbseeAlso;
+	}
+	public String getMblongitude() {
+		return mblongitude;
+	}
+	public void setMblongitude(String mblongitude) {
+		this.mblongitude = mblongitude;
+	}
+	public String getMblatitude() {
+		return mblatitude;
+	}
+	public void setMblatitude(String mblatitude) {
+		this.mblatitude = mblatitude;
 	}
 	public void setMbnewPassword(String mbnewPassword) {
 		this.mbnewPassword = mbnewPassword;
