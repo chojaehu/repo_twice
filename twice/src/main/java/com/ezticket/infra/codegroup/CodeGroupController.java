@@ -96,7 +96,7 @@ public class CodeGroupController {
 	public String indexs() throws Exception {
 		
 
-		return "indexs";
+		return str+"indexs";
 	}
 	
 	@RequestMapping(value = "/forgotpassword")
