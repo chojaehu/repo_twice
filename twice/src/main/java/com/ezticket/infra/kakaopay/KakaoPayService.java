@@ -54,7 +54,7 @@ public class KakaoPayService {
         params.add("prSeq", dto.getPrSeq());
         params.add("approval_url", "http://localhost:8081/kakaoPaySuccess"+"?"+"pmpaymentMethod=" + 2 + "&" + dto.getTicketurl()); // 성공시 url
         params.add("cancel_url", "http://localhost:8081/kakao"); // 실패시 url
-        params.add("fail_url", "http://3.38.190.197:8081//useBookBuy" + "?" + dto.getTicketurl());
+        params.add("fail_url", "http://3.38.190.197:8081/useBookBuy" + "?" + dto.getTicketurl());
         
         // 헤더와 바디 붙이기
         HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
