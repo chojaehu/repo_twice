@@ -29,7 +29,7 @@ public class KakaoPayController {
 	// 결제화면
     @RequestMapping(value="/kakao")
 	public String kakao() {
-    	return "kakaopay/kakaoPay";
+    	return "redirect:/kakaoPay";
     }
 
     // 결제요청
