@@ -28,7 +28,7 @@ public class MemeberController {
 	@RequestMapping(value = "/login")
 	public String login() throws Exception {
 
-		return "/xdm/infra/index/login.html";
+		return "D:/factory\\workspace/sts4_4210/repo_twice/twice/src/main/resources/templates/xdm/infra/index/login";
 	}
 
 	// 리스트 페이지
