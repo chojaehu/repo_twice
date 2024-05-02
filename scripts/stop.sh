@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # stop.sh
 
-PROJECT_NAME="twice-0.0.1"
+PROJECT="twice-0.0.1"
 PROJECT_FULL_PATH_01="/home/ec2-user/service/ezticket-prdt-01"
 JAR_FILE="$PROJECT_FULL_PATH_01/$PROJECT.jar"
 LOG_PATH="$PROJECT_FULL_PATH_01/logs"
