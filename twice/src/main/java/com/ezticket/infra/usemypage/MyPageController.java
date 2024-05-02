@@ -24,7 +24,7 @@ public class MyPageController {
 	@Autowired
 	PerformanceService service;
 
-	private String str2 = "/usr/list";
+	private String str2 = "usr/list";
 	@RequestMapping(value = "/useInformation")
 	public String useModify(@ModelAttribute("vo")PerformanceVo vo, Model model, HttpSession httpSession) throws Exception {
 		

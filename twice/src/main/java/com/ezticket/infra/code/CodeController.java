@@ -79,7 +79,7 @@ public class CodeController {
 	}
 	
 	
-	
+	String cd = "xdm/infra/code/";
 	//@ModelAttribute("vo")CodeDto dto,
 //	인덱스
 	@RequestMapping(value = "/codeXdmList")
@@ -112,7 +112,7 @@ public class CodeController {
 		
 		//model.addAttribute("vo", vo);
 		
-		return "/xdm/infra/code/codeXdmList";
+		return cd+"codeXdmList";
 	}
 	
 	@RequestMapping(value = "/codeXdmForm")
@@ -121,13 +121,13 @@ public class CodeController {
 		
 		model.addAttribute("item", service.selectOne(dto));
 		
-		return "/xdm/infra/code/codeXdmForm";
+		return cd+"codeXdmForm";
 	}
 	@RequestMapping(value = "/codeXdmInst")
 	public String codeXdmInst(CodeDto dto, Model model) throws Exception {
 		
 		model.addAttribute("listPaging", codeGroupService.selectListWithoutPaging());
-		return "/xdm/infra/code/codeXdmInst";
+		return cd+"codeXdmInst";
 	}
 	public void setSearch(CodeVo vo) throws Exception {
 		vo.setShDateStart(vo.getShDateStart() == null

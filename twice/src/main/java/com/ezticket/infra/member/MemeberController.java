@@ -23,6 +23,8 @@ public class MemeberController {
 
 	@Autowired
 	MemeberService service;
+	
+	String mb = "xdm/infra/member/";
 
 	// 로그인 페이지
 	@RequestMapping(value = "/login")
@@ -46,7 +48,7 @@ public class MemeberController {
 		}
 		// System.out.println("dto.getMbPasswordCheck() : " + dto.getMbPasswordCheck());
 
-		return "/xdm/infra/member/memberXdmList";
+		return mb +"memberXdmList";
 	}
 
 	// 수정페이지
@@ -55,7 +57,7 @@ public class MemeberController {
 
 		model.addAttribute("item", service.selectOne(dto));
 
-		return "/xdm/infra/member/memberXdmForm";
+		return mb+"memberXdmForm";
 	}
 
 	// 비밀번호 암호화
@@ -80,7 +82,7 @@ public class MemeberController {
 	// 둥록페이지
 	@RequestMapping(value = "/memberXdmInst")
 	public String memberXdmInst() throws Exception {
-		return "/xdm/infra/member/memberXdmInst";
+		return mb+"memberXdmInst";
 	}
 
 	// 회원 추가
@@ -196,8 +198,8 @@ public class MemeberController {
 	
 
 //	유저 페이지
-	private String str = "/usr/index";
-	private String str2 = "/usr/modify";
+	private String str = "usr/index";
+	private String str2 = "usr/modify";
 	
 	//	로그인 페이지
 	@RequestMapping(value = "/useLogin")

@@ -31,7 +31,7 @@ public class PerformanceController {
 	@Autowired
 	PerformanceService service;
 	
-	private String str = "/xdm/infra/performance";
+	private String str = "xdm/infra/performance/";
 	
 	@RequestMapping(value = "/performanceXdmList")
 	public String performanceXdmList(@ModelAttribute("vo")PerformanceVo vo,Model model,PerformanceDto dto) throws Exception{
@@ -78,7 +78,7 @@ public class PerformanceController {
 		 * System.out.println("###########################");
 		 */
 		
-		return "/xdm/infra/performance/performanceXdmList";
+		return str+"performanceXdmList";
 	}
 	@RequestMapping(value = "/performanceXdmForm")
 	public String performanceXdmForm(PerformanceDto dto, Model model) throws Exception {
@@ -136,7 +136,7 @@ public class PerformanceController {
 	
 	
 //	사용자 화면
-	private String str2 = "/usr/list";
+	private String str2 = "usr/list";
 	
 	
 	//메인회면

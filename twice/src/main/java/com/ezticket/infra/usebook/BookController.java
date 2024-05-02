@@ -39,7 +39,7 @@ public class BookController {
 	@Autowired
 	KakaoPayService kakaoPayService;
 	
-	private String str3 = "/usr/book";
+	private String str3 = "usr/book";
 	
 	
 	

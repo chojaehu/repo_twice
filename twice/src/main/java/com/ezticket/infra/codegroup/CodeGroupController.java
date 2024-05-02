@@ -14,6 +14,8 @@ public class CodeGroupController {
 
 	@Autowired
 	CodeGroupService service;
+	
+	String str = "xdm/infra/index/";
 
 //	@RequestMapping(value = "/codeGroupXdmList")
 //	public String codeGroupXdmList(Model model) throws Exception {
@@ -88,52 +90,52 @@ public class CodeGroupController {
 	public String startindex() throws Exception {
 		
 
-		return "xdm/infra/index/startindex";
+		return str+"startindex";
 	}
 	@RequestMapping(value = "/indexs")
 	public String indexs() throws Exception {
 		
 
-		return "/xdm/infra/index/indexs";
+		return "indexs";
 	}
 	
 	@RequestMapping(value = "/forgotpassword")
 	public String forgotpassword() throws Exception {
 		
 
-		return "/xdm/infra/index/forgotpassword";
+		return str+"forgotpassword";
 	}
 	@RequestMapping(value = "/signup")
 	public String signup() throws Exception {
 		
 
-		return "/xdm/infra/index/signup";
+		return str+ "signup";
 	}
 	@RequestMapping(value = "/waring")
 	public String waring() throws Exception {
 		
 
-		return "/xdm/infra/index/waring";
+		return str+"waring";
 	}
 	
 	
 	
 	
 	
-	
+	String cdg = "xdm/infra/codegroup/";
 	@RequestMapping(value = "/codeGroupXdmForm")
 	public String codeGroupXdmForm(CodeGroupDto dto, Model model) throws Exception {
 		
 		model.addAttribute("item", service.selectOne(dto));
 		
-		return "/xdm/infra/codegroup/codeGroupXdmForm";
+		return cdg+"codeGroupXdmForm";
 	}
 	
 	@RequestMapping(value = "/codeGroupXdmInst")
 	public String codeGroupXdmInst(CodeGroupDto dto, Model model) throws Exception {
 		
 		
-		return "/xdm/infra/codegroup/codeGroupXdmInst";
+		return cdg+"codeGroupXdmInst";
 	}
 	
 		
@@ -157,7 +159,7 @@ public class CodeGroupController {
 		 * System.out.println("vo.getTotalPages() : " + vo.getTotalPages());
 		 * System.out.println("vo.getTotalRows() : " + vo.getTotalRows());
 		 */
-		return "/xdm/infra/codegroup/codeGroupXdmList";
+		return cdg+"codeGroupXdmList";
 	}
 	
 
