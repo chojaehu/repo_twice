@@ -1,7 +1,40 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{usr/block/usehead :: head}"></head>
+<!-- <head th:replace="~{usr/block/usehead :: head}"></head> -->
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <title>AMovie - Login</title>
+    <meta name="description" content="A Template by Gozha.net">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="Gozha.net">
+
+    <!-- Mobile Specific Metas-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="telephone=no" name="format-detection">
+
+    <!-- Fonts -->
+    <!-- Font awesome - icon font -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Roboto -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Stylesheets -->
+
+    <!-- Mobile menu -->
+    <link href="usr/css/gozha-nav.css" rel="stylesheet" />
+    <!-- Select -->
+    <link href="usr/css/external/jquery.selectbox.css" rel="stylesheet" />
+
+    <!-- Custom -->
+    <link href="usr/css/style.css?v=1" rel="stylesheet" />
+
+    <!-- Modernizr -->
+    <script src="usr/js/external/modernizr.custom.js"></script>
+
+
+</head>
 
 <body>
     <div class="wrapper">
@@ -39,7 +72,7 @@
             <p class="login__title">sign in <br><span class="login-edition">welcome to A.Movie</span></p>
 
             <div class="social social--colored">
-                <a href='#' class="social__variant fa fa-facebook"></a>
+               <!--  <a href='#' class="social__variant fa fa-facebook"></a> -->
                 <a href='#' class="social__variant fa fa-twitter"></a>
                 <a href='#' class="social__variant fa fa-tumblr"></a>
             </div>
@@ -57,7 +90,8 @@
             </div>
 
             <div class="login__control">
-                <button type='button' class="btn btn-md btn--warning btn--wider" id ="buttonSignIn" name = "buttonSignIn">sign in</button>
+                <button type='button' class="btn btn-md btn--warning btn--wider" id ="buttonSignIn" name = "buttonSignIn">로그인</button><br>
+                <a th:href="@{/kakaologin}"><img src = "usr/images/kakaologin.png"></a>
                 <a href="#" class="login__tracker form__tracker">비밀번호를 잊어버렸나요?</a>
                 <a href="signup.html" class="login__tracker form__tracker">회원 가입</a>
             </div>
@@ -66,7 +100,7 @@
         <div class="clearfix"></div>
     </div>
 
-    <footer class="footer-wrapper footer-wrapper--mod">
+    <footer class="footer-wrapper footer-wrapper--mod" style="margin: 0px;">
         <section class="container">
             <div class="col-xs-4 col-md-2 footer-nav">
                 <ul class="nav-link">
@@ -118,21 +152,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')</script>
     <!-- Migrate -->
-    <script src="js/external/jquery-migrate-1.2.1.min.js"></script>
+    <script src="usr/js/external/jquery-migrate-1.2.1.min.js"></script>
     <!-- Bootstrap 3-->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
     <!-- Mobile menu -->
-    <script src="js/jquery.mobile.menu.js"></script>
+    <script src="usr/js/jquery.mobile.menu.js"></script>
     <!-- Select -->
-    <script src="js/external/jquery.selectbox-0.2.min.js"></script>
+    <script src="usr/js/external/jquery.selectbox-0.2.min.js"></script>
     <!-- Form element -->
-    <script src="js/external/form-element.js"></script>
+    <script src="usr/js/external/form-element.js"></script>
     <!-- Form validation -->
-    <script src="js/form.js"></script>
+    <script src="usr/js/form.js"></script>
 
     <!-- Custom -->
-    <script src="js/custom.js"></script>
+    <script src="usr/js/custom.js"></script>
     
     <!-- <script src="xdm/js/Common.js">
     let goUrlXdmLogin = "/useIndex";
