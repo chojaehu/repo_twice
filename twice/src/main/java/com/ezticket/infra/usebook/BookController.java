@@ -1,16 +1,16 @@
 package com.ezticket.infra.usebook;
 
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +21,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ezticket.common.constants.Constants;
 import com.ezticket.common.util.UtilDateTime;
 import com.ezticket.infra.kakaopay.KakaoPayService;
-import com.ezticket.infra.member.MemberDto;
 import com.ezticket.infra.performance.PerformanceDto;
 import com.ezticket.infra.performance.PerformanceService;
 import com.ezticket.infra.performance.PerformanceVo;
@@ -77,7 +76,7 @@ public class BookController {
 	
 	// 예매 두번째 페이지 좌석 선택
 	@RequestMapping(value = "/useBookTow")
-	public String useBookTow(PerformanceDto dto,Model model,@ModelAttribute("vo")PerformanceVo vo) throws Exception
+	public String useBookTow(@ModelAttribute("vo")PerformanceVo vo,PerformanceDto dto,Model model) throws Exception
 	{
 		setSearch(vo);
 		model.addAttribute("list", service.bookseatList(dto));
@@ -86,7 +85,7 @@ public class BookController {
 	
 	// 예매 3번째 페이지 결제
 	@RequestMapping(value = "/useBookBuy")
-	public String useBookBuy(PerformanceDto dto, Model model,@ModelAttribute("vo")PerformanceVo vo) throws Exception
+	public String useBookBuy(@ModelAttribute("vo")PerformanceVo vo,PerformanceDto dto, Model model) throws Exception
 	{
 		setSearch(vo);
 		System.out.println(dto.getSeat());
@@ -110,7 +109,7 @@ public class BookController {
 	
 	// 예매 최종 티켓 발행
 	@RequestMapping(value = "/useBookfinal")
-	public String useBookfinal(@RequestParam("pmSeq") String aa, HttpSession httpSession, Model model,PerformanceDto dto,@ModelAttribute("vo")PerformanceVo vo) throws Exception
+	public String useBookfinal(@ModelAttribute("vo")PerformanceVo vo,@RequestParam("pmSeq") String aa, HttpSession httpSession, Model model,PerformanceDto dto) throws Exception
 	{
 		setSearch(vo);
 		//System.out.println(pg_token + "--------------------------");
@@ -123,7 +122,7 @@ public class BookController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/bookDate")
-	public Map<String, Object> bookDate(@RequestParam("shprDate") String da, @ModelAttribute("vo")PerformanceVo vo, Model model, PerformanceDto dto) throws Exception {
+	public Map<String, Object> bookDate(@ModelAttribute("vo")PerformanceVo vo,@RequestParam("shprDate") String da, Model model, PerformanceDto dto) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		vo.setShpreDate(da);
