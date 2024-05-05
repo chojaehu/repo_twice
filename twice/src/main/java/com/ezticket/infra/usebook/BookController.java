@@ -77,18 +77,18 @@ public class BookController {
 	
 	// 예매 두번째 페이지 좌석 선택
 	@RequestMapping(value = "/useBookTow")
-	public String useBookTow(PerformanceDto dto,Model model) throws Exception
+	public String useBookTow(PerformanceDto dto,Model model,@ModelAttribute("vo")PerformanceVo vo) throws Exception
 	{
-		
+		setSearch(vo);
 		model.addAttribute("list", service.bookseatList(dto));
 		return str3 + "/useBookTow";
 	}
 	
 	// 예매 3번째 페이지 결제
 	@RequestMapping(value = "/useBookBuy")
-	public String useBookBuy(PerformanceDto dto, Model model,PerformanceVo vo) throws Exception
+	public String useBookBuy(PerformanceDto dto, Model model,@ModelAttribute("vo")PerformanceVo vo) throws Exception
 	{
-		
+		setSearch(vo);
 		System.out.println(dto.getSeat());
 		/*
 		 * List<String> list = new ArrayList<>(); list.addAll(dto.getSeat());
@@ -110,8 +110,9 @@ public class BookController {
 	
 	// 예매 최종 티켓 발행
 	@RequestMapping(value = "/useBookfinal")
-	public String useBookfinal(@RequestParam("pmSeq") String aa, HttpSession httpSession, Model model,PerformanceDto dto) throws Exception
+	public String useBookfinal(@RequestParam("pmSeq") String aa, HttpSession httpSession, Model model,PerformanceDto dto,@ModelAttribute("vo")PerformanceVo vo) throws Exception
 	{
+		setSearch(vo);
 		//System.out.println(pg_token + "--------------------------");
 		//model.addAttribute("info", pg_token);
 		model.addAttribute("item", service.ticketfianl(dto));
@@ -122,7 +123,7 @@ public class BookController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/bookDate")
-	public Map<String, Object> bookDate(@RequestParam("shprDate") String da, PerformanceVo vo, Model model, PerformanceDto dto) throws Exception {
+	public Map<String, Object> bookDate(@RequestParam("shprDate") String da, @ModelAttribute("vo")PerformanceVo vo, Model model, PerformanceDto dto) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		vo.setShpreDate(da);

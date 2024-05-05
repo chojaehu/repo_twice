@@ -32,8 +32,8 @@ public class PerformanceDto {
 	// 공연장소 
 	private String plplace;
 	private Integer plSeq;
+	private Double pllatitude;
 	private Double pllongitude;
-	private Double plhardness;
 	
 	//공연관 
 	private Integer taSeq;
@@ -208,17 +208,17 @@ public class PerformanceDto {
 	public void setPlSeq(Integer plSeq) {
 		this.plSeq = plSeq;
 	}
+	public Double getPllatitude() {
+		return pllatitude;
+	}
+	public void setPllatitude(Double pllatitude) {
+		this.pllatitude = pllatitude;
+	}
 	public Double getPllongitude() {
 		return pllongitude;
 	}
 	public void setPllongitude(Double pllongitude) {
 		this.pllongitude = pllongitude;
-	}
-	public Double getPlhardness() {
-		return plhardness;
-	}
-	public void setPlhardness(Double plhardness) {
-		this.plhardness = plhardness;
 	}
 	public Integer getTaSeq() {
 		return taSeq;
@@ -472,5 +472,7 @@ public class PerformanceDto {
 	public void setTicketurl(String ticketurl) {
 		this.ticketurl = ticketurl;
 	}
-    
+	
+	
+	
 }

@@ -45,6 +45,7 @@
 
 <!-- Modernizr -->
 <script src="usr/js/external/modernizr.custom.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=092a7e4df8492ca8b10861c0e49e500f"></script>
 
 
 
@@ -149,8 +150,8 @@
 
 						<p class="movie__describe" th:text="${item.prDetails}"></p>
 						
-						<input type="hidden" id="longitude" name="longitude" th:value = "${item.pllongitude}">
-						<input type="hidden" id="hardness" name="hardness" th:value = "${item.plhardness}">
+						<input type="hidden" id="longitude" name="longitude" th:value = "${item.pllatitude}">
+						<input type="hidden" id="hardness" name="hardness" th:value = "${item.pllongitude}">
 						<h2 class="page-heading">위치</h2>
 						<div id="map" style="width:1100px;height:500px;"></div>
 						
@@ -520,7 +521,7 @@
 	<script src="usr/js/custom.js"></script>
 	<script src="usr/js/usrmymenu.js"></script>
 
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=092a7e4df8492ca8b10861c0e49e500f"></script>
+	
 	<script type="text/javascript">
 		let goUrlXdmList = "/usePerformanceList";
 		let longitude = document.getElementById("longitude").value;
@@ -560,7 +561,7 @@
 		});
 		document.getElementById("reviewbtn").onclick = function(){
 			let aa = document.getElementById("score").value;
-			alert(aa);
+			//alert(aa);
 			
 
 			
@@ -573,7 +574,7 @@
 				,success: function(response) {
 					if(response.rt == "success")
 						{
-						 alert("있음")
+						 //alert("있음")
 						 self.location.reload();
 						
 						}
@@ -605,7 +606,7 @@
 				,success: function(response) {
 					if(response.rt == "success")
 						{
-						 alert("있음")
+						 //alert("있음")
 						 self.location.reload();
 						
 						}
