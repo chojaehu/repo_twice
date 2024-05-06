@@ -5,7 +5,34 @@
 
 
 		//로그 아웃 
-		document.getElementById("Logout").onclick = function() {
+		let loght = document.getElementById("Logout")
+		
+		if(loght != null)
+		{
+				document.getElementById("Logout").onclick = function() {
+				$.ajax({
+					async: true 
+					,cache: false
+					,type: "post"
+					,url: "/loginoutXdm" 
+					,success: function(response) {
+						if(response.rt == "success") {
+							valLogin();
+						} 
+						else {
+					 		alert("로그아웃 실패")
+						}
+					}
+					,error : function(jqXHR, textStatus, errorThrown){
+						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+					}
+				});
+			}
+			function valLogin(){
+				location.href = goUrlXdmLogin;
+			}
+		}
+		/*document.getElementById("Logout").onclick = function() {
 			$.ajax({
 				async: true 
 				,cache: false
@@ -26,7 +53,7 @@
 		}
 		function valLogin(){
 			location.href = goUrlXdmLogin;
-		}
+		}*/
 		
 		// 검색
 		window

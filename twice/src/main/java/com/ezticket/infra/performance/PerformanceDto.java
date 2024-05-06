@@ -106,6 +106,20 @@ public class PerformanceDto {
 //	결제 전 정보
 	private int paytotalcount;
 	private String ticketurl; //결제시 넘여야할 주소값
+	
+	
+//	이미지파일 주소
+	private String imgsrc;
+	
+	
+	
+	
+	public String getImgsrc() {
+		return imgsrc;
+	}
+	public void setImgsrc(String imgsrc) {
+		this.imgsrc = imgsrc;
+	}
 	public String getPrSeq() {
 		return prSeq;
 	}

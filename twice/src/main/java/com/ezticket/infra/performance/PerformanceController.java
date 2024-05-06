@@ -143,7 +143,7 @@ public class PerformanceController {
 	@RequestMapping(value = "/useIndex")
 	public String useIndex(@ModelAttribute("vo")PerformanceVo vo,Model model) throws Exception {
 		setSearch(vo);
-		model.addAttribute("list", service.usrselectList(vo));
+		model.addAttribute("list", service.usrselectRanking(vo));
 		/* model.addAttribute("list", service.usrselectList(vo)); */
 		return str2 + "/useIndex";
 	}

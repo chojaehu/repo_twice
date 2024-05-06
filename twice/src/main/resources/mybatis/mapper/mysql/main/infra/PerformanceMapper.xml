@@ -59,7 +59,8 @@
 			a.prRgstrDate,
 			a.prModifiedDate,
 			a.prdeleteNY,
-			(select AVG(aa.rvGpa) from  review aa  where aa.prSeq = a.prSeq) as grade
+			(select AVG(aa.rvGpa) from  review aa  where aa.prSeq = a.prSeq) as grade,
+			(select aa.mdsrc from media aa	where a.prSeq = aa.prSeq) as imgsrc
 	
 			FROM
 				performancelist a
@@ -94,7 +95,9 @@
 			a.prDetails,
 			a.prRgstrDate,
 			a.prModifiedDate,
-			a.prdeleteNY
+			a.prdeleteNY,
+			(select AVG(aa.rvGpa) from  review aa  where aa.prSeq = a.prSeq) as grade,
+			(select aa.mdsrc from media aa	where a.prSeq = aa.prSeq) as imgsrc
 
 		FROM
 			performancelist a
@@ -108,7 +111,7 @@
 			d.plSeq = b.plSeq
 		WHERE 1=1
 			ORDER BY a.prAttenDance DESC
-			limit 10
+			limit 6
 	</select>
 
 

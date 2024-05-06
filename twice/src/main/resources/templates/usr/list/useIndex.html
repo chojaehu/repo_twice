@@ -109,94 +109,46 @@
 					<div class="col-sm-10 col-sm-offset-1 movie-best__rating">오늘의
 						추천</div>
 					<div class="col-sm-12 change--col">
-						<div class="movie-beta__item ">
-							<img alt='' src="usr/ticketimg/main1.jpg" class="imgsize2">
-							<span class="best-rate">5.0</span>
+						<div class="movie-beta__item " th:if="${!#lists.isEmpty(list)}"
+								th:each="list : ${list}">
+							<a  th:href="@{/usePerformancepage(prSeq=${list.prSeq})}">
+							<img alt='' th:src="@{${list.imgsrc}}" class="imgsize2">
+							<span class="best-rate" th:text="${#numbers.formatDecimal(list.grade,1,1)}">5.0</span>
+							</a>
 
-							<ul class="movie-beta__info">
-								<li>추천<span class="best-voted"></span></li>
-								<li>
-									<p class="movie__time">시간</p>
-									<p>카테고리</p>
-
-								</li>
-								<li class="last-block"><a href="movie-page-full.html"
-									class="slide__link">more</a></li>
-							</ul>
 						</div>
-						<div class="movie-beta__item second--item">
+						<!-- <div class="movie-beta__item second--item">
 							<img alt='' src="usr/ticketimg/main2.jpg" class="imgsize2">
 							<span class="best-rate">5.0</span>
 
-							<ul class="movie-beta__info">
-								<li>추천<span class="best-voted"></span></li>
-								<li>
-									<p class="movie__time">시간</p>
-									<p>카테고리</p>
 
-								</li>
-								<li class="last-block"><a class="slide__link">more</a></li>
-							</ul>
 						</div>
 						<div class="movie-beta__item third--item">
 							<img alt='' src="usr/ticketimg/main3.jpg" class="imgsize2">
 							<span class="best-rate">5.0</span>
 
-							<ul class="movie-beta__info">
-								<li>추천<span class="best-voted"></span></li>
-								<li>
-									<p class="movie__time">시간</p>
-									<p>카테고리</p>
 
-								</li>
-								<li class="last-block"><a class="slide__link">more</a></li>
-							</ul>
 						</div>
 						<div class="movie-beta__item hidden-xs">
 							<img alt='' src="usr/ticketimg/main4.jpg" class="imgsize2">
 							<span class="best-rate">5.0</span>
 
-							<ul class="movie-beta__info">
-								<li>추천<span class="best-voted"></span></li>
-								<li>
-									<p class="movie__time">시간</p>
-									<p>카테고리</p>
 
-								</li>
-								<li class="last-block"><a class="slide__link">more</a></li>
-							</ul>
 						</div>
 						<div class="movie-beta__item hidden-xs hidden-sm">
 							<img alt='' src="usr/ticketimg/main5.jpg" class="imgsize2">
 							<span class="best-rate">5.0</span>
 
-							<ul class="movie-beta__info">
-								<li>추천<span class="best-voted"></span></li>
-								<li>
-									<p class="movie__time">시간</p>
-									<p>카테고리</p>
 
-								</li>
-								<li class="last-block"><a class="slide__link">more</a></li>
-							</ul>
 						</div>
 						<div class="movie-beta__item hidden-xs hidden-sm">
 							<img alt='' src="usr/ticketimg/main6.jpg" class="imgsize2">
 							<span class="best-rate">5.0</span>
 
-							<ul class="movie-beta__info">
-								<li>추천<span class="best-voted"></span></li>
-								<li>
-									<p class="movie__time">시간</p>
-									<p>카테고리</p>
 
-								</li>
-								<li class="last-block"><a class="slide__link">more</a></li>
-							</ul>
-						</div>
+						</div> -->
 					</div>
-					<div class="col-sm-10 col-sm-offset-1 movie-best__check">check
-						all movies now playing</div>
+					<div class="col-sm-10 col-sm-offset-1 movie-best__check">상세 보기</div>
 				</div>
 
 				<div class="col-sm-12">
@@ -267,7 +219,7 @@
 								th:each="list : ${list}">
 								<div class="movie__images">
 									<a  class="movie-beta__link" th:href="@{/usePerformancepage(prSeq=${list.prSeq})}"> 
-									<img src="usr/ticketimg/main3.jpg"
+									<img th:src="@{${list.imgsrc}}"
 										 class="imgsize" >
 									</a>
 								</div>
@@ -285,7 +237,7 @@
 									</p>
 
 									<div class="movie__rate">
-										<span class="movie__rating">4.1</span>
+										<span class="movie__rating" th:text="${#numbers.formatDecimal(list.grade,1,1)}">4.1</span>
 									</div>
 								</div>
 							</div>

@@ -52,48 +52,57 @@
 			</div>
 			<!-- END SLIDER CONTAINER -->
 		</div>
+		
+		<!-- <div class="col-sm-12 change--col" 
+						th:if="${!#lists.isEmpty(list)}" th:each="list, iterStat : ${list}">
+						<div class="movie-beta__item second--item">
+							<a th:href="@{/usePerformancepage(prSeq=${list.prSeq})}" > <img alt=''
+								src="usr/ticketimg/main1.jpg" class="imgsize2"> <span th:text="${iterStat.index + 1}"
+								class="best-rate">1</span>
+							</a>
+						</div> -->
 		<form name="formList2" id="formList2" method="get" autocomplete="off">
 			<section class="container">
 				<div class="movie-best">
 					<div class="col-sm-10 col-sm-offset-1 movie-best__rating">베스트
 						랭킹</div>
-					<div class="col-sm-12 change--col">
-						<div class="movie-beta__item ">
-							<a href="movie-page-full.html"> <img alt=''
-								src="usr/ticketimg/main1.jpg" class="imgsize2"> <span
+					<div class="col-sm-12 change--col" >
+						<div class="movie-beta__item" th:if="${!#lists.isEmpty(list)}" th:each="list, iterStat : ${list}">
+							<a th:href="@{/usePerformancepage(prSeq=${list.prSeq})}"> <img alt=''
+								th:src="@{${list.imgsrc}}" class="imgsize2"> <span th:text="${iterStat.index + 1}"
 								class="best-rate">1</span>
 							</a>
 						</div>
-						<div class="movie-beta__item second--item">
-							<a href="movie-page-full.html"> <img alt=''
+						<!-- <div class="movie-beta__item ">
+							<a href=""> <img alt=''
 								src="usr/ticketimg/main2.jpg" class="imgsize2"> <span
 								class="best-rate">2</span>
 							</a>
 						</div>
-						<div class="movie-beta__item third--item">
-							<a href="movie-page-full.html"> <img alt=''
+						<div class="movie-beta__item ">
+							<a href=""> <img alt=''
 								src="usr/ticketimg/main3.jpg" class="imgsize2"> <span
 								class="best-rate">3</span>
 							</a>
 						</div>
-						<div class="movie-beta__item hidden-xs">
-							<a href="movie-page-full.html"> <img alt=''
+						<div class="movie-beta__item ">
+							<a href=""> <img alt=''
 								src="usr/ticketimg/main4.jpg" class="imgsize2"> <span
 								class="best-rate">4</span>
 							</a>
 						</div>
-						<div class="movie-beta__item hidden-xs hidden-sm">
-							<a href="movie-page-full.html"> <img alt=''
+						<div class="movie-beta__item ">
+							<a href=""> <img alt=''
 								src="usr/ticketimg/main5.jpg" class="imgsize2"> <span
 								class="best-rate">5</span>
 							</a>
 						</div>
-						<div class="movie-beta__item hidden-xs hidden-sm">
-							<a href="movie-page-full.html"> <img alt=''
+						<div class="movie-beta__item ">
+							<a href=""> <img alt=''
 								src="usr/ticketimg/main6.jpg" class="imgsize2"> <span
 								class="best-rate">6</span>
 							</a>
-						</div>
+						</div> -->
 					</div>
 					<div class="col-sm-10 col-sm-offset-1 movie-best__check">check
 						all movies now playing</div>
@@ -125,7 +134,7 @@
 							</div>
 							<div class=" col-md-2 ">
 								<div class="movie__images">
-									<img alt='' src="usr/ticketimg/main1.jpg">
+									<img alt='' th:src="@{${list.imgsrc}}">
 								</div>
 								<div class="movie__feature">
 									<a href="#" class="movie__feature-item movie__feature--comment">123</a>
@@ -135,7 +144,7 @@
 							</div>
 
 							<div class=" col-md-9  movie__about">
-								<a href='movie-page-full.html' class="movie__title link--huge"
+								<a  class="movie__title link--huge"
 									th:href="@{/usePerformancepage(prSeq=${list.prSeq})}"
 									th:text="${list.prTitle}"></a>
 
@@ -192,7 +201,7 @@
 									<div class="movie__rate">
 										<div class="score"></div>
 										<span class="movie__rate-number">170 votes</span> <span
-											class="movie__rating">5.0</span>
+											class="movie__rating" th:text="${#numbers.formatDecimal(list.grade,1,1)}">5.0</span>
 									</div>
 
 
