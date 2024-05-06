@@ -85,7 +85,7 @@
 							<div class="col-sm-4 col-md-3 movie-mobile">
 								<div class="movie__images">
 									<span class="movie__rating" th:text ="${#numbers.formatDecimal(item.grade,1,1)}">5.0</span> <img alt=''
-										src="usr/ticketimg/main1.jpg">
+										th:src="@{${item.imgsrc}}">
 								</div>
 								<!-- <div class="movie__rate">
 									Your vote:
