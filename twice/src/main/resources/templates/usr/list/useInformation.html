@@ -151,7 +151,7 @@
                                 <div class=" col-md-2 ">
                                     <div class="movie__images">
                                     	<a th:href="@{/useBookfinal(pmSeq=${list.pmSeq})}">
-                                        <img alt='' src="usr/images/movie/movie-sample2.jpg">
+                                        <img alt='' th:src="@{${list.imgsrc}}">
                                         </a>
                                     </div>
                                 </div>

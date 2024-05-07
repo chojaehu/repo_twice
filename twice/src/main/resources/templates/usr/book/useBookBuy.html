@@ -1,6 +1,23 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
+<style>
+.is-invalid
+{
+margin-bottom: 10px;
+  width: 100%;
+  border: none;
+  box-shadow: none;
+  border: 1px solid red;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 13px;
+  color: #b4b1b2;
+  padding: 9px 18px 10px;
+}
+</style>
+
  <head th:replace="~{usr/block/usehead :: book}">
 
 <body>
@@ -88,7 +105,7 @@
 	                                
 	                                <div class="col-sm-2">
 	                                    <input type='text' id ="pmcardNumberONe" name="pmcardNumberONe" placeholder='카드번호'  class="form__name">
-	                                    <div class="invalid-feedback" id="cardoneFeedback" name="cardoneFeedback"></div>
+	                                    <div class="invalid-feedback" id="pmcardNumberONeFeedback" name="pmcardNumberONeFeedback"></div>
 	                                </div>
 	                                <div class="col-sm-2">
 	                                    <input type='text' id="pmcardNumberTow" name="pmcardNumberTow" placeholder='카드번호'class="form__name">
@@ -232,19 +249,32 @@
     </script>
     <!-- Custom -->
     <script src="usr/js/custom.js"></script>
-    <script src="xdm/js/validationXdm.js" ></script>
+    <script src="xdm/js/usrvalidations.js" ></script>
     <script src="usr/js/usrCommon.js"></script>
 	<script src="usr/js/usrmymenu.js"></script>
 	
 	
 	
     <script type="text/javascript"> 
+    
+    
+    function vallupdt()
+	{
+    	if(!checkSelectNull('pmcardCompany',2,"")){return false}
+    	if(!checkSelectNull('pmcardType',2,"")){return false}
+    	if(!cardnumber('pmcardNumberONe',2,0,"")){return false}
+    	if(!cardnumber('pmcardNumberTow',2,0,"")){return false}
+    	if(!cardnumber('pmcardNumberThree',2,0,"")){return false}
+    	if(!cardnumber('pmcardNumberfour',2,0,"")){return false}
+    	if(!checkOnlyEnglish('pmcardholder',2,0,"")){return false}
+	}
+    
     document.getElementById("back").onclick = function(){
     	window.history.back();
     }
     document.getElementById("final").onclick =  function()
     {
-    	//if(vallupdt() == false) return false;
+    	if(vallupdt() == false) return false;
     	let form = document.getElementById('formnext')
     	let pmcardCompany = document.getElementById("pmcardCompany").value
     	let pmcardType = document.getElementById("pmcardType").value
@@ -274,19 +304,14 @@
         path += "&pmcardCvc=" + pmcardCvc;
         
         		//location.href = "/payseatupdate" + "?" + path
-        window.location.href = "/payseatupdate" + "?" + path
+        //window.location.href = "/payseatupdate" + "?" + path
     	//form.submit();
     			
     			
     	//console.log(seat2);
     }
     
-    function vallupdt()
-	{
 
-		if(!checkPassword('cardone',2,0,"코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")){return false}
-
-	}
     </script>
     
     

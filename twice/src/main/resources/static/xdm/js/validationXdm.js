@@ -178,6 +178,12 @@ function checkDob (year, month, day, message) {
 }
 
 
+function cardnumber (objName, pattern, nullAllowedNy, message) {
+// checkEmail = function (objName, pattern, nullAllowedNy, message) { {
+    var regExp = /^\d{1,4}$/;
+    return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
+}
+
 function checkEmail (objName, pattern, nullAllowedNy, message) {
 // checkEmail = function (objName, pattern, nullAllowedNy, message) { {
     var regExp = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;

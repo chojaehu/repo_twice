@@ -214,7 +214,8 @@
 		d.tatheaterNumber,
 		e.pdselectionDate,
 		e.pdselectionTime,
-		g.mbName
+		g.mbName,
+		(select aa.mdsrc from media aa	where b.prSeq = aa.prSeq) as imgsrc
 		From
 		payment a
 		join
