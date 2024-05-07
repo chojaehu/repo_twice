@@ -155,7 +155,8 @@ public class PerformanceController {
 		
 		setSearch(vo);
 		vo.setParamsPaging(service.usrcount(vo));
-		System.out.println(vo.getTotalPages()+"----------------------------------------");
+		System.out.println(vo.getShOption()+"----------------------------------------");
+		System.out.println(vo.getShValue()+"----------------------------------------");
 		
 		model.addAttribute("list", service.usrselectList(vo));
 

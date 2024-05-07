@@ -17,15 +17,14 @@
         </header>
 
         <!-- Search bar -->
-        <div class="search-wrapper">
-            <div class="container container--add">
-            
-            
-	                <div class="search" th:replace="~{usr/block/usebody :: search}">
-	                </div>
-
-            </div>
-        </div>
+       <form id='formList' name ='formList' method='get' class="search">
+	        <div class="search-wrapper">
+	            <div class="container container--add">	            
+		                <div class="search" th:replace="~{usr/block/usebody :: search}">
+		                </div>
+	            </div>
+	        </div>
+        </form>
 
         <!-- Main content -->
        <!--  onclick="myFunction()"   -->
