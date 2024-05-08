@@ -8,12 +8,28 @@
 
 function cardnumber (objName, pattern, nullAllowedNy, message) {
 // checkEmail = function (objName, pattern, nullAllowedNy, message) { {
-    var regExp = /^\d{1,4}$/;
+    var regExp = /^\d{4}$/;
     return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
 }
 function checkOnlyEnglish (objName, pattern, nullAllowedNy, message) {
 // checkOnlyEnglish = function(obj, value, message) {
     var regExp = /^[A-Za-z]+$/;
+    return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
+}
+
+function checkmonth (objName, pattern, nullAllowedNy, message) {
+// checkOnlyEnglish = function(obj, value, message) {
+    var regExp =  /^\b(0?[1-9]|1[0-2])?\b$/;
+    return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
+}
+function checkyear (objName, pattern, nullAllowedNy, message) {
+// checkOnlyEnglish = function(obj, value, message) {
+    var regExp = /^\d{2}$/;
+    return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
+}
+function checkycvc (objName, pattern, nullAllowedNy, message) {
+// checkOnlyEnglish = function(obj, value, message) {
+    var regExp = /^\d{3}$/;
     return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
 }
 

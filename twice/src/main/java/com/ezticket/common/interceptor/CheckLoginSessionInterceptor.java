@@ -17,8 +17,17 @@ public class CheckLoginSessionInterceptor implements HandlerInterceptor {
 		}
 		else
 		{
-			response.sendRedirect("/login");
-			return false;
+			if(request.getSession().getAttribute("useSession") != null)
+			{
+				response.sendRedirect("/useLogin");
+				return false;
+			}
+			else
+			{
+				response.sendRedirect("/login");
+				return false;
+			}
+			
 		}
 		return HandlerInterceptor.super.preHandle(request, response, handler);
 	}	

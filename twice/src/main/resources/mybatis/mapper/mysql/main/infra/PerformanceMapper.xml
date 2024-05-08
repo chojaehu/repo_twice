@@ -768,7 +768,8 @@
 		prHostedPlanned = #{prHostedPlanned},
 		prAgeLimit = #{prAgeLimit},
 		prStartDate = #{prStartDate},
-		prEndDate = #{prEndDate}
+		prEndDate = #{prEndDate},
+		prDetails = #{prDetails} 
 		WHERE prSeq = #{prSeq}
 
 	</update>
@@ -782,7 +783,8 @@
 		prHostedPlanned,
 		prAgeLimit,
 		prStartDate,
-		prEndDate
+		prEndDate,
+		prDetails
 		)
 		VALUES
 		(
@@ -792,6 +794,7 @@
 		,#{prAgeLimit}
 		,#{prStartDate}
 		,#{prEndDate}
+		,#{prDetails}
 		)
 
 	</insert>

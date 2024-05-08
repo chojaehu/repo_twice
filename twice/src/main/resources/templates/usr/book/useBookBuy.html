@@ -90,14 +90,14 @@ margin-bottom: 10px;
 	                            <div  class="form row" >
 	                                <div class="col-sm-6">
 	                                    <select  class="form__name" aria-label="Default select example" id="pmcardCompany" name="pmcardCompany">
-	                                        <option selected>카드사</option>
+	                                        <option value="" selected>카드사</option>
 	                                        <option th:each="list : ${@codeService.selectListCachedCode(8)}" th:value="${list.ifcdSeq}" th:text="${list.ifcdName}"></option>
 	                                    </select>
 	                                </div>
 	                                
 	                                <div class="col-sm-6">
 	                                    <select  class="form__name" aria-label="Default select example" id="pmcardType" name="pmcardType">
-	                                        <option selected >카드종류</option>
+	                                        <option value="" selected >카드종류</option>
 	                                        <option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.ifcdSeq}" th:text="${list.ifcdName}"></option>
 	
 	                                    </select>
@@ -267,6 +267,9 @@ margin-bottom: 10px;
     	if(!cardnumber('pmcardNumberThree',2,0,"")){return false}
     	if(!cardnumber('pmcardNumberfour',2,0,"")){return false}
     	if(!checkOnlyEnglish('pmcardholder',2,0,"")){return false}
+    	if(!checkmonth('pmvalidityMonth',2,0,"")){return false}
+    	if(!checkyear('pmmonthYear',2,0,"")){return false}
+    	if(!checkycvc('pmcardCvc',2,0,"")){return false}
 	}
     
     document.getElementById("back").onclick = function(){
@@ -303,7 +306,7 @@ margin-bottom: 10px;
         path += "&pmmonthYear=" + pmmonthYear;
         path += "&pmcardCvc=" + pmcardCvc;
         
-        		//location.href = "/payseatupdate" + "?" + path
+        location.href = "/payseatupdate" + "?" + path
         //window.location.href = "/payseatupdate" + "?" + path
     	//form.submit();
     			

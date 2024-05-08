@@ -138,10 +138,17 @@ public class PerformanceController {
 //	사용자 화면
 	private String str2 = "usr/list";
 	
-	
+	/*
+	 * @RequestMapping(value="/useSession") public String useSession(HttpSession
+	 * httpSession) throws Exception{ httpSession.setMaxInactiveInterval(120 *
+	 * Constants.SESSION_MINUTE_XDM); // 60second * 30 = 30minute
+	 * httpSession.setAttribute("useSession", "usr"); return "redirect:/useIndex"; }
+	 */
 	//메인회면
 	@RequestMapping(value = "/useIndex")
-	public String useIndex(@ModelAttribute("vo")PerformanceVo vo,Model model) throws Exception {
+	public String useIndex(@ModelAttribute("vo")PerformanceVo vo,Model model,HttpSession httpSession) throws Exception {
+		httpSession.setMaxInactiveInterval(120 * Constants.SESSION_MINUTE_XDM); // 60second * 30 = 30minute
+		httpSession.setAttribute("useSession", "usr");
 		setSearch(vo);
 		model.addAttribute("list", service.usrselectRanking(vo));
 		/* model.addAttribute("list", service.usrselectList(vo)); */

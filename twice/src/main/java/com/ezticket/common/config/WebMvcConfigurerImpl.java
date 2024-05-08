@@ -31,6 +31,7 @@ public class WebMvcConfigurerImpl implements WebMvcConfigurer {
 				,"/usePerformanceRanking"
 				,"/usePerformancepage"
 				,"/kakaologin"
+				,"/useSession"
 				);
 		//WebMvcConfigurer.super.addInterceptors(registry);
 	}

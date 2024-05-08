@@ -203,7 +203,7 @@ public class MemeberController {
 	
 	//	로그인 페이지
 	@RequestMapping(value = "/useLogin")
-	public String useLogin(@ModelAttribute("vo")MemeberVo vo) throws Exception {
+	public String useLogin(@ModelAttribute("vo")MemeberVo vo,HttpSession httpSession) throws Exception {
 		setSearch(vo);
 		return str + "/useLogin";
 	}

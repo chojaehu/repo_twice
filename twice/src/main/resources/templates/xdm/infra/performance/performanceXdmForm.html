@@ -97,6 +97,14 @@
 													<input type="text" id="prEndDate" name="prEndDate" placeholder="종료일"  class="form-control form-control-sm" autocomplete="off" 
 													 th:value ="${item.prEndDate}" readonly>
 												</div> 
+												<div class="col-md-12 ">
+													<div class="m-0">
+														<label class="form-label">상세설명</label>
+														<textarea id="prDetails" name="prDetails" class="form-control" rows="3" th:text="${item.prDetails}" required></textarea>
+														<div class="invalid-feedback">
+														</div>
+													</div>
+												</div>
 												<div class="col-6">
 													<a th:href ="@{/performanceXdmList}">
 													<button class="btn btn-primary " type="button">
