@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezticket.common.constants.Constants;
 import com.ezticket.common.util.UtilDateTime;
+import com.ezticket.infra.mail.MailService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -23,6 +24,9 @@ public class MemeberController {
 
 	@Autowired
 	MemeberService service;
+	
+	@Autowired
+	MailService mailService;
 	
 	String mb = "xdm/infra/member/";
 
@@ -157,6 +161,17 @@ public class MemeberController {
 				httpSession.setAttribute("sessNameXdm", dDto.getMbName());
 				httpSession.setAttribute("sessIdXdm", dDto.getMbEmail());
 				httpSession.setAttribute("sessPwXdm", dDto.getMbPassword());
+				
+//				mailService.sendMailSimple();
+				
+				Thread thread = new Thread(new Runnable() {
+					@Override
+					public void run() {
+						mailService.sendMailSimple();
+					}
+				});
+				
+				thread.start();
 				returnMap.put("rt", "success");
 			} else {
 				returnMap.put("rt", "pwfalse");

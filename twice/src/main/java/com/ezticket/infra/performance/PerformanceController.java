@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezticket.common.constants.Constants;
 import com.ezticket.common.util.UtilDateTime;
+import com.ezticket.infra.mail.MailService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -165,12 +166,21 @@ public class PerformanceController {
 		System.out.println(vo.getShOption()+"----------------------------------------");
 		System.out.println(vo.getShValue()+"----------------------------------------");
 		
+		
 		model.addAttribute("list", service.usrselectList(vo));
 
 		return str2 + "/usePerformanceList";
 	}
 	
 	//지역별 공연 리스트
+	@RequestMapping(value = "/usePerformanceAreaAjax")
+	public String usePerformanceAreaAjax(@ModelAttribute("vo")PerformanceVo vo,Model model) throws Exception {
+		
+		setSearch(vo);
+		vo.setParamsPaging(service.usrcount(vo));
+		model.addAttribute("list", service.usrselectList(vo));
+		return str2 + "/usePerformanceAreaAjax";
+	}
 	@RequestMapping(value = "/usePerformanceArea")
 	public String usePerformanceArea(@ModelAttribute("vo")PerformanceVo vo,Model model) throws Exception {
 		

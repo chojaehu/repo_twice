@@ -73,9 +73,10 @@
 			                        </div> -->
 	
 				<div class="preview-footer">
-					<div class="movie__rate">
-						 <div class="score"></div>  <!-- hidden으로 같은 아이디 생성으로 잡시 막음 -->
-						<span class="movie__rate-number">170 votes</span> <span
+					<div class="movie__rate"><br><br>
+						<!--  <div class="score"></div> -->  <!-- hidden으로 같은 아이디 생성으로 잡시 막음 -->
+						<!-- <span class="movie__rate-number">170 votes</span> -->
+						<!-- <span class="movie__rate-number"></span> --> <span
 							class="movie__rating"
 							th:text="${#numbers.formatDecimal(list.grade,1,1)}"></span>
 					</div>
@@ -94,9 +95,9 @@
 
 
 					<div class="search" th:fragment="search">
-	                    <input type="text" id="shValue" name= 'shValue' class="search__field" onkeyup="enterkey()"  placeholder="Search" >
+	                    <input type="text" id="shValue" name= 'shValue' th:value="${vo.shValue}" class="search__field" onkeyup="enterkey()"  placeholder="Search" >
 	                    
-	                    <select name="shOption" id="shOption" class="search__sort" tabindex="0" >
+	                    <select name="shOption" id="shOption"  class="search__sort" tabindex="0" >
 	                        <option value="1" th:selected="${vo.shOption == 1}">제목</option>
 	
 	                    </select>

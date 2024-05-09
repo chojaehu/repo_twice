@@ -42,8 +42,9 @@
 
 <body>
   <form id='formList' name ='formList' method='get' class="search">
-  <input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
+  <input type="hidden" id ="thisPage"name="thisPage" th:value="${vo.thisPage}" default="1"/>
   <input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
+  <input type="hidden" id="shArea" name="shArea" th:value="${vo.shArea}"/>
     <div class="wrapper">
         <!-- Banner -->
        <div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
@@ -276,6 +277,7 @@
     <script src="usr/js/custom.js"></script>
     
     
+    
   
      <script type="text/javascript">
         $(document).ready(function () {
@@ -283,9 +285,11 @@
 
         });
         let goUrlXdmList = "/usePerformanceList";
+        let goUrlSdmPaging;
     </script>
     <script src="usr/js/usrCommon.js"></script> 
     <script src="usr/js/usrmymenu.js"></script>
+    <script src="usr/js/paging.js"></script>
    
     
 
