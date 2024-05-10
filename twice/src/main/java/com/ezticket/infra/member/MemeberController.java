@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -140,11 +141,6 @@ public class MemeberController {
 
 			//dDto.setMbPassword(encodeBcrypt(dDto.getMbPassword(), 10));
 
-			System.out.println("dDto.getMbEmail() : " + id);
-			System.out.println("dDto.getMbPassword() : " + pw);
-
-			System.out.println("dDto.getMbEmail() : " + dDto.getMbEmail());
-			System.out.println("dDto.getMbPassword() : " + dDto.getMbPassword());
 
 			if (id.equals(dDto.getMbEmail())) {
 				returnMap.put("rt", "success");
@@ -164,14 +160,14 @@ public class MemeberController {
 				
 //				mailService.sendMailSimple();
 				
-				Thread thread = new Thread(new Runnable() {
-					@Override
-					public void run() {
-						mailService.sendMailSimple();
-					}
-				});
-				
-				thread.start();
+//				Thread thread = new Thread(new Runnable() {
+//					@Override
+//					public void run() {
+//						mailService.sendMailSimple();
+//					}
+//				});
+//				
+//				thread.start();
 				returnMap.put("rt", "success");
 			} else {
 				returnMap.put("rt", "pwfalse");
@@ -216,9 +212,18 @@ public class MemeberController {
 	private String str = "usr/index";
 	private String str2 = "usr/modify";
 	
+	@Value("${kakaologinkey}")
+    private String kakaologinkey;
+	
+	@Value("${kakaologinurl}")
+    private String kakaologinurl;
+	
 	//	로그인 페이지
 	@RequestMapping(value = "/useLogin")
-	public String useLogin(@ModelAttribute("vo")MemeberVo vo,HttpSession httpSession) throws Exception {
+	public String useLogin(@ModelAttribute("vo")MemeberVo vo,HttpSession httpSession,Model model) throws Exception {
+		
+		String location = "https://kauth.kakao.com/oauth/authorize?client_id="+kakaologinkey+"&redirect_uri="+kakaologinurl+"&response_type=code&scope=account_email";
+		model.addAttribute("location", location);
 		setSearch(vo);
 		return str + "/useLogin";
 	}

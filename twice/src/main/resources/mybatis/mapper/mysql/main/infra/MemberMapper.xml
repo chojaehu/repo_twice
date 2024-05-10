@@ -68,7 +68,7 @@
         ;
     </select>
     
-    <!-- 이메일 확인 현재 구현중 -->
+    <!-- 이메일 확인 현재 -->
      <select id="emailChek" resultMap="resultMapObj">
         SELECT
 	        mbSeq

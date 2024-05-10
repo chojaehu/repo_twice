@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ezticket.common.util.UtilDateTime;
 import com.ezticket.common.constants.Constants;
@@ -51,8 +52,13 @@ public class CodeGroupController {
 	 */
 	@RequestMapping(value = "/codeGroupInsert")
 	public String codeGroupInsert(CodeGroupDto dto) throws Exception {
-
-		service.insert(dto);
+		
+		System.out.println(dto.getUploadflies().length);
+		for(MultipartFile a : dto.getUploadflies())
+		{
+			System.out.println("a.getOriginalFilename() : "+a.getOriginalFilename());
+		}
+		//service.insert(dto);
 
 		return "redirect:/codeGroupXdmList";
 	}
