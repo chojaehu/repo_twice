@@ -78,7 +78,7 @@ public class KakaoLoginController {
 		}
         
         
-        return loginurl;
+        return "redirect:" + loginurl;
     }
 
 
