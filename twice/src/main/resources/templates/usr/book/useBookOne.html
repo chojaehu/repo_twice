@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
- <head th:replace="~{usr/block/usehead :: book}">
+ <head th:replace="~{usr/block/usehead :: book}"></head>
 
 
 <body>
+<form id='formList' name ='formList' method='get' class="search">
     <div class="wrapper">
         <!-- Banner -->
        <div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
@@ -17,14 +18,13 @@
         </header>
 
         <!-- Search bar -->
-       <form id='formList' name ='formList' method='get' class="search">
 	        <div class="search-wrapper">
 	            <div class="container container--add">	            
 		                <div class="search" th:replace="~{usr/block/usebody :: search}">
 		                </div>
 	            </div>
 	        </div>
-        </form>
+
 
         <!-- Main content -->
        <!--  onclick="myFunction()"   -->
@@ -135,7 +135,7 @@
 
         <div class="clearfix"></div>
 
-        <form id='film-and-time' class="booking-form" method='get'>
+        <div id='film-and-time' class="booking-form" method='get'>
             <input type='text' name='choosen-movie' class="choosen-movie">
 
             <input type='text' name='choosen-city' class="choosen-city">
@@ -157,7 +157,7 @@
                <!--  th:href = "@{/useBookTow}" -->
             </div>
 
-        </form>
+        </div>
 
         <div class="clearfix"></div>
 
@@ -208,6 +208,7 @@
             </section>
         </footer>
     </div>
+    </form>
 
 
 
@@ -236,7 +237,7 @@
 	
 	
 	<script type="text/javascript">
-        let goUrlXdmList = "/usePerformanceList";
+        
     </script>
     <!-- Custom -->
     <script src="usr/js/custom.js"></script>
@@ -247,6 +248,7 @@
         $(document).ready(function () {
             init_BookingOne();
         });     
+        let goUrlXdmList = "/usePerformanceList";
     </script> 
 	
 	<script th:inline="javascript">

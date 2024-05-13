@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezticket.common.constants.Constants;
 import com.ezticket.common.util.UtilDateTime;
-import com.ezticket.infra.mail.MailService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -148,8 +147,13 @@ public class PerformanceController {
 	//메인회면
 	@RequestMapping(value = "/useIndex")
 	public String useIndex(@ModelAttribute("vo")PerformanceVo vo,Model model,HttpSession httpSession) throws Exception {
+		
+		
+		
 		httpSession.setMaxInactiveInterval(120 * Constants.SESSION_MINUTE_XDM); // 60second * 30 = 30minute
 		httpSession.setAttribute("useSession", "usr");
+		
+		
 		setSearch(vo);
 		model.addAttribute("list", service.usrselectRanking(vo));
 		/* model.addAttribute("list", service.usrselectList(vo)); */

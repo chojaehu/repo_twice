@@ -85,6 +85,27 @@
     </update>
     
 
+
+	<!-- 이미지 파일 업로드 -->
+	<insert id="imageupload">
+	insert into imageuploaded
+	(
+		iuPath
+		,iuOriginalName 
+		,iuUuidName
+		,iuExt
+		,iuSize
+		
+	)
+	values
+	(
+		#{iuPath}
+		,#{iuOriginalName}
+		,#{iuUuidName}
+		,#{iuExt}
+		,#{iuSize}
+	)
+	</insert>
     <insert id="insert">
     
     INSERT INTO codegroup

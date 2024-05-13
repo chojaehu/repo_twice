@@ -53,12 +53,15 @@ public class CodeGroupController {
 	@RequestMapping(value = "/codeGroupInsert")
 	public String codeGroupInsert(CodeGroupDto dto) throws Exception {
 		
-		System.out.println(dto.getUploadflies().length);
-		for(MultipartFile a : dto.getUploadflies())
-		{
-			System.out.println("a.getOriginalFilename() : "+a.getOriginalFilename());
-		}
-		//service.insert(dto);
+		
+		
+		
+//		System.out.println(dto.getUploadflies().length);
+//		for(MultipartFile a : dto.getUploadflies())
+//		{
+//			System.out.println("a.getOriginalFilename() : "+a.getOriginalFilename());
+//		}
+		service.insert(dto);
 
 		return "redirect:/codeGroupXdmList";
 	}

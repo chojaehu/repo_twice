@@ -54,6 +54,7 @@
 </head>
 
 <body>
+<form id='formList' name ='formList' method='get' class="search">
 	<div class="wrapper">
 		<!-- Banner -->
 		<div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
@@ -103,7 +104,7 @@
 
 
 		<!-- Main content -->
-		<form name="formList" id="formList" method="get" autocomplete="off" >
+		
 			<section class="container">
 				<div class="movie-best">
 					<div class="col-sm-10 col-sm-offset-1 movie-best__rating">오늘의
@@ -117,52 +118,17 @@
 							</a>
 
 						</div>
-						<!-- <div class="movie-beta__item second--item">
-							<img alt='' src="usr/ticketimg/main2.jpg" class="imgsize2">
-							<span class="best-rate">5.0</span>
-
-
-						</div>
-						<div class="movie-beta__item third--item">
-							<img alt='' src="usr/ticketimg/main3.jpg" class="imgsize2">
-							<span class="best-rate">5.0</span>
-
-
-						</div>
-						<div class="movie-beta__item hidden-xs">
-							<img alt='' src="usr/ticketimg/main4.jpg" class="imgsize2">
-							<span class="best-rate">5.0</span>
-
-
-						</div>
-						<div class="movie-beta__item hidden-xs hidden-sm">
-							<img alt='' src="usr/ticketimg/main5.jpg" class="imgsize2">
-							<span class="best-rate">5.0</span>
-
-
-						</div>
-						<div class="movie-beta__item hidden-xs hidden-sm">
-							<img alt='' src="usr/ticketimg/main6.jpg" class="imgsize2">
-							<span class="best-rate">5.0</span>
-
-
-						</div> -->
 					</div>
 					<div class="col-sm-10 col-sm-offset-1 movie-best__check">상세 보기</div>
 				</div>
 
-				<!-- <div class="col-sm-12">
+				<div class="col-sm-12">
 
-					 <div class="search" th:fragment="search">
-	                    <input type="text" id="shValue" name= 'shValue' class="search__field" onkeyup="enterkey()"  placeholder="Search" >
-	                    
-	                    <select name="shOption" id="shOption" class="search__sort" tabindex="0" >
-	                        <option value="1" th:selected="${vo.shOption == 1}">제목</option>
-	
-	                    </select>
-	                    <button type='button' id="btnSearch" name="btnSearch" class="btn btn-md btn--danger search__button">search</button>
-	                </div>
-				</div> -->
+					 <div class="container container--add">
+			                <div class="search" th:replace="~{usr/block/usebody :: search}">
+			                </div>
+		            </div>
+				</div> 
 
 				<div class="clearfix"></div>
 
@@ -208,7 +174,7 @@
 				</div>
 
 			</section>
-		</form>
+		
 
 		<div class="clearfix"></div>
 
@@ -264,6 +230,7 @@
 			</section>
 		</footer>
 	</div>
+	</form>
 
 	<!-- open/close -->
 
@@ -318,10 +285,10 @@
 	<!-- Form element -->
 	<script src="usr/js/external/form-element.js"></script>
 	<!-- Form validation -->
-	<script src="usr/js/form.js"></script>
+	<!-- <script src="usr/js/form.js"></script> -->
 	<script src="usr/js/custom.js"></script>
 	
-	<script src="usr/js/usrCommon.js"></script>
+	
 	<script type="text/javascript">
 		
 		$(document).ready(function() {
@@ -331,6 +298,7 @@
 		let goUrlXdmList = "/usePerformanceList";
 		
 	</script>
+	<script src="usr/js/usrCommon.js"></script>
 
 	<!-- Custom -->
 	
