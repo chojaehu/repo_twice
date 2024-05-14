@@ -1,8 +1,11 @@
 package com.ezticket.infra.member;
 
 import java.util.Date;
+import org.springframework.web.multipart.MultipartFile;
 
-public class MemberDto {
+import com.ezticket.infra.Base.BaseDto;
+
+public class MemberDto extends BaseDto {
 
 	private String mbSeq;
 	private String mbName;
@@ -27,6 +30,8 @@ public class MemberDto {
 	private String mblongitude;
 	private String mblatitude;
 	
+	private MultipartFile[] uploadflies;
+	
 	
 	//mbpostalCode, mbrdnmAdres, mbaddress, mbdetailAddress, mbseeAlso, mblongitude, mblatitude
 	
@@ -34,6 +39,12 @@ public class MemberDto {
 	
 	public String getMbnewPassword() {
 		return mbnewPassword;
+	}
+	public MultipartFile[] getUploadflies() {
+		return uploadflies;
+	}
+	public void setUploadflies(MultipartFile[] uploadflies) {
+		this.uploadflies = uploadflies;
 	}
 	public String getMbpostalCode() {
 		return mbpostalCode;

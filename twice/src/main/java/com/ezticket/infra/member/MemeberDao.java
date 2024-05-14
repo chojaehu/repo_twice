@@ -22,8 +22,14 @@ public interface MemeberDao {
 	//비밀번호 변경
 	public int newpwupdate(MemberDto dto);
 	
+//	s3이미지 불러오기 쿼리문
+	public int uploadimgselect(MemberDto dto);
+	
 	
 	//유저 정보 변경
 	public int usrUpdate(MemberDto dto);
+	
+//	파일 업로드
+	public int imageupload(MemberDto dto);
 
 }

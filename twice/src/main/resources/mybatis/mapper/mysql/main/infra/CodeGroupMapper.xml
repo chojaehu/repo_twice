@@ -107,7 +107,9 @@
 	)
 	</insert>
     <insert id="insert">
-    
+    <selectKey resultType ="String" keyProperty="ifcgSeq" order="AFTER">
+		SELECT LAST_INSERT_ID()
+	</selectKey>
     INSERT INTO codegroup
     (
     ifcgName

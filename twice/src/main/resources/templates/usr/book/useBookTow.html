@@ -35,6 +35,7 @@
 
 </head>
 <body>
+<form id='formList' name ='formList' method='get' class="search">
     <div class="wrapper place-wrapper">
         <!-- Banner -->
         <div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
@@ -48,6 +49,7 @@
         </header>
 
         <!-- Search bar -->
+        
         <div class="search-wrapper">
             <div class="container container--add">
             
@@ -59,7 +61,6 @@
         </div>
 
         <!-- Main content -->
-        <form id='formnext' name ='formnext' method='get' class="search">
         <div class="place-form-area">
             <section class="container">
                 <div class="order-container">
@@ -288,8 +289,9 @@
         </div>
         <input type="hidden" id= 'seat' name= 'seat'>
         <!-- <button type="button" id = "aa">실험버튼</button> -->
-        </form>
+        
     </div>
+    </form>
 
 
 
@@ -422,7 +424,7 @@
         				let currentURL = window.location.href;
             			let path = currentURL.split('?').pop();
             			//alert(path)
-            			form.submit();
+            			//form.submit();
             			location.href = "/useBookBuy" + "?" + path + "&" + queryString 
         				
         			}

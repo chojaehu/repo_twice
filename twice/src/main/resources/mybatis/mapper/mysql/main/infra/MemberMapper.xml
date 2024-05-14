@@ -78,6 +78,14 @@
         ;
     </select>
     
+    <!-- 이미지 불러오기 -->
+    <select id="uploadimgselect" resultMap="resultMapObj">
+    	select
+			iuPath
+		    from imageuploaded
+		    where pseq = #{mbSeq};
+    </select>
+    
     <!-- 유저 정보 업데이트 -->
     <update id="usrUpdate">
     update members
@@ -116,10 +124,34 @@
 			AND mbSeq = #{mbSeq}
 	</update>
     
-    
+    <!-- 파일 업로드 -->
+    <insert id="imageupload">
+	insert into imageuploaded
+	(
+		iuPath
+		,iuOriginalName 
+		,iuUuidName
+		,iuExt
+		,iuSize
+		,pseq
+		
+	)
+	values
+	(
+		#{iuPath}
+		,#{iuOriginalName}
+		,#{iuUuidName}
+		,#{iuExt}
+		,#{iuSize}
+		,#{mbSeq}
+	)
+	</insert>
+	
     <!-- 등록 -->
     <insert id="insert">
-    
+    <selectKey resultType ="String" keyProperty="mbSeq" order="AFTER">
+		SELECT LAST_INSERT_ID()
+	</selectKey>
     INSERT INTO members
     (
     mbName

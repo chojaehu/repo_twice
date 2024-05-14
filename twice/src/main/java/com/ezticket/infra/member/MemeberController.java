@@ -130,9 +130,12 @@ public class MemeberController {
 	@RequestMapping(value = "/loginchek")
 	public Map<String, Object> loginchek(MemberDto dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-
+		
+		
+		
 		MemberDto dDto = service.selectlogin(dto);
-
+		
+		
 		if (dDto != null) {
 			//dto.setMbPassword(encodeBcrypt(dto.getMbPassword(), 10));
 
@@ -152,6 +155,9 @@ public class MemeberController {
 			}
 
 			if (matchesBcrypt(pw, dDto.getMbPassword(), 10)) {
+//				String seq = dDto.getMbSeq();
+//				dto.setMbSeq(seq);
+//				service.uploadimgselect(dto);
 				httpSession.setMaxInactiveInterval(120 * Constants.SESSION_MINUTE_XDM); // 60second * 30 = 30minute
 				httpSession.setAttribute("sessSeqXdm", dDto.getMbSeq());
 				httpSession.setAttribute("sessNameXdm", dDto.getMbName());

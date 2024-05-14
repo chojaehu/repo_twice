@@ -21,6 +21,7 @@ margin-bottom: 10px;
  <head th:replace="~{usr/block/usehead :: book}">
 
 <body>
+<form id='formList' name ='formList' method='get' class="search">
     <div class="wrapper">
         <!-- Banner -->
         <div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
@@ -45,7 +46,7 @@ margin-bottom: 10px;
         </div>
 
         <!-- Main content -->
-        <form id='formnext' name ='formnext' method='get' class="search">
+        
 	        <section class="container">
 	            <div class="order-container">
 	                <div class="order">
@@ -160,7 +161,7 @@ margin-bottom: 10px;
 	            </div>
 	
 	        </section>
-        </form>
+       
 
 
         <div class="clearfix"></div>
@@ -220,6 +221,7 @@ margin-bottom: 10px;
             </section>
         </footer>
     </div>
+    </form>
 
 
 
