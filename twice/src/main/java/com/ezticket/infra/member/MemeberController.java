@@ -155,11 +155,13 @@ public class MemeberController {
 			}
 
 			if (matchesBcrypt(pw, dDto.getMbPassword(), 10)) {
-//				String seq = dDto.getMbSeq();
-//				dto.setMbSeq(seq);
-//				service.uploadimgselect(dto);
+				
+				dto.setMbSeq(dDto.getMbSeq());
+				MemberDto dDto2 =	service.uploadimgselect(dto);
+				System.out.println(dDto2.getIuPath());
 				httpSession.setMaxInactiveInterval(120 * Constants.SESSION_MINUTE_XDM); // 60second * 30 = 30minute
 				httpSession.setAttribute("sessSeqXdm", dDto.getMbSeq());
+				httpSession.setAttribute("sessimgXdm", dDto2.getIuPath());
 				httpSession.setAttribute("sessNameXdm", dDto.getMbName());
 				httpSession.setAttribute("sessIdXdm", dDto.getMbEmail());
 				httpSession.setAttribute("sessPwXdm", dDto.getMbPassword());

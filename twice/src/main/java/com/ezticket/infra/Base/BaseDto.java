@@ -9,7 +9,7 @@ public class BaseDto {
 	private Integer iuType;
 	private Integer iuDefaultNy;
 	private Integer iuSort;
-	private String iuPath;
+
 	private String iuOriginalName;
 	private String iuUuidName;
 	private String iuExt;
@@ -46,12 +46,6 @@ public class BaseDto {
 	}
 	public void setIuSort(Integer iuSort) {
 		this.iuSort = iuSort;
-	}
-	public String getIuPath() {
-		return iuPath;
-	}
-	public void setIuPath(String iuPath) {
-		this.iuPath = iuPath;
 	}
 	public String getIuOriginalName() {
 		return iuOriginalName;

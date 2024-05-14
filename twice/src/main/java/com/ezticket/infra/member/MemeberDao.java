@@ -23,7 +23,7 @@ public interface MemeberDao {
 	public int newpwupdate(MemberDto dto);
 	
 //	s3이미지 불러오기 쿼리문
-	public int uploadimgselect(MemberDto dto);
+	public MemberDto uploadimgselect(MemberDto dto);
 	
 	
 	//유저 정보 변경

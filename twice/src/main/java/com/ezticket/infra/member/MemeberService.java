@@ -97,7 +97,7 @@ public class MemeberService {
 	}
 	
 //	s3이미지 불러오기
-	public int uploadimgselect(MemberDto dto)
+	public MemberDto uploadimgselect(MemberDto dto)
 	{
 		return dao.uploadimgselect(dto);
 	}

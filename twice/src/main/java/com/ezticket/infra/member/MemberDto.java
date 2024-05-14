@@ -30,6 +30,8 @@ public class MemberDto extends BaseDto {
 	private String mblongitude;
 	private String mblatitude;
 	
+	
+	private String iuPath;
 	private MultipartFile[] uploadflies;
 	
 	
@@ -39,6 +41,12 @@ public class MemberDto extends BaseDto {
 	
 	public String getMbnewPassword() {
 		return mbnewPassword;
+	}
+	public String getIuPath() {
+		return iuPath;
+	}
+	public void setIuPath(String iuPath) {
+		this.iuPath = iuPath;
 	}
 	public MultipartFile[] getUploadflies() {
 		return uploadflies;
