@@ -95,7 +95,7 @@ public class CodeGroupController {
 	
 //	인덱스
 	
-	@RequestMapping(value = "/startindex")
+	@RequestMapping(value = "/portfolio")
 	public String startindex() throws Exception {
 		
 

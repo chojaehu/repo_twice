@@ -22,7 +22,7 @@ public class WebMvcConfigurerImpl implements WebMvcConfigurer {
 				,"/xdm/**"
 				,"/login"
 				,"/signup"
-				,"/startindex"
+				,"/portfolio"
 				,"/loginchek"
 				,"/useLogin"
 				,"/useIndex"
