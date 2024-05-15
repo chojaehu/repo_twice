@@ -63,7 +63,7 @@ public class KakaoPayController {
 		
 		System.out.println(pg_token +"-----------------------------------------------------------------");
 		redirectAttributes.addAttribute("pmSeq", dto.getPmSeq());
-		redirectAttributes.addFlashAttribute("pg_token", kakaoPayService.kakaoPayInfo(pg_token, httpSession,dto));
+		//redirectAttributes.addFlashAttribute("pg_token", kakaoPayService.kakaoPayInfo(pg_token, httpSession,dto));
     	
     	return "redirect:/useBookfinal";
     }  
