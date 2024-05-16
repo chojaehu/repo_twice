@@ -69,8 +69,11 @@
 	                <div class="auth auth--home">
 	                
                         <div class="auth__show">
-                            <span class="auth__image">
+                            <span class="auth__image" th:if="${session.sessimgXdm != null}">
                                 <img alt="" th:src="${session.sessimgXdm}">
+                            </span>
+                            <span class="auth__image" th:unless="${session.sessimgXdm != null}">
+                                <img alt="" src="usr/images/nuko.png">
                             </span>
                         </div>
                         <a href="#" class="btn btn--sign btn--singin">
