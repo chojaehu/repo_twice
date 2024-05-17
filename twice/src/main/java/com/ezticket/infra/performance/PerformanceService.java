@@ -1,9 +1,16 @@
 package com.ezticket.infra.performance;
 
 import java.util.List;
+import java.util.UUID;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 
 
 
@@ -13,6 +20,12 @@ public class PerformanceService {
 	@Autowired
 	PerformanceDao dao;
 	
+	
+	@Autowired
+	AmazonS3Client amazonS3Client;
+	
+	@Value("${cloud.aws.s3.bucket}")
+	private String bucket;
 	
 	
 	
@@ -190,9 +203,52 @@ public class PerformanceService {
 	{
 		return dao.tickerseatuptdel(dto);
 	}
-	public int update(PerformanceDto dto)
+	
+	
+	
+//	s3이미지 불러오기
+	public List<PerformanceDto> pruploadimgselect(PerformanceDto dto)
 	{
-		return dao.update(dto);
+		return dao.pruploadimgselect(dto);
+	}
+	
+	public int update(PerformanceDto dto) throws Exception
+	{
+		//dao.update(dto);
+		for(MultipartFile multipartFile : dto.getUploadflies()) {
+			
+			if(!multipartFile.isEmpty()) {
+				//System.out.println("multipartFile.getOriginalFilename() : " + multipartFile.getOriginalFilename());
+				
+		        ObjectMetadata metadata = new ObjectMetadata();
+		        metadata.setContentLength(multipartFile.getSize());
+		        metadata.setContentType(multipartFile.getContentType());
+		        
+		        amazonS3Client.putObject(bucket, multipartFile.getOriginalFilename(), multipartFile.getInputStream(), metadata);
+				
+		        String objectUrl = amazonS3Client.getUrl(bucket, multipartFile.getOriginalFilename()).toString();
+		        
+		        String uuid = UUID.randomUUID().toString();
+		        String exit = FilenameUtils.getExtension(multipartFile.getOriginalFilename());
+		        
+		        
+		        dto.setIuPath(objectUrl);
+		        dto.setIuOriginalName(FilenameUtils.getBaseName(multipartFile.getOriginalFilename()));
+		        dto.setIuUuidName(uuid);
+		        dto.setIuSize((int) multipartFile.getSize());
+		        dto.setIuExt(exit);
+		        
+		       
+		        
+		        System.out.println(dto.getIuPath());
+		        System.out.println(dto.getIuOriginalName());
+		        System.out.println(dto.getIuUuidName());
+		        System.out.println(dto.getIuSize());
+		        System.out.println(dto.getIuExt());
+		        dao.primageupload(dto);
+			}
+		}
+		return 1;
 	}
 	public int insert(PerformanceDto dto)
 	{

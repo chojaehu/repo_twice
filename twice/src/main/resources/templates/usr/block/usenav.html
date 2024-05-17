@@ -76,7 +76,7 @@
                                 <img alt="" src="usr/images/nuko.png">
                             </span>
                         </div>
-                        <a href="#" class="btn btn--sign btn--singin">
+                        <a href="#" class="btn btn--sign btn--singin" th:if="${session.sessNameXdm != null}">
                             [[${session.sessNameXdm}]]
                         </a>
                         <ul class="auth__function">

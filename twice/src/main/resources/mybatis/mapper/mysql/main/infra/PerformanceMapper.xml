@@ -759,6 +759,15 @@
 		WHERE
 		1=1 AND a.prSeq = #{prSeq}
 	</select>
+	
+	
+	<!-- s3이미지 불러오기 -->
+	<select id="pruploadimgselect" resultMap="resultMapObj">
+    	select
+			iuPath
+		    from imageuploaded
+		    where pseq = #{prSeq} AND iuType = 1;
+    </select>
 
 	<update id="update">
 
@@ -797,6 +806,31 @@
 		,#{prDetails}
 		)
 
+	</insert>
+	
+	<!-- s3이미지 정보 저장 -->
+	<insert id="primageupload">
+	insert into imageuploaded
+	(
+		iuType
+		,iuPath
+		,iuOriginalName 
+		,iuUuidName
+		,iuExt
+		,iuSize
+		,pseq
+		
+	)
+	values
+	(	
+		1
+		,#{iuPath}
+		,#{iuOriginalName}
+		,#{iuUuidName}
+		,#{iuExt}
+		,#{iuSize}
+		,#{prSeq}
+	)
 	</insert>
 
 	<update id="updatedelete">

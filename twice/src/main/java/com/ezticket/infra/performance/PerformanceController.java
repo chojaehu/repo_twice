@@ -213,6 +213,7 @@ public class PerformanceController {
 		model.addAttribute("item", service.selectOne(dto));
 		model.addAttribute("review", service.reviewList(vo));
 		model.addAttribute("reply", service.replyList(vo));
+		model.addAttribute("image", service.pruploadimgselect(dto));
 		
 		return str2 + "/usePerformancepage";
 	}

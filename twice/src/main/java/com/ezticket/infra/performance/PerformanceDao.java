@@ -91,6 +91,12 @@ public interface PerformanceDao {
 	public int tickerseatuptdel(PerformanceDto dto);
 	
 	
+//	s3이미지 불러오기
+	public List<PerformanceDto> pruploadimgselect(PerformanceDto dto);
+	
+//	s3이미지 db저장
+	public int primageupload(PerformanceDto dto);
+	
 	public int update(PerformanceDto dto);
 	public int insert(PerformanceDto dto);
 	public int delete(PerformanceDto dto);

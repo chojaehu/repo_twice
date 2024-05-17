@@ -3,7 +3,11 @@ package com.ezticket.infra.performance;
 import java.util.Date;
 import java.util.List;
 
-public class PerformanceDto {
+import org.springframework.web.multipart.MultipartFile;
+
+import com.ezticket.infra.Base.BaseDto;
+
+public class PerformanceDto extends BaseDto {
 	
 	
 	// 공연 정보
@@ -111,9 +115,29 @@ public class PerformanceDto {
 //	이미지파일 주소
 	private String imgsrc;
 	
+//	s3이미지 저장
+	private String iuPath;
+	private MultipartFile[] uploadflies;
 	
 	
 	
+	
+	
+	
+	
+	
+	public String getIuPath() {
+		return iuPath;
+	}
+	public void setIuPath(String iuPath) {
+		this.iuPath = iuPath;
+	}
+	public MultipartFile[] getUploadflies() {
+		return uploadflies;
+	}
+	public void setUploadflies(MultipartFile[] uploadflies) {
+		this.uploadflies = uploadflies;
+	}
 	public String getImgsrc() {
 		return imgsrc;
 	}
