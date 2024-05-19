@@ -136,7 +136,8 @@
                                     <tr>
                                         <th>성별</th>
                                         <td>
-                                            <span th:text="${@codeService.selectOneCachedCode(item.mbgender)}"></span>
+                                        	
+                                            <span th:if="${item.mbgender!=null}" th:text="${@codeService.selectOneCachedCode(item.mbgender)}"></span>
                                         </td>
                                         <td>
 
