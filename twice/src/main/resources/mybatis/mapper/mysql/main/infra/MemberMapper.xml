@@ -49,7 +49,12 @@
         	mbDateBirth,
         	mbRgstrDate,
         	mbModifiedDate,
-        	mbdelectNY
+        	mbdelectNY,
+        	mbpostalCode, 
+        	mbrdnmAdres, 
+        	mbaddress, 
+        	mbdetailAddress, 
+        	mbseeAlso
          FROM members
         WHERE mbSeq = #{mbSeq}
     </select>
