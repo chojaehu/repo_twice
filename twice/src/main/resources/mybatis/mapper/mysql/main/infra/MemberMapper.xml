@@ -86,9 +86,10 @@
     <!-- 이미지 불러오기 -->
     <select id="uploadimgselect" resultMap="resultMapObj">
     	select
-			iuPath
+    		iuType
+			,iuPath
 		    from imageuploaded
-		    where pseq = #{mbSeq};
+		    where pseq = #{mbSeq} and iuType = 0;
     </select>
     
     <!-- 유저 정보 업데이트 -->
