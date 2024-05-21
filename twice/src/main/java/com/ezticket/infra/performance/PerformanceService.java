@@ -214,7 +214,7 @@ public class PerformanceService {
 	
 	public int update(PerformanceDto dto) throws Exception
 	{
-		//dao.update(dto);
+		dao.update(dto);
 		for(MultipartFile multipartFile : dto.getUploadflies()) {
 			
 			if(!multipartFile.isEmpty()) {
@@ -229,6 +229,8 @@ public class PerformanceService {
 		        String objectUrl = amazonS3Client.getUrl(bucket, multipartFile.getOriginalFilename()).toString();
 		        
 		        String uuid = UUID.randomUUID().toString();
+		        
+		        
 		        String exit = FilenameUtils.getExtension(multipartFile.getOriginalFilename());
 		        
 		        
@@ -245,6 +247,8 @@ public class PerformanceService {
 		        System.out.println(dto.getIuUuidName());
 		        System.out.println(dto.getIuSize());
 		        System.out.println(dto.getIuExt());
+		        
+		        
 		        dao.primageupload(dto);
 			}
 		}

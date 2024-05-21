@@ -132,4 +132,51 @@ public class TestController {
 //		model.addAttribute("body", body);
 		return "test/test2";
 	}
+	
+	
+	@RequestMapping(value = "/test3")
+	public String test3(Model model) throws Exception
+	{
+		String apiUrl = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst?serviceKey=N3YEBL3S%2BptRSuZYd5A3x7XK3VTIf61bowQ48lqXUISpn3BNT64x0ZAv4fEz36B06RS%2FTml5T6otfwpL9jre%2FQ%3D%3D&numOfRows=1&pageNo=1&base_date=20240521&base_time=0600&nx=55&ny=127&dataType=json";
+		
+		//
+		//N3YEBL3S%2BptRSuZYd5A3x7XK3VTIf61bowQ48lqXUISpn3BNT64x0ZAv4fEz36B06RS%2FTml5T6otfwpL9jre%2FQ%3D%3D
+		URL url = new URL(apiUrl);
+		HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+		httpURLConnection.setRequestMethod("GET");
+		
+		BufferedReader bufferedReader;
+		if (httpURLConnection.getResponseCode() >= 200 && httpURLConnection.getResponseCode() <= 300) {
+			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+		} else {
+			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getErrorStream()));
+		}
+		
+		StringBuilder stringBuilder = new StringBuilder();
+		String line;
+		while ((line = bufferedReader.readLine()) != null) {
+			System.out.println("line: " + line);
+			stringBuilder.append(line);
+		}
+
+		bufferedReader.close();
+		httpURLConnection.disconnect();
+
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode node = objectMapper.readTree(stringBuilder.toString());
+		
+		
+		
+		
+		System.out.println("node.get(\"header\").get(\"resultCode\").asText(): " + node.get("response").get("header").get("resultCode").asText());
+		System.out.println("node.get(\"header\").get(\"resultMsg\").asText(): " + node.get("response").get("header").get("resultMsg").asText());
+		//System.out.println("node.get(\"header\").get(\"resultMsg\").asText(): " + node.get("body").get("items").get(0).get("KIT_PROD_QTY").asText());
+		
+		model.addAttribute("node", node);
+		
+		
+		
+//		model.addAttribute(node);
+		return "test/test3";
+	}
 }
