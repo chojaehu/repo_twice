@@ -57,7 +57,7 @@ public class CodeGroupService {
 	
 	
 	public int insert(CodeGroupDto dto)throws Exception {
-		//dao.insert(dto);
+		dao.insert(dto);
 		
 		for(MultipartFile multipartFile : dto.getUploadflies()) {
 			

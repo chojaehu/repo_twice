@@ -85,7 +85,7 @@
 													<div class="invalid-feedback" id="mbPhoneFeedback" name="mbPhoneFeedback"></div>
 												</div>
 												<div class="col-md-6">
-													<input type="text" id="mbDateBirth" name="mbDateBirth" placeholder="생년월일" th:value = "${#dates.format(item.mbDateBirth,'yyyy/MM/dd')}"  class="form-control form-control-sm" autocomplete="off">
+													<input type="text" id="mbDateBirth" name="mbDateBirth" placeholder="생년월일" th:value ="${#dates.format(item.mbDateBirth,'yyyy/MM/dd')}"  class="form-control form-control-sm" autocomplete="off">
 													<div class="invalid-feedback" id="mbDateBirthFeedback" name="mbDateBirthFeedback"></div>
 												</div>
 												
