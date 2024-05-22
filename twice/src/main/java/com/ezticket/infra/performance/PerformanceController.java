@@ -2,6 +2,13 @@ package com.ezticket.infra.performance;
 
 
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import java.util.Map;
@@ -18,6 +25,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezticket.common.constants.Constants;
 import com.ezticket.common.util.UtilDateTime;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -149,7 +158,54 @@ public class PerformanceController {
 	public String useIndex(@ModelAttribute("vo")PerformanceVo vo,Model model,HttpSession httpSession) throws Exception {
 		
 		
+		Date today = new Date();
+
+        // Calendar 객체 생성하여 현재 날짜 설정
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(today);
+
+        // 현재 날짜에서 하루를 빼기
+        calendar.add(Calendar.DAY_OF_MONTH, -1);
+
+        // 뺀 후 날짜 가져오기
+        Date yesterday = calendar.getTime();
+
+        // SimpleDateFormat을 사용하여 원하는 형식으로 출력
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        System.out.println("하루 전 날짜 포맷 지정 후: " + dateFormat.format(yesterday));
+
+
+		String apiUrl = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=288bd6df89e380923abfb16576f35d84&targetDt=" +dateFormat.format(yesterday);
 		
+		//
+		//N3YEBL3S%2BptRSuZYd5A3x7XK3VTIf61bowQ48lqXUISpn3BNT64x0ZAv4fEz36B06RS%2FTml5T6otfwpL9jre%2FQ%3D%3D
+		URL url = new URL(apiUrl);
+		HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+		httpURLConnection.setRequestMethod("GET");
+		
+		BufferedReader bufferedReader;
+		if (httpURLConnection.getResponseCode() >= 200 && httpURLConnection.getResponseCode() <= 300) {
+			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+		} else {
+			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getErrorStream()));
+		}
+		
+		StringBuilder stringBuilder = new StringBuilder();
+		String line;
+		while ((line = bufferedReader.readLine()) != null) {
+
+			stringBuilder.append(line);
+		}
+
+		bufferedReader.close();
+		httpURLConnection.disconnect();
+
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode node = objectMapper.readTree(stringBuilder.toString());
+		
+		
+		
+		model.addAttribute("node", node);
 		httpSession.setMaxInactiveInterval(120 * Constants.SESSION_MINUTE_XDM); // 60second * 30 = 30minute
 		httpSession.setAttribute("useSession", "usr");
 		

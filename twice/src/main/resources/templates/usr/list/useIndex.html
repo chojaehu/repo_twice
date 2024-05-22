@@ -3,7 +3,57 @@
 				 xmlns:sec="http://thymeleaf.org/extras/spring-security">
 
 <!-- <head th:replace="~{usr/block/usehead :: head}"></head> -->
+    <style>
+        .body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 350px;
+        }
 
+        .slide-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            width: 80%;
+            padding: 20px 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .slide-item {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+            min-width: 250px;
+            margin-right: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            background-color: #fff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .slide-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide-item p {
+            margin: 0;
+        }
+
+        .h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
 <head>
 <!-- Basic Page Needs -->
 <meta charset="utf-8">
@@ -174,6 +224,18 @@
 				</div>
 
 			</section>
+			<section class="body">
+			
+				<h1 class="h1">영화 순위</h1>
+
+				<div class="slide-container">
+				    <div th:each="movie : ${node.get('boxOfficeResult').get('dailyBoxOfficeList')}" class="slide-item">
+				        <h2 th:text="${movie.get('movieNm').asText()}" style="color: #333; font-size: 18px; margin-bottom: 10px;"></h2>
+				        <p th:text="${'순위: ' + movie.get('rank').asText()}" style="color: #666; font-size: 14px;"></p>
+				        <p th:text="${'관객수: ' + movie.get('salesAmt').asText()}" style="color: #666; font-size: 14px;"></p>
+				    </div>
+				</div>
+			</section> 
 		
 
 		<div class="clearfix"></div>

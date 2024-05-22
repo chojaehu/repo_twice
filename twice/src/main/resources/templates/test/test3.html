@@ -1,39 +1,75 @@
-
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .slide-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            width: 80%;
+            padding: 20px 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .slide-item {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+            min-width: 250px;
+            margin-right: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            background-color: #fff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .slide-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide-item p {
+            margin: 0;
+        }
+
+        .h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
 </head>
-<body>
-<h1>test3</h1>
+<body class="body">
+<h1 class="h1">오늘에 영화</h1>
 
-<p th:text="${node}"></p>
-    <!-- <div>
-    	<table class="table align-middle m-0 text-center">
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>#</th>
-					<th>#</th>
-					<th>#</th>
-					<th>#</th>
-					<th>#</th>
-				</tr>
-			</thead>
-			<tbody class="align-middle">
-				<tr th:if="${!#lists.isEmpty(node)}"
-					th:each="node : ${node">
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+<div class="slide-container">
+    <div th:each="movie : ${node.get('boxOfficeResult').get('dailyBoxOfficeList')}" class="slide-item">
+        <h2 th:text="${movie.get('movieNm').asText()}" style="color: #333; font-size: 18px; margin-bottom: 10px;"></h2>
+        <p th:text="${'순위: ' + movie.get('rank').asText()}" style="color: #666; font-size: 14px;"></p>
+        <p th:text="${'관객수: ' + movie.get('salesAmt').asText()}" style="color: #666; font-size: 14px;"></p>
+    </div>
+</div>
 
-				</tr>
-			</tbody>
-		</table>
-    </div> -->
+<script>
+    // Optional: You can add JavaScript here for additional functionality, such as autoplay or navigation controls.
+</script>
 </body>
 </html>
+

@@ -33,6 +33,11 @@ public class WebMvcConfigurerImpl implements WebMvcConfigurer {
 				,"/kakaologin"
 				,"/useSession"
 				,"/test"
+				,"/test3"
+				,"/restlist"
+				,"/restone"
+				,"/restinst"
+				,"/restupdate"
 				);
 		//WebMvcConfigurer.super.addInterceptors(registry);
 	}
