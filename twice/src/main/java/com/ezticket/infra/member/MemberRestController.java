@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,9 +26,9 @@ public class MemberRestController {
 	}
 	
 	
-	@RequestMapping(value = "/restone" , method = RequestMethod.GET)
-	public MemberDto restone(MemberDto dto) throws Exception {
-		//dto.setMbSeq(mbSeq);
+	@RequestMapping(value = "/restone/{mbSeq}" , method = RequestMethod.GET)
+	public MemberDto restone(@PathVariable("mbSeq") String mbSeq,MemberDto dto) throws Exception {
+		dto.setMbSeq(mbSeq);
 		MemberDto item =   service.selectOne(dto);
 
 		return item;
@@ -44,9 +45,9 @@ public class MemberRestController {
 
 		return 1;
 	}
-	@RequestMapping(value = "/restupdate" , method = RequestMethod.GET)
-	public int restuptp(MemberDto dto) throws Exception {
-		//dto.setMbSeq(mbSeq);
+	@RequestMapping(value = "/restupdate/{mbSeq}" , method = RequestMethod.GET)
+	public int restuptp(@PathVariable("mbSeq") String mbSeq,MemberDto dto) throws Exception {
+		dto.setMbSeq(mbSeq);
 
 
 		service.usrUpdate(dto);

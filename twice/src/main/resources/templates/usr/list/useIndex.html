@@ -10,9 +10,18 @@
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column; /* 변경: 세로로 배치 */
             justify-content: center;
             align-items: center;
-            height: 350px;
+            height: 400px;
+        }
+
+        .header {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 20px;
+             /* 변경: 헤더와 슬라이드 사이 간격 조정 */
         }
 
         .slide-container {
@@ -47,11 +56,6 @@
 
         .slide-item p {
             margin: 0;
-        }
-
-        .h1 {
-            text-align: center;
-            color: #333;
         }
     </style>
 <head>
@@ -225,17 +229,17 @@
 
 			</section>
 			<section class="body">
-			
-				<h1 class="h1">영화 순위</h1>
-
+				<strong class="header">영화API 출처 : 영화진흥위원회</strong> <!-- 이동 -->
+				
 				<div class="slide-container">
 				    <div th:each="movie : ${node.get('boxOfficeResult').get('dailyBoxOfficeList')}" class="slide-item">
 				        <h2 th:text="${movie.get('movieNm').asText()}" style="color: #333; font-size: 18px; margin-bottom: 10px;"></h2>
 				        <p th:text="${'순위: ' + movie.get('rank').asText()}" style="color: #666; font-size: 14px;"></p>
-				        <p th:text="${'관객수: ' + movie.get('salesAmt').asText()}" style="color: #666; font-size: 14px;"></p>
+				        <p th:text="${'관객수: ' + movie.get('audiAcc').asText()}" style="color: #666; font-size: 14px;"></p>
 				    </div>
 				</div>
 			</section> 
+
 		
 
 		<div class="clearfix"></div>

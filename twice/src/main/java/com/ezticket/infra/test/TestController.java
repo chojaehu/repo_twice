@@ -198,4 +198,48 @@ public class TestController {
 //		model.addAttribute(node);
 		return "test/test3";
 	}
+	
+	
+	@RequestMapping(value = "/test4")
+	public String test4(Model model) throws Exception
+	{
+		
+		 
+		String apiUrl2 = "http://api.kcisa.kr/openapi/API_TOU_053/request?serviceKey=f3959f59-d3e5-4096-8760-384e2536fde4&numOfRows=10&pageNo=1";
+		
+		//
+		//N3YEBL3S%2BptRSuZYd5A3x7XK3VTIf61bowQ48lqXUISpn3BNT64x0ZAv4fEz36B06RS%2FTml5T6otfwpL9jre%2FQ%3D%3D
+		URL url2 = new URL(apiUrl2);
+		HttpURLConnection httpURLConnection2 = (HttpURLConnection) url2.openConnection();
+		httpURLConnection2.setRequestMethod("GET");
+		
+		
+		httpURLConnection2.setRequestProperty("Accept", "application/json");
+		
+		
+		BufferedReader bufferedReader2;
+		if (httpURLConnection2.getResponseCode() >= 200 && httpURLConnection2.getResponseCode() <= 300) {
+			bufferedReader2 = new BufferedReader(new InputStreamReader(httpURLConnection2.getInputStream()));
+		} else {
+			bufferedReader2 = new BufferedReader(new InputStreamReader(httpURLConnection2.getErrorStream()));
+		}
+		
+		StringBuilder stringBuilder2 = new StringBuilder();
+		String line2;
+		while ((line2 = bufferedReader2.readLine()) != null) {
+			stringBuilder2.append(line2);
+		}
+
+		bufferedReader2.close();
+		httpURLConnection2.disconnect();
+
+		ObjectMapper objectMapper2 = new ObjectMapper();
+		JsonNode node2 = objectMapper2.readTree(stringBuilder2.toString());
+		
+		
+		model.addAttribute("item", node2);
+		
+//		model.addAttribute(node);
+		return "test/test4";
+	}
 }

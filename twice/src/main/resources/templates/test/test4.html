@@ -11,16 +11,9 @@
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column; /* 변경: 세로로 배치 */
             justify-content: center;
             align-items: center;
             height: 100vh;
-        }
-
-        .header {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px; /* 변경: 헤더와 슬라이드 사이 간격 조정 */
         }
 
         .slide-container {
@@ -56,16 +49,21 @@
         .slide-item p {
             margin: 0;
         }
+
+        .h1 {
+            text-align: center;
+            color: #333;
+        }
     </style>
 </head>
 <body class="body">
-<h1 class="header">오늘에 영화</h1> <!-- 이동 -->
+<h1 class="h1">오늘에 영화</h1>
 
 <div class="slide-container">
-    <div th:each="movie : ${node.get('boxOfficeResult').get('dailyBoxOfficeList')}" class="slide-item">
-        <h2 th:text="${movie.get('movieNm').asText()}" style="color: #333; font-size: 18px; margin-bottom: 10px;"></h2>
-        <p th:text="${'순위: ' + movie.get('rank').asText()}" style="color: #666; font-size: 14px;"></p>
-        <p th:text="${'관객수: ' + movie.get('salesAmt').asText()}" style="color: #666; font-size: 14px;"></p>
+    <div th:each="item : ${item.get('response').get('body').get('items').get('item')}" class="slide-item">
+        <h2 th:text="${item.get('showTitle').asText()}" style="color: #333; font-size: 18px; margin-bottom: 10px;"></h2>
+        <p th:text="${'장소: ' + item.get('title').asText()}" style="color: #666; font-size: 14px;"></p>
+        <p th:text="${'종류: ' + item.get('showType').asText()}" style="color: #666; font-size: 14px;"></p>
     </div>
 </div>
 
@@ -74,5 +72,4 @@
 </script>
 </body>
 </html>
-
 

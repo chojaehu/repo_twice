@@ -206,6 +206,9 @@ public class PerformanceController {
 		
 		
 		model.addAttribute("node", node);
+		
+		
+		
 		httpSession.setMaxInactiveInterval(120 * Constants.SESSION_MINUTE_XDM); // 60second * 30 = 30minute
 		httpSession.setAttribute("useSession", "usr");
 		
