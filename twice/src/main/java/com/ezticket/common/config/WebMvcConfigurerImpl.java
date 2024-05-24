@@ -34,10 +34,11 @@ public class WebMvcConfigurerImpl implements WebMvcConfigurer {
 				,"/useSession"
 				,"/test"
 				,"/test3"
+				,"/test4"
 				,"/restlist"
-				,"/restone"
+				,"/restone/{mbSeq}"
 				,"/restinst"
-				,"/restupdate"
+				,"/restupdate/{mbSeq}"
 				);
 		//WebMvcConfigurer.super.addInterceptors(registry);
 	}

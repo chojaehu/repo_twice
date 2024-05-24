@@ -158,54 +158,39 @@ public class PerformanceController {
 	public String useIndex(@ModelAttribute("vo")PerformanceVo vo,Model model,HttpSession httpSession) throws Exception {
 		
 		
-		Date today = new Date();
-
-        // Calendar 객체 생성하여 현재 날짜 설정
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(today);
-
-        // 현재 날짜에서 하루를 빼기
-        calendar.add(Calendar.DAY_OF_MONTH, -1);
-
-        // 뺀 후 날짜 가져오기
-        Date yesterday = calendar.getTime();
-
-        // SimpleDateFormat을 사용하여 원하는 형식으로 출력
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
-        System.out.println("하루 전 날짜 포맷 지정 후: " + dateFormat.format(yesterday));
-
-
-		String apiUrl = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=288bd6df89e380923abfb16576f35d84&targetDt=" +dateFormat.format(yesterday);
+		String apiUrl2 = "https://api.themoviedb.org/3/movie/now_playing?language=ko-KR&page=1";
 		
-		//
-		//N3YEBL3S%2BptRSuZYd5A3x7XK3VTIf61bowQ48lqXUISpn3BNT64x0ZAv4fEz36B06RS%2FTml5T6otfwpL9jre%2FQ%3D%3D
-		URL url = new URL(apiUrl);
-		HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-		httpURLConnection.setRequestMethod("GET");
+
+		URL url2 = new URL(apiUrl2);
+		HttpURLConnection httpURLConnection2 = (HttpURLConnection) url2.openConnection();
+		httpURLConnection2.setRequestMethod("GET");
 		
-		BufferedReader bufferedReader;
-		if (httpURLConnection.getResponseCode() >= 200 && httpURLConnection.getResponseCode() <= 300) {
-			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+		
+		httpURLConnection2.setRequestProperty("Accept", "application/json");
+		httpURLConnection2.setRequestProperty("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYmUxNTQzYjU4ZGM5MDc3MWFhZDBiMWEzOThhYmRkNiIsInN1YiI6IjY2NGZmMDE5NTg3NzE3NjY3OTliMmFlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.b3XosGNjbcuGLqDbjmMw7PqTW3k5JxbnDuVzFJbznfE");
+		
+		
+		BufferedReader bufferedReader2;
+		if (httpURLConnection2.getResponseCode() >= 200 && httpURLConnection2.getResponseCode() <= 300) {
+			bufferedReader2 = new BufferedReader(new InputStreamReader(httpURLConnection2.getInputStream()));
 		} else {
-			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getErrorStream()));
+			bufferedReader2 = new BufferedReader(new InputStreamReader(httpURLConnection2.getErrorStream()));
 		}
 		
-		StringBuilder stringBuilder = new StringBuilder();
-		String line;
-		while ((line = bufferedReader.readLine()) != null) {
-
-			stringBuilder.append(line);
+		StringBuilder stringBuilder2 = new StringBuilder();
+		String line2;
+		while ((line2 = bufferedReader2.readLine()) != null) {
+			stringBuilder2.append(line2);
 		}
 
-		bufferedReader.close();
-		httpURLConnection.disconnect();
+		bufferedReader2.close();
+		httpURLConnection2.disconnect();
 
-		ObjectMapper objectMapper = new ObjectMapper();
-		JsonNode node = objectMapper.readTree(stringBuilder.toString());
+		ObjectMapper objectMapper2 = new ObjectMapper();
+		JsonNode node2 = objectMapper2.readTree(stringBuilder2.toString());
 		
 		
-		
-		model.addAttribute("node", node);
+		model.addAttribute("item", node2);
 		
 		
 		

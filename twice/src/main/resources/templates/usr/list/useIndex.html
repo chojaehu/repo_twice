@@ -3,25 +3,17 @@
 				 xmlns:sec="http://thymeleaf.org/extras/spring-security">
 
 <!-- <head th:replace="~{usr/block/usehead :: head}"></head> -->
-    <style>
+        <style>
         .body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f9f9f9;
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column; /* 변경: 세로로 배치 */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 400px;
-        }
-
-        .header {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 20px;
-             /* 변경: 헤더와 슬라이드 사이 간격 조정 */
+            height: 480px;
         }
 
         .slide-container {
@@ -47,6 +39,9 @@
             background-color: #fff;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .slide-item:hover {
@@ -54,8 +49,36 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
+        .slide-item img {
+            max-width: 200px;
+            max-height: 300px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .slide-item h2 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
         .slide-item p {
+            color: #666;
+            font-size: 14px;
             margin: 0;
+        }
+
+        .h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        .text2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 25px;
         }
     </style>
 <head>
@@ -229,15 +252,16 @@
 
 			</section>
 			<section class="body">
-				<strong class="header">영화API 출처 : 영화진흥위원회</strong> <!-- 이동 -->
-				
-				<div class="slide-container">
-				    <div th:each="movie : ${node.get('boxOfficeResult').get('dailyBoxOfficeList')}" class="slide-item">
-				        <h2 th:text="${movie.get('movieNm').asText()}" style="color: #333; font-size: 18px; margin-bottom: 10px;"></h2>
-				        <p th:text="${'순위: ' + movie.get('rank').asText()}" style="color: #666; font-size: 14px;"></p>
-				        <p th:text="${'관객수: ' + movie.get('audiAcc').asText()}" style="color: #666; font-size: 14px;"></p>
-				    </div>
-				</div>
+				<strong class="text2">영화API 출처 : TMDB</strong	>
+			    <div class="slide-container">
+			        <div th:each="item : ${item.get('results')}" class="slide-item">
+			            <img th:src="${'https://image.tmdb.org/t/p/w500/'+item.get('backdrop_path').asText()}" alt="Movie Image 2">
+			            <h2 th:text="${item.get('title').asText()}"></h2>
+			            <p th:text="${'국가: ' + item.get('original_language').asText()}"></p>
+			            <p th:text="${'평점: ' + item.get('vote_average').asText()}"></p>
+			            <p th:text="${'상영일: ' + item.get('release_date').asText()}"></p>
+			        </div>
+			    </div>
 			</section> 
 
 		
