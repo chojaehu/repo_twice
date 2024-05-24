@@ -34,7 +34,7 @@ public class MemberRestController {
 		return item;
 	}
 	
-	@RequestMapping(value = "/restinst" , method = RequestMethod.GET)
+	@RequestMapping(value = "/restinst" , method = RequestMethod.POST)
 	public int restinst(MemberDto dto) throws Exception {
 		//dto.setMbSeq(mbSeq);
 		
@@ -45,7 +45,7 @@ public class MemberRestController {
 
 		return 1;
 	}
-	@RequestMapping(value = "/restupdate/{mbSeq}" , method = RequestMethod.GET)
+	@RequestMapping(value = "/restupdate/{mbSeq}" , method = RequestMethod.PATCH)
 	public int restuptp(@PathVariable("mbSeq") String mbSeq,MemberDto dto) throws Exception {
 		dto.setMbSeq(mbSeq);
 

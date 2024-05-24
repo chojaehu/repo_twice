@@ -252,7 +252,7 @@
 
 			</section>
 			<section class="body">
-				<strong class="text2">영화API 출처 : TMDB</strong	>
+				<strong class="text2">영화API 출처 : <a class="text2" href="https://developer.themoviedb.org/docs/getting-started" target="_blank">https://developer.themoviedb.org/docs/getting-started</a></strong	>
 			    <div class="slide-container">
 			        <div th:each="item : ${item.get('results')}" class="slide-item">
 			            <img th:src="${'https://image.tmdb.org/t/p/w500/'+item.get('backdrop_path').asText()}" alt="Movie Image 2">
