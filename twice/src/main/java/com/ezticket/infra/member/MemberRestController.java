@@ -55,6 +55,16 @@ public class MemberRestController {
 		return 1;
 	}
 	
+	@RequestMapping(value = "/restdelete/{mbSeq}" , method = RequestMethod.DELETE)
+	public int restdelete(@PathVariable("mbSeq") String mbSeq,MemberDto dto) throws Exception {
+		dto.setMbSeq(mbSeq);
+
+
+		service.delete(dto);
+
+		return 1;
+	}
+	
 	public String encodeBcrypt(String planeText, int strength) {
 		return new BCryptPasswordEncoder(strength).encode(planeText);
 	}

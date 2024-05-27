@@ -132,6 +132,7 @@
 								<div class="movie__btns movie__btns--full">
 									<a class="btn btn-md btn--warning"
 										th:href="@{/useBookOne(prSeq=${item.prSeq},plSeq=${item.plSeq})}">예매하기</a>
+										<button type="button" class="btn btn-md btn--warning" id="btnList" name="btnList">뒤로가기</button>
 								</div>
 
 								<!--  <div class="share">
@@ -266,6 +267,14 @@
 			</section>
 		</div>
 	</form>
+	<form id='formVo' name ='formVo' method='get' >
+    	<input type="hidden" id= "shOption" name= "shOption" th:value = "${vo.shOption}">
+    	<input type="hidden" id="shValue" name="shValue" th:value = "${vo.shValue}">
+    	<input type="hidden" id="shperformance" name ="shperformance" th:value = "${vo.shperformance}">
+    	<input type="hidden" id="shArea" name ="shArea" th:value = "${vo.shArea}">
+    	<input type="hidden" id ="thisPage" name ="thisPage" th:value= "${vo.thisPage}">
+    	<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
+    </form>
 
 
 
@@ -449,6 +458,12 @@
 		let goUrlXdmList = "/usePerformanceList";
 		let longitude = document.getElementById("longitude").value;
 		let hardness = document.getElementById("hardness").value;
+		let formVo = document.querySelector("form[name=formVo]");
+		
+		document.getElementById("btnList").onclick = function () {
+			formVo.action = goUrlXdmList;
+			formVo.submit();
+		}
 				
 		var marker = {
 			    position: new kakao.maps.LatLng(longitude, hardness), 

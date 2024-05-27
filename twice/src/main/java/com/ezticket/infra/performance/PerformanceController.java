@@ -22,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezticket.common.constants.Constants;
 import com.ezticket.common.util.UtilDateTime;
@@ -206,7 +207,7 @@ public class PerformanceController {
 	
 	// 공연 리스트 
 	@RequestMapping(value = "/usePerformanceList")
-	public String usePerformanceList(@ModelAttribute("vo")PerformanceVo vo,Model model) throws Exception{
+	public String usePerformanceList(@ModelAttribute("vo")PerformanceVo vo,Model model,RedirectAttributes redirectAttributes) throws Exception{
 		
 		
 		setSearch(vo);
@@ -214,7 +215,7 @@ public class PerformanceController {
 		System.out.println(vo.getShOption()+"----------------------------------------");
 		System.out.println(vo.getShValue()+"----------------------------------------");
 		
-		
+		redirectAttributes.addFlashAttribute("vo", vo);
 		model.addAttribute("list", service.usrselectList(vo));
 
 		return str2 + "/usePerformanceList";

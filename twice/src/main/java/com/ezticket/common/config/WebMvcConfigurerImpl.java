@@ -39,6 +39,7 @@ public class WebMvcConfigurerImpl implements WebMvcConfigurer {
 				,"/restone/{mbSeq}"
 				,"/restinst"
 				,"/restupdate/{mbSeq}"
+				,"/restdelete/{mbSeq}"
 				);
 		//WebMvcConfigurer.super.addInterceptors(registry);
 	}

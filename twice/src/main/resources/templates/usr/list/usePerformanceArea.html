@@ -42,6 +42,7 @@
 	<input type="hidden" id="thisPage" name="thisPage" th:value="${vo.thisPage}" default="1"/>
   <input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
   <input type="hidden" id="shArea" name="shArea" th:value="${vo.shArea}"/>
+   <input type="hidden" id = "prSeq" name="prSeq">
     <div class="wrapper">
         <!-- Banner -->
         <div class="banner-top" th:replace="~{usr/block/usebody :: titleimg}">
@@ -76,23 +77,32 @@
                 <div class="tags-area">
                     <div class="tags tags--unmarked">
                         <ul>
-                            <li class="item-wrap"><a th:href="@{/usePerformanceArea}" class="tags__item item-active" data-filter='all'>전체</a>
+                            <li class="item-wrap"><a value="" th:href="@{/usePerformanceArea}" class="tags__item " 
+                            th:classappend="${vo.shArea} == 0 ? 'item-active'">전체</a>
                             </li>
-                            <li class="item-wrap"><a th:href="@{/usePerformanceArea(shArea=12)}" class="tags__item" >서울</a>
+                            <li class="item-wrap"><a value="12" th:href="@{/usePerformanceArea(shArea=12)}" class="tags__item" 
+                            th:classappend="${vo.shArea} == 12 ? 'item-active'">서울</a>
                             </li>
-                            <li class="item-wrap"><a th:href="@{/usePerformanceArea(shArea=13)}" class="tags__item" >인천/경기</a>
+                            <li class="item-wrap"><a value="13" th:href="@{/usePerformanceArea(shArea=13)}" class="tags__item" 
+                            th:classappend="${vo.shArea} == 13 ? 'item-active'">인천/경기</a>
                             </li>
-                            <li class="item-wrap"><a th:href="@{/usePerformanceArea(shArea=14)}" class="tags__item" >부산/울산/경남</a>
+                            <li class="item-wrap"><a value="14" th:href="@{/usePerformanceArea(shArea=14)}" class="tags__item" 
+                            th:classappend="${vo.shArea} == 14 ? 'item-active'">부산/울산/경남</a>
                             </li>
-                            <li class="item-wrap"><a th:href="@{/usePerformanceArea(shArea=15)}" class="tags__item" >대구/경북</a>
+                            <li class="item-wrap"><a value="15" th:href="@{/usePerformanceArea(shArea=15)}" class="tags__item" 
+                            th:classappend="${vo.shArea} == 15 ? 'item-active'">대구/경북</a>
                             </li>
-                            <li class="item-wrap"><a th:href="@{/usePerformanceArea(shArea=16)}" class="tags__item" >강원도</a>
+                            <li class="item-wrap"><a value="16" th:href="@{/usePerformanceArea(shArea=16)}" class="tags__item" 
+                            th:classappend="${vo.shArea} == 16  ? 'item-active'">강원도</a>
                             </li>
-                            <li class="item-wrap"><a th:href="@{/usePerformanceArea(shArea=17)}" class="tags__item" >대전/충청</a>
+                            <li class="item-wrap"><a value="17" th:href="@{/usePerformanceArea(shArea=17)}" class="tags__item" 
+                            th:classappend="${vo.shArea} == 17 ? 'item-active'">대전/충청</a>
                             </li>
-                            <li class="item-wrap"><a th:href="@{/usePerformanceArea(shArea=18)}" class="tags__item" >광주/전라</a>
+                            <li class="item-wrap"><a value="18" th:href="@{/usePerformanceArea(shArea=18)}" class="tags__item" 
+                            th:classappend="${vo.shArea} == 18 ? 'item-active'">광주/전라</a>
                             </li>
-                            <li class="item-wrap"><a th:href="@{/usePerformanceArea(shArea=19)}" class="tags__item" >제주도</a>
+                            <li class="item-wrap"><a value="19" th:href="@{/usePerformanceArea(shArea=19)}" class="tags__item" 
+                            th:classappend="${vo.shArea} == 19 ? 'item-active'">제주도</a>
                             </li>
 
                         </ul>
@@ -260,7 +270,18 @@
         $(document).ready(function () {
             init_MovieList();
         });
-        let goUrlXdmList = "/usePerformanceArea"+"?shArea="+12;
+        let goUrlXdmList = "/usePerformanceArea";
+        let goUrlXdmForm = "/usePerformancepage"
+ 		let seq = document.getElementById("prSeq")
+        
+
+
+
+        goForm = function (keyValue) {
+            seq.value = keyValue;
+            form.action = goUrlXdmForm;
+            form.submit();
+        }
         //let goUrlSdmPaging="/usePerformanceAreaAjax";
     </script>
     <script src="usr/js/usrCommon.js"> </script>
