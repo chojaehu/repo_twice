@@ -8,9 +8,22 @@ public class PerformanceVo extends BaseVo{
 	private String prSeq;
 	private String plSeq;
 	private String shprDate;
+	private String division;
+	
+	
+	
 	
 	
 
+	public String getDivision() {
+		return division;
+	}
+	public void setDivision(String division) {
+		this.division = division;
+	}
+	public void setShprDate(String shprDate) {
+		this.shprDate = shprDate;
+	}
 	public String getShprDate() {
 		return shprDate;
 	}

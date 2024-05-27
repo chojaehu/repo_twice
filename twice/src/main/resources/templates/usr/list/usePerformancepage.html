@@ -274,6 +274,7 @@
     	<input type="hidden" id="shArea" name ="shArea" th:value = "${vo.shArea}">
     	<input type="hidden" id ="thisPage" name ="thisPage" th:value= "${vo.thisPage}">
     	<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
+    	<input type="hidden" id = "division" name="division" th:value ="${vo.division}">
     </form>
 
 
@@ -455,10 +456,19 @@
 
 	
 	<script type="text/javascript">
-		let goUrlXdmList = "/usePerformanceList";
+		let goUrlXdmList;
 		let longitude = document.getElementById("longitude").value;
 		let hardness = document.getElementById("hardness").value;
 		let formVo = document.querySelector("form[name=formVo]");
+		
+		if(document.getElementById("division").value == 0)
+			{
+			 	goUrlXdmList = "/usePerformanceList";
+			}
+		else
+			{
+				goUrlXdmList = "/usePerformanceArea";
+			}
 		
 		document.getElementById("btnList").onclick = function () {
 			formVo.action = goUrlXdmList;
