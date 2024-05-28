@@ -93,26 +93,26 @@ public class CodeController {
 		{
 			model.addAttribute("list", service.selectList(vo));		
 		}	
-		
-		/*
-		 * System.out.println("vo.getPagination().getTotalPageCount()" +
-		 * vo.getPagination().getTotalPageCount());
-		 * System.out.println("vo.getPagination().getEndPage() :" +
-		 * vo.getPagination().getEndPage());
-		 * System.out.println("vo.getPagination().getStartPage() :" +
-		 * vo.getPagination().getStartPage());
-		 * System.out.println("vo.getPagination().getStartPage() :" +
-		 * vo.getPagination().getLimitStart());
-		 * System.out.println("vo.getPagination().getStartPage() :" +
-		 * vo.getPagination().getTotalPageCount());
-		 */
-		 
-		model.addAttribute("list", service.selectList(vo));
-		
-		
-		//model.addAttribute("vo", vo);
+		//model.addAttribute("list", service.selectList(vo));
 		
 		return cd+"codeXdmList";
+	}
+	@RequestMapping(value = "/codeXdmListAjax")
+	public String codeXdmListAjax(@ModelAttribute("vo")CodeVo vo, Model model) throws Exception {
+		setSearch(vo);
+		
+		vo.setParamsPaging(service.count(vo));
+		
+		model.addAttribute("count", service.count(vo));
+		if(vo.getTotalRows()>0)
+		{
+			model.addAttribute("list", service.selectList(vo));		
+		}	
+		System.out.println("아작스 통신 성공 ---------------------------------------");
+		System.out.println("아작스 통신 성공 ---------------------------------------" );
+		//model.addAttribute("list", service.selectList(vo));
+		
+		return cd+"codeXdmListAjax";
 	}
 	
 	@RequestMapping(value = "/codeXdmForm")

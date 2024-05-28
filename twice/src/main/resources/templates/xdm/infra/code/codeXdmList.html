@@ -136,54 +136,11 @@
 										
 										
 									</div>
-									<div class="table-responsive mt-1 ">
-										<table class="table align-middle m-0 text-center">
-											<thead>
-												<tr>
-													<th><input class="form-check-input" type="checkbox" /></th>
-													<th>그룹넘버</th>
-													<th>그룹이름</th>
-													<th>코드넘버</th>
-													<th>코드이름</th>
-													<th>등록일</th>
-													<th>수정일</th>
-													<th>삭제여부</th>
-												</tr>
-											</thead>
-											<tbody class="align-middle">
-												<tr th:if="${!#lists.isEmpty(list)}"
-													th:each="list : ${list}">
-													<td><input class="form-check-input" type="checkbox"
-														th:id="chek+${list.ifcdSeq}" th:value="${list.ifcdSeq}"
-														th:checked="false" /></td>
-													<td th:text="${list.ifcgSeq}"></td>
-
-													<!-- <td>
-																<img src="xdm/images/flags/1x1/hk.svg" class="flag-img" alt="Hong Kong" />
-															</td> -->
-													<td><a th:text="${list.ifcgName}"></a></td>
-
-													<td th:text="${list.ifcdSeq}"></td>
-													<td><a
-														th:href="@{/codeXdmForm(ifcdSeq=${list.ifcdSeq})}"
-														th:text="${list.ifcdName}"></a></td>
-													<td
-														th:text="${#dates.format(list.ifcdRgstrDate,'yyyy/MM/dd HH:mm:ss')}"></td>
-													<td
-														th:text="${#dates.format(list.ifcdModifiedDate,'yyyy/MM/dd HH:mm:ss')}"></td>
-													<td th:if="${list.ifcddeleteNY eq 0 }"><span
-														class="badge shade-green">n</span></td>
-													<td th:unless="${list.ifcddeleteNY eq 0}"><span
-														class="badge shade-red">y</span></td>
-												</tr>
-											</tbody>
-										</table>
+									<div id = "lita">
+										
 									</div>
+
 									
-									<!-- 페이징 버튼 -->
-									<div th:replace="~{xdm/infra/block/paging :: paging}"></div>
-
-
 									<div class="row mt-3">
 										<div class="col d-grid gap-2 d-md-flex">
 
@@ -265,11 +222,47 @@
 	<div th:replace="~{xdm/infra/block/jsscr :: scr}"></div>
 
 
-	<script type="text/javascript">
+	<script th:inline="javascript">
 	let form = document.querySelector("form[name=formList]");
 	let goUrlXdmForm = "/xdm/infra/index/codeGroupXdmFrom";
 	let goUrlXdmList = "/codeXdmList";
+	let goUrlXdmAjaxLita = "/codeXdmListAjax";
 	let goUrlXdmLogout = "/login"
+	
+		window.addEventListener('load', function() {
+			let a= [[${vo.thisPage}]];
+			
+			setLita(a);
+			$("#shDateStart, #shDateEnd").datetimepicker({
+				timepicker : false,
+				format : 'Y-m-d'
+				
+			});
+		});
+	
+	function setLita(thisPage) {
+		document.querySelector("input[name=thisPage]").value = thisPage;
+	    $.ajax({
+	        async: true
+	        ,cache: false
+	        ,type: "post"
+	        ,url: goUrlXdmAjaxLita
+	        ,data : $("#formList").serialize()
+	        ,success: function(response) {
+	        	
+				$("#lita").empty();
+				$("#lita").append(response);
+				
+		        history.pushState({ page: thisPage }, null, '?page=' + thisPage);
+	        }
+	        ,error : function(jqXHR, textStatus, errorThrown){
+	            alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+	        }
+	    });
+	}
+	
+
+	
 	</script>
 
 
