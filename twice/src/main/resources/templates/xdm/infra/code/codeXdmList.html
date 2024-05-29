@@ -229,19 +229,20 @@
 	let goUrlXdmAjaxLita = "/codeXdmListAjax";
 	let goUrlXdmLogout = "/login"
 	
-		window.addEventListener('load', function() {
-			let a= [[${vo.thisPage}]];
+	window.addEventListener('load', function() {
+		let a= [[${vo.thisPage}]];
+		
+		setLita(a);
+		$("#shDateStart, #shDateEnd").datetimepicker({
+			timepicker : false,
+			format : 'Y-m-d'
 			
-			setLita(a);
-			$("#shDateStart, #shDateEnd").datetimepicker({
-				timepicker : false,
-				format : 'Y-m-d'
-				
-			});
 		});
+	});
 	
-	function setLita(thisPage) {
+	function setLita(thisPage,replace = false) {
 		document.querySelector("input[name=thisPage]").value = thisPage;
+		//sessionStorage.setItem('pageState', JSON.stringify({ page: thisPage }));
 	    $.ajax({
 	        async: true
 	        ,cache: false
@@ -249,11 +250,15 @@
 	        ,url: goUrlXdmAjaxLita
 	        ,data : $("#formList").serialize()
 	        ,success: function(response) {
-	        	
+	        	if (replace) {
+                    history.replaceState({ page: thisPage }, null, '?page=' + thisPage);
+                } else {
+                    history.pushState({ page: thisPage }, null, '?page=' + thisPage);
+                }
 				$("#lita").empty();
 				$("#lita").append(response);
 				
-		        history.pushState({ page: thisPage }, null, '?page=' + thisPage);
+		      
 	        }
 	        ,error : function(jqXHR, textStatus, errorThrown){
 	            alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
@@ -261,6 +266,11 @@
 	    });
 	}
 	
+	window.addEventListener('popstate', function(event) {
+        if (event.state && event.state.page) {
+            setLita(event.state.page, true); 
+        }
+    });
 
 	
 	</script>

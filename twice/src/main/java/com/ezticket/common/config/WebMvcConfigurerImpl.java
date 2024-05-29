@@ -40,6 +40,7 @@ public class WebMvcConfigurerImpl implements WebMvcConfigurer {
 				,"/restinst"
 				,"/restupdate/{mbSeq}"
 				,"/restdelete/{mbSeq}"
+				,"/codeXdmListAjax"
 				);
 		//WebMvcConfigurer.super.addInterceptors(registry);
 	}
