@@ -3570,12 +3570,13 @@ input[type="button"].btn-block {
   margin-top: 60px;
 }
 .logo {
+  position: absolute;
   top: 16px;
   left: 15px;
 }
 .logo img {
-  width: 222px;
-  height: 50px;
+  width: 170px;
+  height: 30px;
 }
 #navigation-box {
   background-color: transparent;
