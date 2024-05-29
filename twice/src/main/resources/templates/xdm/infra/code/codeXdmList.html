@@ -172,8 +172,11 @@
 												</div>
 											</div>
 										</div>
-
 										<div class="col d-grid gap-2 d-md-flex justify-content-md-end">
+											<button type="button" id ="excelbtn"
+													class="btn btn-success btn-rounded">
+													<i class="bi bi-arrow-bar-down"></i>
+											</button>
 											<a th:href="@{/codeXdmInst}"><button type="button"
 													class="btn btn-primary btn-rounded">
 													<i class="bi bi-clipboard-plus"></i>
@@ -228,6 +231,7 @@
 	let goUrlXdmList = "/codeXdmList";
 	let goUrlXdmAjaxLita = "/codeXdmListAjax";
 	let goUrlXdmLogout = "/login"
+	let goExcel = "/excelDownload";
 	
 	window.addEventListener('load', function() {
 		let a= [[${vo.thisPage}]];
@@ -239,6 +243,11 @@
 			
 		});
 	});
+	
+	document.getElementById("excelbtn").onclick = function(){
+		form.action = goExcel;
+		form.submit();
+	}
 	
 	function setLita(thisPage,replace = false) {
 		document.querySelector("input[name=thisPage]").value = thisPage;
