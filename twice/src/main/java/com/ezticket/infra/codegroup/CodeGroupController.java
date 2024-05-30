@@ -1,10 +1,15 @@
 package com.ezticket.infra.codegroup;
 
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ezticket.common.util.UtilDateTime;
@@ -61,11 +66,35 @@ public class CodeGroupController {
 //		{
 //			System.out.println("a.getOriginalFilename() : "+a.getOriginalFilename());
 //		}
+		
+		
 		service.insert(dto);
 
 		return "redirect:/codeGroupXdmList";
 	}
-	
+	@RequestMapping(value= "/excelupload")
+	public String excelupload(CodeGroupDto dto) throws Exception
+	{
+		XSSFWorkbook workbook = new XSSFWorkbook(dto.getExcelfile().getInputStream());
+	    XSSFSheet worksheet = workbook.getSheetAt(0);
+	    System.out.println(worksheet.getPhysicalNumberOfRows()+"-------------------------------------------");
+	    for(int i=1;i<worksheet.getPhysicalNumberOfRows() ;i++) {
+	        CodeGroupDto excel = new CodeGroupDto();
+	           
+	        
+	        DataFormatter formatter = new DataFormatter();		        
+	        XSSFRow row = worksheet.getRow(i);
+	        	    	
+	        String userName = formatter.formatCellValue(row.getCell(0));
+	        
+	        
+	        excel.setIfcgName(userName);
+	        excel.setIfcgdeleteNY(0);
+	        
+	        service.excelupload(excel);
+	    } 
+		return "redirect:/codeGroupXdmList";
+	}
 	
 	@RequestMapping(value = "/codeGroupupdate")
 	public String codeGroupupdate(CodeGroupDto dto) throws Exception {

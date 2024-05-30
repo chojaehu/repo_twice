@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.UUID;
 
 import org.apache.commons.io.FilenameUtils;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -11,8 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.ezticket.infra.code.CodeDto;
-import com.ezticket.infra.code.CodeVo;
+
 
 @Service
 public class CodeGroupService {
@@ -58,7 +61,8 @@ public class CodeGroupService {
 	
 	public int insert(CodeGroupDto dto)throws Exception {
 		dao.insert(dto);
-		
+	    
+	    
 		for(MultipartFile multipartFile : dto.getUploadflies()) {
 			
 			if(!multipartFile.isEmpty()) {
@@ -94,6 +98,10 @@ public class CodeGroupService {
 			}
 		}
 		return 1;
+	}
+	public int excelupload(CodeGroupDto dto)
+	{
+		return dao.insert(dto);
 	}
 	
 	

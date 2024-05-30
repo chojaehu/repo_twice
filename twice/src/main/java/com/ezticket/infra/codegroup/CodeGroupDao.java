@@ -13,7 +13,6 @@ public interface CodeGroupDao {
 	
 	public CodeGroupDto selectOne(CodeGroupDto dto);
 	
-	
 	public int insert(CodeGroupDto dto);
 	public int imageupload(CodeGroupDto dto);
 	

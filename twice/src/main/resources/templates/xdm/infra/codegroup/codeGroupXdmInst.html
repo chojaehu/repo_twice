@@ -88,8 +88,16 @@
 													id="uploadflies" name="uploadflies" required />
 													<div class="valid-feedback">Looks good!</div>
 											</div>
+											
+											<!-- 엑셀 파일 업로드 -->
 											<div class="col-md-6">
+											<label>엑셀</label>
+													<input type="file" class="form-control form-control-sm" multiple="multiple"  
+													id="excelfile" name="excelfile" required />
+													<div class="valid-feedback">Looks good!</div>
 											</div>
+											<!-- <div class="col-md-6">
+											</div> -->
 											<div class="col-6 d-flex ">
 												<a th:href ="@{/codeGroupXdmList}">
 												<button class="btn btn-primary " type="button">
@@ -98,6 +106,9 @@
 												</a>
 											</div>
 											<div class="col-6 d-flex justify-content-end">
+												<button class="btn btn-primary " id ="excelbtn" name ="excelbtn" type="button" >
+													업로드
+												</button>
 												<button class="btn btn-primary " id ="btnsubmit" type="button" >
 													저장
 												</button>
@@ -143,10 +154,15 @@
 		let goUrlXdmLogout = "/login"
 		let form = document.querySelector("form[name=formname]");
 		let goUrlXdmList = "/codeGroupInsert";	
+		let goExceluplosd = "/excelupload";
 		
 		document.getElementById("btnsubmit").onclick = function(){
 			valInst();
 			
+		}
+		document.getElementById("excelbtn").onclick = function(){
+			form.action = goExceluplosd;
+			form.submit();
 		}
 		
 		function valInst(){

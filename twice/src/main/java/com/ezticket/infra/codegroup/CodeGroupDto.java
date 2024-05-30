@@ -19,6 +19,7 @@ public class CodeGroupDto {
 	
 	
 	private MultipartFile[] uploadflies;
+	private MultipartFile excelfile;
 	
 	//iuSeq, iuType, iuDefaultNy, iuSort, iuPath, iuOriginalName, iuUuidName, iuExt, iuSize, iuDelNy, pseq, iuRegDateTime
 	
@@ -41,6 +42,12 @@ public class CodeGroupDto {
 	
 	
 	
+	public MultipartFile getExcelfile() {
+		return excelfile;
+	}
+	public void setExcelfile(MultipartFile excelfile) {
+		this.excelfile = excelfile;
+	}
 	public Integer getIuSeq() {
 		return iuSeq;
 	}
