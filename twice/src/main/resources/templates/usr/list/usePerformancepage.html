@@ -132,7 +132,7 @@
 								<div class="movie__btns movie__btns--full">
 									<a class="btn btn-md btn--warning"
 										th:href="@{/useBookOne(prSeq=${item.prSeq},plSeq=${item.plSeq})}">예매하기</a>
-										<button type="button" class="btn btn-md btn--warning" id="btnList" name="btnList">뒤로가기</button>
+										<!-- <button type="button" class="btn btn-md btn--warning" id="btnList" name="btnList">뒤로가기</button> -->
 								</div>
 
 								<!--  <div class="share">
@@ -471,10 +471,10 @@
 				goUrlXdmList = "/usePerformanceArea";
 			}
 		
-		document.getElementById("btnList").onclick = function () {
+		/* document.getElementById("btnList").onclick = function () {
 			formVo.action = goUrlXdmList;
 			formVo.submit();
-		}
+		} */
 				
 		var marker = {
 			    position: new kakao.maps.LatLng(longitude, hardness), 
